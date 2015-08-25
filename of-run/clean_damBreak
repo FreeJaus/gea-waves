@@ -1,0 +1,29 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+# Source tutorial run functions
+#. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# Clean damBreak
+(
+    mkdir back
+    mkdir back/constant/
+    mkdir back/constant/polyMesh
+
+    cd damBreak
+
+    mv 0 ../back/
+    mv system ../back/
+
+    mv constant/dynamicMeshDict ../back/constant/
+    mv constant/g ../back/constant/
+    mv constant/transportProperties ../back/constant/
+    mv constant/turbulenceProperties ../back/constant/
+
+    mv constant/polyMesh/blockMeshDict ../back/constant/polyMesh/
+    cd ..
+    rm -rf damBreak/
+    mv back damBreak
+)
+
+# ----------------------------------------------------------------- end-of-file
