@@ -1,10 +1,10 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # run from this directory
 
-# Clean damBreak
+# Clean damBreakFine
 (
 
-    case=damBreak
+    case=damBreakFine
 
     mkdir back
     mkdir back/constant/
