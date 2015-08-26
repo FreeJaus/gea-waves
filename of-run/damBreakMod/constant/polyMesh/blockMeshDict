@@ -14,7 +14,9 @@ FoamFile
     object      blockMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
 convertToMeters 1;
+
 vertices
 (
     (0 0 0)
