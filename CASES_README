@@ -4,7 +4,7 @@
 
 - damBreakMod [single]: hand-modified blockMeshDict to include a topWall, so that a chamber/chimney is created at the right. Use <meld damBreak damBreakMod> to check changes.
 
-- damBreakSwiftBlock [single]: blockMeshDict generated with SwiftBlock (plugin for Blender). The model is available at <of-dsgn/blender/damBreakSwiftBlock_cube.blend>.
+- damBreakSwiftBlock [single]: blockMeshDict generated with SwiftBlock (plugin for Blender). There are two models available at <of-dsgn/blender/damBreakSwiftBlock_cube.blend> and <of-dsgn/blender/damBreakSwiftBlock.blend>. The first one is just a cube. The second resembles the topology of damBreak.
 
   ·Scale and translate the cube shown in the default Start-Up File.
   ·Ctrl+Alt+U and activate SwiftBlock at Addons/OpenFOAM.
@@ -13,5 +13,5 @@
   ·Set patch names and types (rightWall, leftWall, lowerWall, atmosphere). Mind that the default name is <defaultName>, while <defaultFaces> is used in the files copied from damBreak. Front a Rear faces should be assigned to <defaultFaces> to avoid problems.
   ·Choose <Set edges>, write the name of the object, <Cube>, and press Enter.
   ·In <Edit Mode> select the front face, set <# cells: 40> and press <Force resolution>. Alternatively, resolutions may be set to faces independently. However, consistency must be preserved.
-  ·Click <Preview> to verify the resulting mesh.
+  ·Click <Diagnose> and, then, <Preview> to verify the resulting mesh.
   ·Write result to blockMeshDict
