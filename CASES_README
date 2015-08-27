@@ -1,0 +1,5 @@
+- damBreak [single]: default case, copied from <$FOAM_RUN/tutorials/multiphase/interFoam/laminar>. It is thoroughly explained at <http://cfd.direct/openfoam/user-guide/dambreak/>.
+
+- damBreakFine [parallel]: improved mesh resolution, as explained at <http://cfd.direct/openfoam/user-guide/dambreak/>. The details of how to run a case in parallel are explained at <http://cfd.direct/openfoam/user-guide/running-applications-parallel>.
+
+- damBreakMod [single]: hand-modified blockMeshDict to include a topWall, so that a chamber/chimney is created at the right. Use <meld damBreak damBreakMod> to check changes.
