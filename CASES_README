@@ -4,7 +4,7 @@
 
 - damBreakMod [single]: hand-modified blockMeshDict to include a topWall, so that a chamber/chimney is created at the right. Use <meld damBreak damBreakMod> to check changes.
 
-- damBreakSwiftBlock [single]: blockMeshDict generated with SwiftBlock (plugin for Blender). There are two models available at <of-dsgn/blender/damBreakSwiftBlock_cube.blend> and <of-dsgn/blender/damBreakSwiftBlock.blend>. The first one is just a cube. The second resembles the topology of damBreak.
+- damBreakSwiftBlock [single]: blockMeshDict generated with SwiftBlock (plugin for Blender available at <https://github.com/nogenmyr/swiftBlock>). There are two models available at <of-dsgn/blender/damBreakSwiftBlock_cube.blend> and <of-dsgn/blender/damBreakSwiftBlock.blend>. The first one is just a cube. The second resembles the topology of damBreak. On top of that, <of-dsgn/blender/damBreakModSB.blend> can be used to create the blockMeshDict for damBreakMod.
 
   ·Scale and translate the cube shown in the default Start-Up File.
   ·Ctrl+Alt+U and activate SwiftBlock at Addons/OpenFOAM.
