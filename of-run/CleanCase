@@ -1,0 +1,46 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+
+CleanCase () {
+  mkdir -p back/constant/polyMesh
+  cd ${case=$1}
+
+  for i in 0 system; do
+    mv $i ../back/
+  done  
+
+  for i in dynamicMeshDict g transportProperties turbulenceProperties; do
+    mv constant/$i ../back/constant/
+  done
+
+  mv constant/polyMesh/blockMeshDict ../back/constant/polyMesh/
+
+  cd ..
+
+  rm -rf $case/
+  mv back $case
+}
+
+CheckDir () {
+  if [ -d "$2" ]; then
+    echo "Cleaning case <$2>..."
+    $1 $2;
+    echo "Case <$2> clean"
+  else
+    echo "! Directory <$(pwd)/$2> does not exist"
+    echo "! Skipping case <$2>"
+  fi
+}
+
+for f in $@; do
+  f=${f%/}
+  case $f in
+    damBreak           ) CheckDir CleanCase $f ;;
+    damBreakFine       ) CheckDir CleanCase $f ;;
+    damBreakMod        ) CheckDir CleanCase $f ;;
+    damBreakSwiftBlock ) CheckDir CleanCase $f ;;
+    * ) echo "Case <$f> is not supported by this script";;
+  esac
+done 
+
+# ----------------------------------------------------------------- end-of-file
