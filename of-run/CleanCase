@@ -21,6 +21,22 @@ CleanCase () {
   mv back $case
 }
 
+CleanSnappyCase (){
+  mkdir -p back/constant/polyMesh
+  cd ${case=$1}
+
+  for i in system; do
+    mv $i ../back/
+  done  
+
+  mv constant/polyMesh/blockMeshDict ../back/constant/polyMesh/
+
+  cd ..
+
+  rm -rf $case/
+  mv back $case
+}
+
 CheckDir () {
   if [ -d "$2" ]; then
     echo "Cleaning case <$2>..."
@@ -39,6 +55,7 @@ for f in $@; do
     damBreakFine       ) CheckDir CleanCase $f ;;
     damBreakMod        ) CheckDir CleanCase $f ;;
     damBreakSwiftBlock ) CheckDir CleanCase $f ;;
+    damBreakSnappy     ) CheckDir CleanSnappyCase $f;;
     * ) echo "Case <$f> is not supported by this script";;
   esac
 done 
