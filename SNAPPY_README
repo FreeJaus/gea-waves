@@ -7,15 +7,15 @@
 + system
 -- controlDict
 
-El fichero blockMeshDict deberá contener los campos: FoamFile, converToMeters, vertices, blocks, edges, boundary y mergePatchPairs. Sin embargo, es suficiente con definir ocho puntos y un único bloque, pudiendo dejar los tres últimos en blanco.
+El fichero <blockMeshDict> deberá contener los campos: FoamFile, converToMeters, vertices, blocks, edges, boundary y mergePatchPairs. Sin embargo, es suficiente con definir ocho puntos y un único bloque, pudiendo dejar los tres últimos en blanco.
 
-El fichero controlDict deberá contener los campos: FoamFile, deltaT, writeControl y writeInterval. Aunque, en caso de ejecutar únicamente blockMesh, los parámetros write* no tienen efecto aparente. Puede encontrarse más información sobre los diferentes parámetros en <http://cfd.direct/openfoam/user-guide/controlDict/#x19-1060004.3>.
+El fichero <controlDict> deberá contener los campos: FoamFile, deltaT, writeControl y writeInterval. Aunque, en caso de ejecutar únicamente blockMesh, los parámetros write* no tienen efecto aparente. Puede encontrarse más información sobre los diferentes parámetros en <http://cfd.direct/openfoam/user-guide/controlDict/#x19-1060004.3>.
 
 Adicionalmente, para que paraFoam se ejecute sin ningún warning, deben incluirse los ficheros fvSchemes y fvSolution en la carpeta system.
 
->>> Diseño del blockMeshDict de referencia
+>>> Diseño del <blockMeshDict> de referencia
 
-A la hora de diseñar el blockMeshDict que servirá como base para snappyHexMesh, debe generarse un bloque mayor que el modelo a "tallar", y es recomendable que la proporción del mallado sea 1:1:1. De lo contrario, la convergencia del algoritmo es más lenta, y puede llegar a error, tal como se indica en <http://cfd.direct/openfoam/user-guide/snappyHexMesh/#x26-1540005.4.2>.
+A la hora de diseñar el <blockMeshDict> que servirá como base para snappyHexMesh, debe generarse un bloque mayor que el modelo a "tallar", y es recomendable que la proporción del mallado sea 1:1:1. De lo contrario, la convergencia del algoritmo es más lenta, y puede llegar a error, tal como se indica en <http://cfd.direct/openfoam/user-guide/snappyHexMesh/#x26-1540005.4.2>.
 
 También debe tenerse en consideración la orientación de los ejes, x/y/z, en función de la definición de vértices/caras del bloque. Una elección inadecuada puede ralentizar considerablemente la ejecución del algoritmo, además de ofrecer resultados incorrectos/inaceptables. Como ejemplo, las definiciones mostradas a continuación producen un mallado equivalente. Nótese la diferencia en la interpretación de los ejes:
 
@@ -60,7 +60,9 @@ blocks (
 
 >>> Ejemplo de ejecución
 
-El caso damBreakSnappy contiene los ficheros mínimos necesarios para crear un blockMesh de base. La definición del blockMeshDict se corresponde con el caso A del apartado anterior, pero pueden encontrarse ambas versiones en </of-dsgn/blockMeshDicts/>.
+El caso damBreakSnappy contiene los ficheros mínimos necesarios para crear un blockMesh de base. La definición del <blockMeshDict> se corresponde con el caso A del apartado anterior, pero pueden encontrarse ambas versiones en </of-dsgn/blockMeshDicts/>.
+
+También contiene los ficheros necesarios para ejecutar snappyHexMesh: un modelo en formato STL en la carpeta <triSurface> creada dentro de <constant>, y el diccionario <snappyHexMeshDict> en la carpeta <system>.
 
 # Modificar cotas en el fichero .scad
 # Compilar y generar STL
