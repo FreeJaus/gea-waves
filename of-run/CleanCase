@@ -23,6 +23,7 @@ CleanCase () {
 
 CleanSnappyCase (){
   mkdir -p back/constant/polyMesh
+  mkdir -p back/constant/triSurface
   cd ${case=$1}
 
   for i in system; do
@@ -30,6 +31,7 @@ CleanSnappyCase (){
   done  
 
   mv constant/polyMesh/blockMeshDict ../back/constant/polyMesh/
+  mv constant/triSurface/damBreakSnappy.stl ../back/constant/triSurface/
 
   cd ..
 

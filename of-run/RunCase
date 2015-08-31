@@ -33,6 +33,10 @@ ParRunCase () {
 RunSnappyCase () {
   cd $1 || exit
   runApplication blockMesh
+  runApplication snappyHexMesh
+#  mkdir -p ../back/constant
+#  mv constant/* ../back/constant/
+#  mv 0.002/* constant/
   runApplication paraFoam
 }
 
