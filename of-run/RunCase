@@ -30,6 +30,12 @@ ParRunCase () {
   PostCase
 }
 
+RunSnappyCase () {
+  cd $1 || exit
+  runApplication blockMesh
+  runApplication paraFoam
+}
+
 CheckDir () {
   if [ -d "$2" ]; then
     echo "Cleaning case <$2>"
@@ -48,6 +54,7 @@ for f in $@; do
     damBreakFine       ) CheckDir ParRunCase $f ;;
     damBreakMod        ) CheckDir RunCase $f ;;
     damBreakSwiftBlock ) CheckDir RunCase $f ;;
+    damBreakSnappy     ) CheckDir RunSnappyCase $f;;
     * ) echo "Case <$f> is not supported by this script";;
   esac
 done 
