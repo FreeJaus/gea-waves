@@ -1,0 +1,100 @@
+>>> Ficheros necesarios para la ejecución de blockMesh
+
+<case>
++ constant
+-+ polyMesh
+--- blockMeshDict
++ system
+-- controlDict
+
+El fichero blockMeshDict deberá contener los campos: FoamFile, converToMeters, vertices, blocks, edges, boundary y mergePatchPairs. Sin embargo, es suficiente con definir ocho puntos y un único bloque, pudiendo dejar los tres últimos en blanco.
+
+El fichero controlDict deberá contener los campos: FoamFile, deltaT, writeControl y writeInterval. Aunque, en caso de ejecutar únicamente blockMesh, los parámetros write* no tienen efecto aparente. Puede encontrarse más información sobre los diferentes parámetros en <http://cfd.direct/openfoam/user-guide/controlDict/#x19-1060004.3>.
+
+Adicionalmente, para que paraFoam se ejecute sin ningún warning, deben incluirse los ficheros fvSchemes y fvSolution en la carpeta system.
+
+>>> Diseño del blockMeshDict de referencia
+
+A la hora de diseñar el blockMeshDict que servirá como base para snappyHexMesh, debe generarse un bloque mayor que el modelo a "tallar", y es recomendable que la proporción del mallado sea 1:1:1. De lo contrario, la convergencia del algoritmo es más lenta, y puede llegar a error, tal como se indica en <http://cfd.direct/openfoam/user-guide/snappyHexMesh/#x26-1540005.4.2>.
+
+También debe tenerse en consideración la orientación de los ejes, x/y/z, en función de la definición de vértices/caras del bloque. Una elección inadecuada puede ralentizar considerablemente la ejecución del algoritmo, además de ofrecer resultados incorrectos/inaceptables. Como ejemplo, las definiciones mostradas a continuación producen un mallado equivalente. Nótese la diferencia en la interpretación de los ejes:
+
+A: x   y  z
+B: -z  y  x
+
+Para comprobar el resultado, puede ejecutarse paraFoam después de blockMesh. No debe utilizarse el argumento <-block>, ya que en ese caso sólo se muestra una caja.
+
++++ blockMeshDict.A
+
+vertices (
+  (-.25 -.25 .25)
+  (8.25 -.25 .25)
+  (8.25 4.75 .25)
+  (-.25 4.75 .25)
+  (-.25 -.25 .75)
+  (8.25 -.25 .75)
+  (8.25 4.75 .75)
+  (-.25 4.75 .75)
+);
+
+blocks (
+  hex (0 1 2 3 4 5 6 7) (17 9 1) simpleGrading (1 1 1)
+);
+
++++ blockMeshDict.B
+
+vertices (
+  (-.25 -.25 -.25)
+  (-.25 -.25 .25)
+  (-.25 4.25 .25)
+  (-.25 4.25 -.25)
+  (8.25 -.25 -.25)
+  (8.25 -.25 .25)
+  (8.25 4.25 .25)
+  (8.25 4.25 -.25)
+);
+
+blocks (
+  hex (4 5 6 7 0 1 2 3) (1 9 17) simpleGrading (1 1 1)
+);
+
+>>> Ejemplo de ejecución
+
+El caso damBreakSnappy contiene los ficheros mínimos necesarios para crear un blockMesh de base. La definición del blockMeshDict se corresponde con el caso A del apartado anterior, pero pueden encontrarse ambas versiones en </of-dsgn/blockMeshDicts/>.
+
+# Modificar cotas en el fichero .scad
+# Compilar y generar STL
+# Copiar STL a <snapcase>/constant/triSurface
+# Ejecutar surfaceCheck <modelo>.stl para extraer las dimensiones de la Bounding Box
+# Editar <snapcase>/constant/polyMesh/blockMeshDict para indicar el tamaño y resolución de la cuadrícula base manteniendo una proporción 1:1
+# Ejecutar ./Allclean
+# Ejecutar blockMesh
+# Editar <snapcase>/system/snappyHexMeshDict para indicar el nombre del fichero STL y el de las regiones, además de establecer los niveles de refinamiento, y si se desea 'snap'
+# Ejecutar snappyHexMesh
+# Ejecutar paraFoam para visualizar el resultado: en un step aparece el refinamiento mediante cubos y en otro después del 'snap'. Comprobar los patches.
+# Si el resultado es satisfactorio, copiar el contenido de la carpeta 2 a <simcase>/constant
+
+
+Definir correctamente las boundary faces???
+Renombrar el atributo 'location' en los ficheros movidos de <snapcase>/2 a <simcase>/constant ???
+boundary
+cellZones
+faceZones
+levelOEdge
+
+OWCsnapdir
++ constant
+-- polyMesh/blockMeshDict
+-+ triSurface
+---
++ system
+-- controlDict
+-- snappyHexMeshDict
+-- fvSchemes
+-- fvSolution
+-- meshQualityDict
+
+OWCsimdir
++ 0 -> from damBreak???
++ constant -> from OWCsnapdir/2
++ system -> from damBreak???
