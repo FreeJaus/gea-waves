@@ -1,5 +1,4 @@
 /*--------------------------------*- C++ -*----------------------------------*/
-
 FoamFile {
   version 2.0;
   format  ascii;
@@ -12,6 +11,7 @@ FoamFile {
 castellatedMesh true;
 snap            true;
 addLayers       false;
+
 // Geometry. Definition of all surfaces. All surfaces are of class searchableSurface. Surfaces are used
 // - to specify refinement for any mesh cell intersecting it
 // - to specify refinement for any mesh cell inside/outside/near
@@ -206,8 +206,9 @@ addLayersControls {
     nBufferCellsNoExtrude 0;
 
     // Overall max number of layer addition iterations. The mesher will exit if it reaches this number of iterations; possibly with an illegal mesh.
-  nLayerIter 50;
-    
+
+    nLayerIter 50;
+
     //nRelaxedIter 20;
     //nLayerIter 50;
 }
