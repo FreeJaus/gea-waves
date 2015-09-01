@@ -5,32 +5,17 @@
 |   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
-FoamFile {
+FoamFile
+{
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      controlDict;
+    location    "constant";
+    object      dynamicMeshDict;
 }
-// ************************************************************************* //
-deltaT          0.001;
-writeControl    adjustableRunTime;
-writeInterval   0.025;
-// ************************************************************************* //
-application     interFoam;
-startFrom       startTime;
-startTime       0;
-stopAt          endTime;
-endTime         5;
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-purgeWrite      0;
-writeFormat     ascii;
-writePrecision  6;
-writeCompression uncompressed;
-timeFormat      general;
-timePrecision   6;
-runTimeModifiable yes;
-adjustTimeStep  yes;
-maxCo           1;
-maxAlphaCo      1;
-maxDeltaT       1;
+dynamicFvMesh   staticFvMesh;
+
+
 // ************************************************************************* //
