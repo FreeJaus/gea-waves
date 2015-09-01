@@ -34,17 +34,35 @@ RunSnappyCase () {
   cd $1 || exit
   runApplication blockMesh
   runApplication snappyHexMesh
-#  mkdir -p ../back/constant
-#  mv constant/* ../back/constant/
-#  mv 0.002/* constant/
+
+  mkdir constant.bM
+
+  for i in triSurface polyMesh; do
+    mv constant/$i constant.bM/
+  done
+
+  mv 0.002/* constant/
+ 
+  for i in 0.001 0.002; do
+    rm -rf $i;
+  done
+
+  checkMesh
+
+  cp 0/alpha.water.org 0/alpha.water
+  runApplication setFields
+
+  runApplication `getApplication`
+
   runApplication paraFoam
+  rm 0/alpha.water
 }
 
 CheckDir () {
   if [ -d "$2" ]; then
-    echo "Cleaning case <$2>"
+    echo "Running case <$2>"
     $1 $2;
-    echo "Case <$2> clean"
+    echo "Case <$2> finished"
   else
     echo "! Directory <$(pwd)/$2> does not exist"
     echo "! Skipping case <$2>"
