@@ -1,9 +1,24 @@
+http://www.academia.edu/9801380/2_3_13_OpenFOAM_-Aliviadero_Tutorial_-HPC_Wiki_-Confluence_OpenFOAM_-Aliviadero_Tutorial
+https://www.hpc.ntnu.no/display/hpc/OpenFOAM+-+Cavity+Tutorial
+https://openfoamwiki.net/index.php/Contrib/swak4Foam
+http://www.extend-project.de/
+
 >>> Elección del entorno de trabajo
 
-Existen entornos cerrados/de pago: StarCCM+
+Existen entornos cerrados/de pago: StarCCM+, ANSYS Fluent...
+
+https://en.wikipedia.org/wiki/OpenFOAM#Forks_and_adaptations
+http://www.precisesimulation.com/
+http://www.palabos.org/software/download
+http://code-saturne.org/
+https://www.aero.polimi.it/freecase/?OpenFOAM_%2B_Code_Aster
+http://salome-platform.org
+https://bitbucket.org/fenics-project/
+https://openfoamwiki.net/index.php/Installation/Helyx-OS/Fedora
+
 Para buscar un entorno alternativo libre, el problema puede dividirse en:
 
-- Preparación de la malla: ¿qué opciones libres y gratuitas existen? ¿qué características tienen? ¿qué ofrecen? ¿para qué usos están pensadas? ¿por qué OpenSCAD + Blender + blockMesh + snappyHexMesh? blockMesh y snappyHexMesh son las aplicaciones utilizadas por defecto en el entorno OpenFOAM, y permiten trabajar con cualquier modelo complejo generado en alguno de los entornos de pago o en herramientas CAD de propósito general <http://cfd.direct/openfoam/user-guide/standard-utilities/#x14-90001r6>. También existen conversores para aplicaciones más específicas como gmsh, netgen o enGrid. Por otro lado, Blender es una herramienta avanzada de modelado en 3D que permite tanto trabajar con el mallado, como post-procesar los resultados para obtener visualizaciones de calidad profesional. Además, existen plugins para combinar Blender con blockMesh y snappyHexMesh. Finalmente, OpenSCAD ofrece una interfaz mínima y un conjunto limitado de funciones primitivas para generar solidos de forma paramétrica. En cuanto a funcionalidad, no hay diferencias significativas con respecto a las posibilidades de scripting que ofrece Blender, pero la simplicidad de su uso puede resultar más cercana para nóveles.
+- Preparación de la malla: ¿qué opciones libres y gratuitas existen? ¿qué características tienen? ¿qué ofrecen? ¿para qué usos están pensadas? ¿por qué OpenSCAD + Blender + blockMesh + snappyHexMesh? blockMesh y snappyHexMesh son las aplicaciones utilizadas por defecto en el entorno OpenFOAM, y permiten trabajar con cualquier modelo complejo generado en alguno de los entornos de pago o en herramientas CAD de propósito general <http://cfd.direct/openfoam/user-guide/standard-utilities/#x14-90001r6>. También existen conversores para aplicaciones más específicas como gmsh, netgen, enGrid o distmesh. Por otro lado, Blender es una herramienta avanzada de modelado en 3D que permite tanto trabajar con el mallado, como post-procesar los resultados para obtener visualizaciones de calidad profesional. Además, existen plugins para combinar Blender con blockMesh y snappyHexMesh. Finalmente, OpenSCAD ofrece una interfaz mínima y un conjunto limitado de funciones primitivas para generar solidos de forma paramétrica. En cuanto a funcionalidad, no hay diferencias significativas con respecto a las posibilidades de scripting que ofrece Blender, pero la simplicidad de su uso puede resultar más cercana para nóveles.
 
 - Definición de las condiciones de entorno: ¿qué son? ¿qué relación tienen con el problema? ¿qué impacto tienen en la solución? ¿qué tipos existen? olas, navier, ihfoam...
 
@@ -45,6 +60,8 @@ Adicionalmente, para que paraFoam se ejecute sin ningún warning, deben incluirs
 
 >>> Preparación del fichero STL
 
+https://www.youtube.com/watch?v=ObsFQUiVi1U
+
 El modelo de referencia se ha creado mediante OpenSCAD, y está disponible en </of-dsgn/SCAD/damBreakMod.scad>. Se ha definido una variable, <neg>, para crear el solido correspondiente al espacio de simulación, o el negativo (los obstáculos y paredes). En lo que respecta al esculpido de snappyHexMesh, la elección es trivial, y ambos modelos pueden utilizarse indistintamente. Sin embargo, a la hora de definir las caras sobre las que actuarán la condiciones de entorno, es preferible utilizar <neg=false>. El solido exportado directamente en formato STL ascii puede encontrarse en </of-dsgn/STL/damBreakMod.stl>.
 
 Como OpenSCAD no permite diferenciar regiones al exportar el sólido, se ha utilizado Blender. Para trabajar con ficheros STL en Blender, se debe comprobar que el add-on correspondiente está activado, accediendo a las opciones de usuario (Ctrl+Alt+U) y buscando <Import-Export: STL format> en la pestaña <Add-ons>. Tras importar el fichero </of-dsgn/STL/damBreakMod.stl>, se puede trabajar con cada punto, vértice y cara. Las tareas de escalado/rotación/traslación del objeto es recomendable realizarlas en OpenSCAD, pero cabe utilizar filtros para limpiar y/o mejorar el mallado resultante. Como se va a utilizar snappyHexMesh, no se ha realizado un mallado preciso, y se han mantenido los vértices con ángulos grandes.
@@ -54,7 +71,7 @@ Una vez obtenida la malla deseada, en el modo de edición, escogiendo la opción
 Cada objeto/region se encuentra en un fichero cuya primera línea es <solid Exported from Blender-2.75 (sub 0)> y la última <endsolid Exported from Blender-2.75 (sub 0)>. Se ha sustituido en cada uno para incluir el nombre del patch (por ejemplo, <solid atmosphere> y <endsolid atmosphere>), y se ha unido el contenido de todos ellos en un solo fichero, </of-run/damBreakSnappy/constant/triSurface/damBreakSnappy.stl>.
 
 !!! Sólo he conseguido hacerlo uniendo los tres STL en uno sólo, con regiones. Teóricamente, definiendo <snappyHexMeshDict> adecuadamente, podría no ser necesario unir los ficheros.
-!!! Script para unir automáticamente los STL
+!!! Script para unir automáticamente los STL: http://www.cfd-online.com/Forums/openfoam-meshing/61601-blender-export-script-named-ascii-stlbs.html
 !!! ¿Cómo se haría con SwiftSnap? Lo he intentado una vez y el resultado ha sido desastroso, porque el <blockMeshDict> que generaba tenía los ejes mal definidos. Pero puede ser muy útil para acelerar el proceso de definir los patches. No recuerdo si genera los STL por separado o los une en uno solo.
 
 >>> Preparación del <blockMeshDict> de referencia
@@ -62,6 +79,8 @@ Cada objeto/region se encuentra en un fichero cuya primera línea es <solid Expo
 A la hora de diseñar el <blockMeshDict> que servirá como base para snappyHexMesh, debe generarse un bloque mayor que el modelo a "tallar", y es recomendable que la proporción del mallado sea 1:1:1. De lo contrario, la convergencia del algoritmo es más lenta, y puede llegar a error, tal como se indica en <http://cfd.direct/openfoam/user-guide/snappyHexMesh/#x26-1540005.4.2>.
 
 Para conocer el tamaño de la caja de contorno del modelo, puede utilizarse la aplicación <surfaceCheck damBreakSnappy.stl>. Si bien es cierto, que al haberlo creado con OpenSCAD y editado con Blender, cualquiera de las aplicaciones puede utilizarse para conocer esta información.
+
+https://openfoamwiki.net/index.php/HowTo_blockMesh_with_m4
 
 También debe tenerse en consideración la orientación de los ejes, x/y/z, en función de la definición de vértices/caras del bloque. Una elección inadecuada puede ralentizar considerablemente la ejecución del algoritmo, además de ofrecer resultados incorrectos/inaceptables. Como ejemplo, las definiciones mostradas a continuación producen un mallado equivalente. Nótese la diferencia en la interpretación de los ejes:
 
@@ -106,9 +125,15 @@ blocks (
 
 >>> Preparación del fichero <snappyHexMeshDict>
 
+www.openfoamwiki.net/index.php/SnappyHexMesh
+http://cfd.direct/openfoam/user-guide/snappyHexMesh/#x26-1520005.4
+https://sites.google.com/site/snappywiki/snappyhexmesh/snappyhexmeshdict#TOC-geometry
+
 En el apartado <geometry> se ha cargado el fichero <damBreakSnappy.stl> y se han definido los patches a partir de las regiones que contiene. Al patch <frontback> se le ha dado el nombre <defaultFaces>, ya que al indicar otro nombre snappyHexMesh genera defaultFaces igualmente, y al coincidir con <frontback> esta última no tiene contenido. Otra solución es definir tanto <frontback> como <defaultFaces> en los ficheros <0/alpha.water.org>, <0/U> y <0/p_rgh>, pero se ha optado por definir únicamente <defaultFaces> (además de <atmosphere> y <allwall>, que tienen sus propios nombres).
 
 En las superficies de refinamiento, se ha definido una sólo, correspondiente al nombre del fichero STL completo, e indicando un rango (0,0) en los niveles. Esto es debido a que el caso de referencia que se está utilizando para realizar pruebas, <damBreak> está definido en 2D, y si snappyHexMesh realiza divisiones en el eje Z, las simulaciones resultan en errores de cálculo. Es posible que pueda limitarse snappyHexMesh para que sólo actúe sobre los ejes X e Y, pero como solución inicial se ha decidido incrementar las resolución del <blockMeshDict> y utilizar snappyHexMesh únicamente para hacer snapping.
+
+La utilización de snappyHexMesh para obtener mallas 2D no es directa, <http://www.cfd-online.com/Forums/openfoam-meshing-utilities/61497-snappyhexmesh-2d-case.html>, pero hay ejemplos, pudiendo utilizar niveles, como en <cat tutorials/incompressible/pimpleDyMFoam/wingMotion/Allrun>, visto en <http://www.cfd-online.com/Forums/openfoam/89822-snappyhexmesh-boundary-conditions.html#post313909>. También se explica en <http://www.training.prace-ri.eu/uploads/tx_pracetmo/snappyHexMesh.pdf>, a partir de la diapositiva 28. Y en <https://www.hpc.ntnu.no/display/hpc/OpenFOAM+-+Spillway+Tutorial#OpenFOAM-SpillwayTutorial-4:Creationofa2DmeshwithextrudeMesh> para el caso del aliviadero. Algunos casos pueden descargarse de <http://www.wolfdynamics.com/tutorials/openfoam_tutorials/meshing.html>.
 
 El resto de opciones se han mantenido prácticamente como en el ejemplo <motorBike>, comentando el contenido del campo <features>, ya que en la prueba inicial no se ha utilizado la aplicación para extraer características. Para reducir el número de ficheros, la línea <#include "meshQualityDict"> se ha sustituido por las opciones contenidas en <caseDicts/mesh/generation/meshQualityDict.cfg>.
 
