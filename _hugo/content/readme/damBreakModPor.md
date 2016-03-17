@@ -1,4 +1,12 @@
-***** Caso damBreakMod con porosidad, tomando como referencia el caso CR35_damBreak de IHFOAM.
+---
+title: "damBreakModPor"
+keywords: 
+
+publishdate: 2016-01-01
+date: 2016-01-01
+---
+
+***** Caso damBreakModPor, tomando como referencia el caso CR35_damBreak de IHFOAM.
 
 
 >>> Resumen de los pasos a realizar

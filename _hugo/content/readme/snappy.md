@@ -1,4 +1,28 @@
+---
+title: "Snappy"
+keywords: 
+
+publishdate: 2016-01-01
+date: 2016-01-01
+---
+
+- http://www.academia.edu/9801380/2_3_13_OpenFOAM_-Aliviadero_Tutorial_-HPC_Wiki_-Confluence_OpenFOAM_-Aliviadero_Tutorial
+- https://www.hpc.ntnu.no/display/hpc/OpenFOAM+-+Cavity+Tutorial
+- https://openfoamwiki.net/index.php/Contrib/swak4Foam
+- http://www.extend-project.de/
+
 >>> Elección del entorno de trabajo
+ 
+-Existen entornos cerrados/de pago: StarCCM+, ANSYS Fluent...
+-
+-https://en.wikipedia.org/wiki/OpenFOAM#Forks_and_adaptations
+-http://www.precisesimulation.com/
+-http://www.palabos.org/software/download
+-http://code-saturne.org/
+-https://www.aero.polimi.it/freecase/?OpenFOAM_%2B_Code_Aster
+-http://salome-platform.org
+-https://bitbucket.org/fenics-project/
+-https://openfoamwiki.net/index.php/Installation/Helyx-OS/Fedora
 
 Existen entornos cerrados/de pago: StarCCM+
 Para buscar un entorno alternativo libre, el problema puede dividirse en:
@@ -56,7 +80,7 @@ Una vez obtenida la malla deseada, en el modo de edición, escogiendo la opción
 Cada objeto/region se encuentra en un fichero cuya primera línea es <solid Exported from Blender-2.75 (sub 0)> y la última <endsolid Exported from Blender-2.75 (sub 0)>. Se ha sustituido en cada uno para incluir el nombre del patch (por ejemplo, <solid atmosphere> y <endsolid atmosphere>), y se ha unido el contenido de todos ellos en un solo fichero, </of-run/damBreakSnappy/constant/triSurface/damBreakSnappy.stl>.
 
 !!! Sólo he conseguido hacerlo uniendo los tres STL en uno sólo, con regiones. Teóricamente, definiendo <snappyHexMeshDict> adecuadamente, podría no ser necesario unir los ficheros.
-!!! Script para unir automáticamente los STL
+!!! Script para unir automáticamente los STL: http://www.cfd-online.com/Forums/openfoam-meshing/61601-blender-export-script-named-ascii-stlbs.html
 !!! ¿Cómo se haría con SwiftSnap? Lo he intentado una vez y el resultado ha sido desastroso, porque el <blockMeshDict> que generaba tenía los ejes mal definidos. Pero puede ser muy útil para acelerar el proceso de definir los patches. No recuerdo si genera los STL por separado o los une en uno solo.
 
 >>> Preparación del <blockMeshDict> de referencia
@@ -109,6 +133,10 @@ blocks (
 );
 
 >>> Preparación del fichero <snappyHexMeshDict>
+
+- www.openfoamwiki.net/index.php/SnappyHexMesh
+- http://cfd.direct/openfoam/user-guide/snappyHexMesh/#x26-1520005.4
+- https://sites.google.com/site/snappywiki/snappyhexmesh/snappyhexmeshdict#TOC-geometry
 
 En el apartado <geometry> se ha cargado el fichero <damBreakSnappy.stl> y se han definido los patches a partir de las regiones que contiene. Al patch <frontback> se le ha dado el nombre <defaultFaces>, ya que al indicar otro nombre snappyHexMesh genera defaultFaces igualmente, y al coincidir con <frontback> esta última no tiene contenido. Otra solución es definir tanto <frontback> como <defaultFaces> en los ficheros <0/alpha.water.org>, <0/U> y <0/p_rgh>, pero se ha optado por definir únicamente <defaultFaces> (además de <atmosphere> y <allwall>, que tienen sus propios nombres).
 
