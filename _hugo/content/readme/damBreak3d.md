@@ -1,3 +1,11 @@
+---
+title: "damBreak3d"
+keywords: 
+
+publishdate: 2016-01-01
+date: 2016-01-01
+---
+
 # damBreak3d
 
 El objeto de este caso es apreciar el movimiento en el espacio. Para ello, teniendo como referencia las explicaciones de Calum Douglas se toma el ejemplo de damBreak para convertirlo a 3D. 
