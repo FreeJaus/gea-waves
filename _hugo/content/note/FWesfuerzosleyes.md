@@ -1,7 +1,5 @@
 ---
-draft: true
 title: "FWesfuerzosleyes"
-
 ---
 
 Cualquier esfuerzo cortante aplicado a un fluido, no importa cuán pequeño sea, provocará el movimiento del fluido. Éste se mueve y se deforma continuamente mientras se siga aplicando el esfuerzo cortante. Como corolario, podemos decir que un fluido en reposo debe estar en un estado de esfuerzo cortante nulo; estado que se denomina a menudo condición hidrostática de esfuerzos en análisis estructural. En esta condición, el círculo de Mohr se reduce a un punto y no hay esfuerzo cortante en ningún plano que corte al elemento en cuestión.

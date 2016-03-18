@@ -8,8 +8,9 @@
   {{ partial "brand.html" . }}
 
   <div class="pure-menu">
+    {{ range .Site.Menus}}
     <ul class="pure-menu-list">
-      {{ range .Site.Menus.main }}
+      {{ range . }}
       {{ if .HasChildren }}
         <li class="pure-menu-item pure-menu-has-children">
           <a class="pure-menu-link" href="#">{{ .Pre }}{{ .Name }}</a>
@@ -27,7 +28,9 @@
         </li>
       {{end}}
     </ul>
+	{{ end }}
   </div>
+	
   {{ partial "social.html" . }}
   {{ partial "copyright.html" . }}
 </div>

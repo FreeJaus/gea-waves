@@ -1,0 +1,38 @@
+{{ partial "header.html" . }}
+<link rel="stylesheet" href="/css/viabilidad.css">
+
+<div class="header">
+  {{range .Data.Pages}}
+    {{ if isset .Params "overview" }}
+	  <h1>{{.Title}}</h1>
+      <div>{{.Content}}</div>
+    {{ end }}
+  {{ end }}
+</div>
+<div class="content">
+  {{ range .Data.Pages }}
+    {{ if not (isset .Params "overview") }}
+      <div class="via-lista"><h2><a href="{{.RelPermalink}}">{{.Title}}</a></h2>
+	  {{$page := .}}
+	  {{with .Description}}
+	    {{$page.Description}}
+		<hr>
+	  {{end}}
+	  
+	  {{if isset .Params "summary"}}
+	    {{.Params.summary}}
+	  {{else}}
+	    {{.Summary}}
+	  {{end}}
+	  
+	  {{ if .Truncated }}
+        <footer>
+          <a href="{{ .RelPermalink }}">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+        </footer>
+     {{ end }}
+	  </div>
+    {{ end }}
+  {{ end }}
+</div>
+
+{{ partial "footer.html" . }}

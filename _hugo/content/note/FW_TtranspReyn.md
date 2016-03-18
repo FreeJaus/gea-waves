@@ -1,5 +1,5 @@
 ---
-title: "Teorema del transporte de Reynolds "
+title: "Teorema del transporte de Reynolds"
 keywords: 
 
 publishdate: 2016-01-01

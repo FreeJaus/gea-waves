@@ -1,5 +1,4 @@
 ---
-draft: true
 title: "Aparición del CFD y estructura de los códigos"
 keywords: 
 
