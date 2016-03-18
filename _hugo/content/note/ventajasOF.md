@@ -1,12 +1,10 @@
 ---
-draft: true
 title: "Ventajas de OpenFOAM"
 keywords: 
 
 publishdate: 2016-01-01
 date: 2016-01-01
 ---
-
 
 OpenFOAM (Open Field Operation And Manipulation), código CFD robusto y avanzado, ampliamente usado en la industria. 
 

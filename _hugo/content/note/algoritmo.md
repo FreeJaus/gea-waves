@@ -1,11 +1,11 @@
 ---
-draft: true
 title: "Métodos de acoplamiento para la resolución de ecuaciones"
 keywords: SIMPLE, PISO, PIMPLE
 
 publishdate: 2016-01-01
 date: 2016-01-01
 ---
+
 El algoritmo SIMPLE (Semi-Implicit Method for Pressure Linked Equations), desarrollado por Patankar y Spalding en 1972, es un método basado en la reformulación de la presión, de utilización generalizada en el caso de flujos incompresibles.
 
 La idea fundamental es definir una ecuación discretizada para la presión (o alternativamente, para una cantidad muy relacionada llamada *corrección de la presión*) a partir de la ecuación de continuidad discreta. Puesto que la ecuación de continuidad contiene valores de velocidad en las caras, se necesita alguna forma de relacionar estas velocidades con los valores de presión en los centroides de las celdas. El algoritmo SIMPLE utiliza las ecuaciones de momento discretas para hacer dicha relación.

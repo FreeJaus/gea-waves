@@ -1,7 +1,7 @@
 ---
-draft: true
-title: "Objetivoc académicos"
+title: "Objetivos académicos"
 ---
+
 # Objetivos académicos <Técnicas numéricas en ingeniería de fluidos>
 
 Analizar las bases de la metodología empleada en el estudio computacional de la Mecánica de Fluidos. Comprender el desarrollo de esta metodología describiendo la implementación y resolución de las ecuaciones de conservación (masa, momento y energía) desde un caso sencillo hasta su formulación más general.

@@ -22,35 +22,45 @@ params:
 menu:
  # Shown in the side menu.
  main:
-  - name: "Home"
-    pre: "<i class='fa fa-home fa-fw'></i>"
-    weight: 0
-    identifier: "home"
-    url: "/"
+  - name: "GEA"
+    pre: "<i class='fa fa-rocket fa-fw'></i>"
+    weight: 1
+    identifier: "gea"
+    url: "/gea/"
   - name: "Viabilidad"
-    pre: "<i class='fa fa-list fa-fw'></i>"
+    pre: "<i class='fa fa-university fa-fw'></i>"
     weight: 1
     identifier: "viabilidad"
     url: "/viabilidad/"
+  - name: "TFG"
+    pre: "<i class='fa fa-puzzle-piece fa-fw'></i>"
+    weight: 2
+    identifier: "tfg"
+    url: "/tfg/"
   - name: "Readmes"
-    pre: "<i class='fa fa-list fa-fw'></i>"
-    weight: 1
+    pre: "<i class='fa fa-eye fa-fw'></i>"
+    weight: 3
     identifier: "readme"
     url: "/readme/"
-  - name: "Posts"
+  - name: "Notas"
+    pre: "<i class='fa fa-sticky-note-o fa-fw'></i>"
+    weight: 4
+    identifier: "note"
+    url: "/note/"
+  - name: "Referencias"
     pre: "<i class='fa fa-list fa-fw'></i>"
-    weight: 1
-    identifier: "post"
-    url: "/post/"
- about:
+    weight: 4
+    identifier: "ref"
+    url: "/ref/"
+ zabout:
   - name: "About"
     pre: "<i class='fa fa-user fa-fw'></i>"
-    weight: 2
+    weight: 1
     identifier: "about"
     url: "/about/"
   - name: "Contact"
     pre: "<i class='fa fa-phone fa-fw'></i>"
-    weight: 3
+    weight: 2
     url: "/contact/"
 
 social:

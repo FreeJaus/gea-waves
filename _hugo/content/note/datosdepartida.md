@@ -1,11 +1,11 @@
 ---
-draft: true
 title: "Datos de partida"
 keywords: datos de partida
 
 publishdate: 2016-01-01
 date: 2016-01-01
 ---
+
 A diferencia de los problemas estáticos, donde sólo se requiere conocer la densidad del fluido y la posición de la superficie libre, en la mayoría de los problemas con flujos es necesario analizar un estado arbitrario de movimiento del fluido definido por la geometría, las condiciones de contorno y las leyes de la mecánica. Se presentarán las tres técnicas básicas del análisis de los problemas de flujos arbitrarios:
 
 1. Volumen de control, o análisis integral a gran escala. A menudo basado en propiedades "unidimensionales" o promediadas en el contorno.

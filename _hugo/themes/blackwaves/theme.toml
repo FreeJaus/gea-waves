@@ -1,15 +1,15 @@
-name = "Blackburn"
+name = "Blackwaves"
 license = "MIT"
-licenselink = "https://github.com/yoshiharuyamashita/blackburn/blob/master/LICENSE.md"
+licenselink = "https://github.com/FreeJaus/gea-waves/blob/master/_hugo/themes/blackwaves/LICENSE.md"
 description = "A clear, responsive theme constructed using Pure CSS from Yahoo"
-homepage = "https://github.com/yoshiharuyamashita/blackburn"
+homepage = "https://github.com/FreeJaus/gea-waves/blob/master/_hugo/themes/blackwaves"
 tags = ["blog", "personal", "purecss", "responsive"]
 features = ["blog", "personal", "purecss", "responsive"]
 min_version = 0.15
 
 [author]
-  name = "Yoshiharu Yamashita"
-  homepage = "https://github.com/yoshiharuyamashita"
+  name = "Leire Maiztegi"
+  homepage = "https://github.com/lmaiztegi001"
 
 # If porting an existing theme
 [original]
