@@ -20,4 +20,4 @@ gea-waves
 	- **"themes"**: tema personalizado. 
 	- **`"gea.md"`**: Informe del Control del Tanque de Olas del laboratorio de Ingeniería Nuclear y Mecánica de Fluidos de la EUITI-Bi
 - Carpeta **"of-dsgn"**: diseños de los modelos generados para las simulaciones, así como imágenes y animaciones guardadas de las simulaciones mediante OpenFOAM.
-- Carpeta **"of-run"**: casos generados a partir de modificaciones en el código de damBreak, ejemplo descrito en la ["guía de OpenFoam"](http://cfd.direct/openfoam/user-guide/damBreak/#x7-500002.3). 
+- Carpeta **"of-run"**: casos generados a partir de modificaciones en el código de **"damBreak"**, ejemplo descrito en la ["guía de OpenFoam"](http://cfd.direct/openfoam/user-guide/damBreak/#x7-500002.3). 
