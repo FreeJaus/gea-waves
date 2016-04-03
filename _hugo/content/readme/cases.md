@@ -23,15 +23,13 @@ date: 2016-01-01
 		- Realizar cambios en la geometría del mallado desde el directorio `blockMeshDict`.
 		- Correr el caso en paralelo.
 	- Condiciones iniciales:
-		- La velocidad y la presión se mantienen uniformes, ya que son independientes del número de elementos por capa. 
-		- Se emplea la utilidad de **descomposePar**, para descomponer el dominio. Como otras utilidades de OpenFOAM, se puede encontrar el directorio asociado en el código fuente `<$FOAM_UTILITIES/parallelProcessing/decomposePar>`.
+		- La velocidad y la presión se mantienen uniformes, ya que son independientes del número de elementos por capa. 		- Se emplea la utilidad de **descomposePar**, para descomponer el dominio. Como otras utilidades de OpenFOAM, se puede encontrar el directorio asociado en el código fuente `<$FOAM_UTILITIES/parallelProcessing/decomposePar>`.
 		- El número de subdominios a especificar suele corresponder con el número de procesadores disponibles. Aunque también se puede determinar en función del dominio, como es el caso, donde el número de subdominios se define con el vector **n**. Será beneficioso conservar el número de celdas por caras colindante con la descomposición.
  
  - **damBreakMod [single]**: hand-modified blockMeshDict to include a topWall, so that a chamber/chimney is created at the right. Use `<meld damBreak damBreakMod>` to check changes.
 	- Objetivos planteados: 
 		- Modificar la geometría para que se asemeje a la del dispositivo de Columna de Agua Oscilante, añadiendo una pared en la parte derecha, abierta por la parte inferior, para crear una cavidad por donde oscile el agua.
 		- Visualizar la altura de la SLL en la cavidad/chimenea. 
-		
 	- Condiciones iniciales:
 		- Partiendo del caso original, se realizarán cambios en el fichero `blockMeshDict` y en los ficheros afectados por estos cambios (ficheros donde se describen las condiciones de entorno para la presión, velocidad, ... en función de la geometria de los bloques).
 		- Suprimir el saliente por no aportar información.   
@@ -46,7 +44,7 @@ date: 2016-01-01
   	7. In `Edit Mode` select the front face, set <# cells: 40> and press `Force resolution`. Alternatively, resolutions may be set to edges independently. However, consistency must be preserved.
   	8. Click `Diagnose` and, then, `Preview` to verify the resulting mesh.
   	9. Write result to blockMeshDict.
-	
+  	
 	- Objetivos del caso: 
 		- Dividir en bloques la geometría del modelo obtenida a partir de un programa de CAD.
 		- Verificar la resolución del caso, a partir de geometrías definidas por el usuario y convertidas a un formato reconocible por OpenFOAM.
