@@ -18,9 +18,6 @@ El análisis diferencial comenzó con Euler y Lagrange en el siglo XVIII, y el a
 
 Las ecuaciones de gobierno de la Mecánica de Fluidos quedaron definitivamente formuladas desde el siglo XVIII por Euler y posteriormente por Navier y Stokes (los cuales incluyeron los términos de transporte viscoso a la formulación de Euler). Las ecuaciones de Navier-Stokes incluyen las leyes de conservación para la masa, la cantidad de movimiento y la energía de un flujo. Estas se constituyen en un sistema acomplado de ecuaciones del que no es posible obtener una única solución analítica. Historicamente, se han llevado a cabo estudios experimentales o análisis dimensionales para obtener la solución al problema. En 1970, junto con la creciente mejora de los ordenadores, surgió el CFD.
 
-(RANS): Para flujos incompresibles y de viscosidad cte 
-(VARANS,Volume-averaged Reynolds-Averaged Navier-Stokes)
-
 El prototipo de Columna Oscilante de Agua se simulará usando el software OpenFOAM (Open Field Operation And Manipulation), se trata de un código CFD robusto y avanzado, ampliamente usado en la industria. Las fuentes son libres y abiertas, con lo que está disponible sin costes de licencia. Está orientado a objetos, con estructura modular, facilitando programar nuevos resolvedores, condiciones de entorno y la compatibilidad con diversas aplicaciones, no siendo necesaria una profundización extensa en la amplitud del código. Las librerías están escritas en lenguaje C++, por ello se requieren unos conocimientos básicos de programación.
 
 El procedimiento para resolver el sistema, recae en el algoritmo: SIMPLE (Semi-Implicit Method for Pressure-Linked Equations), permite garantizar la convergencia de las ecuaciones en cada paso de tiempo, PISO (Pressure Implicit with Splitting of Operators), PIMPLE (PISO + SIMPLE) versión más reciente.
