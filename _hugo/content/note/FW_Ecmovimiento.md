@@ -8,9 +8,9 @@ date: 2016-01-01
 
 _Detalles de la ecuación de cantidad de movimiento_
 
--La ecuación de cantidad de movimiento es vectorial. Los términos de fuerza y momentos tienen tres componentes. Un esquema de estos vectores es indispensable para realizar el análisis correctamente.
+- La ecuación de cantidad de movimiento es vectorial. Los términos de fuerza y momentos tienen tres componentes. Un esquema de estos vectores es indispensable para realizar el análisis correctamente.
 
--Los términos de flujo de cantidad de movimiento, como (integral)*V*(densidad*V*·*n*)dA, involucran criterios de signo, por lo que es imprescindible manejarlos con cuidado. En primer lugar la variable vectorial *V* tendrá un signo que dependerá de su dirección. En segundo lugar, el término de flujo másico (densidad*V*·*n*) tendrá un signo + o - dependiendo de que salga o entre. 
+- Los términos de flujo de cantidad de movimiento, como (integral)*V*(densidad *V* · *n* )dA, involucran criterios de signo, por lo que es imprescindible manejarlos con cuidado. En primer lugar la variable vectorial *V* tendrá un signo que dependerá de su dirección. En segundo lugar, el término de flujo másico (densidad*V*·*n*) tendrá un signo + o - dependiendo de que salga o entre. 
 
 -La aproximación unidimensional es muy útil porque las distribuciones de velocidad no uniformes requieren una integración muy laboriosa. De esta forma, el empleo de factores de correción **beta** del flujo de cantidad de movimiento son muy útiles para evitar estas integraciones, especialmente en el caso de flujos en conductos.
 
