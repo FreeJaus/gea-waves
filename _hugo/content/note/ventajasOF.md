@@ -20,7 +20,7 @@ OpenFOAM (Open Field Operation And Manipulation), código CFD robusto y avanzado,
 
 - Al igual que la mayoría de los programas para el análisis computacional de la Mecánica de Fluidos, usa una discretización de volúmenes finitos. Este método describe cada fase con la fracción **alfa** (alfa=1 todo agua, alfa  =0 aire) por el volumen ocupado del fluido en cada celda.
 
-- Para el preproceso y postproceso se pueden utilizar aplicaciones para las cuales existen órdenes directas de conversión listadas en la Guía de Usuario. No obstante, se incluye la herramienta de generación de mallas estáticas (“blockMesh” y  “snappyHexMesh”). 
+- Para el preproceso y postproceso se pueden utilizar aplicaciones para las cuales existen órdenes directas de conversión listadas en la Guía de Usuario. No obstante, se incluye la herramienta de generación de mallas estáticas (`blockMesh` y  `snappyHexMesh`). 
 
-- Además, se añade el paquete de Thitd Party, el cual implementa el programa “ParaView”, software principal usado para el postproceso. 
+- Además, se añade el paquete de Thitd Party, el cual implementa el programa **ParaView**, software principal usado para el postproceso. 
    
