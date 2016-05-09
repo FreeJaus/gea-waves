@@ -11,7 +11,7 @@
 * compartir carpeta (src equipo, opt container), :Z saltar los permisos de seguridad de linux:
 `sudo docker run -itv /src/geawaves:/opt/geawaves:Z mattshax/openfoam-240 bash`
 
-  * Las diferentes imágenes (con el sistema operativo deseado y la aplicación requerida) se pueden crear o obtener desde [docker hub](https://hub.docker.com/r/mattshax/openfoam-240/).
+  * Las diferentes imágenes (sistema operativo + aplicación) se pueden crear o obtener desde [docker hub](https://hub.docker.com/r/mattshax/openfoam-240/).
   * [saltar permisos cada vez que se arranca](http://stackoverflow.com/questions/24288616/permission-denied-on-accessing-host-directory-in-docker)
   * [pasos para que linux no requiera permisos de seguridad](http://stackoverflow.com/questions/32001523/docker-cant-write-to-directory-mounted-using-v-unless-it-has-777-permissions)
 
@@ -19,10 +19,11 @@
 ej: `sudo cp Documentos/docker.txt  /src/geawaves/`
 
 * desde el container
-```cd /opt/geawaves/
+```
+cd /opt/geawaves/
 touch hola.txt
 cat hota.txt
-rmhola.txt
+rm hola.txt
 ```
 
 * salir del contenedor

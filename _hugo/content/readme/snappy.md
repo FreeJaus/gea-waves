@@ -14,7 +14,7 @@ date: 2016-01-01
 
 # Elección del entorno de trabajo
  
--Existen entornos cerrados/de pago: StarCCM+, ANSYS Fluent...
+- Existen entornos cerrados/de pago: StarCCM+, ANSYS Fluent...
 
 - https://en.wikipedia.org/wiki/OpenFOAM#Forks_and_adaptations
 - http://www.precisesimulation.com/
