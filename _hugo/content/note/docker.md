@@ -9,7 +9,7 @@ Docker allows you to run applications, worlds you create, inside containers.
 `docker run ubuntu /bin/echo 'Hello world'`
 	* se especifica el binario `docker` y el comando a ejecutar, `run`.
 	* especificando también la imagen, `ubuntu`. Primero Docker busca la imagen en Docker host y si no la encuentra se la descarga de [Docker HUB](https://hub.docker.com/).
-	* dentro del nuevo contenedor se le dice a Docker que comando correr. Cuando el contenedor se lanza Docker crea un nuevo entorno de Ubuntu para ejecutar el comando `/bin/echo`.
+	* dentro del nuevo contenedor se le dice a Docker que comando correr. Cuando el contenedor se lanza Docker crea un nuevo entorno de Ubuntu para ejecutar el comando `/bin/echo`(lanzar una terminal).
 
 ## An interactive container.
 `docker run -t -i ubuntu /bin/bash`
