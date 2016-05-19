@@ -5,6 +5,10 @@ keywords: SIMPLE, PISO, PIMPLE
 publishdate: 2016-01-01
 date: 2016-01-01
 ---
+Especially designed solver called MULES (multidimensional universal limiter for explicit solution). It makes use of a limiter factor on the fluxes of the discretised divergence term to ensure a final value between 0 and 1. For further reference regarding the governing equations see Rusche (2002)
+
+[rusche 2002] Rusche, H., 2002. Computational fluid dynamics of dispersed two-phase flows at high phase fractions. Ph.D. thesis, Departament of Mechanical Engineering, Imperial Collage of Science, Tecnology & Medicine, London.
+
 
 El algoritmo SIMPLE (Semi-Implicit Method for Pressure Linked Equations), desarrollado por Patankar y Spalding en 1972, es un método basado en la reformulación de la presión, de utilización generalizada en el caso de flujos incompresibles.
 

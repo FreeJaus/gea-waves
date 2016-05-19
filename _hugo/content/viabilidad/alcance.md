@@ -6,7 +6,7 @@ weight: 3
 publishdate: 2016-01-01
 date: 2016-01-01
 
-description: Esta es la descripción de esta sección
+description: Procedimientos para alcanzar/cumplir los objetivos.
 ---
 
 Sumario del contenido: resumen, primeras líneas...
@@ -18,13 +18,6 @@ Con este trabajo se pretende realizar un análisis de las tecnologías existente
 Las técnicas CFD son ya, a todos los efectos, una herramienta más dentro de la ingeniería asistida por ordenador (CAE, Computer-aided engineering), utilizada universalmente en la industria. Sus posibilidades para simular todo tipo de fenómenos y flujos hace que los softwares CFD sean una parte indispensable en procesos de diseño aerodinámico, hidrodinámico o procesos productivos.
 
 No obstante, las tecnologías para el aprovechamiento del mar, aún se encuentran en etapa de desarrollo, por lo que no cuenta con la totalidad de la información para su instalación, operación y mantenimiento, por ello será necesaria la aplicación de suposiciones. Aun así, las investigaciones desarrolladas en este campo, con la aparición de numerosos prototipos, hacen de esta tecnología una de las más prometedora en cuanto a su rendimiento y funcionalidad. En comparación con otras energías renovables, el momento y la intensidad de las mareas y corrientes se puede predecir con siglos de anticipación [5]. Además, su densidad es muy superior a la del aire, con lo que, de la energía de las olas se obtienen altos potenciales. 
-
-## Obj que no formarán parte del estudio:
-- Análisis computacional de la obtención de energía a partir de los diferentes tipos de dispositivos.
-- Mejorar la captación del oleaje en función de su ubicación o del diseño  estructural.
-- Reducir al mínimo el tiempo de resolución de la simulación computacional, por no precisar de una profundización extensa en el diseño del mallado.
-- Simulación del caso a escala real.
-- Análisis de la potencia real obtenida por la turbina.
 
 ## Actividades y procedimientos:
 - Estudio del estado del arte:
@@ -50,6 +43,14 @@ No obstante, las tecnologías para el aprovechamiento del mar, aún se encuentra
   - Diseño de la compuerta, del sistema de apertura y de la fijación del Pistón.
   - Sensores necesarios para la adquisición de datos. 
   - Monitorizar y registrar las mediciones de los sensores para comparar los resultados con los de la simulación.
+
+## Obj que no formarán parte del estudio:
+- Análisis computacional de la obtención de energía a partir de los diferentes tipos de dispositivos.
+- Mejorar la captación del oleaje en función de su ubicación o del diseño  estructural.
+- Reducir al mínimo el tiempo de resolución de la simulación computacional, por no precisar de una profundización extensa en el diseño del mallado.
+- Simulación del caso a escala real.
+- Análisis de la potencia real obtenida por la turbina.
+
 ## Resultados:
 - Una vez obtenido el modelo matemático, introducidas las funciones a calcular, se compararán los resultados hallados computacionalmente con los resultados experimentales.
 - La complejidad recaerá en en empleo de softwares que permitan la gestión de una gran extensión de datos, para visualizarlos y compararlos gráficamente.

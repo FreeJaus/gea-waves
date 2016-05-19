@@ -42,3 +42,7 @@ Preparado para correr los casos en paralelo: http://www.openfoam.org/features/pa
 
 - Gnuplot: Programa multiplataforma para gráficar funciones y datos, pudiendo producir sus resultados directamente en pantalla, así como en multitud de formatos de imagen: http://www.gnuplot.info/docs_4.6/gnuplot.pdf
 
+- Blender: Herramienta avanzada para el modelado en 3D que permite tanto trabajar con el mallado, como post-procesar los resultados para obtener visualizaciones de calidad profesional. 
+  - Existen complementos para combinarlo con OpenFOAM, y generar desde Blender los ficheros de “blockMeshDict” y “snappyHexMeshDict”: https://openfoamwiki.net/index.php/Blender
+
+  - Tutoriales y guía de usuario: https://wiki.blender.org/index.php/Doc:2.4/Tutorials
