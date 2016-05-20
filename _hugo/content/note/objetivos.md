@@ -17,7 +17,7 @@ Ampliar los conocimientos de la Mecánica de fluidos, en particular de la rama d
 
 ## Estado del arte
 - Contexto energético:
-  - La **situación** del sistema energético mundial, europeo y nacional actual, estima un abastecimiento de su consumo de energía aproximadamente en un 80% de combustibles fósiles.  
+  - La **situación** del sistema energético mundial, europeo y nacional actual, estima un abastecimiento de su consumo de energía aproximadamente en un 80% de combustibles fósiles. 
   - Esta situación provoca consecuencias importantes, como por ejemplo el aumento de las emisiones de gases de efecto invernadero y la inseguridad de abastecimiento energético de la UE (Unión Europea) por la dependencia de las importaciones.
 	
 - Energías Renovables: fomento y marco normativo (estrategia y evolución).
