@@ -9,7 +9,7 @@ after_success:
   - docker pull mattshax/openfoam-240
   - export here=$(pwd)
   - chmod u+w+x runcase.sh
-  - docker run --name ofd -dv ./:/opt/geawaves:Z mattshax/openfoam-240 bash -c 'cd opt/geawaves && ./runcase.sh'
+  - docker run --name ofd -dv $here:/opt/geawaves:Z mattshax/openfoam-240 bash -c 'of240; cd /opt/geawaves && ./runcase.sh'
   - docker logs ofd > log.log
   - echo log.log
   - ls  
