@@ -40,3 +40,5 @@ If you look at the PISO-algorithm you will see that this means if the flux is ze
 buoyantPressure fulfills this requirement in areas of constant VOF-function / density. I'm not sure about mass conservation if sloped walls touch areas with VOF-values 0<VOF<1.
 
 http://www.cfd-online.com/Forums/openfoam/67155-interfoam-mass-conservation.html
+
+http://cfd.direct/openfoam/user-guide/fvSolution/#x21-1170004.5

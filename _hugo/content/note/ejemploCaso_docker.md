@@ -39,7 +39,7 @@ title: "ejemploCaso_docker"
   * `mkdir ParaView`: Crear una carpeta nueva en home.
   * `cd ParaView`: Entrar.
   * `tar xfz ~/Descargas/ParaView-5.0.1-Qt4-OpenGL2-MPI-Linux-64bit.tar.gz`: Descomprimir.
-2. `cd /src/geawaves/CASE`: Carpeta compartida donde se guardarán los casos ejecutados desde el contenedor para poder visualizarlos en el anfrition. 
+2. `cd /src/geawaves/CASE`: Carpeta compartida donde se guardarán los casos ejecutados desde el contenedor para poder visualizarlos en el anfritión. 
 3. `touch CASE.foam`: crear archivo vacio [2].
 4. `~/ParaView-5.0.1-Qt4-OpenGL2-MPI-Linux-64bit/bin/paraview`: Arrancar ParaView.
 5. Abrir "CASE.foam" (File>Open>CASE.foam).
