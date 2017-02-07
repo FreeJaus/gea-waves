@@ -6,10 +6,10 @@ services:
   - docker 
 
 after_success:
-  - docker pull mattshax/openfoam-240
+  - docker pull openfoam/openfoam4-paraview50
   - export here=$(pwd)
   - chmod u+w+x runcase.sh
-  - docker run --name ofd -dv $here:/opt/geawaves:Z mattshax/openfoam-240 bash -c 'of240; cd /opt/geawaves && ./runcase.sh'
+  - docker run --name ofd -dv $here:/opt/geawaves:Z openfoam/openfoam4-paraview50 bash -c 'of41; cd /opt/geawaves && ./runcase.sh'
   - docker logs ofd > log.log
   - echo log.log
-  - ls  
+  - ls
