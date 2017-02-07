@@ -6,8 +6,7 @@ services:
   - docker 
 
 after_success:
-  - docker pull openfoam/openfoam4-paraview50
+  - docker pull mattshax/openfoam-240
   - export here=$(pwd)
-  - chmod u+w+x Allrun.sh
-  - docker run --name ofd -itv $here:/opt/geawaves:Z mattashax/openfoam-240 bash -c ' cd /opt/geawaves/damBreak && ./Allrun.sh && exit'
+  - docker run --name ofd -itv $here:/opt/geawaves:Z mattshax/openfoam-240 bash -c ' cd /opt/geawaves/damBreak && chmod u+w+x Allrun.sh && ./Allrun.sh && exit'
   - ls
