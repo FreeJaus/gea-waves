@@ -1,0 +1,13 @@
+sudo: required
+
+languaje: go
+
+services:
+  - docker 
+
+after_success:
+  - docker pull mattshax/openfoam-240
+  - docker run --name ofd -dv ./:/opt/geawaves:Z mattshax/openfoam-240 bash -c 'cd opt/geawaves && ./mainCase.sh'
+  - docker logs ofd > log.log
+  - echo log.log
+  - ls  
