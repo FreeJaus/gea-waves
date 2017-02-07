@@ -9,5 +9,5 @@ after_success:
   - docker pull openfoam/openfoam4-paraview50
   - export here=$(pwd)
   - chmod u+w+x Allrun.sh
-  - docker run --name ofd -itv $here:/opt/geawaves:Z openfoam/openfoam4-paraview50 bash -c 'of41; cd /opt/geawaves/canal2D && ./Allrun.sh && exit'
+  - docker run --name ofd -itv $here:/opt/geawaves:Z mattashax/openfoam-240 bash -c ' cd /opt/geawaves/damBreak && ./Allrun.sh && exit'
   - ls

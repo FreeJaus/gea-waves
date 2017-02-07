@@ -12,8 +12,8 @@ PreCase () {
 }
 
 PostCase () {
-  runApplication paraFoam
-  rm 0/alpha.water
+  #runApplication paraFoam
+  #rm 0/alpha.water
 }
 
 RunCase () {
