@@ -10,6 +10,4 @@ after_success:
   - export here=$(pwd)
   - chmod u+w+x runcase.sh
   - docker run --name ofd -itv $here:/opt/geawaves:Z openfoam/openfoam4-paraview50 bash -c 'of41; cd /opt/geawaves && ./runcase.sh && exit'
-  - docker logs ofd > log.log
-  - echo log.log
   - ls
