@@ -10,7 +10,7 @@ En todos los casos, el flujo debe satisfacer las tres leyes de conservación de l
 1. Conservación de la masa (continuidad). 
 2. Conservación de la cantidad de movimiento (segunda ley de Newton). 
 3. Conservación de la energía (primer principio de la termodinámica). 
-4. Una relación de estado como ? = ? ( p , T ). 
+4. Una relación de estado como rho = rho ( p , T ). 
 5. Condiciones de contorno sobre superficies sólidas, entrefases, entradas y salidas. 13 más una relación En los análisis integral y diferencial, estas cinco leyes están expresadas en términos matemáticos y han de ser resueltas usando métodos numéricos. En un estudio experimental se supone que el fluido cumple estas relaciones de por sí. En otras palabras, se supone que ningún fluido es capaz de violar estas leyes por tratarse de leyes fundamentales de la física.
 
 White, Frank M.. Mecánica de fluidos (5a. ed.). España: McGraw-Hill España, 2004. ProQuest ebrary. Web. 27 April 2015.
