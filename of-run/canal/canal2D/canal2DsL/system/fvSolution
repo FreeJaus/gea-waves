@@ -35,7 +35,7 @@ solvers
     pcorr
     {
         solver          PCG; //para matrices simétricas
-        preconditioner  DIC;
+        preconditioner  DIC; //diagonal incomplete-Cholesky (symmetric)
         tolerance       1e-5;
         relTol          0;
     }
