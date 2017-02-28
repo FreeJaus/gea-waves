@@ -9,12 +9,17 @@ matrix:
     - img="11384eb/of:41fed25slim"
     - docker pull $img
     - docker run --rm -itv $(pwd):/geawaves:z $img bash -c "$(cat doof41.sh)"
-after_success: ls
+    - tar -zcf "../results-1.tgz" ./
+    - mv "../results-1.tgz" ./
 deploy:
+  overwrite: true
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: NJaxnupY2AQE3iaGynynP/d+enLjqb+9twDsnlHezR7rVlgsbxdoV3/OwaI3GdPkPwzjFzCQb94A+eIOo++6xmAZplc3yJ73zeT5kZqOUnDJI6PrQS5yRPXuu+GYa4rkMAQ0hhKzioM5xDkcYWyqWd5Zdcv0YjOtgX90npw5ssU=
-  file: results.tgz
+  file_glob: true
+  file: "results-*.tgz"
   on:
+    tags: true
     repo: FreeJaus/gea-waves
     branch: runcases
