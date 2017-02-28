@@ -1,0 +1,84 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    "alpha.water.*"
+    {
+        nAlphaCorr      2;
+        nAlphaSubCycles 1;
+        cAlpha          1;
+
+        MULESCorr       yes;
+        nLimiterIter    3;
+
+        solver          smoothSolver;//it uses a smoother
+        smoother        symGaussSeidel;//symmetric Gauss-Seidel
+        tolerance       1e-8;
+        relTol          0;
+    }
+
+    pcorr
+    {
+        solver          PCG; //para matrices simétricas
+        preconditioner  DIC; //diagonal incomplete-Cholesky (symmetric)
+        tolerance       1e-5;
+        relTol          0;
+    }
+
+    p_rgh
+    {
+        solver          PCG;//Preconditioned Conjugate Gradient
+        preconditioner  DIC;//diagonal incomplete-Cholesky (symmetric)
+        tolerance       1e-07;
+        relTol          0.05; //si la diferencia entre los residuos actuales con los iniciales cae por debajo de este valor, el resolvedor se detendrá
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        relTol          0;
+    }
+
+    "(U|k|epsilon).*"
+    {
+        solver          smoothSolver; 
+        smoother        symGaussSeidel;
+        tolerance       1e-06;
+        relTol          0;
+	minIter         1;
+    }
+}
+
+PIMPLE//for transient problems 
+{
+    momentumPredictor   no;//switch that controls solving of the momentum predictor, set off for low Re and multiphase
+    nOuterCorrectors    1;//enables looping over the entire system of equations within on time step, representing the total number of times the system is solved
+    nCorrectors         3;//sets the number of times the algorithm solves the pressure equation and momentum corrector in each step
+    nNonOrthogonalCorrectors 0;//specifies repeated solutions of the pressure equation, used to update the explicit non-orthogonal correction
+}
+
+relaxationFactors//controls under-relaxation, particularly in solving steady-state problems, for improving stability. 
+{
+    equations
+    {
+        ".*" 1;//the amount of under-relaxation, guaranteed matrix diagonal equality/dominance for this case
+    }
+}
+
+
+// ************************************************************************* //
