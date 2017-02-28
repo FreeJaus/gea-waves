@@ -8,7 +8,7 @@ matrix:
       script:
       - img="11384eb/of:41fed25rc"
       - docker pull $img
-      - docker run -itv $(pwd):/geawaves:z $img bash -c "$(cat doof41.sh)"
+      - docker run --rm -itv $(pwd):/geawaves:z $img bash -c "$(cat doof41.sh)"
 after_success: ls
 
 #[stalled] img="openfoam/openfoam4-graphical-apps"
