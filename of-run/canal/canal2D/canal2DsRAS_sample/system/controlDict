@@ -51,10 +51,13 @@ maxCo           1;
 maxAlphaCo      1;
 
 maxDeltaT       1;
-
 functions
 {
-   #includeFunc singleGraph
+    #includeFunc probes
+ //   #includeFunc singleGraph1
+ //   #includeFunc singleGraph2
+ //   #includeFunc residuals
 }
+
 
 // ************************************************************************* //

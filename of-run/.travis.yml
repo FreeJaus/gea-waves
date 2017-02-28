@@ -6,31 +6,17 @@ matrix:
       install: true
       services: docker
       script:
-      #[stalled] img="openfoam/openfoam4-graphical-apps"
-      #[stalled] img="openfoam/openfoam4-paraview50:latest"
-      - img="11384eb/gea-waves"
+      - img="11384eb/of:41fed25rc"
       - docker pull $img
-      - docker build .
-      - docker run -itv $(pwd):/geawaves:z $img bash -c "$(cat doof41.sh)"      
-#    - os: linux
-#      sudo: required
-#      install: true
-#      services: docker      
-#      script:
-#      - img="mattshax/openfoam-240"
-#      - docker pull $img
-#      - mkdir work
-#      - docker run --name ofd -itv $(pwd)/work:/geawaves:z $img bash -c "$(cat doof24.sh)"
-      
-#    - os: linux
-#      sudo: required
-#      install: true
-#      services: docker
-#      script:
-      #http://openfoam.org/download/4-1-ubuntu/
-      #http://dl.openfoam.org/docker/openfoam4-linux
-      #http://openfoam.org/download/4-1-linux/
-      #http://openfoam.org/download/source/
-      #http://openfoam.org/download/4-1-source/
-#      - pwd
+      - docker run -itv $(pwd):/geawaves:z $img bash -c "$(cat doof41.sh)"
 after_success: ls
+
+#[stalled] img="openfoam/openfoam4-graphical-apps"
+#[stalled] img="openfoam/openfoam4-paraview50:latest"
+#          img="mattshax/openfoam-240"
+
+#http://openfoam.org/download/4-1-ubuntu/
+#http://dl.openfoam.org/docker/openfoam4-linux
+#http://openfoam.org/download/4-1-linux/
+#http://openfoam.org/download/source/
+#http://openfoam.org/download/4-1-source/
