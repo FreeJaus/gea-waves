@@ -9,7 +9,8 @@ application=`getApplication`
 
 runApplication blockMesh
 runApplication setFields
-runApplication $application #&
+$application
+#runApplication $application #&
 #foamMonitor -l postProcessing/residuals/0/residuals.dat
 #pyFoamPlotWatcher.py log.interFoam
 
