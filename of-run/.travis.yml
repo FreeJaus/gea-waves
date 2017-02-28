@@ -6,7 +6,7 @@ matrix:
       install: true
       services: docker
       script:
-      - img="11384eb/of:41fed25rc"
+      - img="11384eb/of:41fed25slim"
       - docker pull $img
       - docker run --rm -itv $(pwd):/geawaves:z $img bash -c "$(cat doof41.sh)"
 after_success: ls
