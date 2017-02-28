@@ -11,5 +11,5 @@ RUN echo 'dnf -y update \
  && . $HOME/OpenFOAM-4.1/etc/bashrc && . $HOME/.bashrc \
  && cd $HOME/ThirdParty-4.1 && /bin/bash -c "./Allwmake -j" \
  && cd $HOME/OpenFOAM-4.1 && /bin/bash -c "./Allwmake" \
- && echo "" >> /etc/bashrc && echo "export PATH=$PATH:/usr/lib64/openmpi/bin && . $HOME/OpenFOAM-4.1/etc/bashrc" >> /etc/bashrc \
- && false' | /bin/bash
+ && echo "" >> /etc/bashrc && echo "export PATH=$PATH:/usr/lib64/openmpi/bin && . $HOME/OpenFOAM-4.1/etc/bashrc" >> /etc/bashrc' | /bin/bash
+
