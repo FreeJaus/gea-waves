@@ -9,7 +9,7 @@ matrix:
     - img="11384eb/of:41fed25slim"
     - docker pull $img
     - docker run --rm -itv $(pwd):/geawaves:z $img bash -c "$(cat doof41.sh)"
-    - tar -zcf "../results-1.tgz" ./canal3D/canal3DsRAS_probes/
+    - tar -zcf "../results-1.tgz" ./canal3D/canal3DsRAS_refi/
     - mv "../results-1.tgz" ./
 deploy:
   overwrite: true
