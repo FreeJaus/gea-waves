@@ -6,11 +6,17 @@ publishdate: 2016-01-01
 date: 2016-01-01
 ---
 
-A partir de 1970 Brian Spalding inspirado en Patankar y Spalding, desarrolló una fórmulación implicita en términos de velocidad y presión, introduciendo por primera vez el método de acoplamiento SIMPLE (Semi- Implicit Method for Pressure- Linked Equations)
+**La dinamica de fluidos computacional** es una de las ramas de la mecánica de fluidos que usa métodos numéricos y algoritmos para estudiar y analizar problemas que involucran fluidos en movimiento, mediante la solución de las ecuaciones de Navier-Stokes, transferencia de calor, entre otras, por ordenador. Existen diferentes métodos numéricos y algoritmos que resuelven de distinta forma las ecuaciones fundamentales.
 
-La concentración de los códigos, como ANSYS (lider mundial en desarrollo de herramientas de análisis en el campo de la ingeniería asistida por ordenador (CAE) haciéndose con la compra del código numérico CFX y tres años después FLUENT) y CD-Adapco (heredera del código STAR-CD y participada por la empresa de CAD Dassault Sys A, han dado lugar a un progresivo incremento en los precios de las licencias. Sin embargo, esta técnica puede verse contrarrestada con la aparición de nuevos códigos numéricos de distribución libres, como Linux. El pionero en la creación de códigos libres de CFD es OpenFOAM.
+- [Una moderna herramienta para el estudio y analisis de fluidos](http://docplayer.es/720690-Simulacion-de-fluidos-utilizando-computadores-una-moderna-herramienta-para-el-estudio-y-analisis-de-fluidos.html)
 
-Las técnicas CFD son ya, a todos los efectos, una herramienta más dentro de la ingeniería asistida por ordenador (CAE), utilizada universalmente en la industria. Sus posibilidades para simular todo tipo de fenómenos y flujos hace que los softwares CFD sean una parte indispensable en procesos de diseño aerodinámico, hidrodinámico o procesos productivos.
+
+
+A partir de 1970 Brian Spalding inspirado en Patankar y Spalding, desarrolló una formulación implícita en términos de velocidad y presión, introduciendo por primera vez el método de acoplamiento SIMPLE (Semi- Implicit Method for Pressure-Linked Equations).
+
+La concentración de los códigos, como ANSYS (lider mundial en desarrollo de herramientas de análisis en el campo de la ingeniería asistida por ordenador (CAE) haciéndose con la compra del código numérico CFX y tres años después de FLUENT) y CD-Adapco (heredera del código STAR-CD y participada por la empresa de CAD Dassault Systems (fabricante de CATIA) han dado lugar a un progresivo incremento en los precios de las licencias. Sin embargo, esta técnica puede verse contrarrestada con la aparición de nuevos códigos numéricos de distribución libres, como Linux. El pionero en la creación de códigos libres de CFD es OpenFOAM.
+
+Las técnicas CFD son ya, a todos los efectos, una herramienta más dentro de la ingeniería asistida por ordenador, utilizada universalmente en la industria. Sus posibilidades para simular todo tipo de fenómenos y flujos hace que los softwares CFD sean una parte indispensable en procesos de diseño aerodinámico, hidrodinámico o procesos productivos.
 
 Códigos CFD: La mayoría de los programas utilizan el método de volumenes finitos para resolver numéricamente las ecuaciones de gobierno de la Mecánica de Fluidos.
 
