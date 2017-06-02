@@ -14,9 +14,9 @@ Referencias para la elección de las herramientas más convenientes para usuario
 - [Best open-source mesh program for use with openFOAM](https://www.reddit.com/r/CFD/comments/18ydig/best_opensource_mesh_program_for_use_with_openfoam/)
 
 # Pre-procesado
----
 
-### Diseño del modelo
+## Diseño del modelo
+---
 
 [blockMesh](https://cfd.direct/openfoam/user-guide/blockmesh/)
 ===========
@@ -63,8 +63,7 @@ Guía detallada sobre la herramienta:
 Para crear imágenes o animaciones renderizadas, que se aproximen a la visualización real del agua, a partir de los datos obtenidos del caso:
 
 - [Blender Dynamic Paint: Make Real Time water](https://www.youtube.com/watch?v=1zPxogcS3V4&list=PLmKCiG2w8fxdUljIme1Qkw5lEkwYKsuhf&index=41&t=216s)
-- [Blender Tutorial - Everything You NEED to Know About Fluid Simulation!]
-https://www.youtube.com/watch?v=3o9E2t0cTCchttps://www.youtube.com/watch?v=3o9E2t0cTCc
+- [Blender Tutorial - Everything You NEED to Know About Fluid Simulation!](https://www.youtube.com/watch?v=3o9E2t0cTCchttps://www.youtube.com/watch?v=3o9E2t0cTCc)
 
 Paquetes añadidos a Blender en lenguaje de Python:
 
@@ -82,7 +81,8 @@ This swiftBlock is compatible with 2.6x OF240.
 (Autodesk AutoCAD, CATIA, NX, Sketchup, SolidEdge, ...)
 
 
-### Generación del mallado
+## Generación del mallado
+---
 
 OpenFOAM acepta la generacion de la malla mediante una gran variedad de aplicaciones (mesh generators and CAD systems), con una orden directa ejecutada desde la terminal. La tabla de software para los que se dispone la conversion de la malla están enunciados en el siguiente enlace: 
 
@@ -141,7 +141,6 @@ Código abierto para procesar y editar mallas tridimensionales. Proporciona un c
 
 
 # Procesado
----
 
 [OpenFOAM](https://openfoam.org/)
 ==========
@@ -238,3 +237,7 @@ Mediante unas instrucciones sencillas, se define un gráfico con los datos del c
 - El código fuente, los archivos binarios para Linux y las instrucciones de instalación para HELYX-OS.
 
 - gitHub-travis-docker
+
+- marcdown
+
+- portainer
