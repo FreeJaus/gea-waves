@@ -16,7 +16,6 @@ Referencias para la elección de las herramientas más convenientes para usuario
 # Pre-procesado
 
 ## Diseño del modelo
----
 
 [blockMesh](https://cfd.direct/openfoam/user-guide/blockmesh/)
 ===========
@@ -82,7 +81,6 @@ This swiftBlock is compatible with 2.6x OF240.
 
 
 ## Generación del mallado
----
 
 OpenFOAM acepta la generacion de la malla mediante una gran variedad de aplicaciones (mesh generators and CAD systems), con una orden directa ejecutada desde la terminal. La tabla de software para los que se dispone la conversion de la malla están enunciados en el siguiente enlace: 
 
@@ -166,7 +164,6 @@ Código abierto creado en la Universidad de Stanford, es una colección de herra
 focus on hydraulic, coastal, offshore and environmental engineering, as well as Marine CFD, the use of the level-set method enables it to calculate complex free surface flows. The model is implemented in highly modular C++ and the source code is available under the GPL license. The MPI library is used for parallelization. The model is currently under development and additional features are added in a fast pace. The goal is to make the full transition from a research tool to a powerful engineering software. 
 
 
-
 # Post-procesado
 
 [ParaView](http://www.paraview.org/)
@@ -236,8 +233,8 @@ Mediante unas instrucciones sencillas, se define un gráfico con los datos del c
 [HELYX-OS installation](http://engys.github.io/HELYX-OS//installation/)
 - El código fuente, los archivos binarios para Linux y las instrucciones de instalación para HELYX-OS.
 
-- gitHub-travis-docker
+gitHub-travis-docker
 
-- marcdown
+marcdown
 
-- portainer
+portainer
