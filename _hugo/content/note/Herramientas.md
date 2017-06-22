@@ -185,6 +185,7 @@ Este software es una utilidad para graficar a través de línea de comandos, por
   - http://stackoverflow.com/questions/18265754/any-graph-plotting-tool-better-than-gnu-plot
 - https://www.hpc.ntnu.no/display/hpc/OpenFOAM+-+Run-time+Postprocessing
 example (Volume-Time)
+- [GNUPLOT 4.2 - A Brief Manual and Tutorial](http://people.duke.edu/~hpgavin/gnuplot.html)
 
 [python](https://openfoamwiki.net/index.php/Contrib/PyFoam)
 ========
