@@ -1,0 +1,20 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1    # Run from this directory
+
+###########
+gnuplot << EOF
+set term jpeg 
+set out "p-p12.jpg"
+
+set title "Pressure owc1800-130w"
+set xlabel "Time (s)"
+set ylabel "Pressure (kg/ms²)"
+set grid
+
+p "./postProcessing/probes/0/p" u 1:12 t 'p' w linespoints lt -1
+
+
+EOF
+exit
+#------------------------------------------------------------------------------

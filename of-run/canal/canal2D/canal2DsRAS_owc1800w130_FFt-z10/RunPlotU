@@ -1,0 +1,19 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1    # Run from this directory
+
+###########
+gnuplot << EOF
+set term jpeg 
+set out "U-p12.jpg"
+
+set title "Velocity owc1800-130w"
+set xlabel "Time (s)"
+set ylabel "Velocity (m/s)"
+set grid
+
+p "./postProcessing/probes/0/U" u 1:12 t 'U' w linespoints
+
+EOF
+exit
+#------------------------------------------------------------------------------
