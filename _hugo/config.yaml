@@ -1,0 +1,91 @@
+publishdir: "../public"
+canonifyurls: true
+baseurl: "http://freejaus.github.io/gea-waves/"
+title: "FreeJaus - [GEA] Waves"
+author: "FreeJaus - lmaiztegi001"
+copyright: "&copy; 2014-2016. All rights reserved."
+paginate: 10
+
+indexes:
+ - tag: "tags"
+ - topic: "topics"
+
+params:
+  subtitle: "A Hugo Theme"
+  brand: "Waves"
+  description: "Lorem ipsum..."
+  googleAnalytics: "Your Google Analytics tracking ID"
+  disqus: "Your Disqus shortname"
+  highlightjs: "androidstudio"
+  dateFormat: "2006 Jan 02, 15:04"
+
+menu:
+ # Shown in the side menu.
+ main:
+  - name: "GEA"
+    pre: "<i class='fa fa-rocket fa-fw'></i>"
+    weight: 1
+    identifier: "gea"
+    url: "/gea/"
+  - name: "Viabilidad"
+    pre: "<i class='fa fa-university fa-fw'></i>"
+    weight: 1
+    identifier: "viabilidad"
+    url: "/viabilidad/"
+  - name: "TFG"
+    pre: "<i class='fa fa-puzzle-piece fa-fw'></i>"
+    weight: 2
+    identifier: "tfg"
+    url: "/tfg/"
+  - name: "Readmes"
+    pre: "<i class='fa fa-eye fa-fw'></i>"
+    weight: 3
+    identifier: "readme"
+    url: "/readme/"
+  - name: "Notas"
+    pre: "<i class='fa fa-sticky-note-o fa-fw'></i>"
+    weight: 4
+    identifier: "note"
+    url: "/note/"
+  - name: "Referencias"
+    pre: "<i class='fa fa-list fa-fw'></i>"
+    weight: 4
+    identifier: "ref"
+    url: "/ref/"
+ zabout:
+  - name: "About"
+    pre: "<i class='fa fa-user fa-fw'></i>"
+    weight: 1
+    identifier: "about"
+    url: "/about/"
+  - name: "Contact"
+    pre: "<i class='fa fa-phone fa-fw'></i>"
+    weight: 2
+    url: "/contact/"
+
+social:
+ # Link your social networking accouns to the side menu
+ # by entering your username or ID.
+ # SNS microblogging
+ #twitter: "*"
+ #facebook: "*"
+ #googleplus: "*"
+ #weibo: "*"
+ # SNS photo/video sharing
+ #instagram: "*"
+ #flickr: "*"
+ #pinterest: "*"
+ #youtube: "*"
+ #vimeo: "*"
+ #vine: "*"
+ #slideshare: "*"
+ # SNS career oriented
+ #linkedin: "*"
+ #xing: "*"
+ # SNS news
+ #reddit: "*"
+ #hackernews: "*"
+ # Techie
+ github: "lmaiztegi001"
+ #bitbucket: "*"
+ #stackoverflow: "*"
