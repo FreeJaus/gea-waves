@@ -1,0 +1,29 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# Get application name
+application=`getApplication`
+
+runApplication blockMesh
+
+# ((lewi)) from OF/tutorials/multiphase/interFoam/les/nozzleFlow2D 
+
+for i in 1 2 3
+do
+    runApplication -s $i \
+        topoSet -dict system/topoSetDict${i}
+
+    runApplication -s $i \
+        subsetMesh -overwrite c0 -patch internalWalls
+done
+
+
+runApplication setFields
+runApplication $application &
+
+pyFoamPlotWatcher.py log.interFoam
+
+#------------------------------------------------------------------------------

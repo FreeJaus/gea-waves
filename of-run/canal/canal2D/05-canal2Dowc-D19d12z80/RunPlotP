@@ -1,0 +1,24 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1    # Run from this directory
+
+###########
+gnuplot << EOF
+set term jpeg 
+set out "p1.jpg"
+
+set title "Pressure owc y=0.345m"
+set xlabel "Time (s)"
+set ylabel "Pressure (m²/s²)"
+set grid
+
+p "./postProcessing/probes/0/p" u 1:2 t 'p1' w lines lt 4,\
+# "./postProcessing/probes/0/p" u 1:3 t 'p2' w lines lt 2
+ 
+# "./postProcessing/probes/0/p" u 1:($2-$3) t 'p' w linespoints lt 6
+
+
+
+EOF
+exit
+#------------------------------------------------------------------------------
