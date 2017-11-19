@@ -1,0 +1,100 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | cfMesh: A library for mesh generation          | 
+|  \\    /   O peration     |                                                |
+|   \\  /    A nd           | Author: Franjo Juretic                         | 
+|    \\/     M anipulation  | E-mail: franjo.juretic@c-fields.com            |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version   2.0;
+    format    ascii;
+    class     dictionary;
+    location  "system";
+    object    meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile "canalChimney.stl";
+
+maxCellSize 1.25;
+
+boundaryCellSize 0.625;
+
+minCellSize 0.50;
+
+
+localRefinement
+{
+    "outlet.*"
+    {
+        cellSize 0.2;
+	//refinementThickness 2.5;    
+    } 
+}
+
+boundaryLayers
+{
+    nLayers 3;
+
+    thicknessRatio 1.2;
+
+    maxFirstLayerThickness 0.5;
+
+/*    patchBoundaryLayers
+    {
+        "outlet.*"
+        {
+            nLayers           5;
+
+            thicknessRatio    1.2;
+
+            maxFirstLayerThickness 0.2;
+
+            allowDiscontinuity 0;
+        }
+
+    	"atmosphere.*"
+        {
+            nLayers           4;
+
+            thicknessRatio    1.2;
+
+            maxFirstLayerThickness 0.5;
+
+            allowDiscontinuity 0;
+        }
+    }*/
+}
+
+renameBoundary
+{
+    defaultName		fixedWalls;
+    defaultType		wall;
+
+    newPatchNames
+    {
+        "atmosphere.*"
+        {
+            newName	atmosphere;
+	    newType     patch;
+        }
+ 
+        "allwall.*"
+        {
+            newName     allwall;
+            newType     wall;
+        }
+
+        "outlet.*"
+        {
+            newName     outlet;
+            newType     patch;
+        }
+    }
+}
+               
+     
+// ************************************************************************* //

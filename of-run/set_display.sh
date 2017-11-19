@@ -59,3 +59,15 @@ if [ -z "$SKIP_DISP" ]; then
     fi
   fi
 fi
+
+	for f in $@; do
+  f=${f%/}
+  case $f in
+	salome) docker run --rm -tv /$(pwd):/mirepo $GUIAPP msegade/salome salome $f ;; 
+	#trophime/salome-8.3.0:nvidia
+	#trophime/salome-8.3.0:intelhd
+	of5-paraview54) winpty docker run --rm -itv /$(pwd):/mirepo $GUIAPP openfoam/openfoam5-paraview54 bash $f ;;
+	cfmesh-of41) winpty docker run --rm -itv /$(pwd):/mirepo $GUIAPP fsys/openfoam4-paraview50-cfmesh bash $f ;;
+	* ) echo "Case <$f> is not supported by this script";;
+  esac
+done 

@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant/polyMesh";
+    object      meshMetaDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile     "canalChimney.stl";
+
+surfaceMeta
+{
+    nPoints         28;
+    nFacets         156;
+    nPatches        3;
+    nFeatureEdges   0;
+    patches
+    {
+        atmosphere
+        {
+            type            empty;
+            nFacets         52;
+        }
+        allwall
+        {
+            type            empty;
+            nFacets         52;
+        }
+        outlet
+        {
+            type            empty;
+            nFacets         52;
+        }
+    }
+    pointSubsets
+    {
+    }
+    facetSubsets
+    {
+    }
+    featureEdgeSubsets
+    {
+    }
+}
