@@ -119,7 +119,7 @@ Canal3D-modelo-ensayo
 
 - Geometría generada con openscad `modelo-ensayo.stl`
 
-- Contornos (atmosphere, outflow, allwall) generados mediante Blender, exportados y juntados en un sólo fichero <./modelo-ensayo.stl>.
+- Contornos (atmosphere, outflow, allwall) generados mediante Blender, exportados y juntados en un sólo fichero <./canal3D.stl>.
 
 - Preparación de estructura de ficheros para el mallado:
 
@@ -128,18 +128,35 @@ Canal3D-modelo-ensayo
     - fvSchemes
     - fvSolution
     - meshDict: 
-      - maxCS 	1.25
-      - boundaryCS 0.625
-      - minCS 0.2
-      - localRef {outlet - cS 0.625 - refiThick 2.5}
-      - boundLayers { 3 - 1.2 - 0.3125)
+      - maxCS 	0.02
+      - boundaryCS 0.0125
+      - minCS 0.00991[*hasta aquí si funciona pero no se refina suficiente la salida]
+      - localRef {outlet - cS 0.0002 - //refiThick 2.5} [*funciona, la salida se refina bastante bien, pero en la atmosphere refi raro. Se añade una carpeta en polyMesh>sets> nonalignedEdges]
+      - boundLayers { 3 - 1.2 - 0.3125) [*se añaden solo en atmosphere]
   - constant
   - 0
   - "Runmesh"
   - "Cleanmesh"
-  - "modelo-ensayo.stl"
+  - "canal3D.stl"
 
-- Preparación y estructura de ficheros para el caso:
+
+*P
+
+maxCS 0.009
+
+bCS 0.0125
+
+minCS 0.00199
+
+checkesd failed
+
+*P
+
+
+
+
+
+- Preparación y estructura de ficheros para el **caso**:
 
   - system:
     - controlDict

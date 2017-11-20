@@ -12,6 +12,6 @@ runApplication setFields
 #$application 2>&1 | tee "$application.log"
 runApplication $application &
 #foamMonitor -l postProcessing/residuals/0/residuals.dat
-pyFoamPlotWatcher.py log.interFoam
+#pyFoamPlotWatcher.py log.interFoam
 
 #------------------------------------------------------------------------------

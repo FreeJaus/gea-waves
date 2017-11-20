@@ -17,24 +17,24 @@ FoamFile
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-surfaceFile "canalChimney.stl";
+surfaceFile "canal3D.stl";
 
-maxCellSize 1.25;
+maxCellSize 0.009;
 
-boundaryCellSize 0.625;
+boundaryCellSize 0.0125;
 
-minCellSize 0.50;
+minCellSize 0.00199;
 
 
 localRefinement
 {
     "outlet.*"
     {
-        cellSize 0.2;
+        cellSize 0.0002;
 	//refinementThickness 2.5;    
     } 
 }
-
+/*
 boundaryLayers
 {
     nLayers 3;
@@ -68,7 +68,7 @@ boundaryLayers
         }
     }*/
 }
-
+*/
 renameBoundary
 {
     defaultName		fixedWalls;
@@ -81,17 +81,15 @@ renameBoundary
             newName	atmosphere;
 	    newType     patch;
         }
- 
+        "outflow.*"     
+		{
+            newName     outflow;
+            newType     patch;
+        } 
         "allwall.*"
         {
             newName     allwall;
             newType     wall;
-        }
-
-        "outlet.*"
-        {
-            newName     outlet;
-            newType     patch;
         }
     }
 }
