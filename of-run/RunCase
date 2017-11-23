@@ -10,18 +10,15 @@ PreCase () {
   cp 0/alpha.water.org 0/alpha.water
   runApplication setFields
 }
-
 PostCase () {
   runApplication paraFoam
-  rm 0/alpha.water
+  #rm 0/alpha.water
 }
-
 RunCase () {
   PreCase $1
   runApplication `getApplication`
   PostCase
 }
-
 ParRunCase () {
   PreCase $1
   runApplication decomposePar
@@ -29,7 +26,6 @@ ParRunCase () {
   runApplication reconstructPar
   PostCase
 }
-
 RunSnappyCase () {
   cd $1 || exit
   runApplication blockMesh
@@ -46,7 +42,8 @@ RunSnappyCase () {
   for i in 0.001 0.002; do
     rm -rf $i;
   done
-
+  
+  #runApplication snappyHexMesh -overwrite
   checkMesh
 
   cp 0/alpha.water.org 0/alpha.water
@@ -55,9 +52,26 @@ RunSnappyCase () {
   runApplication `getApplication`
 
   runApplication paraFoam
-  rm 0/alpha.water
 }
-
+RunSalomeCase () {
+  cd $1 || exit
+  #ideasUnvToFoam filename.unv
+  runApplication checkMesh
+  runApplication setFields
+  runApplication `getApplication` &
+  pyFoamPlotWatcher.py log.interFoam
+}
+RuncfMeshCase () {
+  cd $1 || exit
+  cd mesh
+  runApplication cartesianMesh
+  runApplication checkMesh -constant
+  cd ../case
+  mv ../mesh/constant/polyMesh/ constant/polyMesh/
+  runApplication setFields
+  runApplication $application &
+  pyFoamPlotWatcher.py log.interFoam
+}  
 CheckDir () {
   if [ -d "$2" ]; then
     echo "Running case <$2>"
@@ -76,7 +90,8 @@ for f in $@; do
     damBreakFine       ) CheckDir ParRunCase $f ;;
     damBreakMod        ) CheckDir RunCase $f ;;
     damBreakSwiftBlock ) CheckDir RunCase $f ;;
-    damBreakSnappy     ) CheckDir RunSnappyCase $f;;
+    damBreakSnappy     ) CheckDir RunSnappyCase $f ;;
+	canal3Dsalome	   ) CheckDir RunSalomeCase $f ;;	
     * ) echo "Case <$f> is not supported by this script";;
   esac
 done 

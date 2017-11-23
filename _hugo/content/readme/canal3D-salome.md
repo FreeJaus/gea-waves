@@ -4,11 +4,20 @@
 
   tank (.440 .325 .236)
 
-  canal (1.339 .250 .08) -> translate (.44 .075 0.158<0.236/2+0.08/2>)
+  canal (1.339 .250 .08) -> translate (.44 .075 0.078<0.236/2-0.08/2>)
 
-  chamberWall (.006 .225 .08) -> translate (1.693<1.699-0.006> 0.1<0.075+0.025> 0.158)
+  chamberWall (.006 .225 .08) -> translate (1.693<1.699-0.006> 0.1<0.075-0.025> 0.078)
 
-  chimney (R=0.0098 H=.316) -> rotate (-90 0 0); translate (1.739<1.779-0.08/2> .325 .118<0.236/2>)
+  chimney (R=0.0098 H=.316) -> rotate (-90 0 0) 90º reverse, axis X; translate (1.739<1.779-0.08/2> .325 .118<0.236/2>)
+
+  diafragma (R=0.00625 H=0.002) -> rotate(-90 0 0); translate (1.739 .639<0.325+.316-.002> .118)
+
+   Boolean operation: 
+
+  - Cut (Main obj-> canal; Tool Obj-> chamb. wall)
+  - Cut (Main obj-> chimney; Tool Obj-> diaf)
+  - Fuse (Tank, cut1, cut2)
+
 
 - Definición de contornos:
 
@@ -25,6 +34,13 @@
   Mesh type: Netgen 1D-2D-3D.
 
   Algorithim: Netgen 3D Parameters -> Max=5; Min =2.
+
+  Tetrahedrons: 1848014
+
+  Export unv
+
+  - 20-2 -> 39924
+  - 10-2 -> 237880
 
   **Hexahedral**
 
@@ -51,3 +67,25 @@
       - [Video Tutorial: Meshkit Tutorial - How to Mesh a Cylinder with SketchUp, MeshKit, and Gmsh](https://youtu.be/On3tg4kCchw)
 
   ​
+
+salome container issue:
+
+When I try to set up Netgen Parameters (hypotesis)
+
+Salome Exception: libgfortran.so.3: cannot open shared object file: No such file or directory
+
+Python console: Traceback (most recent call last): File "<input>", line 1, in <module> I0Error: [Errno 2] No such file or directory: 'salome'
+
+In terminal:
+
+th. 139728905844928 - Trace /volatile/home/salome/SALOME-8.3.0-CO7/SOURCES/SMESH/src/SMESHGUI/SMESHGUI_HypothesesUtils.cxx [529] : libgfortran.so.3: cannot open shared object file: No such file or directory
+
+- Convert mesh to openFOAM
+
+  ```
+  ideasUnvToFoam filename.unv
+  checkMesh
+  transformPoints -scale '(0.001 0.001 0.001)'
+  ```
+
+  change manually constant/polyMesh/boundary: allwall patch -> wall

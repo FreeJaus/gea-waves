@@ -60,14 +60,16 @@ if [ -z "$SKIP_DISP" ]; then
   fi
 fi
 
-	for f in $@; do
-  f=${f%/}
-  case $f in
-	salome) docker run --rm -tv /$(pwd):/mirepo $GUIAPP msegade/salome salome $f ;; 
-	#trophime/salome-8.3.0:nvidia
-	#trophime/salome-8.3.0:intelhd
-	of5-paraview54) winpty docker run --rm -itv /$(pwd):/mirepo $GUIAPP openfoam/openfoam5-paraview54 bash $f ;;
-	cfmesh-of41) winpty docker run --rm -itv /$(pwd):/mirepo $GUIAPP fsys/openfoam4-paraview50-cfmesh bash $f ;;
-	* ) echo "Case <$f> is not supported by this script";;
+  case $1 in
+	salome)
+	  docker run --rm -tv /$(pwd):/mirepo $GUIAPP l001/salome;; 
+	  #trophime/salome-8.3.0:nvidia
+	  #trophime/salome-8.3.0:intelhd
+	of5-paraview54)
+	  winpty docker run --rm -itv /$(pwd):/mirepo $GUIAPP openfoam/openfoam5-paraview54 bash;;
+	cfmesh-of41)
+	  winpty docker run --rm -itv /$(pwd)://mirepo $GUIAPP l001/cfmesh bash;;
+	blender)
+	  docker run --rm -tv /$(pwd):/mirepo $GUIAPP peterlauri/blender-python:latest blender;;
+	* ) echo "Case <$1> is not supported by this script";;
   esac
-done 

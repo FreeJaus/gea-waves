@@ -1,5 +1,7 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # run from this directory
+# Source tutorial clean functions
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions
 
 CleanCase () {
   mkdir -p back/constant/polyMesh
@@ -20,7 +22,6 @@ CleanCase () {
   rm -rf $case/
   mv back $case
 }
-
 CleanSnappyCase (){
   mkdir -p back/constant/polyMesh
   mkdir -p back/constant/triSurface
@@ -42,7 +43,24 @@ CleanSnappyCase (){
   rm -rf $case/
   mv back $case
 }
-
+CleanSalomeCase (){
+  mkdir -p back/constant/polyMesh/
+  cd ${case=$1}
+  mv constant/polyMesh/* ../back/constant/polyMesh/
+  cleanCase
+  mv ../back/constant/polyMesh/ constant/
+  cp 0/alpha.water.orig 0/alpha.water
+  rm -rf ../back
+} 
+CleancfMesh () {
+  cd ${case=$1}
+  cd mesh
+  cleanCase
+  rm -r constant/polyMesh
+  cd ../case
+  cleanCase
+  cp 0/alpha.water.orig 0/alpha.water
+}  
 CheckDir () {
   if [ -d "$2" ]; then
     echo "Cleaning case <$2>..."
@@ -62,6 +80,8 @@ for f in $@; do
     damBreakMod        ) CheckDir CleanCase $f ;;
     damBreakSwiftBlock ) CheckDir CleanCase $f ;;
     damBreakSnappy     ) CheckDir CleanSnappyCase $f;;
+	canal3Dcfmesh	   ) CheckDir CleancfMesh $f ;;
+	canal3Dsalome	   ) CheckDir CleanSalomeCase $f ;;
     * ) echo "Case <$f> is not supported by this script";;
   esac
 done 
