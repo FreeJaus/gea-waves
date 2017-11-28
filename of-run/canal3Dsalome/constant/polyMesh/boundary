@@ -20,20 +20,20 @@ FoamFile
     atmosphere
     {
         type            patch;
-        nFaces          1304;
-        startFace       101151;
+        nFaces          1155;
+        startFace       73494;
     }
     outflow
     {
         type            patch;
         nFaces          62;
-        startFace       102455;
+        startFace       74649;
     }
     allwall
     {
         type            wall;
-        nFaces          11472;
-        startFace       102517;
+        nFaces          11491;
+        startFace       74711;
     }
 )
 

@@ -17,9 +17,9 @@ FoamFile
 
 application     interFoam;
 
-startFrom       latestTime;//startTime
+startFrom       startTime;//latestTime
 
-latestTime       2.25;
+startTime       0;
 
 stopAt          endTime;
 
@@ -54,8 +54,8 @@ maxDeltaT       1;
 
 functions
 {
-    #includeFunc probes
-    #includeFunc singleGraph1
+    //#includeFunc probes
+    //#includeFunc singleGraph1
     
  outletFlux
     {

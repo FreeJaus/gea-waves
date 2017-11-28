@@ -1,8 +1,8 @@
 #### INPUT DATA
-path='/home/lewi/Documentos/OWCESOF/cfd/wkp/CASECANAL/CANALspt/CANAL2D/18-owc-D19d12/' #OpenFOAM folder
+path='/mirepo/canal3Dsalome/' #OpenFOAM folder
 output_file_name="waterlevel.csv"
 g_direction="Y"
-clip_position=[1.699, 0.3, 0.05]
+clip_position=[1.699, 0.3, 0.118]
 #### END INPUT DATA
 
 #### import the simple module from the paraview

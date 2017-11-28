@@ -1,0 +1,20 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1    # Run from this directory
+
+###########
+gnuplot << EOF
+set term jpeg 
+set out "wl.jpg"
+
+set title "water level inside chamber"
+set xlabel "Time (s)"
+set ylabel "Water level (m)"
+set grid
+set datafile separator ","
+
+p "./waterlevel.csv" u 1:2 t 'p1' w lines lt 4
+
+EOF
+exit
+#------------------------------------------------------------------------------

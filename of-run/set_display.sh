@@ -1,7 +1,10 @@
 #!/bin/sh
-
-XMING_PATH="/c/Program\ Files\ \(x86\)/Xming/Xming.exe"
-DOCKER_DISPLAY="`ipconfig | grep 'IPv4' | grep -o '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | grep "^10\.0\.*"`:0"
+if [ "$(uname | cut -c1-5)" = "MINGW" ]; then
+  XMING_PATH="/c/Program\ Files\ \(x86\)/Xming/Xming.exe"
+  DOCKER_DISPLAY="`ipconfig | grep 'IPv4' | grep -o '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | grep "^10\.0\.*"`:0"
+  else
+  DOCKER_DISPLAY=unix$DISPLAY  
+fi	
 
 check_c() { r="1"; if [ -n "$(docker container inspect $1 2>&1 | grep "Error:")" ]; then r="0"; fi; echo "$r"; }
 rm_c() {
