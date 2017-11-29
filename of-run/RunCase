@@ -92,7 +92,8 @@ for f in $@; do
     damBreakSwiftBlock ) CheckDir RunCase $f ;;
     damBreakSnappy     ) CheckDir RunSnappyCase $f ;;
 	canal3Dsalome	   ) CheckDir RunSalomeCase $f ;;	
-    * ) echo "Case <$f> is not supported by this script";;
+    owc-D19d12  	   ) CheckDir RunSalomeCase $f ;;
+	* ) echo "Case <$f> is not supported by this script";;
   esac
 done 
 

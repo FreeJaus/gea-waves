@@ -1,5 +1,5 @@
 #### INPUT DATA
-path='/mirepo/canal/canal3D/owc-D19d12-tetr/' #OpenFOAM folder
+path='/mirepo/owc-D19d12/' #OpenFOAM folder
 output_file_name="waterlevel.csv"
 g_direction="Y"
 clip_position=[2.146, 0.3, 0.118]

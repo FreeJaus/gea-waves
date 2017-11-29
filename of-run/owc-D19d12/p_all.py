@@ -3,33 +3,40 @@ from paraview.simple import *
 #### disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
 
-# get active source.
-owcD19d12tetrOpenFOAM = GetActiveSource()
+# create a new 'OpenFOAMReader'
+afoam = OpenFOAMReader(FileName='/mirepo/owc-D19d12/a.foam')
+afoam.MeshRegions = ['internalMesh']
+afoam.CellArrays = ['U', 'alpha.water', 'alpha.water.orig', 'epsilon', 'k', 'nuTilda', 'nut', 'p', 'p_rgh']
 
-# Properties modified on owcD19d12tetrOpenFOAM
-owcD19d12tetrOpenFOAM.VolFieldArrayStatus = ['alpha.water', '1', 'alpha.water.orig', '0', 'epsilon', '0', 'k', '0', 'nuTilda', '0', 'nut', '0', 'p_rgh', '1', 'U', '1']
-owcD19d12tetrOpenFOAM.VolumeFields = ['alpha.water', 'p_rgh', 'U']
+# get animation scene
+animationScene1 = GetAnimationScene()
+
+# update animation scene based on data timesteps
+animationScene1.UpdateAnimationUsingDataTimeSteps()
+
+# Properties modified on afoam
+afoam.CellArrays = ['p', 'p_rgh']
 
 # get active view
 renderView1 = GetActiveViewOrCreate('RenderView')
 # uncomment following to set a specific view size
-# renderView1.ViewSize = [1301, 671]
+# renderView1.ViewSize = [857, 557]
 
 # show data in view
-owcD19d12tetrOpenFOAMDisplay = Show(owcD19d12tetrOpenFOAM, renderView1)
+afoamDisplay = Show(afoam, renderView1)
 # trace defaults for the display properties.
-owcD19d12tetrOpenFOAMDisplay.ColorArrayName = [None, '']
-owcD19d12tetrOpenFOAMDisplay.GlyphType = 'Arrow'
-owcD19d12tetrOpenFOAMDisplay.ScalarOpacityUnitDistance = 0.05155980374960996
+afoamDisplay.ColorArrayName = [None, '']
+afoamDisplay.GlyphType = 'Arrow'
+afoamDisplay.ScalarOpacityUnitDistance = 0.05155980374960996
 
 # reset view to fit data
 renderView1.ResetCamera()
 
 # set scalar coloring
-ColorBy(owcD19d12tetrOpenFOAMDisplay, ('FIELD', 'vtkBlockColors'))
+ColorBy(afoamDisplay, ('FIELD', 'vtkBlockColors'))
 
 # show color bar/color legend
-owcD19d12tetrOpenFOAMDisplay.SetScalarBarVisibility(renderView1, True)
+afoamDisplay.SetScalarBarVisibility(renderView1, True)
 
 # get color transfer function/color map for 'vtkBlockColors'
 vtkBlockColorsLUT = GetColorTransferFunction('vtkBlockColors')
@@ -37,18 +44,27 @@ vtkBlockColorsLUT = GetColorTransferFunction('vtkBlockColors')
 # get opacity transfer function/opacity map for 'vtkBlockColors'
 vtkBlockColorsPWF = GetOpacityTransferFunction('vtkBlockColors')
 
-# get animation scene
-animationScene1 = GetAnimationScene()
+# create a new 'Cell Data to Point Data'
+cellDatatoPointData1 = CellDatatoPointData(Input=afoam)
 
-animationScene1.GoToNext()
+# show data in view
+cellDatatoPointData1Display = Show(cellDatatoPointData1, renderView1)
+# trace defaults for the display properties.
+cellDatatoPointData1Display.ColorArrayName = [None, '']
+cellDatatoPointData1Display.GlyphType = 'Arrow'
+cellDatatoPointData1Display.ScalarOpacityUnitDistance = 0.05155980374960996
 
-# Properties modified on owcD19d12tetrOpenFOAM
-owcD19d12tetrOpenFOAM.MeshParts = ['internalMesh']
-owcD19d12tetrOpenFOAM.VolFieldArrayStatus = ['alpha.water', '1', 'epsilon', '0', 'k', '0', 'nut', '0', 'p', '1', 'p_rgh', '1', 'U', '1']
-owcD19d12tetrOpenFOAM.VolumeFields = ['alpha.water', 'p', 'p_rgh', 'U']
+# hide data in view
+Hide(afoam, renderView1)
+
+# set scalar coloring
+ColorBy(cellDatatoPointData1Display, ('FIELD', 'vtkBlockColors'))
+
+# show color bar/color legend
+cellDatatoPointData1Display.SetScalarBarVisibility(renderView1, True)
 
 # create a new 'Probe Location'
-probeLocation1 = ProbeLocation(Input=owcD19d12tetrOpenFOAM,
+probeLocation1 = ProbeLocation(Input=cellDatatoPointData1,
     ProbeType='Fixed Radius Point Source')
 
 # init the 'Fixed Radius Point Source' selected for 'ProbeType'
@@ -74,6 +90,24 @@ viewLayout1.AssignView(2, spreadSheetView1)
 
 # show data in view
 probeLocation1Display = Show(probeLocation1, spreadSheetView1)
+
+# create a new 'Calculator'
+calculator1 = Calculator(Input=probeLocation1)
+calculator1.Function = ''
+
+animationScene1.GoToNext()
+
+# Properties modified on calculator1
+calculator1.Function = 'p'
+
+# show data in view
+calculator1Display = Show(calculator1, spreadSheetView1)
+
+# hide data in view
+Hide(probeLocation1, spreadSheetView1)
+
+# save data
+SaveData('/mirepo/canal/canal3D/owc-D19d12-tetr/005p.csv', proxy=calculator1)
 
 #### saving camera placements for all active views
 

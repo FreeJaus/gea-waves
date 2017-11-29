@@ -1,7 +1,7 @@
 #### INPUT DATA
 path='/mirepo/canal/canal3D/owc-D19d12-tetr/' #OpenFOAM folder
 output_file_name="staticPressure.csv"
-g_direction="Y"
+#g_direction="Y"
 probe_Location=[2.186, 0.582, 0.118]
 #### END INPUT DATA
 
@@ -42,10 +42,11 @@ probeLocation1 = ProbeLocation(Input=afoam,
 # init the 'Fixed Radius Point Source' selected for 'ProbeType'
 probeLocation1.ProbeType.Center = probe_Location
 
-
 # hide data in view
-Hide(cellDatatoPointData1, renderView1)
+#Hide(cellDatatoPointData1, renderView1)
 
+# get layout
+viewLayout1 = GetLayout()
 
 # Create a new 'SpreadSheet View'
 spreadSheetView1 = CreateView('SpreadSheetView')
@@ -59,18 +60,20 @@ viewLayout1.AssignView(2, spreadSheetView1)
 # show data in view
 probeLocation1Display = Show(probeLocation1, spreadSheetView1)
 
+
 # create a new 'Calculator'
 calculator1 = Calculator(Input=probeLocation1)
 calculator1.Function = ''
 
+animationScene1.GoToNext()
+
 # Properties modified on calculator1
 calculator1.Function = 'p'
-
 # show data in view
 calculator1Display = Show(calculator1, spreadSheetView1)
-
 # hide data in view
 Hide(probeLocation1, spreadSheetView1)
+
 
 
 time_steps=afoam.TimestepValues
@@ -80,16 +83,16 @@ f.write("t,staticPressure\n")
 for t in time_steps:
 	view.ViewTime = t	
 	Render()
-	#integrateVariables1.UpdatePipeline() # Perform the calculation
-	#Integrate_Var_Fetch = servermanager.Fetch(integrateVariables1)
-	#Integrate_Var_Pointdata = Integrate_Var_Fetch.GetPointData()
-	mypress = Integrate_Var_Pointdata.GetArray('p')
-	Integrate_Var_Celldata = Integrate_Var_Fetch.GetCellData()
-	
-	
-	p = mypress.GetValue(0)
-	f.write("{0},{1}\n".format(t,p))
-	print "{0},{1}".format(t,p)
+	calculator1.UpdatePipeline() # Perform the calculation
+	Pressure_Var_Fetch = servermanager.Fetch(calculator1)
+	Pressure_Var_Pointdata = Pressure_Var_Fetch.GetPointData()
+	p1 = Pressure_Var_Pointdata.GetArray('p')
+	#Integrate_Var_Celldata = Integrate_Var_Fetch.GetCellData()
+	#mArea= Integrate_Var_Celldata.GetArray('Area')
+	#Area = mArea.GetValue(0)
+	p = pl.GetValue(0)
+	f.write("{0},{1}\n".format(t,p)) #ylevel/Area))
+	print "{0},{1}".format(t,p) #ylevel/Area)
 	
 f.close()
 

@@ -82,6 +82,7 @@ for f in $@; do
     damBreakSnappy     ) CheckDir CleanSnappyCase $f;;
 	canal3Dcfmesh	   ) CheckDir CleancfMesh $f ;;
 	canal3Dsalome	   ) CheckDir CleanSalomeCase $f ;;
+	owc-D19d12  	   ) CheckDir CleanSalomeCase $f ;;
     * ) echo "Case <$f> is not supported by this script";;
   esac
 done 
