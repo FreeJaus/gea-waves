@@ -14,11 +14,12 @@ gea-waves
     - **"viabilidad"**
     - **"tfg"**
     - **"readme"**: Informe de los casos (con modificaciones en el código propias) ejecutados en OpenFOAM.
-    - **"note"**: Apartados de interés a incluir tanto en la viabilidad como en el tfg.
-  - **"public"**: contenido a publicar.
+    - **"note"**: Apartados de interés a incluir en el trabajo.
+    - **"src"**:  Información sobre las herramientas utilizadas.
+    - *"gea.md"*: Informe del Control del Tanque de Olas del Laboratorio de Ingeniería Nuclear y Mecánica de Fluidos de la Escuela de Ingeinería de Bilbao.
+    - *"gea-waves.bib"*: Bibliografía en formato LaTex.
   - **"static"**: código/plantillas en html para mostrar el contenido que se ha ido generando.
   - **"themes"**: tema personalizado. 
-  - *"gea.md"*: Informe del Control del Tanque de Olas del Laboratorio de Ingeniería Nuclear y Mecánica de Fluidos de la Escuela de Ingeinería de Bilbao.
   - *"config.yaml"*: directorio que permite ver y modificar el contenido y visualizarlo en el navegador en tiempo real. Lanzando la orden desde la carpeta contenedora de este archivo por terminal `./ -t blackwaves server`, y copiando en el navegador la dirección que la orden devuelve.
 - Carpeta **"of-dsgn"**: diseños de los modelos generados para las simulaciones, así como imágenes y animaciones guardadas de las simulaciones mediante OpenFOAM.
 - Carpeta **"of-run"**: casos generados a partir de modificaciones en el código de **"damBreak"**, ejemplo descrito en la ["guía de OpenFoam"](http://cfd.direct/openfoam/user-guide/damBreak/#x7-500002.3). 

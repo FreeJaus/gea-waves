@@ -2,7 +2,7 @@
 if [ "$(uname | cut -c1-5)" = "MINGW" ]; then
   XMING_PATH="/c/Program\ Files\ \(x86\)/Xming/Xming.exe"
   DOCKER_DISPLAY="`ipconfig | grep 'IPv4' | grep -o '[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*' | grep "^10\.0\.*"`:0"
-  else
+else
   DOCKER_DISPLAY=unix$DISPLAY  
 fi	
 
@@ -65,7 +65,7 @@ fi
 
   case $1 in
 	salome)
-	  docker run --rm -tv /$(pwd):/mirepo $GUIAPP l001/salome;; 
+	  docker run --rm -tv /$(pwd):/mirepo $GUIAPP l001/salome-mesh;; 
 	  #trophime/salome-8.3.0:nvidia
 	  #trophime/salome-8.3.0:intelhd
 	of5-paraview54)

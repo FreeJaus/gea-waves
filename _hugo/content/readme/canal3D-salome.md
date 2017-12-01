@@ -1,16 +1,16 @@
 # canal3D-salome
 
-- Geometría desde la misma herramienta:
+- Geometría creada desde la misma herramienta:
 
-  tank (.440 .325 .236)
+  tank (.440 .285 .236)
 
-  canal (1.339 .250 .08) -> translate (.44 .075 0.078<0.236/2-0.08/2>)
+  canal (1.786 .21 .08) -> translate (.44 .075 0.078<0.236/2-0.08/2>)
 
-  chamberWall (.006 .225 .08) -> translate (1.693<1.699-0.006> 0.1<0.075-0.025> 0.078)
+  chamberWall (.006 .178 .08) -> translate (2.14<2.146-0.006> 0.107<0.075-0.032 > 0.078)
 
-  chimney (R=0.0098 H=.316) -> rotate (-90 0 0) 90º reverse, axis X; translate (1.739<1.779-0.08/2> .325 .118<0.236/2>)
+  chimney (R=0.0098 H=.321) -> rotate (-90 0 0) 90º reverse, axis 'X'; translate (2.186<2.226-0.08/2> .285 .118<0.236/2>)
 
-  diafragma (R=0.00625 H=0.002) -> rotate(-90 0 0); translate (1.739 .639<0.325+.316-.002> .118)
+  diafragma (R=0.00625 H=0.002) -> rotate(-90 0 0); translate (2.186 .604<0.285+.321-.002> .118)
 
    Boolean operation: 
 
@@ -23,7 +23,7 @@
 
   Primero obtener las caras del modelo -> mediante la opción de `Explode`. 
 
-  Después, crear los grupos de caras que conformarán cada contorno ->`Create new Group` (atmosphere, outflow, allwall). Se aconseja guardar en tras este paso.
+  Después, crear los grupos de caras que conformarán cada contorno ->`Create new Group` (atmosphere, outflow, allwall). Se aconseja guardar tras este paso.
 
 - Generar el mallado:
 
@@ -33,15 +33,17 @@
 
   Mesh type: Netgen 1D-2D-3D.
 
-  Algorithim: Netgen 3D Parameters -> Max=5; Min =2.
+  Algorithim: Netgen 3D Parameters -> Max=20; Min =2.
 
-  Tetrahedrons: 1848014
+  Tetrahedrons: 90991
 
   Export unv
 
-  - 20-2 -> 39924
+  - 5-2 -> 1848014
+
   - 10-2 -> 237880
 
+---
   **Hexahedral**
 
   - [Body Fitting 3D meshing algorithm](http://docs.salome-platform.org/latest/gui/SMESH/cartesian_algo_page.html)
@@ -65,27 +67,21 @@
       - [python script that exports a mesh to OpenFOAM](https://github.com/nicolasedh/salomeToOpenFOAM)
     - [SketchUp Meshkit extension](http://extensions.sketchup.com/en/content/sketchy-tetgen-tools)
       - [Video Tutorial: Meshkit Tutorial - How to Mesh a Cylinder with SketchUp, MeshKit, and Gmsh](https://youtu.be/On3tg4kCchw)
-
-  ​
-
-salome container issue:
-
-When I try to set up Netgen Parameters (hypotesis)
-
-Salome Exception: libgfortran.so.3: cannot open shared object file: No such file or directory
-
-Python console: Traceback (most recent call last): File "<input>", line 1, in <module> I0Error: [Errno 2] No such file or directory: 'salome'
-
-In terminal:
-
-th. 139728905844928 - Trace /volatile/home/salome/SALOME-8.3.0-CO7/SOURCES/SMESH/src/SMESHGUI/SMESHGUI_HypothesesUtils.cxx [529] : libgfortran.so.3: cannot open shared object file: No such file or directory
+---
 
 - Convert mesh to openFOAM
 
   ```
   ideasUnvToFoam filename.unv
-  checkMesh
-  transformPoints -scale '(0.001 0.001 0.001)'
+  //transformPoints -scale '(0.001 0.001 0.001)'//change from mm to m
   ```
 
-  change manually constant/polyMesh/boundary: allwall patch -> wall
+  **NOTE**: change manually constant/polyMesh/boundary: *allwall* `patch -> wall`
+
+- Comprobar si la malla es correcta:
+
+  ```
+  checkMesh | tee log.checkMesh
+  ```
+
+  ​

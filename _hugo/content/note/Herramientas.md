@@ -69,13 +69,13 @@ Paquetes añadidos a Blender en lenguaje de Python:
 [Blender with OpenFOAM](https://openfoamwiki.net/index.php/Blender)
 
 - [Contrib/SwiftBlock]
-Complemento añadido en Blender para crear el diccionario `blockMeshDict`, permite al usuario crear la estructura de bloques hexaédrica como un objeto dentro de la interfaz ofrecida en Blender.
+  Complemento añadido en Blender para crear el diccionario `blockMeshDict`, permite al usuario crear la estructura de bloques hexaédrica como un objeto dentro de la interfaz ofrecida en Blender.
 
 - [Contrib/SwiftSnap]
-Otro complemento para Blender que actúa como guía para crear el diccionario snappyHexMesh, permitiendo al usuario total control sobre como y qué líneas proporcionar en los contornos, así como especificar el nombre de cada área, la configuración de resolución y las capas de malla.
+  Otro complemento para Blender que actúa como guía para crear el diccionario snappyHexMesh, permitiendo al usuario total control sobre como y qué líneas proporcionar en los contornos, así como especificar el nombre de cada área, la configuración de resolución y las capas de malla.
 
 - [SwiftSnap and SwiftBlock, GUIs for OpenFOAM's meshers](https://www.cfd-online.com/Forums/openfoam-meshing/100604-swiftsnap-swiftblock-guis-openfoams-meshers-2.html)
-This swiftBlock is compatible with 2.6x OF240.
+  This swiftBlock is compatible with 2.6x OF240.
 
 (Autodesk AutoCAD, CATIA, NX, Sketchup, SolidEdge, ...)
 
@@ -92,12 +92,12 @@ Entre ellos, los más destacables son:
 ========
 Software de código abierto para la generación de mallas teraédricas. No está dirigido directamente para el CFD.
 
-- [Manual de usuario](http://www.netgen-toolbox.org/netgen_usermanual.pdf)
+- [User Manual](http://www.netgen-toolbox.org/netgen_usermanual.pdf)
 - [CME-Netgen](http://www.asc.tuwien.ac.at/~schoeberl/wiki/index.php/Netgen)
 - [Meshing with Netgen](http://www.vmtk.org/tutorials/NetgenWay.html)
 - NGSolve, librería de elementos finitos para crear diferentes geometrías y mallas que podrán visualizarse con Netgen:
   - [Netgen/NGSolve Manual, 2013](https://www.math.uzh.ch/compmath/fileadmin/user/stas/compmath/Abschlussarbeiten/Arnold_Noam/myManual.pdf)
-     
+
 
 [enGrid](http://engits.eu/en/engrid)
 ========
@@ -114,7 +114,7 @@ Software que proporciona una plataforma genérica para el pre y postprocesado de
 - http://www.cfd-online.com/Forums/openfoam-meshing-open/76222-boundary-conditions-mesh-exporting.html
 - https://www.youtube.com/watch?v=1zQbU-E4k1U
 - [CFMesh: feature definition or extraction in the .stl file](https://www.cfd-online.com/Forums/openfoam-meshing-snappyhexmesh/142250-cfmesh-feature-definition-extraction-stl-file.html)
-Salome gets too much time for boolean operations on native .stl files
+  Salome gets too much time for boolean operations on native .stl files
 
 [cfMesh](http://www.c-fields.com/cfmesh)
 ========
@@ -123,7 +123,7 @@ Está desarrollado bajo licencia GPL, y compatible con todas las versiones recie
 Los formatos aceptados para la geometría de entrada son: fms, ftr, and stl.
 
 - [Frequently Asked Questions](http://cfmesh.com/support-faq/)
-cfMesh está diseñado como una librería de algoritmos que realizan las tareas de mallado y permiten la personalización e implementación de varias características de mallado:
+  cfMesh está diseñado como una librería de algoritmos que realizan las tareas de mallado y permiten la personalización e implementación de varias características de mallado:
   - Capaz de generar varios tipos de malla: Cartesiana (hexaedros) en 3D y 2D, poliédrica y tetraédrica.
   - Requiere mucho menos esfuerzo manual que snappyHexMesh, y es 4-5 veces más rápido. Permite una cobertura del 100% de la capa límite.
   - También está capacitado para generar mallas con +20 capas, activando la optimización de capas. 
@@ -184,7 +184,7 @@ Este software es una utilidad para graficar a través de línea de comandos, por
   - http://gnuplot-tricks.blogspot.nl/
   - http://stackoverflow.com/questions/18265754/any-graph-plotting-tool-better-than-gnu-plot
 - https://www.hpc.ntnu.no/display/hpc/OpenFOAM+-+Run-time+Postprocessing
-example (Volume-Time)
+  example (Volume-Time)
 - [GNUPLOT 4.2 - A Brief Manual and Tutorial](http://people.duke.edu/~hpgavin/gnuplot.html)
 
 [python](https://openfoamwiki.net/index.php/Contrib/PyFoam)
@@ -206,12 +206,12 @@ Referencias de interés para conocer más el lenguaje:
 =======
 Un paquete de visualización de código abierto desarrollado por Lawrence Livermore National Laboratory.
 - [Water Flow Tutorial](http://visitusers.org/index.php?title=Water_Flow_Tutorial)
-Las opciones que sirven también en ParaView:
-Add an Isovolume Operator. Lower bound to 0.5 and upper 1.5 for alpha.water as the variable option.
-Save Session File with Basic Visualization Setup
+  Las opciones que sirven también en ParaView:
+  Add an Isovolume Operator. Lower bound to 0.5 and upper 1.5 for alpha.water as the variable option.
+  Save Session File with Basic Visualization Setup
 
 - [VisIt Downloads](https://wci.llnl.gov/simulation/computer-codes/visit/downloads)
-An error
+  An error
 
 [PGFPlots](http://pgfplots.sourceforge.net/)
 ==========
