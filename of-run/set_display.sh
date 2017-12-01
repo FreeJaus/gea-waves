@@ -71,7 +71,7 @@ fi
 	of5-paraview54)
 	  winpty docker run --rm -itv /$(pwd):/mirepo $GUIAPP openfoam/openfoam5-paraview54 bash;;
 	cfmesh-of41)
-	  winpty docker run --rm -itv /$(pwd)://mirepo $GUIAPP l001/cfmesh bash;;
+	  winpty docker run --rm -itv /$(pwd)://mirepo $GUIAPP l001/of4-paraview5-cfmesh-py bash;;
 	blender)
 	  docker run --rm -tv /$(pwd):/mirepo $GUIAPP peterlauri/blender-python:latest blender;;
 	* ) echo "Case <$1> is not supported by this script";;
