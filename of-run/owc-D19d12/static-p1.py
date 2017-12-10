@@ -21,6 +21,8 @@ animationScene1 = GetAnimationScene()
 # update animation scene based on data timesteps
 animationScene1.UpdateAnimationUsingDataTimeSteps()
 
+animationScene1.GoToNext()
+
 # get active view
 renderView1 = GetActiveViewOrCreate('RenderView')
 # uncomment following to set a specific view size
@@ -65,8 +67,6 @@ probeLocation1Display = Show(probeLocation1, spreadSheetView1)
 calculator1 = Calculator(Input=probeLocation1)
 calculator1.Function = ''
 
-animationScene1.GoToNext()
-
 # Properties modified on calculator1
 calculator1.Function = 'p'
 # show data in view
@@ -74,23 +74,26 @@ calculator1Display = Show(calculator1, spreadSheetView1)
 # hide data in view
 Hide(probeLocation1, spreadSheetView1)
 
+# save data
+#SaveData('/mirepo/canal/canal3D/owc-D19d12-tetr/p0.csv', proxy=calculator1)
 
 
 time_steps=afoam.TimestepValues
 view = GetActiveView()
 f=open(path+output_file_name,"w")
-f.write("t,staticPressure\n")
+f.write("t,static_Pressure\n")
 for t in time_steps:
 	view.ViewTime = t	
 	Render()
 	calculator1.UpdatePipeline() # Perform the calculation
-	Pressure_Var_Fetch = servermanager.Fetch(calculator1)
-	Pressure_Var_Pointdata = Pressure_Var_Fetch.GetPointData()
-	p1 = Pressure_Var_Pointdata.GetArray('p')
+	p = calculator1.GetCellData().GetArray('p').GetValue(t)
+	#Pressure_Var_Fetch = servermanager.Fetch(calculator1)
+	#Pressure_Var_Pointdata = Pressure_Var_Fetch.GetPointData()
+	#p1 = Pressure_Var_Pointdata.GetArray('p')
 	#Integrate_Var_Celldata = Integrate_Var_Fetch.GetCellData()
 	#mArea= Integrate_Var_Celldata.GetArray('Area')
 	#Area = mArea.GetValue(0)
-	p = pl.GetValue(0)
+	#p = p1.GetValue(0)
 	f.write("{0},{1}\n".format(t,p)) #ylevel/Area))
 	print "{0},{1}".format(t,p) #ylevel/Area)
 	
@@ -102,9 +105,9 @@ staticPressurecsv = CSVReader(FileName=[path+output_file_name])
 #### saving camera placements for all active views
 
 # current camera placement for renderView1
-renderView1.CameraPosition = [0.8895000219345093, 0.30000001192092896, 3.682107777103769]
-renderView1.CameraFocalPoint = [0.8895000219345093, 0.30000001192092896, 0.05000000074505806]
-renderView1.CameraParallelScale = 0.9400586663866015
+renderView1.CameraPosition = [1.1130000352859497, 0.30300000309944153, 4.5980669982755975]
+renderView1.CameraFocalPoint = [1.1130000352859497, 0.30300000309944153, 0.11800000071525574]
+renderView1.CameraParallelScale = 1.1595266623038847
 
 #### uncomment the following to render all views
 # RenderAllViews()
