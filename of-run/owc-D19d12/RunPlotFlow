@@ -9,10 +9,10 @@ set out "FlowRate.jpg"
 
 set title "Flow Rate d12.5mm"
 set xlabel "Time (s)"
-set ylabel "Outlet Flux (kg/s·m²)"
+set ylabel "Outlet Flux (kg/s)"
 set grid
 
-p "./postProcessing/outletFlux/0/surfaceRegion.dat" u 1:2 t 'Q/A' w linespoints lt 7
+p "./postProcessing/outletFlux/0/surfaceRegion.dat" u 1:2 t 'Q' w linespoints lt 7
 
 
 EOF

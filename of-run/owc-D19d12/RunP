@@ -5,7 +5,7 @@ cd ${0%/*} || exit 1    # Run from this directory
 ###########
 gnuplot << EOF
 set term jpeg 
-set out "p.jpg"
+set out "staticP.jpg"
 
 set title "Static Pressure in (2.186 0.582 108.2)m"
 set xlabel "Time (s)"

@@ -88,7 +88,7 @@ for t in time_steps:
     calculator1.UpdatePipeline() # Perform the calculation
     p = servermanager.Fetch(calculator1).GetPointData().GetArray('p')
     if p is not None:
-        p_val = p.GetValue(0)	
+        p_val = p.GetTuple1(0)	
         f.write("{0},{1}\n".format(t,p_val))
         print "{0},{1}".format(t,p_val)
     else:
