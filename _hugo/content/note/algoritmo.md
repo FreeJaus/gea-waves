@@ -14,7 +14,7 @@ El algoritmo SIMPLE (Semi-Implicit Method for Pressure Linked Equations), desarr
 
 La idea fundamental es definir una ecuación discretizada para la presión (o alternativamente, para una cantidad muy relacionada llamada *corrección de la presión*) a partir de la ecuación de continuidad discreta. Puesto que la ecuación de continuidad contiene valores de velocidad en las caras, se necesita alguna forma de relacionar estas velocidades con los valores de presión en los centroides de las celdas. El algoritmo SIMPLE utiliza las ecuaciones de momento discretas para hacer dicha relación.
 
-Se Parte por un campo de presiones supuesto, se resuelven las ecs de momento en x e y obteniendo un campo de velocidades.
+Se Parte por un campo de presiones supuesto, se resuelven las ecs de momento en *x* e *y* obteniendo un campo de velocidades.
 Se define el valor de corrección que separa los campos de la solución real de la supuesta mediante una variable primada y conbinando estas ecs exactas con las ecs anteriores.
 Importante simplificación, eliminando las celdas vecinas para la corrección de las velocidades.
 Definida la p para las celdas centradas en vectores, se plantea la ec. de continuidad sobre una celda escalar P pto central del volumen de control.

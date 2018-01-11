@@ -19,7 +19,7 @@ En OpenFOAM el mallado se carga a través de la orden blockMesh [2] o snappyHexM
 Adicionalmente, existen otras muchas opciones para realizar el mallado a través de diferentes programas que luego OpenFOAM podrá reconocer. La lista de los softwares, que cuentan con una orden directa para ser exportados, se encuentran en la tabla de conversión de malla [4]. 
 
 Se opta por el NetGen como herramienta para realizar el mallado. Se trata de un programa capaz de importar archivos en formato STL, crear diferentes tipos de malla y exportarlas en formato de archivo neutro para después convertirlo a OpenFOAM (a partir de la orden en terminal que aparece en la tabla de conversiones mencionada anteriormente: netgenNeutralToFoam). Además, como el resto de programas utilizados, cuenta con gran variedad de información en la red para aprender a utilizar los diferentes comandos [5], entender con más profundidad como el programa genera el mallado sobre una geometría dada [6] o las ecuaciones para diferentes cálculos [7].
- 
+
 Otra alternativa por la que se optó fue la del Blender, pero las líneas en las que se divide el mallado había que introducirlas una por una.
 
 Cabe nombrar una última opción que quedó por revisar, la del programa Salome:
@@ -41,7 +41,7 @@ Las condiciones de frontera se establecen en la carpeta /0. En esta carpeta se r
 [6]https://www.math.uzh.ch/compmath/fileadmin/user/stas/compmath/Abschlussarbeiten/Arnold_Noam/myManual.pdf
 [7] http://cfd.direct/openfoam/user-guide/fvschemes/
 [8] http://www.cfd-online.com/Tools/turbulence.php
----
+
 
 ## Procesado
 

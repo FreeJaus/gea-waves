@@ -19,7 +19,7 @@ date: 2016-01-01
 * [2] Amundarain, M. (2012). "La energía renovable procedente de las olas"; Ikastorratza, e-Revista de Didáctica 8, Retrieved 2012/02/25 from http://www.ehu.es/ikastorratza/8_alea/energia/energia.pdf (ISSN:1988-5911).
 * [5] Romero García,RE; "Producción de energía eléctrica a partir de los mares"; Técnica Industrial; 288; Agosto 2010; pp 44-51.
 * [6] Montero Sousa, JA y Calvo Rolle, JL; "Energía mareomotriz: perspectiva histórica y estado actual"; Técnica Industrial; 301; marzo2013; pp54-60.
-* [8] Peliddero, M et al.; "Aprovechamiento de la Energía Undimotriz"; Proyecciones, Vol 9 No. 2, octubre 2011; pp 53-65.
+* [8] Pelissero, M et al.; "Aprovechamiento de la Energía Undimotriz"; Proyecciones, Vol 9 No. 2, octubre 2011; pp 53-65.
 
 ## Web
 * [7] "Energía del oleaje"; Eduambiental; pp 515-550. http://comunidad.eduambiental.org/file.php/1/curso/contenidos/docpdf/capitulo22.pdf
@@ -29,7 +29,7 @@ date: 2016-01-01
   - Cuenta con una guía de usuario: http://cfd.direct/openfoam/user-guide/
   - Además de una amplia contribución por parte de la comunidad de ususarios que han utilizado este software: http://www.cfd-online.com/Wiki/OpenFOAM
   - Compatibilidad con variedad de programas para la conversión del mallado: http://www.openfoam.org/features/mesh-conversion.php
-Preparado para correr los casos en paralelo: http://www.openfoam.org/features/parallel-computing.php
+    Preparado para correr los casos en paralelo: http://www.openfoam.org/features/parallel-computing.php
 
 - Paraview: Código abierto, multiplataforma (compatible con los Sistemas Operativos más populares, empleado para el análisis de resultados y visulización del movimiento de los fluidos, constrido a partir de VTK: http://www.bu.edu/tech/support/research/training-consulting/online-tutorials/paraview/
   - A partir de esta aplicación, OpenFOAM generó el paquete Parafoam, conteniendo las librerias necesarias: http://cfd.direct/openfoam/user-guide/paraview/#x30-1790006.1
