@@ -1,0 +1,5 @@
+--> FOAM FATAL ERROR:
+Your current settings specify ASCII writing with 6 digits precision.
+Your merging tolerance (1e-07) is finer than this.
+Please change your writeFormat to binary or increase the writePrecision
+or adjust the merge tolerance (-mergeTol).
