@@ -1,0 +1,22 @@
+[ParaView](http://www.dma.uvigo.es/files/cursos/elmer2/Sesion8/ParaViewTutorial42.pdf#exercise.2.6)
+- Ctrl+space: To speed up the selection of filters
+Many filters only work on a specific types of data and therefore cannot always be used ( ParaView disable them).
+
+## Making streamline fancy
+
+- Filter streamlines
+- Add Glyph felter
+  - Change the Vectors option to U
+  - Change Scale Mode to vector
+  - Click reset botton and apply
+  
+## Plotting
+- Probe location
+- clip (first in z, then x)
+- View section of the properties panel, you to change plot-wide options such as labels, legends, and axes ranges
+-  The line plot in ParaView allows for a different scale on the left and right axis, and you can scale each variable individually on each axis.
+
+
+- Probe Location, inside point (1.739 0.617 0.118-0.0098)
+p_rgh=71.6382
+setFields .22 (y)-> p_rgh=87.8851

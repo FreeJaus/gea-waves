@@ -26,3 +26,7 @@ ls *.tex
 ls -lt: listar los ficheros contenidos indicando hora de modificación
 
 cat >> log.txt añade a la salida sin machacar su contenido
+
+Se puede usar el programa meld para comparar las diferencias respecto del caso base `meld damBreak damBreakMod`.
+
+`simpleFOam | tee -a log.txt`: cuando se quiere realizar algun cambio y volver a ejecutar el caso, se puede guardar a continuación del otro caso si se indica que ya existe ese fichero.

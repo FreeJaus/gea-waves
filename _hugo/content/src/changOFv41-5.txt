@@ -1,0 +1,6 @@
+Cambios de of41 a of5
+
+constant:
+	transportProperties: variables sin necesidad de definir las uds
+system
+	fvSolution: "pcorr.*"
