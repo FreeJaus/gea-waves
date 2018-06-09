@@ -1,4 +1,4 @@
-# 3. Objetivos y Alcance
+# 3. OBJETIVOS DEL TRABAJO
 
 ## 3.1 Introducción 
 
@@ -6,7 +6,7 @@ Con este trabajo se pretende realizar un análisis de las tecnologías existente
 
 Las técnicas CFD son ya, a todos los efectos, una herramienta más dentro de la ingeniería asistida por ordenador (CAE, Computer-aided engineering), utilizada universalmente en la industria. Sus posibilidades para simular todo tipo de fenómenos y flujos hace que los softwares CFD sean una parte indispensable en procesos de diseño aerodinámico, hidrodinámico o procesos productivos.
 
-No obstante, las tecnologías para el aprovechamiento del mar, aún se encuentran en etapa de desarrollo, por lo que no cuenta con la totalidad de la información para su instalación, operación y mantenimiento, por ello será necesaria la aplicación de suposiciones. Aun así, las investigaciones desarrolladas en este campo, con la aparición de numerosos prototipos, hacen de esta tecnología una de las más prometedora en cuanto a su rendimiento y funcionalidad. En comparación con otras energías renovables, el momento y la intensidad de las mareas y corrientes se puede predecir con siglos de anticipación [5](Romero García,RE; "Producción de energía eléctrica a partir de los mares"; Técnica Industrial; 288; Agosto 2010; pp 44-51). Además, su densidad es muy superior a la del aire, con lo que, de la energía de las olas se obtienen altos potenciales. 
+No obstante, las tecnologías para el aprovechamiento del mar, aún se encuentran en etapa de desarrollo, por lo que no cuenta con la totalidad de la información para su instalación, operación y mantenimiento, por ello será necesaria la aplicación de suposiciones. Aun así, las investigaciones desarrolladas en este campo, con la aparición de numerosos prototipos, hacen de esta tecnología una de las más prometedora en cuanto a su rendimiento y funcionalidad. En comparación con otras energías renovables, el momento y la intensidad de las mareas y corrientes se puede predecir con siglos de anticipación, [Romero García, RE](Romero García,RE; "Producción de energía eléctrica a partir de los mares"; Técnica Industrial; 288; Agosto 2010; pp 44-51). Además, su densidad es muy superior a la del aire, con lo que, de la energía de las olas se obtienen altos potenciales. 
 
 ## 3.2 Actividades y procedimientos
 

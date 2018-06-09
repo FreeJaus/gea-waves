@@ -1,28 +1,69 @@
 # ÍNDICE DE LA MEMORIA
 ## 1. INTRODUCCIÓN
-## 2. CONTEXTO
+
+
+## //2. CONTEXTO
+
+
+
 ## 3. OBJETIVOS DEL TRABAJO
-## 4. BENEFICIOS QUE APORTA 
-## 5. ANÁLISIS DEL ESTADO DEL ARTE
-### 5.1 ANTECEDENTES 
-### 5.2 
+
+
+
+## //4. BENEFICIOS QUE APORTA 
+
+
+
+## 5. ANTECEDENTES
+
+
+
 ## 6. ANÁLISIS DE ALTERNATIVAS
-### 6.1 EQUIPOS UNDIMOTRICES (descripción, localización, fundamento mecánico para la obtención de energía)
-### 6.2 
-## 7. ANÁLISIS DE RIESGOS
+
+### 6.1 INTRODUCCIÓN
+
+### 6.2 TIPOS DE INFRAESTRUCTURAS 
+
+### 6.3 CLASIFICACIÓN DE SISTEMAS DE CAPTACIÓN
+
+### 6.4 ACTUALIDAD DEL DESARROLLO TECNOLÓGICO EN ESPAÑA
+
+
+
+## 7. DESCRIPCIÓN DEL SISTEMA OWC
+
+
+
 ## 8. INTRODUCCIÓN A LA TEORÍA DE LAS OLAS
-### 8.1 ORIGEN Y COMPORTAMIENTO
-### 8.2 TÉCNICAS DEL ESTUDIO DEL OLEAJE
-//
-## 8. ASPECTOS ECONÓMICOS (quizás hay que moverlo ha otro doc/apartado)
-### 8.1 Contexto energético
-- Introdicción
-- Situación energética mundial,europea,española
-### 8.2 Fomento y marco Normativo de las Energías Renovables
-- Estrategia europea
-- Estrategia nacional
-### 8.3 Análisis de rentabilidad
-- Info_Canarias
-  //
-## 9. DESCRIPCIÓN DE LA SOLUCIÓN PROPUESTA
-## 10. 
+
+### 8.1 DINÁMICA OCEÁNICA
+### 8.2 DISTRIBUCIÓN DE LA ENERGÍA DEL OLEAJE
+
+### 8.3 CLASIFICACIÓN DEL OLEAJE
+
+### 8.4 OLEAJE GENERADO POR EL VIENTO
+
+### 8.5 TÉCNICAS DE ESTUDIO DEL OLEAJE
+
+
+
+## 9. IMPACTOS AMBIENTALES
+
+### 9.1 IMPACTO SOBRE LA VIDA DEL LITORAL
+
+### 9.2 IMPACTO SOBRE LA VIDA MARINA
+
+### 9.3 IMPACTO SOBRE LA MORFOLOGÍA
+
+### 9.4 OTROS IMPACTOS
+
+
+
+## 10. ASPECTOS ECONÓMICOS
+
+### 10.1 CONTEXTO ENERGÉTICO
+
+### 10.2 COSTES
+
+### 10.3 NOVEDADES DESTACABLES 
+

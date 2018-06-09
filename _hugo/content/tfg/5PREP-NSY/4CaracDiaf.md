@@ -14,7 +14,9 @@ En el caso del diafragma, las líneas de corriente convergen para formar un áre
 
 ### 4.2.1 Descripción
 
-Las primeras mediciones se realizan en el ensayo preparado para las prácticas de la asignatura de fluidos, [imgM1] con un ventilador (KLD012PP040GSWH) de $12V$ DC $0,09A$ al que se le puede variar las revoluciones por minuto, colocado en la parte central de una tubería de diámetro $113 mm$, abierta por ambos lados. En un extremo hay una tapa de apertura variable, que se tomará de referencia para sustituirla por una hecha con la impresora 3D, que contenga un iris de $12,5 mm$, siguiendo las indicaciones de la norma. Además, cuenta con dos tomas de presión estática y un Tubo de Pitot.
+Las primeras mediciones se realizan en el ensayo preparado para las prácticas de la asignatura de fluidos, [imgM1] con un ventilador (KLD012PP040GSWH) de $12V$ DC $0,09A$ al que se le puede variar las revoluciones por minuto, colocado en la parte central de una tubería de diámetro $113 mm$, abierta por ambos lados. En un extremo hay una tapa de apertura variable, que se tomará de referencia para sustituirla por una hecha con la impresora 3D, que contenga una apertura de $12,5 mm$, siguiendo las indicaciones de la norma. Además, cuenta con dos tomas de presión estática y un Tubo de Pitot.
+
+ensayo en un tubo con una relación de diámetros *-+β = d/D = 12.5/113 = 0.11*
 
 Se procederá a variar la altura del Tubo de Pitot para capturar diferentes medidas de la presión dinámica. Apartir de este dato, obtener la velocidad en función de la altura e integrando, dar con la velocidad media. Entonces, será posible hallar el caudal y la constante Kv.
 

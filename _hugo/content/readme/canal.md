@@ -7,7 +7,7 @@ date: 2016-01-01
 ---
 
 # canal
-En este caso se trata de simular el colapso de una columna de agua a través de un canal con pendiente positiva.
+En este caso se trata de simular el colapso de una columna de agua a través de un canal con pendiente positiva. En este caso se utiliza la utilidad *snappyHexMesh* para realizar el tallado del modelo, generado en OpenSCAD y definidas las regiones desde Blender. Así mismo, se utiliza Docker, para ejecutar las simulaciones sin necesidad de instalar las librerías de OpenFOAM.
 
 ## Resumen de los pasos a realizar
 - Generar la geometría mediante OpenSCAD y exportarlo a STL.
@@ -39,10 +39,10 @@ Dimensiones del depósito: (250x460x320)mm.
 Dimensiones del canal: (80x2500x260)mm.
 
 Finalmente se exporta a formato STL para poder ejecutarlo desde Blender, el fichero se encuentra en `/of-dsgn/STL/canal2D.stl`. Las tareas de escalado, rotación o traslación del objeto es recomendable realizarlas antes de pasar al Blender.
- 
+
 ### Blender
 *Herramienta de fuentes libres y abiertas para la creación de modelos en 3D, disponble para la mayoría de sistemas operativos bajo la licencia GNU General Public License. Para usar Blender con OpenFOAM se añaden los complementos* [1.SwiftBlock y SwiftSnap] *permitiendo que el usuario pueda especificar el nombre de las áreas, configurar la resolución y el mallado de las capas superficiales.*
- 
+
 Se ejecuta el Blender y se importa el modelo `canal2D.stl` para definir las regiones. Antes que nada, se debe comprobar que los complementos (add-on) correspondientes a OpenFOAM están activado. Accediendo a las opciones de usuario `Ctrl+Alt+U` o File>UserPreferences>openfoam>swiftSnap. 
 Si es la primera vez que se arranca el programa será necesario descargar los complementos alojados en gitHub [2.SwiftBlock] para crear el diccionario `blockMeshDict`, [3.SwiftSnap] para crear el diccionario `snappyHexMeshDict`. 
 BlockMesh

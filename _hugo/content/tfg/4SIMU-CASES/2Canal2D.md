@@ -6,16 +6,10 @@ publishdate: 2016-01-01
 date: 2016-01-01
 ---
 
-///// see case__sum_up
-
 CANAL 2-D
 ===
 
- que, a continuación se detallan, se simularon
-
-aunque sea un caso en 2D, OpenFOAM siempre opera en 3D, ademas como para hallar el caudal, al intervenir la profundidad en cálculo del área de salida, los resultados diferirán en exceso del experimento 
-
-Estructura del caso 
+Este caso, como ya se ha mencionado, es el resultado de las pruebas realizadas con anterioridad, tanto en el laboratorio como con la simulación de varios casos, donde se fueron implementando utilidades y funciones de ejemplos de OpenFOAM. A continuación se presenta la estructura del caso: 
 
 ```
 + <case>
@@ -34,7 +28,9 @@ Estructura del caso
 --- turbulenceProperties
 -+ system
 --- blockMeshDict
---- topoSetDict
+--- topoSetDict1
+--- topoSetDict2
+--- topoSetDict3
 --- setFields
 --- fvSchemes
 --- fvSolution
@@ -45,109 +41,185 @@ Estructura del caso
 
 
 
-geometría del modelo
+## Definición del caso
 
-los bloques y el número de vértices
+- Objetivos planteados:
 
-![block](../../../../../../Documentos/OWCESOF/cfd/wkp/CASECANAL/CANALspt/CANAL2D/18-owc-D19d12/block.png)
+  - Llenar el canal hasta sobrepasar la altura de la entrada de agua a la cámara. Esto hará que la caida de agua y entrada en la cámara no sea tan brusca y se pueda medir adecuadamente la presión a la salida.
+  - Obtener la altura media del volumen de agua, dentro de la cámara.
+  - Hallar el flujo de salida a través del diafragma.
+  - Calcular el valor de la presión manométrica aguas arriba del diafragma.
 
+- Preparación del modelo/Definición de *blockMeshDict*
 
+  - En este caso la malla definida, es estructurada y hexaédrica, compuesta por 7 bloques y una anchura de celda de aproximadamente $2 mm$. 
 
+  - Se definen los siguientes contornos: *leftWall, rightWall, lowerWall, atmosphere, aoutflow, topWall, defaultFaces*.
 
+  - Las dimensiones expresadas por las posiciones de los vértices se multiplican por 0,001 para convertirlas a metros, el orden también es importante, ver [User Guide: 5.3 Mesh generation with clockMesh](https://cfd.direct/openfoam/user-guide/blockmesh/), a continuación se definen las medidas consideradas:
 
+    ![DimCanal2D](imgCFD/DimCanal2D.png)
 
+    **FiguraX**: Imagen con la representación de las medidas mínimas necesarias.
 
-![dmesh](../../../../../../Documentos/OWCESOF/cfd/wkp/CASECANAL/CANALspt/CANAL2D/19-owc-D19d12-z19/mesh-front.png)
+    ​
 
+- Propiedades físicas:
 
+  - Las propiedades del agua se mantienen como en el caso *"damBreak"* donde la *viscosidad cinemática `nu`* se definía como $1\times10^{-6} m^2/s$ y la *densidad (`rho`)* de $1000 kg/m^3$. 
+  - En cambio para el aire se establece una $\nu=1,5 \times ^{-5} m^2/s$ y una $\rho=1.2kg/m^3$.
 
-![water](../../../../../../Documentos/OWCESOF/cfd/wkp/CASECANAL/CANALspt/CANAL2D/19-owc-D19d12-z19/water.png)
+- Condiciones iniciales:
 
-![setF2](../../../../../../Documentos/OWCESOF/cfd/wkp/CASECANAL/CANALspt/CANAL2D/19-owc-D19d12-z19/setF2.png)
+  - Se comprueba que los contornos definidos en *blockMeshDict* correspondan con los definidos para cada variable principal implicada en el caso.
 
-En este caso se trata de simular el colapso de una columna de agua a través de un canal con pendiente positiva.
+  - Para no tener que complicar el modelo en exceso, se incluye la utilidad [TopoSet](https://openfoamwiki.net/index.php/TopoSet), que permitirá añadir la pared que delimitará la cámara (con una abertura de $25mm$ en *"y"* para dejar pasar el agua) y el diafragma (representado por una rendija rectangular de $19,6mm$ en *"x"*) en la parte superior de la chimenea. 
 
-Resumen de los pasos a realizar
----
+    Por tanto, se generan tres diccionarios, ubicados en <./system/>, de forma que las celdas comprendidas en los prismas definidos (como en el diccionario *setFieldsDict*) se conviertan en paredes (medidas expresadas en metros):
 
-- Generar la geometría mediante OpenSCAD y exportarlo a STL.
-- Utilizar Blender para separar el objeto en regiones (*patches*) y exportarlo a un nuevo STL.
-- Crear una malla base con `blockMeshDict`.
-- Tallar el modelo en la malla base mediante `snappyHexMeshDict`.
-- Copiar el caso a la carpeta compartida de Docker.
-- Arrancar Docker.
-- Entrar en la carpeta del caso y ejecutar el resolvedor.
-- Salir de Docker.
-- Arrancar ParaView y abrir el fitxero .foam, donde se montarán los resultados generados por OpenFOAM.
+    - Pared vertical: `(1.693 0.1 0) (1.699 0.325 1)`.  
 
+    - Pared diafragma izquierda: a=`(1.7292 0.639 0)` b=`(1.73275 0.641 1)`.
 
+    - Pared diafragma derecha: c=`(1.74525 0.639 0)` d= `(1.7488 0.641 1)`.
 
-Generación del modelo
----
+      ![diafCanal2D](imgCFD/diafCanal2D.png)
 
-### OpenSCAD
+      **FiguraX**: Representación del diafragma, colocado en la parte superior del tubo de salida.
 
-*Software libre, disponible para GNU/Linux, MS Windows y Apple OS X, utilizado para crear objetos en CAD de sólidos en 3D y exportable en formato STL. Permite definir el diseño por parámetros configurables, dándole al usuario un total control sobre el proceso de modelado. Además, no está enfocado para aspectos artísticos del modelado en 3D, pudiendo restarle tiempo al procesamiento de la solución.*
+      ​
 
-El diseño que hace referencia al canal del laboratorio, generado con OpenSCAD, se puede encontrar en `/of-dsgn/SCAD/canalOF.scad`. Se ha definido un ángulo de inclinación de 6 grados (originado por una diferencia de altura de 150mm de uno de los apoyos separados 1500mm entre sí).
-Dimensiones del depósito: (250x460x320)mm.
-Dimensiones del canal: (80x2500x260)mm.
+  - La condición inicial del volumen de agua se define mediante dos prismas, uno hasta la compuerta (a $600mm$ en *"x"* y $220mm$ en *"y"*); y el otro sobrepasando la entrada de agua a la cámara (hasta una altura en el canal de $45mm$), expresado en el diccionario *setFieldsDict* (en metros):
 
-Finalmente se exporta a formato STL para poder ejecutarlo desde Blender, el fichero se encuentra en `/of-dsgn/STL/canal2D.stl`. Las tareas de escalado, rotación o traslación del objeto es recomendable realizarlas antes de pasar a Blender.
+    - Volumen1= `(0 0 -1) (.60 .22 1)`.
+    - Volumen2= `(.60 0 -1) (1.779 .12 1)`.
 
-### Blender
+- Obtención de resultados:
 
-*Herramienta de fuentes libres y abiertas para la creación de modelos en 3D, disponble para la mayoría de sistemas operativos bajo la licencia GNU General Public License. Para usar Blender con OpenFOAM se añaden los complementos* [1.SwiftBlock y SwiftSnap] *permitiendo que el usuario pueda especificar el nombre de las áreas, configurar la resolución y el mallado de las capas superficiales.*
+  - Las funciones introducidas en <./system/controlDict> servirán para hallar un fichero con los valores de la presión en un punto a lo largo del tiempo; así como, el flujo a través del diafragma.
 
-Se ejecuta el Blender y se importa el modelo `canal2D.stl` para definir las regiones. Antes que nada, se debe comprobar que los complementos (add-on) correspondientes a OpenFOAM están activado. Accediendo a las opciones de usuario `Ctrl+Alt+U` o File>UserPreferences>openfoam>swiftSnap. 
-Si es la primera vez que se arranca el programa será necesario descargar los complementos alojados en gitHub [2.SwiftBlock] para crear el diccionario `blockMeshDict`, [3.SwiftSnap] para crear el diccionario `snappyHexMeshDict`. 
-BlockMesh
+    - El punto para medir la presión se obtiene del ensayo, más adelante se detallará. Por otro lado, el centroide más aproximado que corresponda a la ubicación se puede hallar con la función `singleGraph`, donde se estima un punto de inicio y otro final para hallar los valores en los centroides intermedios (se guardan en directorios separados por el paso del tiempo). En este caso el punto definido en el diccionario <./system/probes>, expresado en metros, es: `(1.739 0.618 0.0098)`.
 
-- Para BlockMesh: `git clone https://github.com/nogenmyr/swiftBlock.git`.
-- Copiar los archivos de extensión `*.py` en la carpeta de instalación de Blender, ruta:  <usr/scripts/addons/swiftBlock> habiendo creado la última carpeta previamente: `sudo cp ~/Descargas/Blender/blender_utils.py ~/Descargas/Blender/__init__.py ~/Descargas/Blender/previewMesh.py ~/Descargas/Blender/utils.py /usr/share/blender/2.76/scripts/addons/swiftBlock/`
-- Arrancar Blender, activar los complementos necesarios `all>import/Export STL. Community>OpenFOAM>swiftBlock` e importar el archivo STL.
-- Desde `Edit Mode` se seleccionan las caras que pertenezcan a una misma región y pulsando la tecla `P` y indicando `Selection`, se agruparán dichas caras a un nuevo objeto.
-- Esta operación se repetirá, tantas veces como regiones se quieran definir, y se renombrarán coherentemente en el árbol de objetos, tanto los objetos como su subestructura (vértices y líneas que conforman una cara, como se va a utilizar snapyyHexMesh, no se realiza un mallado preciso, manteniendo la división predefinida por OpenSCAD). En este caso se definen las caras superiores como `atmosphere`, las caras anteriores y posteriores como `frontback` y las restantes como `allwall`.
-- Se exporta cada objeto por separado en formato STL, escogiendo el lenguaje ASCII, en `/of-dsgn/STL/canal2D_STL`
-- El modelo de Blender se podrá hallar en `of-dsgn/blender/canal2D.blend`.
-- Cada objeto se encuentra en un fichero cuya primera línea es `solid Exported from Blender-2.75 (sub 0)` y la última `endsolid Exported from Blender-2.75 (sub 0)`. Se sustituye para incluir el nombre de la región (por ejemplo, `solid atmosphere` y `endsolid atmosphere`), y se une el contenido de todos ellos en un solo fichero, `/of-run/canal2D/constant/triSurface/canal2D.stl`.
+      ![probeCanal2D](imgCFD/probeCanal2D.png)
 
-### Preparación del BlockMeshDict de base
+      FiguraX: Boceto que representa el punto de medición de la presión.
 
-La cual, definirá la extensión del dominio computacional y el nivel base de densidad del mallado. A la hora de diseñar el `blockMeshDict`, sus dimensiones deberánse deberá tener en cuenta los criterios indicados en [4.User Guide/snnapyHexMesh].
+      ​
 
-- La malla estará conformada puramente de hexaedros.
-- La proporción del mallado es recomendable que sea 1:1:1, de lo contrario la convergencia del algoritmo sería lenta y podría dar lugar a error en coincidencia de puntos.
-- Deberá haber al menos una celda que interseccione con cada región del modelo. Además, las dimensiones del mallado de base deberán acoger por completo el modelo que se "tallará".
+    - La función para hallar el flujo de salida (*outletFlux*) se determina en el propio *controlDict*, donde se define el campo a calcular `rhoPhi`($\frac {kg}{m^3} \frac {m}{s}= \frac {kg}{s} · \frac {1}{m^2}$) y sobre qué región `outflow`. Estos resultados se guardarán a lo largo del tiempo en un solo fichero.
 
-------
+  - La altura del agua dentro de la cámara se determina una vez simulado el caso, a partir de un *script* generado en lenguaje de *Python* y ejecutado desde ParaView. Este *script*, completamente explicado en [ali-ramezani/OpenFOAM-Tips](https://github.com/ali-ramezani/OpenFOAM-Tips), se genera desde la opción *Tools/Start Trace* del menú de ParaView; realizando los pasos de acontinuación; y volviendo al menú, a *Tools/Stop Trace*. 
 
-[1.SwiftBlock y SwiftSnap](https://openfoamwiki.net/index.php/Blender)
-[2.SwiftBlock](https://openfoamwiki.net/index.php/Contrib/SwiftBlock)
-[3.SwiftSnap](https://openfoamwiki.net/index.php/Contrib/SwiftSnap)
-[4.User Guide/snnapyHexMesh](http://cfd.direct/openfoam/user-guide/snappyHexMesh/#x26-1540005.4.2)
+    - Abrir desde *ParaView* el fichero *a.foam* del caso (fichero vacio que sirve para post-procesar los resultados de las carpetas de cada paso del tiempo desde ParaView. Al ejecutar `paraFoam` este fichero se genera automáticamente para mostrar los resultados; en cambio, si se abre *ParaView* se tendrá que crear a parte).
+    - Trasladar la información a los puntos usando el filtro *CellDataPointData*.
+    - Se realiza un corte en el plano *"y"* en la posición [1.699, 0.3, 0.05] donde comienza la cámara.
+    - Crear un contorno para *alpha.water=0.5*, donde se encuentra la interfase.
+    - Añadir un nuevo escalar que almacene los datos del nivel del agua.
+    - Integrar el contorno de la superficie 3D para obtener un valor promedio del nivel del agua.
+
+    Se dejan los campos mínimos necesarios para obtener la altura de la SLL, ya que no se requiere la visualización gráfica. Finalmente, se añaden al *script* las ordenes convenientes para guardar en un fichero CSV el resultado de la división *ylevel/Area* a lo largo del tiempo. 
 
 
 
-monitorización del caudal a la salida
 
-1. Incluyendo la función en el subdiccionario de funciones dentro del fichero <./system/controlDict> del caso:
+## Ejecución del caso
+
+El procesado se puede realizar ejecutando el *script* `Allrun` donde se describen las siguientes instrucciones:
+
+1. Mediante la orden `blockMesh`, se descompone el dominio en sus tres ejes por hexaedros y se escriben los datos de los puntos, caras, celdas de la malla. 
+
+   ![blockcanal2D19](imgCFD/blockcanal2D19.png)
+
+   **FiguraX**: Representación de los vértices y bloques del modelo.
+
+   ​
+
+2. ​La adición de las diferentes paredes se implementa como en el ejemplo de <$FOAM_run/multiphase/interFoam/les/nozzleFlow2D>:
 
    ```
-   functions
-   {
-       #includeFunc  flowRatePatch
-       …  other function objects here … 
-   } 
+   for i in 1 2 3
+   do
+       runApplication -s $i \
+           topoSet -dict system/topoSetDict${i}
+
+       runApplication -s $i \
+           subsetMesh -overwrite c0 -patch internalWalls
+   done
    ```
 
-   Además, se añade el fichero de configuración ubicado en <./system/flowRatePatch>, localizado en el directorio <$FOAM_ETC/caseDicts/postProcessing>.
+3. La condición inicial del agua se agrega mediante la orden: `setFields`
+
+4. Finalmente, se ejecuta `interFoam &` en segundo plano para lanzar, al mismo tiempo, la orden `pyFoamPlotWatcher.py log.interFoam`, la cual obtiene del registro los residuos de las variables principales.
+
+   ![residualsCanal2D19](imgCFD/residualsCanal2D19.png)
+
+   **FiguraX**: residuos del caso ejecutado. [/gea-waves/of-run/canal2Dowc19-12-19]
 
 
 
+![canal2D19](imgCFD/canal2D19.png)
 
-post Procesado con ParaView
+**FiguraX**: Imágenes de la visualización del caso desde *ParaView*. [/gea-waves/of-run/canal2Dowc19-12-19]
 
-Para calcular Q= U·A
+////les añado el filtro Glyph-U???????
 
-Hallar 
+## Resultados obtenidos
+
+Una vez ejecutado el caso se pueden obtener los siguientes resultados:
+
+1. Del fichero <./log.blockMesh> se puede hallar:
+
+   - Número de celdas: 121.190
+   - Dominio (*boundingBox*) en [m]: (0 0 0) (1.779 0.641 0.0196)
+
+2. Para ejecutar el script de *Python* y hallar la altura del nivel de agua en la cámara:
+
+   - Completar de forma adecuada los datos de entrada, al comienzo del *script*.
+   - Ejecutar el *script* desde ParaView en *Herramientas/Python Shell/Ejecutar script*.
+
+   El archivo de salida se guarda en la carpeta del caso, listo para trazar el gráfico desde una herramienta indicada para ello, en este caso se utiliza un *script* <./RunWL> para generarlo automáticamente desde Gnuplot: 
+
+   ![WLCanal2D19](imgCFD/WLCanal2D19.jpg)
+
+   **Gráfica/FiguraX**: Representación gráfica del nivel del agua dentro de la cámara a lo largo del tiempo.
+
+   ​
+
+3. La presión manométrica en el punto mencionado, se escribe en el fichero <./portProcessing/probes/0/P>. No obstante, el valor de ésta es negativo, con lo que se utiliza un *script*  generado en *ParaView* para hallar esta medida. 
+
+   De forma análoga al proceso de obtención del nivel de agua dentro de la cámara, desde ParaView se guardan los siguientes pasos en un *script* <./prgh.py> que luego, habrá que ejecutar, para escribir la solución a lo largo del tiempo:
+
+   - Desde el menú de *ParaView* *Tools/Start Trace*.
+     - Abrir el fichero *a.foam*.
+     - Trasladar la información a los puntos con el filtro *cellDataToPointData*.
+     - Crear un punto de muestreo *probeLocation* en {1.739, 0.618, 0.0098}.
+     - Aplicar el filtro *Calculator* a la variable *p_rgh*.
+   - Volver al menú y seleccionar *Tools/Stop Trace*, para guardar estos pasos en el *script*.
+
+   Para guardar los resultados a lo largo del tiempo se modifica la parte final del *script* teniendo como referencia el anterior y resolviendo los errores con las respuestas del foro de la comunidad.
+
+   ![PmCanal2D19](imgCFD/PmCanal2D19.jpg)
+
+   Gráfica/Figura X: Medida de la Presión manométrica a lo largo del tiempo. [/gea-waves/of-run/canal2Dowc19-12-19]
+
+4. Los resultados del caudal a través del diafragma se escriben durante la simulación en <./postProcessing/outletFlux/0/surfaceRegion.dat>, para gráficarlos se puede ejecutar el *script* <./RunPlotFlow>:
+
+![FlowRCanal2D19](imgCFD/FlowRCanal2D19.jpg)
+
+​	Gráfica X: Medida del caudal a través del diafragma.
+
+
+
+## Conclusiones
+
+Los valores del caudal y presión manométrica obtenidos, resultan muy bajos, con lo que se realiza una segunda prueba, variando la anchura del modelo de $19,6 mm$ a $80 mm$. Logrando un aumento del caudal y una disminución en la presión manométrica, como se puede apreciar en la siguiente imagen:
+
+![RmFrCanal2D80](imgCFD/RmFrCanal2D80.jpg)
+
+**Gráficas XX y XX**: Presión manométrica aguas arriba del diafragma y flujo de aire a través del mismo.
+
+
+
+Aunque sea un caso en 2-D, OpenFOAM siempre opera en 3-D, las variaciones del volumen de agua al modificar la anchura del modelo resultan significativas para la solución. Junto con esto, también, se han realizado diversas simplificaciones en el modelo (p.e. las superficies curvas son convertidas a rectangulares), por ello los resultados no resultan muy convincentes. En vez de tratar de adaptar estos valores, se concluye que será necesario realizar el modelo en 3-D, para que la solución, a la hora de compararla con la obtenida en el ensayo, no difiera en exceso.
+
+

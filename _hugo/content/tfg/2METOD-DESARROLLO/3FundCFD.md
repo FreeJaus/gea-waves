@@ -142,7 +142,7 @@ La definición de los volúmenes de control, puede hacerse centrada en las celda
 - Las componentes **vectoriales**, es decir, las componentes de la velocidad se almacenan en las caras de las celdas (*face-based*).
 
 
-
+![staggeredGrid](imgFBasic/staggeredGrid.PNG)
 
 **FiguraX**: Mallado decalado (*staggered grid*) [TN p93]
 
@@ -271,6 +271,7 @@ Todas las leyes de la mecánica están escritas para sistemas definidos como can
    $$
    \dot{Q}-\dot{W}=\frac {dE}{dt}
    $$
+
 
 
 

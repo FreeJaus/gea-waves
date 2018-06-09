@@ -67,7 +67,7 @@ A lo largo de los años se han realizado muchas mejoras, se han añadido funcion
 
 Durante el transcurso de las simulaciones se ha trabajado con diferentes versiones. No obstante, los cambios necesarios para adecuar un caso de una versión a otra pueden detectarse fácilmente comparando el mismo caso de tutorial mediante alguna herramienta de comparación de archivos (como *WinMerge* o *meld*).
 
-Adicionalmente, si se opta por usar [Docker](https://www.docker.com/), este permite ejecutar desde terminal o desde [portainer](https://github.com/portainer/portainer) un entorno personalizado (comúnmente conocido como un *contenerdor*) que incluye la *imagen* del código, además de herramientas y librerias necesarias para procesar y visualizar el caso. Así mismo, esta herramienta utiliza toda la potencia del ordenador (a partir de la versión de windows 10). 
+Adicionalmente, si se opta por usar [Docker](https://docs.docker.com/docker-for-windows/), este permite ejecutar desde terminal o desde [portainer](https://github.com/portainer/portainer) un entorno personalizado (comúnmente conocido como un *contenerdor*) que incluye la *imagen* del código, además de herramientas y librerias necesarias para procesar y visualizar el caso. Así mismo, esta herramienta utiliza toda la potencia del ordenador (a partir de la versión de windows 10). 
 
 
 

@@ -376,7 +376,7 @@ Los prototipos estudiados para esta ubicación son, entre otros:
 
 
 
-## 6.3 ACTUALIDAD DEL DESARROLLO TECNOLÓGICO EN ESPAÑA
+## 6.4 ACTUALIDAD DEL DESARROLLO TECNOLÓGICO EN ESPAÑA
 
 La gran disponibilidad de energía de oleaje de algunos países ha llevado a gobiernos y empresas a financiar e impulsar programas de investigación y desarrollo. Anteriormente, se ha visto como países europeos como Dinamarca, Irlanda, Noruega, Reino Unido y Portugal apuestan fuertemente en sus investigaciones en energía undimotriz. También a nivel mundial se han llevado a cabo programas en sitios donde existe un gran potencial como Australia, Canadá, Japón y Estados Unidos entre otros.
 

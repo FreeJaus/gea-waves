@@ -15,4 +15,4 @@ En general todos los prototipos presentan los mismos retos tecnológicos :
 - ​
 
 
-
+![OWC](imgMemoria/OWC.png)

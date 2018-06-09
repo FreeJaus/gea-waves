@@ -63,7 +63,7 @@ Para generar el arcivo **STL** se disponen varias alternativas:
 
 #### [OpenSCAD](www.openscad.org)
 
-Se trata de un lenguaje declarativo, ofrece una interfaz mínima y sencilla donde introducir un conjunto limitado de funciones primitivas para generar sólidos en 3D de forma paramétrica. Programa basado en la construcción de sólidos (*Constructive Solid Geometry*, CSG), lo cual evita errores de superficies mal conectadas.
+Se trata de un lenguaje declarativo, multiplataforma, ofrece una interfaz mínima y sencilla donde introducir un conjunto limitado de funciones primitivas para generar sólidos en 3D de forma paramétrica. Programa basado en la construcción de sólidos (*Constructive Solid Geometry*, CSG), lo cual evita errores de superficies mal conectadas.
 
 Su estructura puede simplificarse en 3 categorías: formas (cubos, cilindros, esferas); transformaciones (trasladas, girar, escalar, simetría); y operaciones CSG (unión, diferencia, intersección). [Know only 10 things to be dangerous in OpenSCAD](https://cubehero.com/2013/11/19/know-only-10-things-to-be-dangerous-in-openscad/)
 
@@ -135,9 +135,13 @@ Licencia GNU LGPL
 
 Software que proporciona una plataforma genérica para el pre y postprocesado de simulaciones numéricas. Se basa en una arquitectura abierta y flexible hecha con componentes reutilizables.
 
-- http://www.calumdouglas.ch/openfoam-example-3d-dambreak/
+- [Salome to OpenFOAM mesh conversion tutorial](http://staff.um.edu.mt/__data/assets/pdf_file/0016/106144/Salome_to_OpenFOAM.pdf)
 - http://www.cfd-online.com/Forums/openfoam-meshing-open/73971-mesh-conversion-salome-openfoam.html
 - http://www.cfd-online.com/Forums/openfoam-meshing-open/76222-boundary-conditions-mesh-exporting.html
+- [Video Tutorial: Meshing With Body Fitting](https://www.youtube.com/watch?v=4xmSjjoioxI)
+- [Salome body fitting for OpenFOAM case](https://www.cfd-online.com/Forums/openfoam-meshing/142435-salome-body-fitting-openfoam-case.html)
+  - [Exporting a salome mesh to OpenFOAM](http://www.salome-platform.org/forum/forum_12/23863165#686106)
+    - [python script that exports a mesh to OpenFOAM](https://github.com/nicolasedh/salomeToOpenFOAM)
 - https://www.youtube.com/watch?v=1zQbU-E4k1U
 - [CFMesh: feature definition or extraction in the .stl file](https://www.cfd-online.com/Forums/openfoam-meshing-snappyhexmesh/142250-cfmesh-feature-definition-extraction-stl-file.html)
   Salome gets too much time for boolean operations on native .stl files
@@ -270,15 +274,29 @@ HELYX-OS is an open-source Graphical User Interface designed to work natively wi
 
 - El código fuente, los archivos binarios para Linux y las instrucciones de instalación para HELYX-OS.
 
-#### docker
+#### [docker](https://www.docker.com/)
+
+Se trata de una herramienta desarrollada para crear aplicaciones en contenedores que luego se borrarán del sistema, ofreciendo la posibilidad de arrancar la imagen del programa requerido, en el sistema operativo más indicado:  
+
+- Imágenes creadas por la comunidad y por los propios desarrolladores de algunos programas, las cuales se pueden descargar desde [Docker Hub](https://hub.docker.com).
+
+- Artículo que describe la imagen de OpenFOAM, para poder ser ejecutada desde Docker: [How to install OpenFOAM anywhere with Docker](https://www.cfdengine.com/blog/how-to-install-openfoam-anywhere-with-docker/).
+
+- [Dockerfile](https://hub.docker.com/r/quantumhpc/openfoam/~/dockerfile/) es donde se guardan las instrucciones de lo que contiene el contenedor para crear la imagen a ejecutar. Es un archivo equivalente a un *script*.
+
+- Para compartir una carpeta del anfitrión con el contenedor, se necesita arrancar la imagen con el argumento `:Z`, de forma que se puedan saltar los permisos de seguridad de linux, [Docker can write to directory mounted](http://stackoverflow.com/questions/32001523/docker-cant-write-to-directory-mounted-using-v-unless-it-has-777-permissions).
 
 
 
-gitHub-travis-docker
+#### Travis
 
-marcdown
+Travis CI es un servidor que se sincroniza con los proyectos subidos a GitHub para realizar automáticamente las pruebas del código que se hayan implementado y guardarlas de forma comprimida en el repositorio.
 
-portainer
+Comunmente se usa para comprobaciones de códigos o cambios concretos en el mismo, así como para revisar la compatibilidad con diferentes entornos. Es decir, para la integración continua de modificaciones que requieran verificar la ausencia de errores (*test early*). 
+
+#### marcdown
+
+#### portainer
 
 ## 1.3 Experimentación
 

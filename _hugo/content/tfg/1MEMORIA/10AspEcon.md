@@ -144,7 +144,7 @@ Figura 10.5: Representación de la hoja de ruta de la Estrategia de Cambio Clim�
 
 
 
-## 10.2 Costes
+## 10.2 COSTES
 
 El coste de la energía undimotriz depende de muchos factores, entre ellos el coste capital y el coste de operación y mantenimiento. La cantidad de energía producida vendrá relacionada con el coste, ya que si un dispositivo trabaja proporcionando gran cantidad de energía, el coste ponderado será menor que en uno cuya eficiencia es escasa. El balance entre lo que supone económicamente producir y la cantidad que al final se obtiene determinará el coste de la energía y si su explotación es viable desde el punto de vista económico.
 
@@ -172,7 +172,7 @@ Debido a la falta de proyectos comerciales instalados en la actualidad para la m
 
 
 
-## 10.3 Avances destacables
+## 10.3 NOVEDADES DESTACABLES
 
 - [Agencia Insular de Energía de Tenerife](http://www.agenergia.org/index.php?section=20)
 
@@ -214,7 +214,7 @@ Debido a la falta de proyectos comerciales instalados en la actualidad para la m
 
 - Oceantec Marmok
 
-  Respecto a la tecnología desarrollada en la actualidad, a modo de ejemplo, se pueden destacar las pricipales ventajas del convertidor de [Oceantec](http://www.oceantecenergy.com/desarrollo-tecnologico/), explicado con más detalle en la sección de (Alternativas para el aprovechamiento del océano):
+  Respecto a la tecnología desarrollada en la actualidad, a modo de ejemplo, se pueden destacar las pricipales ventajas del convertidor de [Oceantec](http://www.oceantecenergy.com/desarrollo-tecnologico/), explicado con más detalle en la sección de [6. Análisis de Alternativas]():
 
   - Supervivencia: Las boyas cilíndricas han demostrado su supervivencia por muchos años. Hay boyas de navegación con formas similares que han estado sometidas casi 100 años a las condiciones de mar abierto.
   - Bajo coste de mantenimiento asociado a su simplicidad: El convertidor de OCEANTEC tan solo tiene una parte móvil, la turbina, que es fácilmente accesible para trabajos de mantenimiento. Este hecho incrementa drásticamente la confiabilidad y reduce el coste de mantenimiento en comparación con otras tecnologías de captación de energía de las olas.

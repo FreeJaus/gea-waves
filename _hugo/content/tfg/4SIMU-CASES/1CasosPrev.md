@@ -158,7 +158,7 @@ En este caso, se modifican los vértices del modelo desde el fichero blockMeshDi
 
 - Objetivos planteados:
   - Comenzar a realizar cambios en la geometría que permitan ir viendo como llegar a la solución final.
-  - Implementar el modelo de turbulencia $k-\epsilon$, para observar los cambios en el movimiento del flujo.
+  - Implementar el modelo de turbulencia $k-\epsilon$, para observar los cambios en la representación del movimiento del flujo.
   - Aumentar el volumen inicial de agua, ya que se necesita representar una  columna oscilante de agua en la parte de la cámara (representada a la derecha, abierta por el fondo).
 
 - Modelo del caso:
@@ -282,17 +282,19 @@ Por un lado se describe la malla base con *blockMeshDict* (el tamaño de las cel
 
 Se pueden ejecutar todas las tareas de forma automatizada mediante la orden `./RunCase damBreakSnappy` desde el directorio donde se encuentra el *script*. En este archivo se incluyen los pasos:
 
-1. Se ejecuta `blockMesh`.
-2. Se ejecuta `snappyHexMesh`.
-3. Se mueven los ficheros correspondientes a la malla creada por blockMesh del directorio <./constant> a un nuevo directorio <./constant.bm>.
-4. Se mueven los ficheros contenidos en la carpeta <./0.002>, creados por snappyHexMesh, a la carpeta <./constant>.
-5. Se eliminan los directorios 0.001 y 0.002.
-6. Se ejecuta `checkMesh` para comprobar que la malla es válidad.
-7. Se copia 0/alpha.water.org a 0/alpha.water
-8. Se ejecuta `setFields`. Si se muestra algún error, se debe comprobar que las regiones indicadas en <./constant/polyMesh/boundary> coinciden con los condornos de los ficheros de la carpeta <./0>.
-9. Se ejecuta `interFoam`.
-10. Se ejecuta paraFoam para visualizar los resultados.
-11. Se borra `0/alpha.water` al cerrar paraFoam.
+1. Generar la geometría desde OpenSCAD y exportar a STL.
+2. Utilizar Blender para definir las regiones (*patches*) y exportar a un nuevo STL.
+3. Se ejecuta `blockMesh`.
+4. Se ejecuta `snappyHexMesh`.
+5. Se mueven los ficheros correspondientes a la malla creada por blockMesh del directorio <./constant> a un nuevo directorio <./constant.bm>.
+6. Se mueven los ficheros contenidos en la carpeta <./0.002>, creados por snappyHexMesh, a la carpeta <./constant>.
+7. Se eliminan los directorios 0.001 y 0.002.
+8. Se ejecuta `checkMesh` para comprobar que la malla es válidad.
+9. Se copia 0/alpha.water.org a 0/alpha.water
+10. Se ejecuta `setFields`. Si se muestra algún error, se debe comprobar que las regiones indicadas en <./constant/polyMesh/boundary> coinciden con los condornos de los ficheros de la carpeta <./0>.
+11. Se ejecuta `interFoam`.
+12. Se ejecuta paraFoam para visualizar los resultados.
+13. Se borra `0/alpha.water` al cerrar paraFoam.
 
 ![damBreakSnappy](imgCFD/damBreakSnappy.png)
 
