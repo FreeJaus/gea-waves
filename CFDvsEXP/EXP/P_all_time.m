@@ -7,6 +7,9 @@ allcases={...
 
 alltitles={'D13', 'D14', 'D15,5', 'D16'};
 
+TsEXP=1/5000;
+TsCFD=0.05;
+
 for k=1:max(size(allcases));
   
   cases = allcases{k};
@@ -29,18 +32,18 @@ for k=1:max(size(allcases));
   end
 
   subplot(2,2,k)
-  x=0.00025*[1:max(size(wave_mat))]';
+  x=TsEXP*[1:max(size(wave_mat))]';
   %plot(x(:,ones(1,num_cases)), wave_mat);
 
-  plot(x, wave_mat(:,1), '-.',...
-       x, wave_mat(:,2), '-.',...
-       x, wave_mat(:,3), '-.',...
-       x, wave_mat(:,4), '-..');
+  plot(x, wave_mat(:,1), 'b-.',...
+       x, wave_mat(:,2), 'b-.',...
+       x, wave_mat(:,3), 'b-.',...
+       x, wave_mat(:,4), 'r-.');
 
-  axis( [ 0, 1 ] )
+  axis( [ 0, 0.8 ] )
   title(alltitles{k})
   ylabel ("Pm [Pa]")
   xlabel ("Tiempo [seg]")
-  legend(leg)
+  legend(leg, "location", "northeast");
 
 end

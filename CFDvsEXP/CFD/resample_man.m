@@ -2,19 +2,21 @@ cases = {...
   'D13','D14','D15c5','D16'...
 }
 
+Ts=1/5000;
+
 for c=1:max(size(cases));
   clear X factor i p Y j
 
   X = csvread(sprintf('owc%s/rghPressure.csv', cases{c}));
   X = X(3:end,:);
-  factor = ( X(2,1)-X(1,1) ) / 0.00025;
+  factor = ( X(2,1)-X(1,1) ) / Ts;
   i = 1;
   for k=1:max(size(X));
     p = X(k,1);
     Y(i) = p;
     i = i+1;
     for j=1:(factor-1);
-      Y(i,1) = p+0.00025*j;
+      Y(i,1) = p+Ts*j;
       i = i+1;
     end
   end
