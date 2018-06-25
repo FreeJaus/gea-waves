@@ -1,0 +1,47 @@
+% *** PREAMBLE *** %
+\THDFtitle{Estudio computacional y experimental del prototipo columna oscilante de agua para el aprovechamiento de la energía undimotriz}
+\THDFshorttitle{Estudio computacional y experimental OWC}
+\THDFdate{\today}
+
+\THDFdegree{Grado en Ingeniería Mecánica}
+\THDFschool{Escuela de Ingeniería de Bilbao}
+
+\THDFauthor{Leire Maiztegi Fernández}
+\THDFeauthor{lmaiztegi001@ehu.eus}
+\THDFdirector{Iñigo Bidaguren Diego}
+\THDFedirector{i.bidaguren@ehu.eus}
+\THDFdepartment{Departamento de Ingeniería Nuclear y Mecánica de los Fluidos}
+
+\THDFabstract{
+Among the existing factorization algorithms for providing quantitative information about (very) high dimensionality datasets, Singular Value Decomposition (SVD) is, on balance, one of the most accurate and numerically stable. It is commonly used in the solution of unconstrained linear least square estimation (LSE) problems, matrix rank estimation and canonical correlation analysis, and it is a key linear operation in many scientific and engineering applications, such as signal and image processing or data mining and information retrieval. It’s also a basic stage in more complex algorithms, such as Principal Component Analysis (PCA), Latent Semantic Analysis (LSA)... etc.
+
+Fast-processing the SVD algorithm to meet real-time requirements usually necessitate the use of a parallel and direct mapped hardware realization; this is especially so when available computational resources are limited. In this work, a scalable parallel processing architecture for accelerating the SVD of large $m\times n$ matrices is described. The design approach has been comprehensive, from the algorithmic refinement and numerical analysis to the customization for an efficient hardware realization. The processing scheme rests on an adaptive vector rotation evaluator for error regularization that enhances convergence speed with no penalty on the solution accuracy.
+
+Based on a linear array of simple processing-units (PUs), the proposed architecture follows a double data-flow paradigm (FIFO memories and a shared-bus) for optimizing the time spent in data transferences. The PUs, which perform elemental fixed-point column-pair evaluations and rotations, have been designed for an efficient utilization of available FPGA resources and to achieve maximum algorithm speed-ups. The architecture is fully scalable from a two-PU scheme to an arrangement with as many as $n/2$ PUs. This allows for a trade-off between occupied area and processing acceleration in the final implementation, and permits the SVD processor to be implemented both on low-cost and high-end FPGAs.
+
+To analyse, compare and validate each step of the design a toolbox is provided, which is written in the high-level technical computing language and interactive environment provided by MathWorks' MATLAB. It includes several modules to take design decisions concerning algorithm and parameter settings depending on the desired accuracy, resource utilization and timing figures.  In addition, the parameters can be directly set to the VHDL description for bit-true cycle-accurate simulation.
+
+The proposed architecture has been used in two tight real-time applications: image compression through PCA and \gls{lse} problem solving. The system has been prototyped on Spartan-6 and Kintex-7 devices for performance comparison. Resource utilization and timing figures are presented.
+}
+
+\THDFacknow{
+Foremost, I would like to express my sincere gratitude to my director and advisor, Prof. Koldo Basterretxea Oyarzabal, for the seeds and germinal references that lead to the research this work is based on, and for the continuous and very valuable support and motivation. His guidance helped me dive into the exciting area of application specific arithmetic design, and let me meet researchers and practitioners from both academia and industry around the world. His encouragement and patience drove me to a journey I would otherwise not have imagined.
+
+I am also grateful to the staff at both research groups, Digital Electronics Design Group (\href{http://www.ehu.eus/gded}{GDED}\footnote{\href{http://www.ehu.eus/gded}{ehu.eus/gded}}) and AdaPtive Electronic Systems (\href{http://www.ehu.eus/apes}{APES}\footnote{\href{http://www.ehu.eus/apes}{ehu.eus/apes}}), for providing me with all the necessary facilities and resources for the research. I would like to express my gratitude to Iñaki Bildosola Agirregomezkorta, for his survey on the multiple methods to compute the SVD, and for sharing the first glances of research, such as the impact of conditioning and size of a given problem, or taking special care of the smallest columns. I also place on record, my sense of gratitude to Raúl Finker de la Iglesia, for the enlightening explanations about how to integrate modules in a SoPC, and for helping in getting reference figures of embedded software applications.
+
+I would like to thank the anonymous reviewers of the \href{http://www.zurich.ibm.com/asap2014/}{ASAP2014}\footnote{\href{http://www.zurich.ibm.com/asap2014/}{zurich.ibm.com/asap2014}} and \href{http://www.fpl2014.org/}{FPL2014}\footnote{\href{http://www.fpl2014.org/}{fpl2014.org}} conferences for their valuable comments and suggestions to improve the papers and the research on the whole. Furthermore, I am also grateful to \citeauthor{schreiber86}\footnote{\href{http://www.hpl.hp.com/people/rob_schreiber/}{hpl.hp.com/people/rob\_schreiber}} for providing a copy of one of his papers which we could not find.
+
+I take this opportunity to express gratitude to all of the schoolmates at the \href{http://www.ehu.eus/eu/web/ingenieria-tecnica-bilbao}{School of Technical Engineering of Bilbao}\footnote{\href{http://www.ehu.eus/eu/web/ingenieria-tecnica-bilbao}{ehu.eus/ingenieria-tecnica-bilbao}}, for sharing discoveries, experiments and insightful conversations, for their support and attention.
+
+Last but not the least, I am extremely thankful and indebted to Julie Mills, Jon Martinez and Arrate Landaluze for helping with both spelling and writing in english.
+}
+
+\THDFdedication{
+To...
+}
+
+\THDFquote{
+``An algorithm must be seen to be believed''
+
+Donald Knuth, The Art of Computer Programming
+}

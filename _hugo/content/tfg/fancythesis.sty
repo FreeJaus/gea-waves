@@ -1,0 +1,514 @@
+% Master/Thesis fancy report template
+% 
+% Copyright (C) 2014 Unai Martinez Corral <umartinez012@ikasle.ehu.es>
+%
+%%!!!!!!!!!!!!!!!!!!!! LICENSE
+%% This program can be redistributed and/or modified under the terms of the LaTeX Project Public License Distributed from CTAN archives in directory macros/latex/base/lppl.txt.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fancythesis}[2014/09/23 v0.01 LaTeX package for my own purpose]
+
+\newcommand*\userlang{english}
+\RequirePackage[english]{babel}
+\RequirePackage{csquotes}
+
+%! Programming resources 
+\RequirePackage{xkeyval,import,etoolbox,suffix,alphalph,xifthen,totcount,forloop}
+\newcommand\forcsvlist@args[2]{ \expandafter\providecommand\csname \detokenize{#1}@aux\endcsname[1]{
+ \csname \detokenize{#1}\endcsname##1\relax}
+ \forcsvlist{\csname \detokenize{#1}@aux\endcsname}{#2} }
+%! User Data Fields
+\newcommand\editTH[1]{#1} \newcommand*\showDF[1]{\csname th@#1\endcsname}
+\newcommand\th@new@df[2]{ \expandafter\providecommand\csname th@df@#1\endcsname{No \MakeUppercase{#2} defined}
+ \expandafter\newcommand\csname THDF#2\endcsname[1]{\expandafter\renewcommand\csname th@df@#1\endcsname{##1}} }
+\forcsvlist@args{th@new@df}{{{typ}{type}},{{date}{date}},{{tit}{title}},{{stit}{shorttitle}},{{sch}{school}},
+{{aut}{author}},{{eaut}{eauthor}},{{dep}{department}},{{dir}{director}},{{edir}{edirector}},{{deg}{degree}},
+{{abs}{abstract}},{{ack}{acknow}},{{ded}{dedication}},{{quo}{quote}},{{maketit}{titlepage}} }
+\newcommand\th@titp@user{\th@df@maketit}
+\providecommand*\th@titp@user@sty{rules} \newcommand*\THDFtitlepagestyle[1]{\renewcommand*\th@titp@user@sty{\th@df@maketitsty}}
+\providecommand*\th@log@uni{ehu.pdf}                               \newcommand*\THLOGuni[1]{\renewcommand*\th@log@uni{#1}}
+\providecommand*\th@note@blank{This page intentionally left blank} \newcommand*\THNOTEblank[1]{\renewcommand*\th@note@blank{#1}}
+\providecommand\th@note@fullfilment{A {\th@df@typ} Thesis submitted in part fulfilment of the requirements for the award of the degree of}
+\providecommand*\th@bib@back{biber} \providecommand*\th@bib@sty{ieee-alphabetic}
+\providecommand*\th@bib@srt{ynt}    \providecommand*\th@bib@file{map-msea-bib.bib}
+\providecommand*\pdftitle{}
+\providecommand*\pdfsubject{Fancy Thesis Template}
+\providecommand*\pdfauthor{}
+\define@key{fncyth}{thesis}[Master]{\renewcommand*\th@df@typ{#1}} %<PhD> or <Master>
+\define@key{fncyth}{logo}[ehu.pdf]{\renewcommand*\th@log@uni{#1}}
+\define@choicekey*{fncyth}{bibback}{biber,bibtex}[biber]{\renewcommand*\th@bib@back{#1}}
+ \define@key{fncyth}{biber}{\renewcommand*\th@bib@back{biber}}
+ \define@key{fncyth}{bibtex}{\renewcommand*\th@bib@back{bibtex}}
+\define@key{fncyth}{bibstyle}[ieee-alphabetic]{\renewcommand*\th@bib@sty{#1}}
+\define@key{fncyth}{bibsort}[ynt]{\renewcommand*\th@bib@srt{#1}}
+\define@key{fncyth}{bibfile}[bibliography.bib]{\renewcommand*\th@bib@file{#1}}
+\define@key{fncyth}{pdftitle}[]{\renewcommand*\pdftitle{#1}}
+\define@key{fncyth}{pdfsubject}[]{\renewcommand*\pdfsubject{#1}}
+\define@key{fncyth}{pdfauthor}[]{\renewcommand*\pdfauthor{#1}}
+\define@boolkey{fncyth}{plain}[true]{\toggletrue{th@opt@plain}}
+\define@boolkey{fncyth}{alphalph}[true]{\toggletrue{th@opt@alph}}
+\newcommand*\th@new@opt[2]{ \newtoggle{th@opt@#1} \csname toggle#2\endcsname{th@opt@#1} }
+\forcsvlist@args{th@new@opt}{{{plain}{false}},{{nosb}{false}},{{alph}{false}},{{tit@fancy}{false}},{{tit@plain}{false}},{{tit@user}{false}}}
+\define@boolkey{fncyth}{nosidebar}[true]{\toggletrue{th@opt@nosb}}
+\define@choicekey*{fncyth}{titlepage}[\val\nr]{fancy,plain,both,none,user}[both]{
+ \ifcase\nr\relax \th@tit@togall{true}{false}{false}
+ \or              \th@tit@togall{false}{true}{false}
+ \or              \th@tit@togall{true}{true}{false}
+ \or              \th@tit@togall{false}{false}{false}
+ \or              \th@tit@togall{false}{false}{true} \fi }
+\newcommand*\th@tit@togall[3]{
+ \csname toggle#1\endcsname{th@opt@tit@fancy}
+ \csname toggle#2\endcsname{th@opt@tit@plain}
+ \csname toggle#3\endcsname{th@opt@tit@user} }
+\define@choicekey*{fncyth}{dedication}{default,newpage,none}[default]{
+%-default %-newpage %-none
+}
+\define@choicekey*{fncyth}{quote}{default,toc,none}[default]{
+%-default %-toc %-none
+}
+\newcommand\th@new@dim[1]{\expandafter\newdimen\csname th@dim@#1\endcsname}
+\forcsvlist{\th@new@dim}{lem,rim,tbm,inm,tinm,mlrm,sbm,tlrm,llrm}
+\define@key{fncyth}{lem}[3.5cm]{\setlength\th@dim@lem{#1}}
+\define@key{fncyth}{rim}[3cm]{\setlength\th@dim@rim{#1}}
+\define@key{fncyth}{tbm}[1.75cm]{\setlength\th@dim@tbm{#1}}
+\define@key{fncyth}{inm}[1.25cm]{\setlength\th@dim@inm{#1}}
+\define@key{fncyth}{tinm}[2.5cm]{\setlength\th@dim@tinm{#1}}
+\define@key{fncyth}{mlrm}[3.25cm]{\setlength\th@dim@mlrm{#1}}
+\define@key{fncyth}{sbm}[3.5cm]{\setlength\th@dim@sbm{#1}}
+\define@key{fncyth}{tlrm}[1.75cm]{\setlength\th@dim@tlrm{#1}}
+\define@key{fncyth}{llrm}[1.25cm]{\setlength\th@dim@llrm{#1}}
+\setkeys{fncyth}{bibback,bibstyle,bibsort,bibfile,titlepage,dedication,quote,lem,rim,tbm,inm,tinm,mlrm,sbm,tlrm,llrm}
+\ProcessOptionsX<fncyth>
+%! User colors
+\RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\forcsvlist@args{colorlet}{{{urlcolor}{Green}},{{ilcolor}{BrickRed!50!black}},{{citecolor}{BurntOrange!50!black}}}
+\iftoggle{th@opt@plain}{
+ \forcsvlist@args{colorlet}{{{rulecolor}{black}},{{titlecolor}{black!75}},{{gradcolor}{black!25}}}
+}{ \forcsvlist@args{colorlet}{{{rulecolor}{BrickRed}},{{titlecolor}{BrickRed!75}},{{gradcolor}{BurntOrange!50}}} }
+\forcsvlist@args{colorlet}{{{sidecolor}{gradcolor!75}},{{sidelabelcolor}{titlecolor}}}
+%! Set dimensions to be used as a reference
+\RequirePackage[a4paper]{geometry}
+\forcsvlist{\th@new@dim}{tbmrgn,usep,hrskip,frskip}
+\setlength\th@dim@hrskip{.3\baselineskip} \setlength\th@dim@frskip{.9\baselineskip}
+\newcommand*\th@dim@tbsep{\dimexpr\th@dim@usep+\th@dim@tbmrgn\relax}
+\newcommand*\th@dim@hsep{\dimexpr\th@dim@hrskip+\th@dim@usep\relax}
+\newcommand*\th@dim@fskip{\dimexpr\th@dim@frskip+\th@dim@usep\relax}
+\newcommand\th@update@geometry[4]{ \setlength\th@dim@tbmrgn{#3} \setlength\th@dim@usep{#4}
+ \newgeometry{left=#1, right=#2, top=\th@dim@tbsep, bottom=\th@dim@tbsep, headsep=\th@dim@hsep, footskip=\th@dim@fskip} }
+\RequirePackage{microtype}
+%\RequirePackage[text-celsius,text-degree,text-arcminute,text-micro,output-decimal-marker=comma]{siunitx}
+\RequirePackage[font=scriptsize,format=plain,labelfont=bf,textfont=it,justification=centerlast]{caption}
+%\RequirePackage[caption=false,font=footnotesize]{subfig}
+\RequirePackage{subcaption}
+\RequirePackage{tikz,bm,tikz-timing}
+%\RequirePackage{tikz-timing}[2009/12/09]
+\usetikzlibrary{shapes,arrows,calc,positioning,decorations.markings}
+\usetikztiminglibrary{counters,advnodes-cfr}
+\RequirePackage[absolute,overlay]{textpos}%showboxes
+\RequirePackage{pgfplots}
+\pgfplotsset{compat = 1.8}
+\RequirePackage[cmex10]{amsmath}
+\RequirePackage{amssymb}\interdisplaylinepenalty=2500
+\RequirePackage[framemethod=TikZ]{mdframed}
+\newmdenv[
+ outerlinewidth = 0pt,%
+ roundcorner = 10pt,%
+ skipabove = \baselineskip,
+ leftmargin = 40,%
+ rightmargin = 40,%
+ innerleftmargin = 20pt,
+ innerrightmargin = 20pt,
+ backgroundcolor = sidecolor!25,%
+ linecolor = titlecolor,%
+ innertopmargin = \topskip,%
+ splittopskip = \topskip,%
+ frametitlefont = \color{white}\bfseries\sffamily,%
+ frametitlealignment = \center,%
+ frametitlebackgroundcolor = titlecolor,
+]{mdex}
+\newcounter{excnt} \numberwithin{excnt}{chapter}
+\newenvironment{exenv}[1]{\refstepcounter{excnt}\begin{mdex}[frametitle={Example \theexcnt: #1}]}{\end{mdex}}
+
+\RequirePackage{indentfirst,multirow,rotating} %eurofont,
+\RequirePackage{eso-pic}
+ % \AddToShipoutPicture*{\BackgroundPic} -> to use the picture only on one page.
+ % \AddToShipoutPicture{\BackgroundPic} -> to use the picture on multiple pages
+ % \ClearShipoutPicture -> to stop using the background picture:
+\RequirePackage{titletoc}
+%if plain -> hyperref=false
+\RequirePackage[backend=\th@bib@back,style=\th@bib@sty,natbib=true,sorting=\th@bib@srt,sortcites=true,backref=true]{biblatex}
+\addbibresource{IEEEfull.bib}
+\addbibresource{\th@bib@file}
+%\setcounter{biburlnumpenalty}{100}
+\renewcommand*{\bibfont}{\small}
+\providecommand*\th@bib@name{\bibname}
+\newcommand*\THBIBname[1]{ \renewcommand*\th@bib@name{#1}
+ \DefineBibliographyStrings{\userlang}{ bibliography = \th@bib@name, references = \th@bib@name } }
+\defbibheading{bibliography}[\bibname]{\chapter*{#1}\addcontentsline{toc}{chapter}{\th@bib@name}\chaptermark{#1}\sectionmark{#1}}
+\defbibheading{subbibliography}[\bibname]{\section*{#1}\sectionmark{#1}}
+\DefineBibliographyStrings{english}{ backrefpage  = {\lowercase{s}ee p.},
+                                     backrefpages = {\lowercase{s}ee pp.} }
+\newbibmacro*{pageref}{\iflistundef{pageref}{}
+ {\finentrypunct\addspace\renewcommand\finentrypunct{}\printtext{\footnotesize\color{titlecolor!75}\printtext[parens]{%
+  \ifnumgreater{\value{pageref}}{1}{\bibstring{backrefpages}\ppspace}{\bibstring{backrefpage}\ppspace}%
+  \printlist[pageref][-\value{listtotal}]{pageref}}}}}
+\renewcommand*{\multicitedelim}{]\space[}
+%if plain -> no cargar hyperref?
+\RequirePackage[bookmarks=true, breaklinks=true, unicode=true, pdftitle=\pdftitle, pdfsubject=\pdfsubject, pdfauthor=\pdfauthor, %\@thdeg\@thauth
+ linktoc=all, colorlinks=true, linkcolor=ilcolor, urlcolor=urlcolor, citecolor=citecolor, plainpages=false]{hyperref}
+\newcommand\hypref[2]{\hyperref[#2]{#1 \ref*{#2}}}
+\addto\extrasenglish{%
+ \renewcommand{\chapterautorefname}{Chapter}
+ \renewcommand{\sectionautorefname}{Section}
+ \renewcommand{\subsectionautorefname}{Subsection}
+ \renewcommand{\subsubsectionautorefname}{Subsubsection}
+% \renewcommand{\contentsname}{Table of Contents}%
+}
+\RequirePackage{footnotebackref}
+\RequirePackage[shortcuts,acronym,nogroupskip]{glossaries} %nonumberlist,nopostdot
+\newglossary{symbols}{sym}{sbl}{List of Symbols}
+\makenoidxglossaries %Pendiente de averiguar como utilizar makeindex, para sustituirlo por makeglossaries. Actualmente no procesa adecuadamente porque la numeración de las páginas está modificada para indicar el número de página.
+\RequirePackage{dirtree}
+ \renewcommand{\DTstyle}{\textrm\expandafter\raisebox{-0.5ex}}
+ \DTsetlength{1em}{1em}{0.2em}{0.4pt}{.35em}
+ \setlength{\DTbaselineskip}{1.25\baselineskip}
+ 
+\edef\restoreparindent{\parindent=\the\parindent\relax}
+\RequirePackage{parskip}
+\restoreparindent
+%\setlength{\skip\footins}{.5\usep}
+\renewcommand*{\footnoterule}{\vspace*{0pt}
+  \noindent\rule{1cm}{0.4pt}\vspace*{.5\baselineskip}}
+%\setlength{\footnotesep}{.5\baselineskip}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\RequirePackage[pagestyles,explicit]{titlesec}
+% *** INCLUDE CHAPTERS IN LISTS *** %
+%! Hay que averiguar cómo hacer para que se introduzcan en la lista principal, pero que no afecte a las listas parciales
+%\newtoggle{noFigs}
+%\newtoggle{noTabs}
+%% The first time it is used after a \chapter command, it writes the information of the chapter to the LoF
+%\AtBeginDocument{%
+%  \AtBeginEnvironment{figure}{%
+%    \iftoggle{noFigs}{
+%      \addtocontents{lof}{\protect\contentsline {chapter}%
+%        {\protect\numberline {\thechapter} {\chaptertitle}}{}{} }
+%      \global\togglefalse{noFigs}
+%    }{}
+%  }%
+%}
+%\newcommand\listflagstrue{ \toggletrue{noFigs} \toggletrue{noTabs} }
+% *** PAGESTYLES *** %
+%! Defining the width of the head and foot rules
+\renewcommand*\setheadrule[1]{\ifdim#1=\z@ \let\makeheadrule\@empty
+  \else \def\makeheadrule{\color{rulecolor}\rule[-\th@dim@hrskip]{\linewidth}{#1}} \fi}
+\renewcommand*\setfootrule[1]{\ifdim#1=\z@ \let\makefootrule\@empty
+  \else \def\makefootrule{\color{rulecolor}\rule[\th@dim@frskip]{\linewidth}{#1}} \fi}
+\newpagestyle{rules}{\headrule \footrule \setfoot[][][]{}{}{}}
+\newpagestyle{main}{ \headrule \footrule
+ \sethead[][][\color{titlecolor}\chaptertitle] {\color{titlecolor}{\sectiontitle}}{}{}
+ \setfoot[\color{titlecolor}\thepage][][\color{titlecolor}{\th@df@deg}] {\color{titlecolor}{\th@df@stit}}{}{\color{titlecolor}\thepage} } 
+\newpagestyle{chap}{ \footrule \setfoot[\color{titlecolor}\thepage][][\color{titlecolor}\th@df@deg]
+                                       {\color{titlecolor}{\th@df@stit}}{}{\color{titlecolor}\thepage} }
+%! Parameters to change the layout through the document
+\newcommand\th@psty@set@blank[2]{\def\th@psty@blank{#1}\def\th@psty@blank@note{#2}}
+\newcommand\th@psty@set@full[3]{\pagestyle{#1}\def\th@psty@blank{#2}\def\th@psty@blank@note{#3}}
+%! Alternative \clearemptydoublepage which changes the pagestyle and prints a centered note
+\let\th@origdpage\cleardoublepage
+\newcommand\th@clear@emptydpage{\clearpage\if@twoside \ifodd\c@page\else \thispagestyle{\th@psty@blank}
+  \th@centered{\th@psty@blank@note}  
+  \newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+%! Replace \cleardoublepage
+\let\cleardoublepage\th@clear@emptydpage
+\newcommand\th@centered[1]{\hbox{}\vspace*{-\topskip}\vspace*{\fill}{\centering#1\par}\vspace{\fill}}
+% *** TITLE FORMATS *** %
+%! Default centered formats
+ % \titleformat{name=\section}{\normalfont\Large\bfseries\filcenter}{\thesection}{1em}{#1}
+ % \titleformat{name=\chapter}[display]{\normalfont\huge\bfseries\filcenter}{\chaptertitlename\ \thechapter}{20pt}{\Huge #1}
+\def\th@label@chap{Ch.}
+%! Chapter formats (numbered and numberless), defined only for openright (problems trying to set even/odd/evenless/oddless)
+\newcommand\th@set@csty{\th@csty@fncy{} \th@csty@fncy{,numberless}}
+\newcommand\th@csty@fncy[1]{
+\titleformat{name=\chapter #1}[display]
+  {\normalfont\sffamily\LARGE\bfseries}{}{0pt}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[yshift=-\th@dim@tbm] at (current page.north west)
+      {\begin{tikzpicture}[remember picture, overlay]
+        \fill[titlecolor,top color=gradcolor,bottom color=white] (0,0) rectangle (\paperwidth,-\th@dim@tbm);
+        \fill[gradcolor] (0,0) rectangle (\paperwidth,\th@dim@tbm);
+        \draw[rulecolor,ultra thick] (0,0) -- (\paperwidth,0);
+        \node[anchor=east,rectangle,rounded corners=7.5pt,inner sep=7.5pt, %Label
+             draw=rulecolor,fill=titlecolor] at ($(current page.north east) - (\th@dim@rim,\th@dim@tbm)$) {\color{white}##1};
+      \ifx&#1&%
+        \node[anchor=west,xshift=\th@dim@lem,rectangle,rounded corners=7.5pt,inner sep=7.5pt, %Number
+              draw=rulecolor,fill=titlecolor]{\color{white}{\th@label@chap} \thechapter}; \fi
+      \end{tikzpicture} };
+   \end{tikzpicture}} }
+%! Plain section formats, the four cases have to be declared separately before \begin{document} in order to change them later
+\newcommand\th@set@ssty[1]{\setkeys{thsty}{section=#1}}
+\define@choicekey*{thsty}{section}[\val\nr]{default,centered,fancypre,fancy,fancymini}[default]{
+ \ifcase\nr\relax \th@ssty@doall{plain}{\Large}
+ \or              \th@ssty@doall{plain}{\Large\filcenter}
+ \or              \th@ssty@doall{plain}{\LARGE\sffamily\filcenter}
+ \or              \th@ssty@doall{fancy}{}
+ \or              \th@ssty@doall{fancymini}{} 
+ \fi }
+\newcommand\th@ssty@doall[2]{
+ \ifthenelse{\equal{#1}{fancy}}{
+  \th@ssty@fncy@do{odd}{east}{-\th@dim@rim}{white}{black}{\thesection)~}{0}{\paperwidth}
+  \th@ssty@fncy@do{even}{west}{\th@dim@rim}{white}{black}{\thesection)~}{0}{\paperwidth}
+  \th@ssty@fncy@do{odd,numberless}{east}{-\th@dim@rim}{white}{black}{}{0}{\paperwidth}
+  \th@ssty@fncy@do{even,numberless}{west}{\th@dim@rim}{white}{black}{}{0}{\paperwidth}
+  \titlespacing*{\section} {0pt}{1.5ex plus 1ex minus .2ex}{3.8ex plus .2ex }
+ }{
+  \ifthenelse{\equal{#1}{fancymini}}{
+   \th@ssty@fncy@do{odd,numberless}{east}{-\th@dim@mlrm}{titlecolor}{white}{}{\th@dim@lem}{\linewidth}
+   \th@ssty@fncy@do{even,numberless}{west}{\th@dim@mlrm}{titlecolor}{white}{}{\th@dim@lem}{\linewidth}   
+   \titlespacing*{\section} {0pt}{2ex plus 1ex minus .2ex}{2ex plus .2ex }
+  }{
+   \th@ssty@plaindoboth{odd}{#2}
+   \th@ssty@plaindoboth{even}{#2}
+  }
+ }
+}
+%  \ifthenelse{\isodd{\value{page}}}{\def\corner{east}\def\sign{-}}{\def\corner{west}\def\sign{+}}
+\newcommand\th@ssty@fncy@do[8]{
+ \titleformat{name=\section,page=#1}{\normalfont\large\sffamily}{}{0pt}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \draw[rulecolor] ($(current page.west|-0,0)+(#7,0)$) -- (#8,0); %Rule
+    \node[anchor=#2,xshift=#3,rectangle,rounded corners=7.5pt,inner ysep=5pt,inner xsep=7.5pt, %Number and Label
+         draw=rulecolor,fill=#4] at (current page.#2|-0,0) {\color{#5}#6##1};
+  \end{tikzpicture}} }
+\newcommand\th@ssty@plaindoboth[2]{ \th@ssty@doplain{#1}{#2}{\thesection}{1em}   \th@ssty@doplain{#1,numberless}{#2}{}{0em} }
+\newcommand\th@ssty@doplain[4]{ \titleformat{name=\section,page=#1}{\normalfont\bfseries#2}{#3}{#4}{##1} }
+% *** TOC AND LISTS FORMATS *** %
+\newcommand\th@set@tsty[1]{\setkeys{thsty}{tocloflot=#1}}
+\define@choicekey*{thsty}{tocloflot}[\val\nr]{alph,fancy}[plain]{
+ \ifcase\nr\relax \th@tsty@alph
+ \or              \th@tsty@fancy
+ \fi }
+\newcommand\th@tsty@alph{
+% \titlecontents{chapter}[2.3em]{}{\contentslabel{2.3em}}{\hspace*{0em}}{\titlerule*[1pc]{.}\contentspage}
+% \titlecontents{section}[4.6em]{}{\contentslabel{2.3em}}{\hspace*{0em}}{\titlerule*[1pc]{.}\contentspage}
+% \titlecontents{subsection}[6.9em]{}{\contentslabel{2.3em}}{\hspace*{0em}}{\titlerule*[1pc]{.}\contentspage} 
+}
+\newcommand\th@tsty@fancy{
+ \titlecontents{chapter}[\dimexpr\th@dim@tlrm-2.25em\relax]{\vspace*{1.5\baselineskip}\sffamily}
+  {\raisebox{-2pt}{\makebox[1.75em][c]{\color{titlecolor}\bfseries\huge\thecontentslabel}}\hspace*{.5em}\bfseries\Large}
+  {\makebox[1.75em][c]{\color{titlecolor}\huge$\bullet$}\hspace{.5em}\bfseries\Large}
+  {}[\addvspace{.25\baselineskip}]
+ \titlecontents{section}[\dimexpr\th@dim@tlrm\relax]{\sffamily}
+  {\makebox[2.5em][l]{\color{titlecolor}\thecontentslabel}} %numbered-entry-format
+  {\hspace*{.25em}\makebox[1em][c]{\color{titlecolor}$\diamond$}\hspace{.5em}\bfseries}  %numberless-entry-format
+  {\hspace{1em}\color{titlecolor}\titlerule*[.75pc]{$\cdot$}\hspace{.75em}\nobreak\makebox[2.75em][c]{\itshape\thecontentspage}\hspace*{\dimexpr\th@dim@tlrm-2.75em}}
+ \titlecontents{subsection}[\dimexpr\th@dim@tlrm+2.5em\relax]{\sffamily}
+  {\makebox[2.5em][l]{\color{titlecolor}\thecontentslabel}}  %numbered-entry-format
+  {} %numbeless-entry-format
+  {\hspace{1em}\color{titlecolor}\titlerule*[.75pc]{$\cdot$}\hspace{.75em}\nobreak\makebox[2.75em][c]{\itshape\thecontentspage}\hspace*{\dimexpr\th@dim@tlrm-2.75em}}  
+  \titlecontents{figure}[\dimexpr\th@dim@llrm\relax]{\sffamily}
+  {\makebox[2.5em][l]{\color{titlecolor}\thecontentslabel}} %numbered-entry-format
+  {\hspace*{.25em}\makebox[1em][c]{\color{titlecolor}$\diamond$}\hspace{.5em}\bfseries}  %numberless-entry-format
+  {\hspace{1em}\color{titlecolor}\titlerule*[.75pc]{$\cdot$}\hspace{.75em}\nobreak\makebox[2.75em][c]{\itshape\thecontentspage}\hspace*{\dimexpr\th@dim@llrm}}  
+   \titlecontents{table}[\dimexpr\th@dim@llrm\relax]{\sffamily}
+  {\makebox[2.5em][l]{\color{titlecolor}\thecontentslabel}} %numbered-entry-format
+  {\hspace*{.25em}\makebox[1em][c]{\color{titlecolor}$\diamond$}\hspace{.5em}\bfseries}  %numberless-entry-format
+  {\hspace{1em}\color{titlecolor}\titlerule*[.75pc]{$\cdot$}\hspace{.75em}\nobreak\makebox[2.75em][c]{\itshape\thecontentspage}\hspace*{\dimexpr\th@dim@llrm}}
+}
+\newcommand\th@tsty@fancy@apphead{
+ \titlecontents{chapter}[\dimexpr\th@dim@tlrm-2.25em\relax]{\vspace*{1.25\baselineskip}\sffamily}{}
+  {\makebox[1.75em][c]{\color{titlecolor}\huge$\bullet$}\hspace{.5em}\bfseries\Large}
+  {}[\addvspace{.25\baselineskip}] }
+\newcommand\th@tsty@fancy@app{
+ \titlecontents{chapter}[\dimexpr\th@dim@tlrm-.25em\relax]{\sffamily\color{titlecolor}}
+  {\makebox[1.75em][c]{\thecontentslabel}\hspace*{1em}} %numbered-entry-format
+  {\makebox[1.75em][c]{\bfseries$\diamond$}\hspace{1em}}  %numberless-entry-format
+  {\hspace{1em}\color{titlecolor}\titlerule*[.75pc]{$\cdot$}\hspace{.75em}\nobreak\makebox[2.75em][c]{\itshape\thecontentspage}\hspace*{\dimexpr\th@dim@tlrm-2.75em}} }
+% *** SIDEBAR *** %
+\newtoggle{th@sb@tog} \regtotcounter{th@sb@cnt} \newcounter{th@sb@cnt} \newcommand*\th@sb@step{}
+\newcommand*\th@sb@step@rst{\renewcommand*\th@sb@step{}}
+\newcommand*\th@sb@step@set{\renewcommand*\th@sb@step{\stepcounter{th@sb@cnt}}}
+\newcommand\th@sb@do{\begin{tikzpicture}[overlay]
+ \pgfmathsetmacro{\pheight}{(\paperheight-2*\th@dim@sbm)/28.453}
+ \pgfmathsetmacro{\myt}{-(\th@dim@sbm/28.453)-(\theth@sb@cnt-1)/\totvalue{th@sb@cnt}*\pheight}
+ \pgfmathsetmacro{\myb}{-(\th@dim@sbm/28.453)-\theth@sb@cnt/\totvalue{th@sb@cnt}*\pheight}
+ % If we want to change the color for each chapter
+ %   \ifcase\thesidecnt \xdef\mycolor{white} \or \xdef\mycolor{red} \or \xdef\mycolor{orange} \or \xdef\mycolor{yellow} %...
+ %                      \else \xdef\mycolor{black} \fi
+ \ifthenelse{\isodd{\value{page}}}{\def\corner{east}\def\sign{-}}{\def\corner{west}\def\sign{+}}
+ \fill[sidecolor] ($(current page.north \corner)+(0,\myt)$) rectangle ($(current page.north \corner)+(\sign0.75,\myb)$);
+ \node[font=\normalfont\sffamily\bfseries\Large] at ($(current page.north \corner)+(\sign0.375,\myt-0.5)$) {\color{sidelabelcolor}\thechapter};
+ \iftoggle{th@sb@tog}{ \fill[white] ($(current page.north \corner)+(0,\myt)$) rectangle ($(current page.north \corner)+(\sign0.75,\myb)$); }{}
+ \end{tikzpicture}\global\togglefalse{th@sb@tog} }
+% FG: foreground % BG: background
+\newcommand*\th@sb@rst{\th@sb@rst*\th@sb@step@rst} \WithSuffix\newcommand\th@sb@rst*{\ClearShipoutPictureBG}
+\newcommand*\th@sb@set{\th@sb@set*\th@sb@step@set} \WithSuffix\newcommand\th@sb@set*{\global\togglefalse{th@sb@tog}\AddToShipoutPictureBG{\th@sb@do}}
+% *** TITLEPAGES *** %
+\newcommand\th@titp@block@aut{\begin{tabular}{r}
+\large\itshape Author  \\ \\ \LARGE\bfseries\th@df@aut\\ \th@df@eaut\\ \\ \\
+\large\itshape Director\\ \\ \LARGE\bfseries\th@df@dir\\ \th@df@edir
+\end{tabular}}
+\newcommand\th@titp@block@aff{\begin{tabular}{r}
+\Large\bfseries{\th@df@typ} Thesis\\ \\ \large\itshape submitted in part fulfilment of the requirements for the degree of\\ \\
+\Large\bfseries\th@df@deg\\ \\ \large\itshape in the\\ \\ \Large\bfseries\th@df@sch\\ \\ \Large\bfseries\th@df@dep
+\end{tabular}}
+\newcommand\th@titp@fancy{\def\p{.72\paperwidth}\def\w{.2\paperwidth}\def\ll{.05\paperwidth}\def\lt{.29\paperwidth}\def\pv{.3\paperheight}\begin{tikzpicture}[overlay,remember picture,line width=2pt]
+ \fill [gradcolor] (current page.south west) -- ++(\p,0) |- (current page.north west);
+ \node at (current page.east) [left=\ll] {\includegraphics[width=\w]{\th@log@uni}};
+ \draw [rulecolor] (current page.south west) ++(\p,0) -- ++(0,\paperheight); 
+ \node at ($(current page.north)+(1cm,-.75*\pv)$) [font=\sffamily\bfseries\huge,rectangle,rounded corners=15pt,inner sep=5pt,
+      draw=rulecolor,fill=titlecolor]{\begin{minipage}{.8\paperwidth}\centering\vspace*{1em}\color{white}\th@df@tit\vspace*{1em}\end{minipage}}; 
+ \node at (current page.east) [font=\sffamily,left=\lt]{\th@titp@block@aff};  
+ \node at ($(current page.east)+(0,-\pv)$) [font=\sffamily,left=\lt]{\th@titp@block@aut};
+ \end{tikzpicture} }
+\newcommand\th@titp@plain{\th@centered{\includegraphics[width=.35\linewidth]{ehu.pdf}\\
+ \vspace{4em} {\LARGE\bfseries\begin{minipage}{\linewidth}\centering \th@df@tit\end{minipage}}\\
+ \vspace{3em} {\large\itshape by}\\          \vspace{2em} {\large\itshape Author}\\
+ \vspace{1em} {\LARGE\bfseries\th@df@aut}\\\th@df@eaut\\  \vspace{2em} {\large\itshape Director}\\
+ \vspace{1em} {\LARGE\bfseries\th@df@dir}\\\th@df@edir\\
+ \vspace{3em} {\large\itshape\th@note@fullfilment}\\
+ \vspace{1em} {\Large\bfseries\th@df@deg}\\ \vspace{1em} {\large\itshape in the}\\
+ \vspace{1em} {\Large\bfseries\th@df@sch}\\ \vspace{1em} {\Large\bfseries \th@df@dep}\\
+ \vspace{5em} {\large\itshape\th@df@date}\\ }}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\renewcommand{\algorithmicindent}{1em}
+%\input{config-alglist}
+\RequirePackage{listings}
+\lstset{numberstyle=\tiny, numbersep=5pt, breaklines=true}
+\lstdefinestyle{pseudo}{
+ keywords=[1]{while,for,end,from,to,size,zeros},
+ keywords=[2]{send,commit,read,fletch,svd_commit,svd_push,svd_pull,svd_fetch,svd_config,svd_initv,svd_run},
+ keywords=[3]{m,n,c,allow,start,wait,prevent},
+ keywords=[4]{A,B,X,r,k,i,j,update,initialise},
+ morecomment=[l]{\%},
+ basicstyle=\color{Blue}\footnotesize\ttfamily,
+ keywordstyle=[1]\color{RoyalBlue},
+ keywordstyle=[2]\color{BurntOrange},
+ keywordstyle=[3]\color{Blue},
+ keywordstyle=[4]\color{BrickRed},
+ commentstyle=\color{CadetBlue},
+ stringstyle=\color{ForestGreen},
+ identifierstyle=\color{Black},
+ backgroundcolor=,
+ columns=fixed,
+ extendedchars=true,
+ breaklines=true,
+ numbers=none
+}
+\lstdefinestyle{matlab}{
+ language=matlab,
+ morekeywords={strcat,frest.Sinestream,char,frestimate,bode},
+ basicstyle=\color{Blue}\footnotesize\ttfamily,
+ keywordstyle=\color{RoyalBlue},
+ commentstyle=\color{CadetBlue},
+ stringstyle=\color{ForestGreen},
+ identifierstyle=\color{Black},
+ backgroundcolor=,
+ columns=fixed,
+ extendedchars=true,
+ breaklines=true,
+ numbers=none
+}
+\lstdefinestyle{c++}{
+ language=C++,
+ morekeywords={bode},
+ basicstyle=\color{Blue}\footnotesize\ttfamily,
+ keywordstyle=\color{RoyalBlue},
+ commentstyle=\color{CadetBlue},
+ stringstyle=\color{ForestGreen},
+ identifierstyle=\color{Black},
+ backgroundcolor=\color{gray!5},
+ columns=fixed,
+ extendedchars=true,
+ breaklines=true,
+ numbers=none
+}
+\RequirePackage{pgfgantt}
+
+\newcommand\DOmc{\th@do@mini{\contentsname}{\printcontents[chapter]{}{1}{}}}
+\newcommand\DOmf{\th@do@mini{\listfigurename}{\printlist[chapter]{lof}{1}{}}}
+\newcommand\DOmt{\th@do@mini{\listtablename}{\printlist[chapter]{lot}{1}{}}}
+\newcommand\DOmr{\noindent{\vskip.25\baselineskip{\noindent\color{rulecolor}\hrulefill}\vskip\baselineskip}}
+
+%\AtBeginDocument{%doesn't work
+ \th@update@geometry{\th@dim@lem}{\th@dim@rim}{\th@dim@tbm}{\th@dim@inm}
+ \th@psty@set@full{main}{empty}{} 
+ \pretocmd{\@chapter}{\setcounter{page}{1}}{}{}
+ \th@sb@rst
+ \iftoggle{th@opt@nosb}{}{
+  \pretocmd{\@chapter}{ \global\toggletrue{th@sb@tog} \th@sb@step }{}{}
+  \pretocmd{\@schapter}{ \global\toggletrue{th@sb@tog} }{}{} } 
+ \iftoggle{th@opt@plain}{
+  \newcommand\th@do@mini[2]{ \section*{#1}#2 }
+  \assignpagestyle{\chapter}{main} \th@set@ssty{centered} %default,centered,fancypre,fancy
+  \iftoggle{th@opt@alph}{\th@set@tsty{alph}}{}
+ }{
+  \newcommand\th@do@mini[2]{ \th@set@ssty{fancymini} \section*{#1}#2 \th@set@ssty{fancy} }
+  \assignpagestyle{\chapter}{chap} \th@set@ssty{fancypre}
+  \th@set@csty \titlespacing*{\chapter}{0pt}{50pt}{-78pt}
+  \th@set@tsty{fancy}
+ }
+\newcommand\importchapter[4]{ \chapter{#1} \begin{refsegment}
+  \startcontents[chapter]\startlist[chapter]{lof}\startlist[chapter]{lot}
+  #4\subimport{#2}{#3} \th@bib@do
+  \stopcontents[chapter]\stoplist[chapter]{lof}\stoplist[chapter]{lot} \end{refsegment} }
+\WithSuffix\newcommand\importchapter*[4]{
+ \renewcommand*\th@bib@do{} \importchapter{#1}{#2}{#3}{#4} \renewcommand*\th@bib@do{\th@bib@print} }
+\newcommand*\th@bib@print{\printbibliography[segment=\therefsegment,heading=subbibliography]}
+\newcommand*\th@bib@do{\th@bib@print}
+\def\THDOtitlepages{ \renewcommand*{\thepage}{}
+ \forcsvlist@args{th@titpg@do}{{{fancy}{empty}{}},{{plain}{rules}{}},{{user}{\th@titp@user@sty}{}}}}
+\newcommand\th@titpg@do[3]{ \iftoggle{th@opt@tit@#1}{
+ \th@psty@set@full{#2}{#2}{#3} \csname th@titp@#1\endcsname \cleardoublepage }{} }
+\def\THDOpreamble{
+ \th@psty@set@full{main}{rules}{}
+ \setcounter{page}{1}\renewcommand*{\thepage}{\roman{page}}
+ \section*{Abstract}\addcontentsline{toc}{section}{Abstract}\th@df@abs \cleardoublepage
+ \section*{Acknowledgements}\addcontentsline{toc}{section}{Acknowledgements}\th@df@ack
+ %\section*{Dedication}\th@df@ded
+ \cleardoublepage
+ \th@centered{\th@df@quo}
+ \cleardoublepage }
+\def\THDOtablelists{
+ \th@psty@set@full{main}{main}{}
+ \th@update@geometry{\th@dim@lem}{\th@dim@rim}{\th@dim@tbm}{\th@dim@tinm}
+ \iftoggle{th@opt@plain}{}{\titlespacing*{\chapter}{0pt}{50pt}{-150pt}} %117.5
+ \addcontentsline{toc}{section}{\contentsname}\tableofcontents \cleardoublepage 
+ \addcontentsline{toc}{section}{\listfigurename}\listoffigures  \cleardoublepage
+ \addcontentsline{toc}{section}{\listtablename}\listoftables  \cleardoublepage
+ %\setglossarysection{chapter}
+ \addcontentsline{toc}{section}{\glossaryname} \printnoidxglossary \cleardoublepage
+ \addcontentsline{toc}{section}{\acronymname} \printnoidxglossary[type=\acronymtype] \cleardoublepage
+ \addcontentsline{toc}{section}{Symbols} \printnoidxglossary[type=symbols] \cleardoublepage
+% \printnoidxglossaries \cleardoublepage
+ \th@update@geometry{\th@dim@lem}{\th@dim@rim}{\th@dim@tbm}{\th@dim@inm} }
+\appto\THPREcontent{
+ \th@psty@set@full{main}{empty}{}
+ \renewcommand*{\thepage}{\thechapter-\arabic{page}}
+ \iftoggle{th@opt@nosb}{}{\th@sb@set}
+ \iftoggle{th@opt@plain}{\th@set@ssty{default}}{
+  \th@set@ssty{fancy} \titlespacing*{\chapter}{0pt}{50pt}{-100pt}
+  \setlength\th@dim@tlrm{1cm} \setlength\th@dim@tlrm{1cm}
+ } }
+\def\THDOglobalbib{
+ \cleardoublepage \th@sb@rst \setcounter{page}{1} \renewcommand*{\thepage}{\Roman{page}} 
+ \th@psty@set@full{main}{main}{\th@note@blank}
+ \printbibliography[heading=bibliography] \cleardoublepage }
+\renewcommand\appendix{\par
+% \iftoggle{th@opt@plain}{}{\th@tsty@fancy@apphead}
+% \addcontentsline{toc}{chapter}{\appendixname}
+ \iftoggle{th@opt@nosb}{}{ \th@sb@set \colorlet{sidecolor}{titlecolor!75} \colorlet{sidelabelcolor}{white} }  
+% \setcounter{chapter}{0} \setcounter{section}{0}
+ \renewcommand*{\thepage}{\thechapter-\arabic{page}}
+ \gdef\@chapapp{\appendixname} \gdef\th@label@chap{\@chapapp}
+ \th@psty@set@full{main}{empty}{\th@note@blank}
+%\iftoggle{th@opt@alph}{ \gdef\thechapter{\AlphAlph{\value{chapter}}} }{ \gdef\thechapter{\@Alph\c@chapter} } 
+ \newcounter{totchap}\setcounter{totchap}{\value{chapter}}
+ \iftoggle{th@opt@alph}{ \gdef\thechapter{\AlphAlph{\value{chapter}-\value{totchap}}} }
+  { \gdef\thechapter{\Alph\value{chapter}-\value{totchap}} } 
+  %\iftoggle{th@opt@plain}{}{\th@tsty@fancy@app}
+ \append \cleardoublepage }
+\@input{THDF.dat}
+\@input{THDFglo.dat}
+\endinput %% End of file `fancythesis.sty'.

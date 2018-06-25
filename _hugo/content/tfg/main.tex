@@ -1,0 +1,85 @@
+%In addition to the ability to place mini TOCs, LOFs and LOTs, I'd also like to have similar commands to place Lists of Algorithms and Lists of Symbols/acronyms in a `report`. Since I prefer keeping things simple, I'd like to add the minimum number of packages to achieve it, and I'd like all of the lists to be formatted with the same style.
+%
+%At first, I would use [`algorithms`](http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms)/[`algorithm2e`](http://www.ctan.org/pkg/algorithm2e) +[`acronym`](http://www.ctan.org/tex-archive/macros/latex/contrib/acronym)/[`glossaries`](http://www.ctan.org/tex-archive/macros/latex/contrib/glossaries). _Taking into account what I exposed, which combination would you recommend?_ Is there any specially sweet pack, e.g. `titletoc` + `algorithms` + `acronym` or `etoc` + `algorithm2e` + `glossaries`?
+
+\documentclass[a4paper,titlepage,11pt,twoside,openright]{report}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+
+\usepackage[pdftex]{graphicx}
+\graphicspath{{./logos/}}
+%\graphicspath{{./logos/}{./intro/fig/}{./backtheory/fig/}{./modalg/fig/}{./scheme/fig/}{./system/fig/}{./concl/fig/}} % declare the path(s) where your graphic files are: 
+\DeclareGraphicsExtensions{.pdf,.png}
+
+\usepackage[
+ thesis=Graduate, %or <PhD>
+ logo=ehu.pdf,
+ %bibback=biber, %or <bibtex> %They are declared as boolean, so <bibbak=> may be omitted
+ %bibstyle=ieee-alphabetic, %See the styles supported by biblatex
+ %bibsort=ynt, %See the documentation of biblatex
+ bibfile=./../map-msea-bib.bib, %More bibliographies may be loaded with \addbibresource{IEEEfull.bib}
+ %pdftitle=,
+ %pdfsubject=,
+ %pdfauthor=,
+ %plain,
+ %nosidebar, 
+ %titlepage=fancy,%both, %or <fancy> or <plain> or <none> or <user>
+ %dedication=default, %or <newpage> or <none>
+ alphalph,
+ %quote=default, %or <toc> or <none>,
+ %lem=[3.5cm],
+ %rim=[1.5cm],
+ %tbm=[1.75cm],
+ %inm=[1.25cm],
+ %tinm=[2.5cm],
+ %mlrm=[1.75cm],
+ %sbm=[3.5cm],
+ %tlrm=[2.5cm],
+ %llrm=[1.25cm]
+]{fancythesis}
+
+\THBIBname{References}
+
+\usepackage{lipsum}
+\hyphenation{op-tical net-works semi-conduc-tor} % correct bad hyphenation here
+
+\begin{document}
+
+\glsaddallunused[symbols]
+
+% *** TITLEPAGES, PREAMBLE, TOC, LOF, LOT, ACRONYMS... *** %
+\THDOtitlepages
+\THDOpreamble
+\THDOtablelists
+\THPREcontent
+
+
+% *** CONTENT *** % %\input{plaincontent}
+%! \importchapter<*>{<title>}{<folder>}{<file>}{<minitables>}
+%! The starred version does not show a partial references list at the end
+%! <minitables>: \DOmc, \DOmf and/or \DOmt options can be added to show mini tables of contents and/or lists of figures/tables
+%! \DOmr: introduces a rule to separate the lists from the start of the content
+%\importchapter*{Introduction}{./intro/}{intro}{\DOmc\DOmr}
+%\importchapter{Background Theory}{./backtheory/}{background}{\DOmc\DOmr}
+%\importchapter{A modified Hestenes-Jacobi algorithm}{./modalg/}{modalg}{\DOmc\DOmr}%\DOmf\DOmt
+%\importchapter{A data driven computing scheme}{./scheme/}{scheme}{\DOmc\DOmr}
+%\importchapter{Results and comparisons}{./results/}{results}{\DOmc\DOmr}
+%\importchapter*{Conclusion}{./concl/}{conclusion}{\DOmc\DOmr}
+
+\importchapter*{Memoria}{./memoria/}{memoria}{\DOmc\DOmr}
+
+%\newcommand\append{%! Chapters to be loaded as appendix
+%\importchapter{Toolbox}{./toolbox/}{toolbox}{\DOmf\DOmr}
+%\importchapter{System building}{./system/}{system}{\DOmc\DOmf\DOmr}
+%\newcounter{ct} \forloop{ct}{1}{\value{ct} < 30}{ \chapter{First} }
+%}
+
+% *** GLOBAL BIBLIOGRAPHY AND APPENDIX *** %
+%Replace {\#IEEE_J_C\#} with IEEE_J_C 
+%\THDOglobalbib
+%\appendix
+
+\end{document}
+
+%Se recomiendan unas 50 referencias (no bibliografia) como mínimo y éstas deben ser de calidad: publicaciones internacionales y actualizadas (menos de 5 años de haber sido publicadas).

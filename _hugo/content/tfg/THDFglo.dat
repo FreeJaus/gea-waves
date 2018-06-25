@@ -1,0 +1,16 @@
+\newacronym{ie}{IE}{Error in the Inverse}
+\newacronym[longplural={Local Memory Buses}]{lmb}{LMB}{Local Memory Bus}
+\newacronym{vhdl}{VHDL}{\glslink{vhsic}{VHSIC} Hardware Description Language}
+
+\newglossaryentry{sweep}{name={sweep},description={Any sequence to go through all possible computations in the Jacobi method at least once}}
+\newglossaryentry{u}{type=symbols,name={\ensuremath{\mathbf U}},sort=u,description={Orthogonal matrix of size $m \times n$, composed of the left singular vectors of a problem}}
+
+%\acs{label}
+%\acl{label}
+%\gls{label}
+%\glssymbol{label}
+%\Gls{label} %First capital
+%\GLS{label} %All capital
+%\glspl{label} %plural of gls
+%\Glspl{label} %plural of Gls
+%\GLSpl{label} %plural of GLSpl

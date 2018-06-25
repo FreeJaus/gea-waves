@@ -1,0 +1,146 @@
+\subsection{Introducción}\label{header-n2}
+
+Con este trabajo se pretende realizar un análisis de las tecnologías
+existentes para el aprovechamiento del mar y, junto con ello, estudiar
+un caso práctico mediante un ensayo y unas simulaciones por ordenador
+para comparar los resultados. Adicionalmente, se tratará de reunir la
+información más relevante que analice las consideraciones a tener en
+cuenta para simular un caso de principio a fin, facilitando al ususario
+entender los pasos a seguir para simular un fluido o varios, en unas
+condiciones determinadas, partiendo de un diseño modelado por ordenador
+(CAD, Computer-aided design).
+
+Las técnicas CFD son ya, a todos los efectos, una herramienta más dentro
+de la ingeniería asistida por ordenador (CAE, Computer-aided
+engineering), utilizada universalmente en la industria. Sus
+posibilidades para simular todo tipo de fenómenos y flujos hace que los
+softwares CFD sean una parte indispensable en procesos de diseño
+aerodinámico, hidrodinámico o procesos productivos.
+
+No obstante, las tecnologías para el aprovechamiento del mar, aún se
+encuentran en etapa de desarrollo, por lo que no cuenta con la totalidad
+de la información para su instalación, operación y mantenimiento, por
+ello será necesaria la aplicación de suposiciones. Aun así, las
+investigaciones desarrolladas en este campo, con la aparición de
+numerosos prototipos, hacen de esta tecnología una de las más
+prometedora en cuanto a su rendimiento y funcionalidad. En comparación
+con otras energías renovables, el momento y la intensidad de las mareas
+y corrientes se puede predecir con siglos de anticipación,
+/R/\href{Romero\%20García,RE;\%20\%22Producción\%20de\%20energía\%20eléctrica\%20a\%20partir\%20de\%20los\%20mares\%22;\%20Técnica\%20Industrial;\%20288;\%20Agosto\%202010;\%20pp\%2044-51}{Romero
+García, RE}. Además, su densidad es muy superior a la del aire, con lo
+que, de la energía de las olas se obtienen altos potenciales.
+
+\subsection{Actividades y procedimientos}\label{header-n9}
+
+\begin{itemize}
+\item
+  Estudio del estado del arte:
+
+  \begin{itemize}
+  \item
+    Perspectiva histórica y estado actual de la energía del mar
+    /R/\href{Montero\%20Sousa,\%20JA\%20y\%20Calvo\%20Rolle,\%20JL;\%20\%22Energía\%20mareomotriz:\%20perspectiva\%20histórica\%20y\%20estado\%20actual\%22;\%20Técnica\%20Industrial;\%20301;\%20marzo2013;\%20pp54-60}{Montero,
+    JA et al}, caracterizando esta fuente de energía y los avances
+    logrados hasta el momento.
+  \item
+    Clasificación y descripción del funcionamiento de los dispositivos
+    deseñados para la obtención de energía
+    /R/\href{\%22Energía\%20del\%20oleaje\%22;\%20Eduambiental;\%20pp\%20515-550.\%20http://comunidad.eduambiental.org/file.php/1/curso/contenidos/docpdf/capitulo22.pdf}{Eduambiental:
+    Energía del oleaje}.
+  \item
+    Evaluación del estado actual del desarrollo de las tecnologías más
+    prometedoras.
+  \item
+    Principales iniciativas europeas de parques de olas y zonas de
+    prueba de prototipos a escala.
+  \item
+    Nivel energético disponible en la costa española.
+  \item
+    Caracterización de las olas
+    /R/\href{Pelissero,\%20M\%20et\%20al.;\%20\%22Aprovechamiento\%20de\%20la\%20Energía\%20Undimotriz\%22;\%20Proyecciones,\%20Vol\%209\%20No.\%202,\%20octubre\%202011;\%20pp\%2053-65}{Pelissero,M
+    et al}, generación, tipos de ondas y ecuaciones que gobiernan la
+    teoría de las olas.
+  \end{itemize}
+\item
+  Modelo físico:
+
+  \begin{itemize}
+  \item
+    Definición de las condiciones iniciales del caso, identificando los
+    fenómenos físicos que pretenden modelarse.
+  \item
+    Análisis teórico de las ecuaciones que intervendran en la resolución
+    del problema.
+  \item
+    Métodos utilizados para resolver sistemas complejos.
+  \end{itemize}
+\item
+  Simulación por ordenador:
+
+  \begin{itemize}
+  \item
+    Análisis de las herramientas disponibles, seleccionando el más
+    conveniente para el trabajo que se desea realizar.
+  \item
+    Comprender cómo funciona OpenFOAM, realizando diferentes casos
+    descritos.
+  \item
+    Definición del modelo geométrico que se va a experimentar y
+    discretización del dominio.
+  \item
+    Adecuar las propiedades de los flujos, tiempo de simulación,
+    parámetros de salida, etc. ejemplo que más se aproxime a las
+    condiciones del caso que se quiere analizar.
+  \item
+    Obtener una buena estabilidad numérica, garantizando la convergencia
+    en elproceso iterativo. Consiguiendo, además, la independencia de la
+    malla, es decir, el error numérico disminuye con el aumento del
+    número de nodos,cuando las soluciones numéricas que se obtienen en
+    diferentes mallados, coinciden con una tolerancia se dice que son
+    independientes de la malla
+    /R/\href{Ferziger\%20J.H.,\%20Perić\%20M.;\%20\%22Computational\%20Methods\%20for\%20Fluid\%20Dynamics\%22;\%203rd\%20Edition;\%20Ed.:\%20Springer;\%20New\%20York,\%202002}{Ferziger
+    J.H. et al}.
+  \item
+    Vereficar los resultados con los obtenidos en el ensayo.
+  \end{itemize}
+\item
+  Preparación del ensayo:
+
+  \begin{itemize}
+  \item
+    Diseño de la compuerta, del sistema de apertura y de la fijación del
+    pistón al canal.
+  \item
+    Diseño de la cámara, con una pared abierta por el fondo para dejar
+    pasar el agua y una tubería unida en la parte superior. En la
+    tubería se colocan diferentes diafragmas para hallar la potencía
+    extraida. 
+  \item
+    Sensores necesarios para la adquisición de datos.
+  \item
+    Monitorizar y registrar las mediciones de los sensores para comparar
+    los resultados con los de la simulación.
+  \end{itemize}
+\item
+  Comparación de resultados:
+
+  \begin{itemize}
+  \item
+    Es necesario destacar que los diafragmas sustituyen la turbina,
+    colocada para la extracción de energía real, dado que dicho análisis
+    no es objeto de este proyecto; así mismo, los flujos de aire que se
+    obtendrán son demasiado pequeños y con una transitoriedad
+    prácticamente nula, con lo que sería más apropiado otro tipo de
+    ensayo donde se dispusiera una generación de olas continuas. 
+  \item
+    Así mismo, la utilización de los diafragmas, como más adelante se
+    detallará, permiten obtener el caudal a partir de una medida de
+    presión manométrica y un Coeficiente de Descarga. Para, de ahí,
+    obtener la potencia.
+  \item
+    Por otro lado, de las simulaciones se obtendrán las mismas
+    variables, procurando adaptar lo mejor posible las condiciones y el
+    modelo del ensayo, con diferentes herramientas no comerciables, de
+    código abierto y gratuitas. 
+  \end{itemize}
+\end{itemize}
