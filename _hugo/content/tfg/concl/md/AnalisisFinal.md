@@ -1,4 +1,4 @@
-## 1. COMPARACIÓN DE RESULTADOS
+## COMPARACIÓN DE RESULTADOS
 
 En este apartado se lleva a cabo la comparación de resultados entre los obtenidos en las simulaciones CFD y los experimentales. Como ya se ha descrito, las limitaciones geométricas y de los aparatos de medida condicionarán los ensayos para el uso de los diafragmas de diámetros [13-14-15,5-16]mm. Es decir, por una parte el medidor de presión estática está limitado a 100Pa y el diámetro interior de la tubería que hace de chimenea es de 19,6mm. 
 
@@ -70,7 +70,7 @@ A continuación, se analizan los resultados para cada una de las variables:
 
 
 
-## 2. CONCLUSIÓN FINAL
+## CONCLUSIÓN FINAL
 
 Teniendo en cuenta los propósito establecidos al comienzo de este proyecto, las fases abordadas y los resultados obtenidos se concluye con lo siguiente:
 
@@ -86,7 +86,7 @@ Teniendo en cuenta los propósito establecidos al comienzo de este proyecto, las
 10. Se abarca cada fase implicada en la resolución de problemas CFD, analizando las herramientas que mejor se adaptan a lo que se desea obtener. Afianzando el razonamiento crítico a la hora de implementar la más conveniente y mejorando las destrezas en el manejo de nuevas herramientas, lenguajes y en la resolución de problemas en general.
 11. Se sintetiza y gestiona la información, ofreciendo un primer contacto con la simulación de la dinámica de los flujos por ordenador.
 12. Se realiza un análisis de las tecnologías existentes para el aprovechamiento de la energía proveniente del mar. Ofreciendo un enfoque del punto de desarrollo en el que se encuentran y comprendiendo las berreras y aspectos positivos que les rodean.
-13. //Se ofrece una visión general del cálculo de las olas y la forma de implementarlas a través del códico de ihFOAM, donde se definen las condiciones de contorno para la generación y absorción del oleaje. El código intenta acercarse al oleaje real con numerosas teorías incluyendo las de Stokes I,II y V, ondas regulares cnoidales y de funciones de corrientes continuas; ondas solitarias de Boussinesq, ondas aleatorias irregulares, de primer y segundo orden; y la réplica del perfil de velocidades para la generación del oleaje con ondas tipo pistón. Le Méhauté, define la teoría de ola más adecuada en función de la altura, profundidad y periodo de onda.
+13. Se ofrece una visión general del cálculo de las olas y la forma de implementarlas a través del códico de ihFOAM, donde se definen las condiciones de contorno para la generación y absorción del oleaje. El código intenta acercarse al oleaje real con numerosas teorías incluyendo las de Stokes I,II y V, ondas regulares cnoidales y de funciones de corrientes continuas; ondas solitarias de Boussinesq, ondas aleatorias irregulares, de primer y segundo orden; y la réplica del perfil de velocidades para la generación del oleaje con ondas tipo pistón. Le Méhauté, define la teoría de ola más adecuada en función de la altura, profundidad y periodo de onda.
 
 
 
@@ -98,24 +98,11 @@ Una vez alcanzada una visión global de las partes implicadas a la hora de simul
 1. Las mejoras que podrían aplicarse al experimento en cuestión, de forma que el principio de obtención de energía a partir del prototipo OWC, se aproximase más a la realidad, son:
    - Utilizar un caudalímetro para medir el volumen de agua, a establecer al comienzo de cada pruebas. 
    - Añadir porosidad en el extremo opuesto a la generación del oleaje, para reducir las refracciones producidas.
-   - Si se cumplen estos dos puntos, sería posible analizar la succión del aire dentro de la cámara, pudiendo obtener un ciclo de trabajo para una turbina.
+   - Si se cumplen estos dos puntos anteriores, sería posible analizar la succión del aire dentro de la cámara, pudiendo obtener un ciclo de trabajo para una turbina.
    - Teniendo en cuenta la fuerte implicación de los dispositivos electrónicos, necesarios para realizar las mediciones de forma apropiada y facilitar el control de las pruebas, se destaca la importancia de realizar proyectos en colaboración con otras ramas de ingeniería.
 2. Dados los continuos avances desarrollados entorno a las maquetas de ensayo disponibles en la escuela, sería interestante validar el prototipo a escalas mayores y bajo diferentes condiciones. Implementando la generación del oleaje de forma continua, con la posibilidad de replicar diferentes teorías de olas.
 3. Tras validar los resultados de las simulaciones por ordenador con el caso experimental, se propone el estudio computacional del prototipo OWC a escala real. Aumentando en gran medida los recursos computacionales necesarios y pudiendo ser necesaria la subdivisión del dominio para ejecutar el caso en paralelo. 
-4. Ya que en las versiones estables más recientes de OpenFOAM se implementan las condiciones para mallas dinámicas, resultaría atractivo realizar el estudio de una turbina WELLS.   de diferentes formas: 
-   - A escala real, con una turbina normalizada para analizar, bajo diferentes condiciones de oleaje, los puntos de funcionamiento óptimos y la potencia total extraída por horas. 
-   - Realizar Teniendo como referencia las explicaciones del estudio  [P. González Ramos](https://repository.unimilitar.edu.co/bitstream/10654/6683/2/GonzalezRamosPaola2010.pdf), 
+4. Ya que OpenFOAM contempla la implementación de mallas dinámicas, sería interesante, añadir una turbina WELLS en la salida. Sería recomendable, primero realizar el caso considerando una turbina en un conducto, con un flujo de aire constante en las dos direcciones (succión y absorción). Una vez validado el modelo, podría incluirse en la salida de aire de la cámara para hallar la potencia extraída. Este estudio, podría ensayarse de forma didáctica, recomendando la referencia [P. González Ramos](https://repository.unimilitar.edu.co/bitstream/10654/6683/2/GonzalezRamosPaola2010.pdf), o a escala real, seleccionando una turbina  normalizada.
+5. Debido a las múltiples formas de generar el modelo, se propone realizar una comparativa de resultados, utilizando diferentes algoritmos para la generación de la malla.
+6. Dada la variedad de tecnologías existentes para el aprovechamiento undimotriz, se sugiere la opción de validar otros sistemas, como por ejemplo los conocidos como Aquabuoy o Pelamis.
 
-
-
-Añadir turbina
-
-Escala real
-
-Una vez validado el caso simulado con el ensayo real, se propone hacer el estudio en un canal de dimensiones mayores //aumentando,así, la escala del modelo y permitiendo experimentar con el prototipo OWC valores más altos de potencia extraída
-
-Por otro lado, dado que OpenFOAM contempla la implementación de mallas dinámicas, también sería interesante, añadir una turbina WELLS en la salida. Sería recomendable, primero realizar el caso considerando, solamente, una turbina en un conducto, con un flujo de aire constante en las dos direcciones (succión y absorción). Los problemas de flujos de aire se resuelven con el código `icoFoam` para flujos transitorios laminares e incompresibles, o `simpleFoam` para flujos estacionarios turbulentos e incompresibles. Una vez validado el modelo, podría incluirse  
-
-mallas dinamica turbina exige mechos recursos computacionales
-
-Aparte de esto, visualización en el timepo 

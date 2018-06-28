@@ -1,9 +1,22 @@
-\newacronym{ie}{IE}{Error in the Inverse}
-\newacronym[longplural={Local Memory Buses}]{lmb}{LMB}{Local Memory Bus}
-\newacronym{vhdl}{VHDL}{\glslink{vhsic}{VHSIC} Hardware Description Language}
+\newacronym{owc}{OWC}{Oscillating Water Column}
+\newacronym{cfd}{CFD}{Computational Fluid Dynamics}
+\newacronym{cad}{CAD}{Computer-Aided Design}
+\newacronym{cae}{CAE}{Computer-Aided Engineering}
+\newacronym{eve}{EVE}{Ente Vasco de la Energía}
+\newacronym{openfoam}{OpenFOAM}{Open Field Operation and Manipulation}
+\newacronym{ceh}{CEH}{Centro de Estudios Hidrográficos}
+\newacronym{cepyc}{CEPYC}{Centro de Estudios de Puertos y Costas}
+\newacronym{wec}{WEC}{Wave Energy Converter}
+\newacronym{limpet}{LIMPET}{Land Installed Marine Powered Energy Transformer}
+\newacronym{ote}{OTE}{Ocean Thermal Energy}
+\newacronym{tapchan}{TAPCHAN}{TApered-CHANel}
+\newacronym{emec}{EMEC}{European Marine Energy Centre}
+\newacronym{aws}{AWS}{Archimedes Wave Swing}
+\newacronym{opt}{OPT}{Ocean Power Technologies}
+\newacronym{idae}{IDAE}{Instituto para la Diversificación del Ahorro Energético}
 
-\newglossaryentry{sweep}{name={sweep},description={Any sequence to go through all possible computations in the Jacobi method at least once}}
-\newglossaryentry{u}{type=symbols,name={\ensuremath{\mathbf U}},sort=u,description={Orthogonal matrix of size $m \times n$, composed of the left singular vectors of a problem}}
+%\newglossaryentry{sweep}{name={sweep},description={Any sequence to go through all possible computations in the Jacobi method at least once}}
+%\newglossaryentry{u}{type=symbols,name={\ensuremath{\mathbf U}},sort=u,description={Orthogonal matrix of size $m \times n$, composed of the left singular vectors of a problem}}
 
 %\acs{label}
 %\acl{label}

@@ -5,12 +5,12 @@
 \documentclass[a4paper,titlepage,11pt,twoside,openright]{report}
 
 \usepackage[utf8]{inputenc}
-%\usepackage[english]{babel}
+\usepackage[spanish]{babel}
 
 \usepackage[pdftex]{graphicx}
-\graphicspath{{./logos/}}
-%\graphicspath{{./logos/}{./intro/fig/}{./backtheory/fig/}{./modalg/fig/}{./scheme/fig/}{./system/fig/}{./concl/fig/}} % declare the path(s) where your graphic files are: 
-\DeclareGraphicsExtensions{.pdf,.png}
+% declare the path(s) where your graphic files are:
+\graphicspath{{./logos/}{./memoria/img/}{./memoria/tab/}{./metodologia/img/}{./metodologia/tab/}{./cfd/img/}{./nsy/img/}{./concl/img/}}
+\DeclareGraphicsExtensions{.pdf,.png, jpg}
 
 \usepackage[
  thesis=Graduate, %or <PhD>
@@ -18,15 +18,15 @@
  %bibback=biber, %or <bibtex> %They are declared as boolean, so <bibbak=> may be omitted
  %bibstyle=ieee-alphabetic, %See the styles supported by biblatex
  %bibsort=ynt, %See the documentation of biblatex
- bibfile=./../map-msea-bib.bib, %More bibliographies may be loaded with \addbibresource{IEEEfull.bib}
+ bibfile=../bib.bib, %More bibliographies may be loaded with \addbibresource{IEEEfull.bib}
  %pdftitle=,
  %pdfsubject=,
  %pdfauthor=,
  %plain,
- %nosidebar, 
+ %nosidebar,
  %titlepage=fancy,%both, %or <fancy> or <plain> or <none> or <user>
  %dedication=default, %or <newpage> or <none>
- alphalph,
+ %alphalph,
  %quote=default, %or <toc> or <none>,
  %lem=[3.5cm],
  %rim=[1.5cm],
@@ -39,14 +39,23 @@
  %llrm=[1.25cm]
 ]{fancythesis}
 
-\THBIBname{References}
+\THBIBname{Referencias}
+
+\addto\captionsspanish{
+  \renewcommand{\chaptername}{Documento}
+  \renewcommand{\chapterautorefname}{Documento}
+  \renewcommand{\listtablename}{Índice de tablas}
+  \renewcommand{\tablename}{Tabla}
+}
 
 \usepackage{lipsum}
 \hyphenation{op-tical net-works semi-conduc-tor} % correct bad hyphenation here
 
+\usepackage{longtable}
+
 \begin{document}
 
-\glsaddallunused[symbols]
+\glsaddallunused
 
 % *** TITLEPAGES, PREAMBLE, TOC, LOF, LOT, ACRONYMS... *** %
 \THDOtitlepages
@@ -54,20 +63,19 @@
 \THDOtablelists
 \THPREcontent
 
-
 % *** CONTENT *** % %\input{plaincontent}
 %! \importchapter<*>{<title>}{<folder>}{<file>}{<minitables>}
 %! The starred version does not show a partial references list at the end
 %! <minitables>: \DOmc, \DOmf and/or \DOmt options can be added to show mini tables of contents and/or lists of figures/tables
 %! \DOmr: introduces a rule to separate the lists from the start of the content
-%\importchapter*{Introduction}{./intro/}{intro}{\DOmc\DOmr}
-%\importchapter{Background Theory}{./backtheory/}{background}{\DOmc\DOmr}
+
 %\importchapter{A modified Hestenes-Jacobi algorithm}{./modalg/}{modalg}{\DOmc\DOmr}%\DOmf\DOmt
-%\importchapter{A data driven computing scheme}{./scheme/}{scheme}{\DOmc\DOmr}
-%\importchapter{Results and comparisons}{./results/}{results}{\DOmc\DOmr}
-%\importchapter*{Conclusion}{./concl/}{conclusion}{\DOmc\DOmr}
 
 \importchapter*{Memoria}{./memoria/}{memoria}{\DOmc\DOmr}
+\importchapter*{Metodología}{./metodologia/}{metodologia}{\DOmc\DOmr}
+\importchapter*{Simulaciones CFD}{./cfd/}{cfd}{\DOmc\DOmr}
+\importchapter*{Experimentación}{./nsy/}{experim}{\DOmc\DOmr}
+\importchapter*{Conclusiones}{./concl/}{concl}{\DOmc\DOmr}
 
 %\newcommand\append{%! Chapters to be loaded as appendix
 %\importchapter{Toolbox}{./toolbox/}{toolbox}{\DOmf\DOmr}
@@ -76,8 +84,8 @@
 %}
 
 % *** GLOBAL BIBLIOGRAPHY AND APPENDIX *** %
-%Replace {\#IEEE_J_C\#} with IEEE_J_C 
-%\THDOglobalbib
+%Replace {\#IEEE_J_C\#} with IEEE_J_C
+\THDOglobalbib
 %\appendix
 
 \end{document}

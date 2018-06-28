@@ -8,7 +8,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{fancythesis}[2014/09/23 v0.01 LaTeX package for my own purpose]
 
-\newcommand*\userlang{english}
+\newcommand*\userlang{spanish}
 \RequirePackage[english]{babel}
 \RequirePackage{csquotes}
 
@@ -27,8 +27,8 @@
 \newcommand\th@titp@user{\th@df@maketit}
 \providecommand*\th@titp@user@sty{rules} \newcommand*\THDFtitlepagestyle[1]{\renewcommand*\th@titp@user@sty{\th@df@maketitsty}}
 \providecommand*\th@log@uni{ehu.pdf}                               \newcommand*\THLOGuni[1]{\renewcommand*\th@log@uni{#1}}
-\providecommand*\th@note@blank{This page intentionally left blank} \newcommand*\THNOTEblank[1]{\renewcommand*\th@note@blank{#1}}
-\providecommand\th@note@fullfilment{A {\th@df@typ} Thesis submitted in part fulfilment of the requirements for the award of the degree of}
+\providecommand*\th@note@blank{Esta página se dejó intencionalmente en blanco} \newcommand*\THNOTEblank[1]{\renewcommand*\th@note@blank{#1}}
+\providecommand\th@note@fullfilment{presentado en cumplimiento parcial de los requisitos para el título de}
 \providecommand*\th@bib@back{biber} \providecommand*\th@bib@sty{ieee-alphabetic}
 \providecommand*\th@bib@srt{ynt}    \providecommand*\th@bib@file{map-msea-bib.bib}
 \providecommand*\pdftitle{}
@@ -75,16 +75,17 @@
 \define@key{fncyth}{tinm}[2.5cm]{\setlength\th@dim@tinm{#1}}
 \define@key{fncyth}{mlrm}[3.25cm]{\setlength\th@dim@mlrm{#1}}
 \define@key{fncyth}{sbm}[3.5cm]{\setlength\th@dim@sbm{#1}}
-\define@key{fncyth}{tlrm}[1.75cm]{\setlength\th@dim@tlrm{#1}}
-\define@key{fncyth}{llrm}[1.25cm]{\setlength\th@dim@llrm{#1}}
+\define@key{fncyth}{tlrm}[0.75cm]{\setlength\th@dim@tlrm{#1}}
+\define@key{fncyth}{llrm}[0.25cm]{\setlength\th@dim@llrm{#1}}
 \setkeys{fncyth}{bibback,bibstyle,bibsort,bibfile,titlepage,dedication,quote,lem,rim,tbm,inm,tinm,mlrm,sbm,tlrm,llrm}
 \ProcessOptionsX<fncyth>
 %! User colors
 \RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
-\forcsvlist@args{colorlet}{{{urlcolor}{Green}},{{ilcolor}{BrickRed!50!black}},{{citecolor}{BurntOrange!50!black}}}
+\definecolor{amethyst}{rgb}{0.5, 0.3, 0.7}
+\forcsvlist@args{colorlet}{{{urlcolor}{Green}},{{ilcolor}{amethyst!50!black}},{{citecolor}{Orchid!50!black}}}
 \iftoggle{th@opt@plain}{
  \forcsvlist@args{colorlet}{{{rulecolor}{black}},{{titlecolor}{black!75}},{{gradcolor}{black!25}}}
-}{ \forcsvlist@args{colorlet}{{{rulecolor}{BrickRed}},{{titlecolor}{BrickRed!75}},{{gradcolor}{BurntOrange!50}}} }
+}{ \forcsvlist@args{colorlet}{{{rulecolor}{amethyst}},{{titlecolor}{amethyst!75}},{{gradcolor}{Orchid!50}}} }
 \forcsvlist@args{colorlet}{{{sidecolor}{gradcolor!75}},{{sidelabelcolor}{titlecolor}}}
 %! Set dimensions to be used as a reference
 \RequirePackage[a4paper]{geometry}
@@ -103,7 +104,7 @@
 \RequirePackage{tikz,bm,tikz-timing}
 %\RequirePackage{tikz-timing}[2009/12/09]
 \usetikzlibrary{shapes,arrows,calc,positioning,decorations.markings}
-\usetikztiminglibrary{counters,advnodes-cfr}
+\usetikztiminglibrary{counters} %advnodes-cfr
 \RequirePackage[absolute,overlay]{textpos}%showboxes
 \RequirePackage{pgfplots}
 \pgfplotsset{compat = 1.8}
@@ -225,7 +226,7 @@
 %! Default centered formats
  % \titleformat{name=\section}{\normalfont\Large\bfseries\filcenter}{\thesection}{1em}{#1}
  % \titleformat{name=\chapter}[display]{\normalfont\huge\bfseries\filcenter}{\chaptertitlename\ \thechapter}{20pt}{\Huge #1}
-\def\th@label@chap{Ch.}
+\def\th@label@chap{Documento}
 %! Chapter formats (numbered and numberless), defined only for openright (problems trying to set even/odd/evenless/oddless)
 \newcommand\th@set@csty{\th@csty@fncy{} \th@csty@fncy{,numberless}}
 \newcommand\th@csty@fncy[1]{
@@ -237,10 +238,10 @@
         \fill[titlecolor,top color=gradcolor,bottom color=white] (0,0) rectangle (\paperwidth,-\th@dim@tbm);
         \fill[gradcolor] (0,0) rectangle (\paperwidth,\th@dim@tbm);
         \draw[rulecolor,ultra thick] (0,0) -- (\paperwidth,0);
-        \node[anchor=east,rectangle,rounded corners=7.5pt,inner sep=7.5pt, %Label
+        \node[anchor=east,rectangle,rounded corners=5pt,inner sep=7.5pt, %Label
              draw=rulecolor,fill=titlecolor] at ($(current page.north east) - (\th@dim@rim,\th@dim@tbm)$) {\color{white}##1};
       \ifx&#1&%
-        \node[anchor=west,xshift=\th@dim@lem,rectangle,rounded corners=7.5pt,inner sep=7.5pt, %Number
+        \node[anchor=west,xshift=\th@dim@lem,rectangle,rounded corners=5pt,inner sep=7.5pt, %Number
               draw=rulecolor,fill=titlecolor]{\color{white}{\th@label@chap} \thechapter}; \fi
       \end{tikzpicture} };
    \end{tikzpicture}} }
@@ -255,8 +256,8 @@
  \fi }
 \newcommand\th@ssty@doall[2]{
  \ifthenelse{\equal{#1}{fancy}}{
-  \th@ssty@fncy@do{odd}{east}{-\th@dim@rim}{white}{black}{\thesection)~}{0}{\paperwidth}
-  \th@ssty@fncy@do{even}{west}{\th@dim@rim}{white}{black}{\thesection)~}{0}{\paperwidth}
+  \th@ssty@fncy@do{odd}{east}{-\th@dim@rim}{white}{black}{\thesection~}{0}{\paperwidth}
+  \th@ssty@fncy@do{even}{west}{\th@dim@rim}{white}{black}{\thesection~}{0}{\paperwidth}
   \th@ssty@fncy@do{odd,numberless}{east}{-\th@dim@rim}{white}{black}{}{0}{\paperwidth}
   \th@ssty@fncy@do{even,numberless}{west}{\th@dim@rim}{white}{black}{}{0}{\paperwidth}
   \titlespacing*{\section} {0pt}{1.5ex plus 1ex minus .2ex}{3.8ex plus .2ex }
@@ -276,7 +277,7 @@
  \titleformat{name=\section,page=#1}{\normalfont\large\sffamily}{}{0pt}{
   \begin{tikzpicture}[remember picture, overlay]
     \draw[rulecolor] ($(current page.west|-0,0)+(#7,0)$) -- (#8,0); %Rule
-    \node[anchor=#2,xshift=#3,rectangle,rounded corners=7.5pt,inner ysep=5pt,inner xsep=7.5pt, %Number and Label
+    \node[anchor=#2,xshift=#3,rectangle,rounded corners=5pt,inner ysep=5pt,inner xsep=7.5pt, %Number and Label
          draw=rulecolor,fill=#4] at (current page.#2|-0,0) {\color{#5}#6##1};
   \end{tikzpicture}} }
 \newcommand\th@ssty@plaindoboth[2]{ \th@ssty@doplain{#1}{#2}{\thesection}{1em}   \th@ssty@doplain{#1,numberless}{#2}{}{0em} }
@@ -344,12 +345,12 @@
 \newcommand*\th@sb@set{\th@sb@set*\th@sb@step@set} \WithSuffix\newcommand\th@sb@set*{\global\togglefalse{th@sb@tog}\AddToShipoutPictureBG{\th@sb@do}}
 % *** TITLEPAGES *** %
 \newcommand\th@titp@block@aut{\begin{tabular}{r}
-\large\itshape Author  \\ \\ \LARGE\bfseries\th@df@aut\\ \th@df@eaut\\ \\ \\
+\large\itshape Autora  \\ \\ \LARGE\bfseries\th@df@aut\\ \th@df@eaut\\ \\ \\
 \large\itshape Director\\ \\ \LARGE\bfseries\th@df@dir\\ \th@df@edir
 \end{tabular}}
 \newcommand\th@titp@block@aff{\begin{tabular}{r}
-\Large\bfseries{\th@df@typ} Thesis\\ \\ \large\itshape submitted in part fulfilment of the requirements for the degree of\\ \\
-\Large\bfseries\th@df@deg\\ \\ \large\itshape in the\\ \\ \Large\bfseries\th@df@sch\\ \\ \Large\bfseries\th@df@dep
+\Large\bfseries Trabajo Fin de Grado\\ \\ \large\itshape presentado en cumplimiento parcial de los requisitos para el título de\\ \\
+\Large\bfseries\th@df@deg\\ \\ \large\itshape en la\\ \\ \Large\bfseries\th@df@sch\\ \\ \Large\bfseries\th@df@dep
 \end{tabular}}
 \newcommand\th@titp@fancy{\def\p{.72\paperwidth}\def\w{.2\paperwidth}\def\ll{.05\paperwidth}\def\lt{.29\paperwidth}\def\pv{.3\paperheight}\begin{tikzpicture}[overlay,remember picture,line width=2pt]
  \fill [gradcolor] (current page.south west) -- ++(\p,0) |- (current page.north west);
@@ -362,11 +363,11 @@
  \end{tikzpicture} }
 \newcommand\th@titp@plain{\th@centered{\includegraphics[width=.35\linewidth]{ehu.pdf}\\
  \vspace{4em} {\LARGE\bfseries\begin{minipage}{\linewidth}\centering \th@df@tit\end{minipage}}\\
- \vspace{3em} {\large\itshape by}\\          \vspace{2em} {\large\itshape Author}\\
+ \vspace{3em} {\large\itshape por}\\          \vspace{2em} {\large\itshape Autora}\\
  \vspace{1em} {\LARGE\bfseries\th@df@aut}\\\th@df@eaut\\  \vspace{2em} {\large\itshape Director}\\
  \vspace{1em} {\LARGE\bfseries\th@df@dir}\\\th@df@edir\\
  \vspace{3em} {\large\itshape\th@note@fullfilment}\\
- \vspace{1em} {\Large\bfseries\th@df@deg}\\ \vspace{1em} {\large\itshape in the}\\
+ \vspace{1em} {\Large\bfseries\th@df@deg}\\ \vspace{1em} {\large\itshape en la}\\
  \vspace{1em} {\Large\bfseries\th@df@sch}\\ \vspace{1em} {\Large\bfseries \th@df@dep}\\
  \vspace{5em} {\large\itshape\th@df@date}\\ }}
 
@@ -465,10 +466,10 @@
  \th@psty@set@full{main}{rules}{}
  \setcounter{page}{1}\renewcommand*{\thepage}{\roman{page}}
  \section*{Abstract}\addcontentsline{toc}{section}{Abstract}\th@df@abs \cleardoublepage
- \section*{Acknowledgements}\addcontentsline{toc}{section}{Acknowledgements}\th@df@ack
+ %\section*{Acknowledgements}\addcontentsline{toc}{section}{Acknowledgements}\th@df@ack
  %\section*{Dedication}\th@df@ded
- \cleardoublepage
- \th@centered{\th@df@quo}
+ %\cleardoublepage
+ %\th@centered{\th@df@quo}
  \cleardoublepage }
 \def\THDOtablelists{
  \th@psty@set@full{main}{main}{}
@@ -478,9 +479,9 @@
  \addcontentsline{toc}{section}{\listfigurename}\listoffigures  \cleardoublepage
  \addcontentsline{toc}{section}{\listtablename}\listoftables  \cleardoublepage
  %\setglossarysection{chapter}
- \addcontentsline{toc}{section}{\glossaryname} \printnoidxglossary \cleardoublepage
+% \addcontentsline{toc}{section}{\glossaryname} \printnoidxglossary \cleardoublepage
  \addcontentsline{toc}{section}{\acronymname} \printnoidxglossary[type=\acronymtype] \cleardoublepage
- \addcontentsline{toc}{section}{Symbols} \printnoidxglossary[type=symbols] \cleardoublepage
+% \addcontentsline{toc}{section}{Symbols} \printnoidxglossary[type=symbols] \cleardoublepage
 % \printnoidxglossaries \cleardoublepage
  \th@update@geometry{\th@dim@lem}{\th@dim@rim}{\th@dim@tbm}{\th@dim@inm} }
 \appto\THPREcontent{
