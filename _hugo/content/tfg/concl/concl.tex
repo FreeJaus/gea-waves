@@ -12,49 +12,56 @@ condicionarán los ensayos para el uso de los diafragmas de diámetros
 estática está limitado a 100Pa y el diámetro interior de la tubería que
 hace de chimenea es de 19,6mm.
 
-Por lo tanto, en las tablas de a continuación, se recopilan los valores
+Por lo tanto, los valores
 obtenidos que se tendrán en cuenta para validar las simulaciones
-realizadas por ordenador con el canal 3-D del laboratorio:
+realizadas por ordenador con el canal 3-D del laboratorio, se recopilan en la \autoref{tab:cfd} para las simulaciones y en la \autoref{tab:exp} los del ensayo.
 
 \begin{table}
 \centering
-\includegraphics{TabCFD.png}
 \caption{Resultados para la simulación de lo 4 últimos casos}
+\includegraphics[width=0.55\linewidth]{TabCFD.png}
 \label{tab:cfd}
 \end{table}
 
-\begin{figure}
+\begin{table}
 \centering
-\includegraphics{TabEXP.png}
 \caption{Resultados hallados de la experimentación en el
 canal del laboratorio}
+\includegraphics[width=0.55\linewidth]{TabEXP.png}
 \label{tab:exp}
-\end{figure}
+\end{table}
 
 A partir de esto, se puede calcular el porcentaje de error para comparar
 cómo de exactos son los valores de las simulaciones por ordenador
-respecto del valor real medido experimentalmente:
+respecto del valor real medido experimentalmente, \autoref{tab:porcentajeError}
 
-\begin{figure}
+\begin{table}
 \centering
-\includegraphics{porcentajeError.png}
 \caption{Porcentajes de error entre el ensayo y las simulaciones}
-\label{fig:porcentajeError}
-\end{figure}
+\label{tab:porcentajeError}
+\includegraphics[width=0.4\linewidth]{porcentajeError.png}
+\end{table}
 
 A continuación, se analizan los resultados para cada una de las
 variables:
 
 \begin{figure}
 \centering
-\includegraphics{PDiaf.png}
+\includegraphics[width=0.7\linewidth]{PDiaf.png}
 \caption[Presión máxima aguas arriba del diafragma]{Representación de la máxima presión hallada aguas arriba del diafragma}
 \label{fig:PDiaf}
 \end{figure}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth]{QDiaf.png}
+  \caption[Gráfica comparación de caudal máximo]{Gráfico del caudal máximo para cada diafragma}
+  \label{fig:QDiaf}
+  \end{figure}
+
 \begin{itemize}
 \item
-  Altura del agua dentro de la cámara:
+  \textbf{Altura del agua dentro de la cámara:}
 
   El resultado obtenido de la altura del agua dentro de la cámara para
   cada caso, se extrae de la tabla, ya que este valor permanece
@@ -72,14 +79,12 @@ variables:
   Con estos valores, se concluye que los resultados obtenidos por ambas
   vías, prácticamente resultan iguales.
 \item
-  Diferencia de presiones máximas a la salida de la chimenea:
+  \textbf{Diferencia de presiones máximas a la salida de la chimenea:}
 
   Por un lado, se comparan los máximos alcanzados por cada diafragma,
-  comprobando que los valores hallados permanecen bastante parejos.
-  
-  \autoref{fig:PDiaf}
+  comprobando que los valores hallados permanecen bastante parejos, ver la gráfica \autoref{fig:PDiaf}.
 
-  Por otro lado, en la /R/{[}Gráfica X{]}, además de representar los
+  Por otro lado, en la gráfica \autoref{fig:potTCanal3D} del apartado \ref{sec:canal3d}, además de representar los
   resultados del ensayo para cada diafragma, se añade la curva de las
   simulaciones correspondiente a ese mismo rango. Como se puede
   apreciar, los resultados son bastante satisfactorios, coincidiendo en
@@ -91,41 +96,28 @@ variables:
   cámara. Dando lugar a una presión de flujo menos apreciable aún, en el
   caso de la experimentación.
 
-  OK¿//Asimismo, en el apartado /R/{[}4.2.2.1 Placas de orificio{]} se
+  Asimismo, en la subapartado \ref{header-n277}, donde se describían las placas de orificio, se
   define el rango límite que la normativa establece para la relación de
   diámetros de \(\beta\), del cual, este diafragma, queda fuera. Es
-  probable que para evitar errores en las mediciones, se preven/ía/ga
-  dicho límite.
-\end{itemize}
-
-\begin{itemize}
+  probable que para evitar errores en las mediciones, se prevenga
+   dicho límite.
 \item
-  Caudal a través del diafragma:
+  \textbf{Caudal a través del diafragma:}
 
-  Estos resultados son los que más difieren entre sí, aun así la escala
+  Estos resultados, representados en la gráfica \autoref{fig:QDiaf}, son los que más difieren entre sí, aun así la escala
   es muy pequeña y el error que se da es de alrededor del 10\%, esto
   puede deberse a que en el ensayo no fue posible garantizar un volumen
   de agua exacto para todas las pruebas.
-\end{itemize}
-
-\begin{figure}
-\centering
-\includegraphics{QDiaf.png}
-\caption{Representación del caudal máximo para cada diafragma}
-\label{fig:QDiaf}
-\end{figure}
-
-\begin{itemize}
 \item
-  Potencia en función del diafragma:
+  \textbf{Potencia en función del diafragma:}
 
-  Como para los valores anteriores, estos también se asemejan entre sí
+  Como para los valores anteriores, como puede verse en la gráfica \autoref{fig:PotDiaf}, estos también se asemejan entre sí
   en gran medida.
 \end{itemize}
 
 \begin{figure}
 \centering
-\includegraphics{PotDiaf.png}
+\includegraphics[width=0.7\linewidth]{PotDiaf.png}
 \caption{Potencia máxima para cada diagrama}
 \label{fig:PotDiaf}
 \end{figure}
@@ -263,9 +255,8 @@ adquiere una mayor perspectiva de las variantes que se podrían abordar:
   (succión y absorción). Una vez validado el modelo, podría incluirse en
   la salida de aire de la cámara para hallar la potencia extraída. Este
   estudio, podría ensayarse de forma didáctica, recomendando la
-  referencia
-  \href{https://repository.unimilitar.edu.co/bitstream/10654/6683/2/GonzalezRamosPaola2010.pdf}{P.
-  González Ramos}, o a escala real, seleccionando una turbina
+  referencia P.
+  González Ramos\footnote{\url{https://repository.unimilitar.edu.co/bitstream/10654/6683/2/GonzalezRamosPaola2010.pdf}}, o a escala real, seleccionando una turbina
   normalizada.
 \item
   Debido a las múltiples formas de generar el modelo, se propone

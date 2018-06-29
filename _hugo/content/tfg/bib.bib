@@ -14,10 +14,129 @@
   keywords = {OpenFOAM, Nonlinear wave–structure interactions, Wave loading, Spectral decomposition },
 }
 
-@WWW{orrego09,
-  author = {Orrego, S; ";\ Grupo\ de\ Investigación\ Mecánica\ Aplicada;\ Universidad\ EAFIT,\ Colombia;},
-  title  = {Simulación de fluidos utilizando computadores: una moderna herramienta para el estudio y análisis de fluidos},
-  year   = {2009},
+@Article{Higuera2014259,
+  author   = {Pablo Higuera and Javier L. Lara and Inigo J. Losada},
+  title    = {Three-dimensional interaction of waves and porous coastal structures using OpenFOAM®. Part II: Application},
+  year     = {2014},
+  volume   = {83},
+  pages    = {259 - 270},
+  issn     = {0378-3839},
+  doi      = {http://dx.doi.org/10.1016/j.coastaleng.2013.09.002},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0378383913001464},
+  abstract = {Abstract This paper and its companion Higuera et al. (2014--this issue) introduce the formulation of Volume-Averaged Reynolds-Averaged Navier–Stokes (VARANS) equations in OpenFOAM® to simulate two-phase flow through porous media. This new implementation, so-called IHFOAM, corrects the limitations of the original OpenFOAM® code. An innovative hybrid methodology (2D–3D) is presented to optimize the simulation time needed to assess the three-dimensional effects of wave interaction with coastal structures. The combined use of a 2D and a 3D model enables the practical application of the 3D \{VARANS\} code to simulate real cases, contributing to a significant speed-up. This is highly convenient and especially suitable for non-conventional structures, as it overcomes the limitations inherent to applying semi-empirical formulations out of their range or 2D simulations only. A detailed study of stability and overtopping for a 3D porous high-mound breakwater at prototype scale subjected to oblique irregular (random) waves is carried out. Pressure around the caissons, overtopping discharge rate and turbulent magnitudes are presented in three dimensions. The mean pressure laws present a high degree of accordance with the formulation provided by Goda–Takahashi. Furthermore, local effects due to three-dimensional processes play a significant role, especially close to the breakwater head. },
+  journal  = {Coastal Engineering},
+  keywords = {CFD, RANS, OpenFOAM, Wave–structure interaction, Two phase flow, Porous media },
+}
+
+@Article{Iturrioz201465,
+  author   = {A. Iturrioz and R. Guanche and J.A. Armesto and M.A. Alves and C. Vidal and I.J. Losada},
+  title    = {Time-domain modeling of a fixed detached oscillating water column towards a floating multi-chamber device},
+  year     = {2014},
+  volume   = {76},
+  pages    = {65 - 74},
+  issn     = {0029-8018},
+  doi      = {http://dx.doi.org/10.1016/j.oceaneng.2013.11.023},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0029801813004253},
+  abstract = {Abstract A simplified time-domain model for a fixed detached Oscillating Water Column (OWC) device is presented as a first step towards modeling a floating multi-chamber \{OWC\} device. The motion of a floating body in the time-domain is expressed by Cummins integro-differential equation, and based on it, water mass motion inside the chamber has been modeled here as a piston-like motion. Radiation, hydrostatic, excitation and viscous forces have been considered, as well as the added mass of the water in the chamber and the effect of the air pressure inside it. The equation of the floating body in the time domain has been approximated by a state-space method, which comes from the extension of the state-space system corresponding to the convolution integral of the radiation force. Experimental data have been used for model calibration and validation. Furthermore, the model has also been validated with a widely used Computational Fluid Dynamics (CFD) model (IH-2VOF). These show that the model presented is reliable and computationally efficient allowing for massive simulations for a statistical design or economic feasibility studies. },
+  journal  = {Ocean Engineering},
+  keywords = {Oscillating water column, Time-domain, State-space, Experimental calibration and validation },
+}
+
+@Article{Higuera2013102,
+  author   = {Pablo Higuera and Javier L. Lara and Inigo J. Losada},
+  title    = {Realistic wave generation and active wave absorption for Navier–Stokes models: Application to OpenFOAM®},
+  year     = {2013},
+  volume   = {71},
+  pages    = {102 - 118},
+  issn     = {0378-3839},
+  doi      = {http://dx.doi.org/10.1016/j.coastaleng.2012.07.002},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0378383912001354},
+  abstract = {The present paper and its companion (Higuera et al., 2012) introduce OpenFOAM® as a tool to consider for coastal engineering applications as it solves 3D domains and considers two-phase flow. In this first paper, OpenFOAM® utilities are presented and the free surface flow solvers are analysed. The lack of specific boundary conditions for realistic wave generation is overcome with their implementation combined with active wave absorption. Wave generation includes all the widely used theories plus specific piston-type wavemaker replication. Also standalone active wave absorption implementation is explained for several formulations, all of which are applicable to 3D cases. Active wave absorption is found to enhance stability by decreasing the energy of the system and to correct the increasing water level on long simulations. Furthermore, it is advantageous with respect to dissipation zones such as sponge layers, as it does not increase the computational domain. The results vary depending on the theory (2D, Quasi-3D and 3D) but overall performance of the implemented methods is very good. The simulations and results of the present paper are purely theoretical. Comparisons with laboratory data are presented in the second paper (Higuera et al., 2012). },
+  journal  = {Coastal Engineering},
+  keywords = {CFD, OpenFOAM, Wave generation, Wave absorption, Two phase flow },
+}
+
+@Article{Higuera2013119,
+  author   = {Pablo Higuera and Javier L. Lara and Inigo J. Losada},
+  title    = {Simulating coastal engineering processes with OpenFOAM®},
+  year     = {2013},
+  volume   = {71},
+  pages    = {119 - 134},
+  issn     = {0378-3839},
+  doi      = {http://dx.doi.org/10.1016/j.coastaleng.2012.06.002},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0378383912001093},
+  abstract = {In the present work, the OpenFOAM® newly developed wave generation and active absorption boundary condition presented in the companion paper (Higuera et al., submitted for publication) is validated. In order to do so the simulation of some of the most interesting physical processes in coastal engineering is carried out and comparisons with relevant experimental benchmark cases presented. Water waves are found to be generated realistically and agreement between laboratory and numerical data is very high regarding wave breaking, run up and undertow currents. },
+  journal  = {Coastal Engineering},
+  keywords = {CFD, OpenFOAM, Two phase flow, Wave breaking, Run up, Undertow current },
+}
+
+@Article{Higuera2014243,
+  author   = {Pablo Higuera and Javier L. Lara and Inigo J. Losada},
+  title    = {Three-dimensional interaction of waves and porous coastal structures using OpenFOAM®. Part I: Formulation and validation},
+  year     = {2014},
+  volume   = {83},
+  pages    = {243 - 258},
+  issn     = {0378-3839},
+  doi      = {http://dx.doi.org/10.1016/j.coastaleng.2013.08.010},
+  url      = {http://www.sciencedirect.com/science/article/pii/S0378383913001452},
+  abstract = {Abstract In this paper and its companion (Higuera et al., 2014--this issue), the latest advancements regarding Volume-averaged Reynolds-averaged Navier–Stokes (VARANS) are developed in OpenFOAM® and applied. A new solver, called IHFOAM, is programmed to overcome the limitations and errors in the original OpenFOAM® code, having a rigorous implementation of the equations. Turbulence modelling is also addressed for k-ϵ and k-ω \{SST\} models within the porous media. The numerical model is validated for a wide range of cases including a dam break and wave interaction with porous structures both in two and three dimensions. In the second part of this paper the model is applied to simulate wave interaction with a real structure, using an innovative hybrid (2D–3D) methodology. },
+  journal  = {Coastal Engineering},
+  keywords = {CFD, RANS, OpenFOAM, IHFOAM, Wave–structure interaction, Two phase flow, Porous media },
+}
+
+@Book{White08,
+  author   = {White F.M.},
+  title    = {Mecánica de Fluidos},
+  year     = {2008},
+  editor   = {McGraw-Hill},
+  edition  = {6},
+  location = {Madrid},
+}
+
+@Book{Fernandez12,
+  author   = {Fernández Oro, J.M.},
+  title    = {Técnicas numéricas en ingeniería de fluidos},
+  year     = {2012},
+  editor   = {Reverte},
+  location = {Barcelona},
+}
+
+@Conference{Kuzmin10,
+  author    = {Kuzmin, A.},
+  title     = {Proceedings of the Sixth International Conference on Computational Fluid Dynamics, ICCFD6, St Petersburg, Russia},
+  booktitle = {Computational Fluid Dynamics 2010},
+  year      = {2010},
+  date      = {12-16 July 2010},
+  editor    = {Springer},
+}
+
+@Book{Anderson2009,
+  author    = {J. Anderson and G. Degrez and J. Degroote and E. Dick and R. Grundmann and J. Vierendeels},
+  title     = {Computational Fluid Dynamics - an introduction},
+  year      = {2009},
+  editor    = {John F. Wendt},
+  edition   = {3},
+  publisher = {springer},
+  location  = {Berlin},
+}
+
+@Book{Versteeg95,
+  author    = {H. K. Versteeg and W. Malalasekera},
+  title     = {An introduction to Computational Fluid Dynamics - The Finite Volume Method},
+  year      = {1995},
+  publisher = {Longman Scientific \& Technical},
+  location  = {England},
+}
+
+@Conference{Fujii03,
+  author    = {Kozo Fujii, Kazuhiro Nakahashi, Shigeru Obayashi, Satoko Komurasaki (Eds.)},
+  title     = {New Developments in Computational Fluid Dynamics},
+  booktitle = {Notes on Numerical Fluid Mechanics and Multidisciplinary Design (NNFM)},
+  year      = {2003},
+  date      = {April 21 to 24, 2003},
+  editor    = {Springer},
+  subtitle  = {Proceedings of the Sixth International Nobeyama Workshop on the New Century of Computational Fluid Dynamics, Nobeyama, Japan},
+  volume    = {90},
 }
 
 @Article{amundarain12,
@@ -31,9 +150,10 @@
 
 @Article{romerogarcia10,
   author = {Romero García, RE},
-  title = {Producción\ de\ energía\ eléctrica\ a\ partir\ de\ los\ mares\";\ Técnica\ Industrial;\ 288},
+  title = {Producción de energía eléctrica a partir de los mares},
+  volume = {288},
   year = {2010},
-  month = {Agosto},
+  month = {08},
   pages = {44-5}
 }
 
@@ -44,7 +164,14 @@
   volume = {301},
   pages = {54-60},
   year = {2013},
-  month = {marzo}
+  month = {03}
+}
+
+@WWW{ceto,
+  author = {Carnegie clean energy},
+  title = {Wave energy technology, CETO},
+  url = {https://www.carnegiece.com/wave/},
+  urldate = {2018-01-01}
 }
 
 @WWW{eduambiental,
@@ -60,9 +187,371 @@
   journal = {Proyecciones},
   volume = {9},
   number = {2},
-  month = {octubre},
+  month = {10},
   year = {2011},
   pages = {53-65}
+}
+
+@WWW{ibanez08,
+  author = {Ibanez, Pedro},
+  title = {Energía de las olas: Situación y Futuro},
+  url = {https://www.udc.es/iuem/documentos/doc_xornadas/anaeco/APROVEITAMENTODAENERXIADASOLAS.pdf},
+  pages = {70},
+  urldate = {2008-07-01},
+}
+
+@WWW{kbs,
+  author = {KBS, World},
+  title = {La nueva planta de energía mareomotriz de Corea del Sur},
+  url = {http://world.kbs.co.kr/spanish/archive/program/news_issue.htm?no=22473},
+  urldate = {2011-08-30},
+} 
+
+@WWW{carnegie,
+  author = {Carnegie Clean energy},
+  title = {Research Partners},
+  url = {https://www.carnegiece.com/partner/research-partners/},
+  urldate = {2018-11-17},
+}
+
+@WWW{cavia08,
+  author = {Cavia del Olmo, Berta},
+  title = {Explotación del potencial de energía del oleaje en función del rango de trabajo de prototipos y captadores},
+  url = {https://upcommons.upc.edu/bitstream/handle/2099.1/8720/00.pdf},
+  urldate = {2008-04-29},
+}
+
+@WWW{inverness11,
+  author = {Inverness},
+  title = {Inverness firm hands over the world's first full life wave power plant},
+  url = {https://www.inverness-courier.co.uk/News/Inverness-firm-alunches-first-tidal-wave-project-16112011.htm},
+  urldate = {2011-11-16},
+}
+
+@WWW{eitb11,
+  author = {noticias EITB},
+  title = {Mutriku tiene la primera planta que suministra energía de las olas},
+  url = {https://www.power-technology.com/projects/mutriku-wave/},
+  urldate = {2018-01-01},
+}
+
+@WWW{power18,
+  author = {Power, technology},
+  title = {Power-technology: Mutriku Wave Energy Plant},
+  url = {http://www.eitb.eus/es/noticias/sociedad/detalle/698089/mutriku-tiene-primera-planta-suministra-energia-olas/},
+  urldate = {2011-07-08},
+}
+
+@WWW{inverness13,
+  author = {Inverness Courier},
+  title = {City job losses as giant utility firm pulls out},
+  url = {https://www.inverness-courier.co.uk/News/City-job-losses-as-giant-utility-firm-pulls-out-04032013.htm},
+  urldate = {2013-03-04},
+}
+
+@WWW{toftestallen15,
+  author = {Kystmuseet i Oygarden},
+  title = {Toftestallen},
+  url = {https://coastlight.net/detaljer/4283/Toftestallen/},
+  urldate = {2015-02-07},
+}
+
+@WWW{oceanlinx17,
+  author = {Wikipedia},
+  title = {Oceanlinx},
+  url = {https://en.wikipedia.org/wiki/Oceanlinx},
+  urldate = {2017-11-23},
+}
+
+@WWW{greenwave15,
+  author = {Business Guide},
+  title = {GreenWAVE Still Stranded off South Australia},
+  url = {https://www.offshorewind.biz/2015/04/14/greenwave-still-stranded-off-south-australia/},
+  urldate = {2015-04-14},
+}
+
+@WWW{emec15,
+  author = {EMEC Aquamarine Power},
+  title = {Aquamarine Power},
+  url = {http://www.emec.org.uk/about-us/wave-clients/aquamarine-power/},
+  urldate = {2015-01-01},
+}
+
+@WWW{emec16,
+  author = {EMEC P2-002},
+  title = {Press release: EMEC seeks feedback from industry for P2-002},
+  url = {http://www.emec.org.uk/press-release-emec-seeks-feedback-from-industry-for-p2-002/},
+  urldate = {2016-02-25},
+}
+
+
+@WWW{aws17,
+  author = {AWS},
+  title = {U.S. DEPARTMENT OF ENERGY – WAVE ENERGY PRIZE},
+  url = {http://www.awsocean.com/projects.html},
+  urldate = {2017-01-01},
+}
+
+@WWW{opt08,
+  author = {Iberdrola, Renovables},
+  title = {La fuerza de las olas: La
+    energía undimotriz se abre paso entre las renovables},
+  url = {https://www.scribd.com/document/328163965/La-Fuerza-de-Las-Olas},
+  urldate = {2008-12-01},
+}
+
+@WWW{duck74,
+  author = {Wikipedia},
+  title = {Salter duck},
+  url = {https://en.wikipedia.org/wiki/Salter%27s_duck},
+  urldate = {1974-01-01},
+}
+
+@WWW{pelamis06,
+  author = {Power Technology},
+  title = {Pelamis, World’s First Commercial Wave Energy Project, Agucadoura},
+  url = {https://www.power-technology.com/projects/pelamis/},
+  urldate = {2006-01-01},
+}
+
+@WWW{wavedragon06,
+  author = {Wave Dragon},
+  title = {Sea testing and optimisation of power production on a scale 1:4.5 test rig of the offshore wave energy converter Wave Dragon},
+  url = {http://www.wavedragon.net/sea-testing-and-optimisation-of-power-production-on-a-scale-14-5-test-rig-of-the-offshore-wave-energy-converter-wave-dragon/},
+  urldate = {2006-01-01},
+}
+
+@WWW{wavedragon09,
+  author = {Wave Dragon},
+  title = {Timetable},
+  url = {http://www.wavedragon.net/timetable/},
+  urldate = {2009-08-25},
+}
+
+@WWW{oes09,
+  author = {U.S. Department of Energy, OES},
+  title = {Wave Dragon Pre-Commercial Demonstration Project},
+  url = {https://tethys.pnnl.gov/annex-iv-sites/wave-dragon-pre-commercial-demonstration-project},
+  urldate = {2016-03-30},
+}
+
+@WWW{bimep07,
+  author = {bimep},
+  title = {Sobre bimep: Desarrollo del proyecto},
+  url = {http://bimep.com/sobre-bimep/desarrollo-del-proyecto/},
+  urldate = {2017-12-04},
+}
+
+@WWW{bimep07i,
+  author = {bimep},
+  title = {Sobre bimep: Instalaciones},
+  url = {http://bimep.com/sobre-bimep/instalaciones/},
+  urldate = {2017-12-04},
+}
+
+@WWW{bimep,
+  author = {bimep},
+  title = {Área BiMEP},
+  url = {https://bimep.com/},
+  urldate = {2018-01-01},
+}
+
+@WWW{marmok17,
+  author = {MarineEnergy},
+  title = {Wave device at Bimep marks power export anniversary},
+  url = {https://tidalenergytoday.com/2017/12/15/wave-device-at-bimep-marks-power-export-anniversary/},
+  urldate = {2017-12-15},
+}
+
+@WWW{oceantec18,
+  author = {MarineEnergy},
+  title = {Oceantec’s wave energy device breaks de-risking ground},
+  url = {https://tidalenergytoday.com/2017/12/15/wave-device-at-bimep-marks-power-export-anniversary/},
+  urldate = {2018-03-05},
+}
+
+@WWW{norvento14,
+  author = {Interempresas},
+  title = {Proyecto Fahemar: Generar energía eléctrica a partir de energía undimotriz},
+  url = {http://www.interempresas.net/Energia/Articulos/126331-Generar-energia-a-partir-de-energia-undimotriz.html},
+  urldate = {2014-08-06},
+}
+
+@WWW{norvento17,
+  author = {Diario digital de economía gallega},
+  title = {Norvento construirá el primer parque experimental de I+D+i en España vinculado a la energía eólica},
+  url = {http://www.economiaengalicia.com/articulo/empresa/norvento-construira-primer-parque-experimental-idi-espana-vinculado-energia-eolica/20170404180131003321.html},
+  urldate = {2017-04-04},
+}
+
+@WWW{marrenovables17,
+  author = {Toimil, César},
+  title = {La nave de Galicia Mar Renovables podría pasar a la Xunta al no haber comprador},
+  url = {https://www.lavozdegalicia.es/noticia/ferrol/carino/2017/01/19/nave-galicia-mar-carino-pasar-xunta-haber-comprador/0003_201701F19C7994.htm},
+  urldate = {2017-01-19},
+}
+
+@WWW{marrenovables12,
+  author = {infoempresa},
+  title = {Galicia Mar Renovables},
+  url = {https://www.infoempresa.com/es-es/es/empresa/galicia-mar-renovables-sl},
+  urldate = {2012-12-03},
+}
+
+
+@WWW{santona13,
+  author = {Remartinez, David},
+  title = {El proyecto experimental iniciado en 2008 con colaboración pública buscaba la generación de electricidad a partir del movimiento de las olas},
+  url = {https://www.eldiariomontanes.es/20131116/local/castro-oriental/abandono-proyecto-iberdrola-santona-201311161639.html},
+  urldate = {2013-11-16},
+}
+
+@WWW{iberdrola13,
+  author = {Muñoz, Antonio},
+  title = {Iberdrola liquida su único proyecto de energía renovable marina en España},
+  url = {https://www.eldiariomontanes.es/20131116/local/castro-oriental/abandono-proyecto-iberdrola-santona-201311161639.html},
+  urldate = {2013-11-13},
+}
+
+@WWW{mutriku16,
+  author = {MarineEnergy},
+  title = {Mutriku wave plant generates over 1 GWh of clean power},
+  url = {https://tidalenergytoday.com/2016/07/19/mutriku-wave-plant-generates-over-1gwh-of-clean-power/},
+  urldate = {2016-07-19},
+}
+
+@WWW{opera17,
+  author = {MarineEnergy},
+  title = {Kymaner turbine hits full power at Mutriku wave plant},
+  url = {https://tidalenergytoday.com/2017/05/22/kymaner-turbine-hits-full-power-at-mutriku-wave-plant/},
+  urldate = {2017-05-22},
+}
+
+@WWW{hernandez12,
+  author = {Hernández, María Jesús},
+  title = {La carrera hacia la boya inteligente},
+  url = {http://www.laprovincia.es/sociedad/2012/10/21/carrera-boya-inteligente/491794.html},
+  urldate = {2012-10-21},
+}
+
+@WWW{fernandez13,
+  author = {Fernández Diez, Pedro},
+  title = {Técnicas que aprovechan la energía de las olas},
+  url = {http://es.pfernandezdiez.es/libro/?id=5},
+  urldate = {2005-01-01},
+}
+
+@WWW{educativa,
+  author = {educativa},
+  title = {Corrientes marinas},
+  url = {http://e-ducativa.catedu.es/44700165/aula/archivos/repositorio/2500/2578/html/42_corrientes_marinas.html},
+  urldate = {2018-01-01},
+}
+
+@WWW{ren21,
+  author = {REN21},
+  title = {Renewables Global Estatus Report},
+  url = {http://www.ren21.net/gsr-2018/},
+  year = {2018},
+}
+
+@WWW{gsr,
+  author = {REN21},
+  title = {Renewables Global Estatus Report},
+  url = {http://www.ren21.net/wp-content/uploads/2017/06/17-8399_GSR_2017_Full_Report_0621_Opt.pdf},
+  year = {2018},
+}
+
+@WWW{gfr,
+  author = {REN21},
+  title = {Renewables Global Future Report},
+  url = {http://www.ren21.net/future-of-renewables/global-futures-report/},
+  year = {2018},
+}
+
+@WWW{wavegen,
+  author = {ITER and EIGSI and WAVEGEN and AIET},
+  title = {Plan de desarrollo regional para el uso de la energía proveniente del oleaje atlántico},
+  url = {http://www.agenergia.org/portfolio-items/wavenergy/?portfolioCats=45},
+  year = {2008},
+}
+
+@WWW{per,
+  author = {IDAE and Ministerio de industria, turismo y comercio},
+  title = {PER 2011-2020},
+  url = {http://www.idae.es/uploads/documentos/documentos_PER_2011-2020_Borrador26julio-I_c53dc770.pdf},
+  urldate = {2011-06-26},
+}
+
+@WWW{paner,
+  author = {Secretaría de estado de energía},
+  title = {PANER 2011-2020},
+  url = {http://www.mincotur.gob.es/energia/desarrollo/EnergiaRenovable/Paginas/paner.aspx},
+  urldate = {2009-04-23},
+}
+
+@WWW{emision,
+  author = {Ministerio para la transición ecológica},
+  title = {Establecimiento y regulación del régimen europeo de comercio de derechos de emisión},
+  url = {http://www.mapama.gob.es/es/cambio-climatico/temas/comercio-de-derechos-de-emision/documentacion-y-normativa/},
+  urldate = {2014-01-01},
+}
+
+@WWW{ue2030,
+  author = {European comission},
+  title = {2030 Energy Strategy},
+  url = {https://ec.europa.eu/energy/en/topics/energy-strategy-and-energy-union/2030-energy-strategy},
+  urldate = {2018-01-01},
+}
+
+@WWW{ree,
+  author = {Red Eléctrica de España},
+  title = {Las energías renovables en el sistema eléctrico español 2016},
+  url = {http://www.ree.es/es/estadisticas-del-sistema-electrico-espanol/informe-de-energias-renovables},
+  urldate = {2017-06-28},
+}
+
+@WWW{klima,
+  author = {Gobierno Vasco},
+  title = {Estrategia de Cambio Climático 2050 del País Vasco},
+  url = {http://www.euskadi.eus/contenidos/documentacion/klima2050/es_def/adjuntos/KLIMA2050_es.pdf},
+  urldate = {2017-06-28},
+}
+
+
+@WWW{sfdez18,
+  author = {Fernandez, Sergio},
+  title = {Portugal generó más del 100\% de su electricidad mediante energías renovables en marzo},
+  url = {https://www.diariorenovables.com/2018/04/portugal-genero-100-electricidad-energias-renovables.html},
+  urldate = {2018-04-05},
+}
+
+@WWW{afp,
+  author = {AFP},
+  title = {Desde mayo, el 100\% de la energía en Costa Rica es de fuentes renovables},
+  url = {https://www.elespectador.com/noticias/medio-ambiente/mayo-el-100-de-energia-costa-rica-de-fuentes-renovables-articulo-647158},
+  urldate = {2016-08-03},
+}
+
+@WWW{isola15,
+  author = {Isola Wiesner, Mónica},
+  title = {Costa Rica ha producido el 99\% de su electricidad con renovables en 2015},
+  url = {https://www.univision.com/noticias/energias-renovables/costa-rica-ha-producido-el-99-de-su-electricidad-con-renovables-en-2015},
+  urldate = {2015-12-22},
+}
+
+@WWW{siblog,
+  author = {Soluciones Integrales, Blog},
+  title = {Energía undimotriz, el poder de las olas},
+  url = {https://www.solucionesintegralesendesa.com/blog/equipamiento-hogar/ahorro-hogar/energia-undimotriz-el-poder-de-las-olas/},
+  urldate = {2015-10-06},
+}
+
+@WWW{caballero11,
+  author = {Caballero, Carlos},
+  title = {Estudio de plantas de producción de energías renovables con aprovechamiento de la energía del mar},
+  url = {https://e-archivo.uc3m.es/bitstream/handle/10016/12153/PFC_Carlos_\%20Caballero_Santos.pdf?sequence=1},
+  urldate = {2011-05-01},
 }
 
 @Book{ferziger02,
@@ -70,33 +559,236 @@
   title = {Computational Methods for Fluid Dynamics},
   edition = {3rd},
   editor = {Springer, New York},
-  year = {2002}
+  year = {2002},
 }
 
-@WWW{fernandez,
-  author = {Fernández, P.},
-  url = {http://files.pfernandezdiez.es/EnergiasAlternativas/mar/PDFs/02Olas.pdf}
+@WWW{installationOF,
+  title        = {Installation/Linux/OpenFOAM-3.0.x/Fedora},
+  url          = {https://openfoamwiki.net/index.php/Installation/Linux/OpenFOAM-3.0.x/Fedora},
+  organization = {OpenFOAMWiki},
+  urldate      = {2016-09-11},
 }
 
-@Comment{Guillermo}
+@WWW{guideblockMesh,
+  author ={CFD Direct Ltd},
+  title        = {5.3 Mesh generation with the blockMesh utility},
+  url          = {http://cfd.direct/openfoam/user-guide/blockmesh/},
+  urldate      = {2015-03-02},
+}
 
-@WWW{Nozaki,
+@WWW{toposet,
+    title = {TopoSet},
+    author = {CFD Direct Ltd},
+    url = {https://openfoamwiki.net/index.php/TopoSet},
+}
+
+@WWW{guideDimensions,
+  author ={CFD Direct Ltd},
+  title        = {User Guide: 4.2.6 Dimensional units},
+  url          = {https://cfd.direct/openfoam/user-guide/basic-file-format/\#x17-1290004.2.6},
+  urldate      = {2015-03-02},
+}
+
+@WWW{hole,
+  author ={CFD Direct Ltd},
+  title        = {User Guide: 2.2 Stress analysis of plate with hole},
+  url          = {https://cfd.direct/openfoam/user-guide/plateHole/##x6-400002.2.1},
+  urldate      = {2017-01-01},
+}
+
+@WWW{dambreak,
+  author ={CFD Direct Ltd},
+  title        = {User Guide: 2.3 Breaking of a dam},
+  url          = {https://cfd.direct/openfoam/user-guide/plateHole/##x6-400002.2.1},
+  urldate      = {2017-01-01},
+}
+
+@WWW{sradl,
+  author ={Radl, Stefan},
+  title = {Meshing Toools that Interface with OpenFOAM},
+  url = {https://github.com/NanoSim/CoursesAndTrainingPortfolio/blob/master/3_EulerianModels/meshingTools.md},
+  urldate      = {2016-04-27},
+}
+
+@WWW{maitenance,
+  author ={OpenFOAM Fundation},
+  title = {OpenFOAM Maintenance},
+  url = {https://github.com/NanoSim/CoursesAndTrainingPortfolio/blob/master/3_EulerianModels/meshingTools.md},
+  urldate      = {2016-04-27},
+}
+
+@WWW{codes,
+  author ={CFD Online},
+  title = {Free Codes},
+  url = {https://www.cfd-online.com/Wiki/Codes},
+  urldate      = {2018-06-25},
+}
+
+@WWW{soft,
+  author ={CFD Online},
+  title = {Software related to CFD},
+  url = {https://www.cfd-online.com/Links/soft.html},
+  urldate      = {2016-11-06},
+}
+
+@WWW{maxi,
+  author ={Borticus Maximus},
+  title = {Best open-source mesh program for use with openFOAM},
+  url = {https://www.reddit.com/r/CFD/comments/18ydig/best_opensource_mesh_program_for_use_with_openfoam/},
+  urldate      = {2013-01-01},
+}
+
+@WWW{conversion,
+  author ={CFD Direct Ltd},
+  title        = {User Guide: 5.5 Mesh conversion},
+  url          = {https://cfd.direct/openfoam/user-guide/mesh-conversion/},
+  urldate      = {2017-03-02},
+}
+
+@Misc{OFwiki-blockMesh,
+  title = {Graphical User Interfaces for visualizing and designing blockMeshDict},
+  year  = {2016-08-20},
+  url   = {https://openfoamwiki.net/index.php/BlockMesh},
+}
+
+@WWW{cli,
+  author ={CFD Direct Ltd},
+  title        = {6.2 Post-processing command line interface (CLI)},
+  url          = {https://cfd.direct/openfoam/user-guide/post-processing-cli/#x31-2400006.2.3},
+  urldate      = {2017-03-02},
+}
+
+@WWW{OFwiki-bMprogrammatically,
+  title        = {2.4 Programmatically generating blockMeshDict files},
+  url          = {https://openfoamwiki.net/index.php/BlockMesh#Using_blockMesh_to_export_blockMeshDict_to_.obj},
+  organization = {OpenFoamWiki},
+  urldate      = {2014-08-14},
+}
+
+@WWW{UserGuide-SolAlg,
+  title        = {4.5 Solution and algorithm control},
+  url          = {http://cfd.direct/openfoam/user-guide/fvSolution/#x21-1170004.5},
+  organization = {CFD Direct Ltd},
+  urldate      = {2015-03-02},
+}
+
+@WWW{CFDtoolbox,
+  title        = {The open source CFD toolbox},
+  url          = {http://www.openfoam.com/documentation/user-guide/index.php},
+  organization = {OpenCFD Ltd (ESI Group)},
+  urldate      = {2016},
+}
+
+@WWW{OFwiki-utilities,
+  title        = {Main OF Utilities},
+  url          = {https://openfoamwiki.net/index.php/Main_OFUtilities},
+  organization = {OpenFoamWiki},
+  urldate      = {25 October 2012},
+}
+
+@WWW{UserGuide,
+  title        = {OpenFOAM User Guide/contents},
+  url          = {http://cfd.direct/openfoam/user-guide/},
+  organization = {CFD Direct Ltd},
+  urldate      = {28th June 2016},
+}
+
+@Misc{Nozaki,
   author = {Fumiya Nozaki},
-  url = {https://es.slideshare.net/fumiyanozaki96/openfoam},
-  year = {2015}
+  title  = {Dynamic Mesh in OpenFOAM},
+  date   = {2015-12-13},
+  url    = {http://es.slideshare.net/fumiyanozaki96/openfoam},
 }
 
-@software{OpenFOAM,
+@WWW{ihF,
+  author       = {IHCantabria},
+  title        = {IHFOAM},
+  url          = {http://ihfoam.ihcantabria.com/ihcantabria/},
+  organization = {Cantabria Coastal and Ocean Basin (CCOB)},
+  urldate      = {2016-01-01},
+}
+
+@WWW{ihFvideo,
+  author       = {IHCantabria},
+  title        = {IHCantabria's Videos},
+  url          = {https://vimeo.com/ihcantabria/videos},
+  note         = {Offshore Engineering and Ocean Energy Group (https://vimeo.com/183657521) Wave Interaction with Porous Breakwater (https://vimeo.com/151620269)},
+  organization = {Vimeo},
+  urldate      = {20th September 2016},
+}
+
+@WWW{OFwiki-install-ihF,
+  title        = {Contrib/IHFOAM/Contents},
+  url          = {http://openfoamwiki.net/index.php/Contrib/IHFOAM#Source_Download_and_Compilation},
+  organization = {OpenFoamWiki},
+  urldate      = {05 October 2015},
+}
+
+@Misc{kleefsman05,
+  author       = {Kleefsman, K. M. T.},
+  title        = {Water impact loading on offshore structures. - A numerical study},
+  year         = {2005},
+  organization = {university of groningen},
+  url          = {http://www.rug.nl/research/portal/publications/pub(0ba8539d-3515-4ce3-b903-8274f5024001).html!null},
+  abstract     = {In this thesis, numerical simulations to calculate water impact loading on offshore structures are presented. The simulations are based on a discrete version of the Navier-Stokes equations that describe the motion of a fluid. Special attention has been paid to the green water problem, where water exceeds the deck level of a ship and flows onto the deck. The results of the simulations have been compared extensively with experimental measurements.},
+  pages        = {161},
+}
+
+@Misc{AIET,
+  title        = {Proyecto Waveenergy},
+  year         = {2007-2008},
+  organization = {Agencia Insular de Energía de Tenerife (AIET) con el Instituto Tecnológico y de Energías Renovables de Tenerife (ITER)},
+  url          = {http://www.agenergia.org/index.php?section=40},
+}
+
+@WWW{OFrelease,
+  title        = {OpenFOAM 3.0.0 Released},
+  date         = {3rd November 2015},
+  url          = {http://openfoam.org/release/3-0-0/},
+  organization = {OpenFOAM Fundation},
+  urldate      = {3rd November 2015},
+}
+
+@WWW{createZeroDic-v3,
+  title        = {Creating initial field and boundary conditions},
+  url          = {http://www.openfoam.com/version-v3.0+/pre-processing.php#preProcessing-createZeroDirectory},
+  organization = {OpenCFD Ltd (ESI Group)},
+  urldate      = {2016-01-31},
+}
+
+@software{OpenFOAMcfd,
   author = {{CFD Direct}},
-  title = {OpenFOAM},
+  title = {OpenFOAM CFD Direct},
   url = {https://cfd.direct/openfoam/user-guide/blockmesh/}
 }
 
-@software{snappyHexMesh,
-  author = {{CFD Direct}},
+@WWW{snappyHexMesh,
+  author = {CFD Direct},
   title = {snappyHexMesh},
-  url = {https://cfd.direct/openfoam/user-guide/snappyhexmesh/}
+  url = {https://cfd.direct/openfoam/user-guide/snappyhexmesh/},
 }
+
+@WWW{snappyengys,
+  author = {Engys and Jackson, Andrew},
+  title = {A Comprehensive Tour of snappyHexMesh},
+  url = {https://cfd.direct/openfoam/user-guide/snappyhexmesh/},
+  urldate      = {2012-06-25},
+}
+
+@WWW{solution,
+  author = {CFD Direct},
+  title = {UserGuide:4.5.1.1 Solution tolerances},
+  url = {https://cfd.direct/openfoam/user-guide/fvSolution/\#x21-1170004.5},
+  year      = {2017},
+}
+
+@WWW{algorithm,
+  author = {CFD Direct},
+  title = {UserGuide: 4.5.3 PISO, SIMPLE and PIMPLE algorithms},
+  url = {https://cfd.direct/openfoam/user-guide/fvSolution/\#x20-1550004.5.3},
+  year      = {2017},
+}
+
 
 @WWW{OpenSCAD,
   author = {OpenSCAD},
@@ -119,7 +811,8 @@
 @WWW{howtoOpenSCAD,
   author = {OpenSCAD},
   url = {http://www.tridimake.com/2014/11/howto-openscad-iteration-extrusion.html},
-  title = {How to use Openscad}
+  title = {How to use Openscad},
+  year = {2014}
 }
 
 @software{FreeCAD,
@@ -173,7 +866,7 @@
 
 
 @WWW{cfd-online,
-    title = {[swiftBlock/swiftSnap] SwiftSnap and SwiftBlock, GUIs for OpenFOAM's meshers},
+    title = {SwiftSnap and SwiftBlock, GUIs for OpenFOAM's meshers},
     date = {2012},
     url = {https://www.cfd-online.com/Forums/openfoam-community-contributions/100604-swiftsnap-swiftblock-guis-openfoams-meshers-2.html},
 }
@@ -185,6 +878,13 @@
     url = {https://github.com/nogenmyr/swiftSnap},
 }
 
+@online{swiftBlock,
+    title = {swiftBlock},
+    organization = {GitHub},
+    author = {nogenmyr},
+    url = {https://github.com/nogenmyr/swiftBlock},
+}
+
 @online{Netgen,
     title = {Netgen},
     date = {2017},
@@ -192,7 +892,7 @@
     url = {https://ngsolve.org/},
 }
 
-@WWW{NETGEN_NGSolve,
+@WWW{NGSolve,
   author = {Noam Arnold},
   date = {2013},
   title = {Energía del oleaje},
@@ -211,15 +911,15 @@
     url = {http://www.salome-platform.org/},
 }
 
-@WWW{netgen_usermanual,
+@WWW{netgenusermanual,
   author = {NetGen},
   title = {Netgen Usermanual},
   url = {http://www.netgen-toolbox.org/netgen_usermanual.pdf},
 }
 
-@WWW{Netgen,
+@WWW{ascNetgen,
   author = {TU Wien | Institut für Analysis und Scientific Computing},
-  title = {Netgen Usermanual},
+  title = {Netgen Guide},
   url = {http://www.asc.tuwien.ac.at/~schoeberl/wiki/index.php/Netgen},
 }
 
@@ -319,7 +1019,7 @@
   DOI = {10.2312/LocalChapterEvents/ItalChap/ItalianChapConf2008/129-136}
 }
 
-@WWW{OpenFOAM,
+@WWW{OpenFOAMfundation,
   author = {The OpenFOAM Foundation},
   title = {OpenFOAM},
   url = {https://openfoam.org/},
@@ -347,6 +1047,59 @@
     title = {ParaView},
     author = {Sandia National Laboratory, Kitware Inc},
     url = {https://www.paraview.org/},
+}
+
+@WWW{gnuplot,
+    title = {GnuPlot},
+    author = {SPhilipp K. Janert},
+    url = {http://www.gnuplot.info/},
+}
+
+@WWW{pyfoam,
+    title = {PyFoam},
+    author = {OpenFoam Wiki},
+    url = {https://openfoamwiki.net/index.php/Contrib/PyFoam},
+    urldate = {2018-02-26},
+}
+
+@WWW{pgfplots,
+    title = {PGFPlots for Latex},
+    author = {Christian Feuersänger},
+    url = {http://pgfplots.sourceforge.net/},
+}
+
+@WWW{helyxos,
+    title = {Helyx-os Open Source Gui for OpenFOAM},
+    author = {engys},
+    url = {https://engys.com/products/helyx-os},
+}
+
+@WWW{docker,
+    title = {Docker},
+    author = {Docker engine},
+    url = {https://www.docker.com/},
+    year = {2018}
+}
+
+@WWW{dockerhub,
+    title = {Docker Hub},
+    author = {Docker engine},
+    url = {https://hub.docker.com/},
+    year = {2018}
+}
+
+@WWW{dockerwin,
+    title = {Docker for Windows},
+    author = {Docker engine},
+    url = {https://docs.docker.com/docker-for-windows/},
+    year = {2018}
+}
+
+@WWW{portainer,
+    title = {Portainer},
+    author = {deviantony},
+    url = {https://github.com/portainer/portainer},
+    year = {2018}
 }
 
 @WWW{kitware_blog,
@@ -381,5 +1134,78 @@
   author = {Bo Wang},
   year = {2016},
 }
+
+@Article{Mier04,
+  author = {Mier Torrecilla, Mónica},
+  title = {Introduction to numerical simulation of fluid flows},
+  year = {2004},
+  month = {04},
+  pages = {21},
+}
+
+@Article{orrego09,
+  author = {Orrego, Santiago},
+  title = {Simulación de Fluidos utilizando computadores. Una moderna herramienta para el estudio y analisis de fluidos},
+  year = {2009},
+  month = {11},
+  pages = {8},
+}
+
+@Article{kothe96,
+author = {Brackbill, J and Kothe, Douglas},
+year = {1996},
+month = {06},
+pages = {8},
+title = {Dynamical Modeling of Surface Tension}
+}
+
+@WWW{release,
+    title = {OpenFOAM Release History},
+    author = {OpenFoam Fundation},
+    url = {https://openfoam.org/download/history/},
+    year = {2018}
+}
+
+@WWW{calum,
+    title = {Calum Duglas explications of damBreak example modified to 3d},
+    author = {Duglas, Calum},
+    url = {http://www.calumdouglas.ch/openfoam-example-3d-dambreak/},
+}
+
+@Book{Luszczewski99,
+  author = {Antonio Luszczewski},
+  tittle = {Redes industriales de tubería. Bombas para agua, ventiladores y compresores},
+  year = {1999},
+  publisher = {Reverte},
+  location = {San Luis Potosí},
+}
+
+@Book{Mataix82,
+  author = {Claudio Mataix},
+  tittle = {Mecánica de Fluidos y Máquinas Hidráulicas},
+  year = {1982},
+  publisher = {El Castillo},
+  location = {Madrid},
+}
+
+@Book{Miller96,
+  author = {Miller, Richard W.},
+  tittle = {Flow Measurement Engineering Handbook},
+  year = {1996},
+  publisher = {Mac Graw-Hill},
+  
+}
+
+@inbook{une03,
+  editor = {AENOR},
+  title = {ISO 5167-2:2003 Medición del caudal y de fluidos mediante dispositivos de presión diferencial intercalados en conductos de carga de sección transversal circular},
+  chapter = {Parte 2: Placas de orificio},
+  pages = {57},
+  publisher = {AENOR},
+  year = {2003},
+  month = {03},
+  address = {C Génova, 6 28004 Madrid},
+}
+
 
 @Comment{jabref-meta: databaseType:biblatex;}

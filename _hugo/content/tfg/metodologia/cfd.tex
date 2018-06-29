@@ -11,8 +11,7 @@ fue posible una nueva aproximación: las simulaciones numéricas.
 
 Las ecuaciones matemáticas que describen los fenómenos físicos de la
 naturaleza con una precisión razonable, suelen ser tan complejas que no
-es posible obtener una solución analítica. {[}Fuente: M. de Mier,
-2004{]}
+es posible obtener una solución analítica \cite{Mier04}. 
 
 \subsubsection{Definición de CFD}\label{header-n8}
 
@@ -23,9 +22,7 @@ de métodos numéricos y algoritmos para estudiar y analizar problemas que
 involucran fluidos en movimiento, mediante la solución de las ecuaciones
 de Navier-Stokes, transferencia de calor, entre otras, por ordenador.
 Existen diferentes métodos numéricos y algoritmos que resuelven de
-distinta forma las ecuaciones fundamentales.
-\href{http://docplayer.es/720690-Simulacion-de-fluidos-utilizando-computadores-una-moderna-herramienta-para-el-estudio-y-analisis-de-fluidos.html}{Fuente:
-Una moderna herramienta para el estudio y analisis de fluidos}
+distinta forma las ecuaciones fundamentales \cite{orrego09}.
 
 En general, el CFD comprende un amplio abanico de disciplinas
 científicas, entre las que destacan las matemáticas, la programación,
@@ -67,7 +64,7 @@ temporal, garantizando siempre la estabilidad numérica. Más tarde se
 desarrollaron modificaciones y mejoras del modelo de acoplamiento (PISO,
 PIMPLE, ...).
 
-Sushas V. Patankar publicó "Numerical Heat Transfer and Fluid Flow",
+Sushas V. Patankar publicó ``Numerical Heat Transfer and Fluid Flow'',
 probablemente el primer gran libro que trata en profundidad las
 metodologías CFD y que ha servido de inspiración para la creación de
 infinidad de códigos numéricos. Patankar y el Imperial Collage, sientan
@@ -251,11 +248,11 @@ irregulares, no lineales y caracterizados por las formaciones de
 vórtices. A altas velocidades, el número de Reynolds es muy alto y los
 efectos de la viscosidad y la turbulencia se hacen relevantes en las
 regiones cercanas a las paredes, en capa límite (\emph{boundary layer}).
-Para resolver esta capa, se necesita un refinado de la malla.
+Para resolver esta capa, se necesita un refinado de la malla. En la imagen \autoref{fig:flujoPerfil} se representan las zonas de flujo externo sobre un perfil de un aerogenerador. 
 
 \begin{figure}
 \centering
-\includegraphics{31-flujoPerfil.jpg}
+\includegraphics[width=0.7\linewidth]{31-flujoPerfil.jpg}
 \caption{Zonas de flujo externo sobre un perfil aerodinámico}
 \label{fig:flujoPerfil}
 \end{figure}
@@ -274,7 +271,7 @@ La \textbf{descripción euleriana} se centra en un punto fijo en el
 espacio y observa el paso de las partículas fluidas. La velocidad se
 expresa como función del tiempo y la posición fija de referencia.
 
-\subsubsection{3.2.2 Discretización espacial}\label{header-n143}
+\subsubsection{Discretización espacial}\label{header-n143}
 
 A diferencia de los problemas estáticos, donde sólo se requiere conocer
 la densidad del fluido y la posición de la superficie libre, en la
@@ -324,7 +321,7 @@ tipos de mallas:
 \begin{itemize}
 \item
   \textbf{Malla estructurada}: Definida así cuando cada nodo tiene el
-  mismo número de elementos a su alrededor. Esto hace que la matriz
+  mismo número de elementos a su alrededor, algunos ejemplos se muestran en \autoref{fig:mallaStruct}. Esto hace que la matriz
   algebraica del sistema de ecuaciones tenga una estructura regular,
   dando lugar a mayor precisión, tiempo de cálculo y consumo de memoria.
   No obstante, a menudo resulta difícil controlar la distribución de los
@@ -354,7 +351,7 @@ tipos de mallas:
   estructuradas de forma completamente automática sobre geometrías
   arbitrarias. Existen diversos algoritmos de generación de mallados,
   que cubren cualquier dominio tridimensional sin necesidad de conocer a
-  priori las topologías constitutivas del mismo. Asímismo, se permite la
+  priori las topologías constitutivas del mismo, los ejemplos de este tipo se pueden consultar en \autoref{fig:mallaNOstruct}. Asímismo, se permite la
   adaptación local de la malla, mediante refinamientos o reducción del
   tamaño de celdas por algún critério basado en el gradiente del flujo o
   en estimación de errores.
@@ -382,14 +379,14 @@ tipos de mallas:
 
 \begin{figure}
 \centering
-\includegraphics{32-mallaStruct.jpg}
+\includegraphics[width=0.5\linewidth]{32-mallaStruct.jpg}
 \caption{Ejemplos de mallas estructuradas}
 \label{fig:mallaStruct}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
-\includegraphics{32-mallaNOstruct.jpg}
+\includegraphics[width=0.5\linewidth]{32-mallaNOstruct.jpg}
 \caption{Ejemplos de mallas no estructuradas}
 \label{fig:mallaNOstruct}
 \end{figure}
@@ -408,7 +405,7 @@ celdas o bien centrada en los vértices, aunque es práctica habitual
 hacerlo en los centroides. No obstante, si las componentes de la
 velocidad y las presiones se almacenan en las mismas posiciones, podrían
 darse circunstancias irreales. Para evitarlo, se utiliza un
-\textbf{mallado decalado (\emph{staggered grid})}, de forma que:
+\textbf{mallado decalado (\emph{staggered grid})}, ver imagen \autoref{fig:staggeredGrid}, de forma que:
 
 \begin{itemize}
 \item
@@ -552,7 +549,7 @@ relaciones por tratarse de leyes fundamentales de la física.
 conservación}\label{header-n283}
 
 Considérese una variable específica \(\phi\) definida sobre un volumen
-de control (VC) tal y como se muentra en la figura Y. La variación
+de control (VC) tal y como se muentra en la figura \autoref{fig:VC}. La variación
 temporal de la variable en dicho volumen se puede considerar a partir
 del principio de conservación como: El incremento de \(\phi\) en el VC
 respecto del tiempo es igual a el flujo neto de \(\phi\) que entra en el
@@ -561,7 +558,7 @@ del VC respecto del tiempo.
 
 \begin{figure}
 \centering
-\includegraphics{34-VC.jpg}
+\includegraphics[scale=0.6]{34-VC.jpg}
 \caption{Volumen de control}
 \label{fig:VC}
 \end{figure}
@@ -597,7 +594,7 @@ términos representan (de izquierda a derecha):
 transferencia de calor}\label{header-n310}
 
 El análisis con volumenes de control es válido para cualquier flujo,
-aunque a menudo se basa en propiedades "unidimensionales" o promedidas
+aunque a menudo se basa en propiedades ``unidimensionales'' o promedidas
 en el contorno, siendo una herramienta muy valiosa para el análisis de
 los flujos.
 
@@ -656,7 +653,7 @@ Para convertir el análisis de un sistema en el análisis de un VC, se
 deben aplicar las leyes básicas a regiones específicas en lugar de a
 masas concretas. Esta conversión matemática se consigue mediante el
 llamado teorema de Reynolds, aplicable a todas las leyes básicas. Las
-ecuaciones definidas anteriormente (3.9), (3.10), (3.11) y (3.15) se
+ecuaciones definidas anteriormente se
 refieren a derivadas temporales de propiedades fluidas (m, v, H y E).
 Por tanto, se necesita relacionar la derivada temporal de una propiedad
 del sistema con la variación de dicha propiedad dentro de una región
@@ -824,9 +821,7 @@ Las estrategias más comunes para calcular el campo de flujo completo
   \(div(\text v)=0\). En otras palabras, si la velocidad del flujo es
   cero (por ser ortogonal a la pared) es necesario que la segunda
   derivada de la presión (ortogonal a la pared) también sea cero (en
-  áreas donde la densidad es constante),
-  \href{https://cfd.direct/openfoam/user-guide/fvSolution/\#x21-1170004.5}{User
-  Guide: 4.5.1.1 Solution tolerances}.
+  áreas donde la densidad es constante) \cite{solution}.
 \item
   Algoritmo \textbf{PIMPLE}: Una combinación de SIMPLE-PISO el cual
   emplea métodos de acoplamiento para corregir la ecuación del momento.
@@ -841,9 +836,7 @@ ecuación del momento, mediante el denominado \emph{momentum predictor}.
 Mientras todos los algoritmos resuelven las mismas ecuaciones de
 gobierno (aunque en diferentes formas), difieren principalmente en cómo
 realizan el bucle sobre las ecuaciones. Detallado en la guía oficial de
-OpenFOAM
-\href{https://cfd.direct/openfoam/user-guide/fvSolution/\#x20-1550004.5.3}{User
-Guide: 4.5.3 PISO, SIMPLE and PIMPLE algorithms}.
+OpenFOAM \cite{algorithm}.
 
 \subsubsection{Métodos iterativos de
 resolución}\label{header-n431}
@@ -933,7 +926,7 @@ Richardson (1922) fue el primero en introducir el concepto de
 \textbf{cascada de energía} para describir el proceso por el cual los
 vórtices más grandes se dividen en estructuras más pequeñas a las cuales
 pasan energía, así sucesivamente hasta llegar a las escalas puramente
-disipativas. Este proceso de ruptura se produce en cascada, por lo que
+disipativas, tal y como de puede ver en \autoref{fig:ETurb}. Este proceso de ruptura se produce en cascada, por lo que
 en un movimiento turbulento coexisten una gran variedad de escalas,
 correspondientes a los distintos tamaños de vórtices, los cuales son
 arrastrados y estirados por la acción de los gradientes del flujo
@@ -946,7 +939,7 @@ viscosa.
 
 \begin{figure}
 \centering
-\includegraphics{35-ETurb.jpg}
+\includegraphics[width=0.8\linewidth]{35-ETurb.jpg}
 \caption[Escala de la turbulencia]{Escala de la turbulencia y proceso de cascada de energía, esquema conceptual de Richardson}
 \label{fig:ETurb}
 \end{figure}
@@ -964,23 +957,23 @@ turbulenta que se vaya a transportar en las ecuaciones constitutivas.
 En general, se distinguen tres aproximaciones diferentes: la simulación
 numérica directa (DNS, \emph{Direct Numerical Simulation}), en la que
 usa una malla extremadamente fina para poder resolver todas las escalas
-de la turbulencia; la \textbf{simulación de vórtices grandes (LES,
+de la turbulencia; la \textbf{simulación de vórtices grandes} (LES,
 \emph{Large Eddy Simulation})}, con mallas menos densas que permiten
 resolver sólo los torbellinos grandes que transportan entre el 50 y el
 80\% de toda la energía cinética turbulenta; finalmente la
-\textbf{simulación de ecuaciones de NS promedidas por Reynolds (RANS,
+\textbf{simulación de ecuaciones de NS promedidas por Reynolds} (RANS,
 \emph{Reynolds Average Navier-Stokes equations})} en las que todas las
 escalas se modelizan mediante el uso de modelos de turbulencia.
 
 Aunque algunos flujos sencillos se han resuelto utilizando simulación
-directa (DNS) no es posible emplearla de forma sistemática para resolver
+directa DNS no es posible emplearla de forma sistemática para resolver
 problemas industriales de interés práctico debido a su coste
 computacional prohibitivo. Por esta razón se emplean habitualmente los
 métodos RANS y en ciertas ocasiones las técnicas LES.
 
 \begin{itemize}
 \item
-  Simulaciones directas (DNS)
+  Simulaciones directas, DNS
 
   En las simulaciones directas se discretizan y resuelven las ecuaciones
   de NS en una malla suficentemente fina. La longitud característica del
@@ -1002,11 +995,13 @@ métodos RANS y en ciertas ocasiones las técnicas LES.
   adecuada usando DNS requeriría sobre \(10^{13}\) nodos de malla, algo
   imposible de abordar ni en paralelo por la falta de CPU
   (procesamiento).
+  En la imagen \autoref{fig:ETurb} se muestran los tipos de aproximaciones recomendadas en función del número de Reynolds.
 
   \begin{figure}
   \centering
-  \includegraphics{36-ReTurb.jpg}
+  \includegraphics[width=0.8\linewidth]{36-ReTurb.jpg}
   \caption{Tipos de aproximaciones recomendadas en función del número de Re}
+  \label{fig:ReTurb}
   \end{figure}
 
 
@@ -1051,7 +1046,7 @@ métodos RANS y en ciertas ocasiones las técnicas LES.
     extremadamente finas y costosas, inevitables para números de Re
     grandes. Sin embargo, estas escalas son típicamente isotrópicas y de
     carácter más universal, porque en el proceso de cascada los
-    torbellinos han "olvidado" cuál es su procedencia. Por tanto, siendo
+    torbellinos han ``olvidado'' cuál es su procedencia. Por tanto, siendo
     sencillas de modelizar, no son necesarios grandes medios
     computacionales para su resolución.
   \end{itemize}
@@ -1082,8 +1077,7 @@ ecuaciones para cada especie a partir de los campos globales obtenidos.
 Así se consigue resolver un único campo fluido para toda la mezcla.
 
 Dentro de este tipo de problemas es posible incluir muchos régimenes de
-flujo diferentes, detallados en el libro de {[}Técnicas numéricas
-p337{]}, entre ellos los que intervendránen el estudio son los
+flujo diferentes, detallados en el libro de \cite{Fernandez12}, entre ellos los que intervendránen el estudio son los
 \textbf{flujos estratificados} o con superficie libre: es el caso de
 fluidos inmiscibles, separados por una interfaz claramente definida,
 como la interfaz entre el aceite y el agua o la superficie libre de
@@ -1112,11 +1106,11 @@ valores de \(\alpha\) en las celdas: cálculo de la interfaz por líneas
 simples (SLIC), que aproxima la interfaz por líneas rectas paralelas a
 los ejes coordenados, o el cálculo de la interfaz por aproximación de
 pendientes (PLIC), que emplea líneas con pendiente para reconstruir la
-interfaz.
+interfaz, ver imagen \autoref{fig:interfase}.
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
-\includegraphics{37-interfase.jpg}
+\includegraphics[width=\linewidth]{37-interfase.jpg}
 \caption[Algoritmos para la reconstrucción de la interfase]{Algoritmos para la reconstrucción de la interfase \cite{kothe96}}
 \label{fig:interfase}
 \end{figure}

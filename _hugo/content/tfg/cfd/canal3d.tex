@@ -2,8 +2,7 @@
 
 Partiendo por la definición del caso anterior, se realizan cambios en la
 geometría para adecuar el modelo a un estudio en 3-D. Entre las
-herramientas descritas en el apartado {[}XXDescripción de
-herramientas{]} se experimenta con \emph{snappyHexMEsh}, \emph{cfMesh} y
+herramientas descritas en el apartado \ref{header-n52}, se experimenta con \emph{snappyHexMEsh}, \emph{cfMesh} y
 \emph{Salome}. Las tres ofrecen mallados automatizados, los dos primeros
 están escritos en el mismo lenguaje que OpenFOAM, en cambio el tercer
 software se asemeja a un programa de CAD, dispone de interfaz gráfica e
@@ -35,47 +34,45 @@ comparar con el experimento.
 La estructura del caso, que se mantiene del problema anterior realizado
 en 2-D, es la siguiente:
 
-\begin{verbatim}
-+ <case>
--+ 0
---- alpha.water
---- alpha.water.orig
---- epsilon
---- k
---- nut
---- nuTilda
---- p_rgh
---- U
--+ constant
---- g
---- transporProperties
---- turbulenceProperties
--+ system
---- setFields
---- fvSchemes
---- fvSolution
---- controlDict
-\end{verbatim}
+\dirtree{%
+ .1 $<$case$>$.
+ .2 0.
+ .3 alpha.water.
+ .3 alpha.water.orig.
+ .3 epsilon.
+ .3 k.
+ .3 nut.
+ .3 nuTilda.
+ .3 p\_rgh.
+ .3 U.
+ .2 constant.
+ .3 g.
+ .3 transporProperties.
+ .3 turbulenceProperties.
+ .2 system.
+ .3 setFields.
+ .3 fvSchemes.
+ .3 fvSolution.
+ .3 controlDict.
+}
 
-A esta se le añade el modelo generado a partir de Salome y convertido a
-formato OpenFOAM a través de una orden por terminal, detallada en
-\href{https://cfd.direct/openfoam/user-guide/mesh-conversion/}{User
-Guide: 5.5 Mesh conversion}; así como, los ficheros necesarios para
+A esta disposición se le añade el modelo generado a partir de Salome y convertido a
+formato OpenFOAM \cite{conversion}, los ficheros necesarios para
 extraer los resultados.
 
 \subsection{Definición del caso}\label{header-n18}
 
-\begin{figure}
+\begin{figure}[b]
 \centering
-\includegraphics{geomCanal3D.png}
-\caption{Representación del modelo del caso}
+\includegraphics[width=\linewidth]{geomCanal3D.png}
+\caption{Representación del modelo del caso 3D}
 \label{fig:geomCanal3D}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[b]
 \centering
-\includegraphics{D13bdry.png}
-\caption{Mallado y contornos del modelo (\emph{atmosphere, allwall, outflow})}
+\includegraphics[width=\linewidth]{D13bdry.png}
+\caption{Mallado y contornos del modelo 3D (\emph{atmosphere, allwall, outflow})}
 \label{fig:D13bdry}
 \end{figure}
 
@@ -113,19 +110,18 @@ extraer los resultados.
     \item
       Tanque: (0.44 0.285 0.236).
     \item
-      Canal: (1.786 0.21 0.08), con una translación de (0.44 0.075
-      0.078).
+      Canal: (1.786 0.21 0.08), con una translación de (0.44 0.075 0.078).
     \item
       Pared de la cámara: (.006 .178 .08), con una translación de (2.14
       0.107 0.078).
     \item
       Chimenea: (R=0.0098 H=0.321), con una rotación de (90 0 0) y
-      revertido 90º respecto del eje 'x'; y una translación de (2.186
+      revertido 90º respecto del eje $x$; y una translación de (2.186
       0.285 0.118).
     \end{itemize}
   \item
-    A partir de aquí, se repeten los pasos para cada diafragma, tomando
-    como ejemplo el de diámetro \textbf{13mm}. Por un lado, se termina
+    A partir de aquí, se repiten los pasos para cada diafragma. Tomando
+    como ejemplo el de diámetro \textbf{13mm}, ver \autoref{fig:geomCanal3D}. Por un lado, se termina
     la geometría del modelo con la definición del diafragma y, por otro,
     se realizan las operaciones de cortes y uniones necesarias:
 
@@ -139,18 +135,13 @@ extraer los resultados.
 
     \begin{itemize}
     \item
-      Corte para definir la pared de la cámara: Cut (Main object- canal;
-      Tool Object-\textgreater{} chamber wall).
+      Corte para definir la pared de la cámara: Cut (\texttt{Main object} $\to$ \texttt{canal};
+      \texttt{Tool Object} $\to$ \texttt{chamber wall}).
     \item
-      Corte para implementar el diafragma: Cut (Main
-      object-\textgreater{} chimney; Tool Object-\textgreater{} diaf).
+      Corte para implementar el diafragma: Cut (\texttt{Main object} $\to$ \texttt{chimney}; \texttt{Tool Object} $\to$ \texttt{diaf}).
     \item
       Unión: Fuse (Tank, cut1, cut2).
     \end{itemize}
-
-    Dando como resultado la siguiente imagen:
-
-    \autoref{fig:geomCanal3D}
 
   \item
     Definición de contornos:
@@ -195,17 +186,14 @@ extraer los resultados.
 
     Antes de exportar la malla, será necesario reconocer los contornos
     antes definidos, con la creación de grupos de malla desde la
-    geometría, tal y como se explica en el tutorial
-    \href{http://staff.um.edu.mt/__data/assets/pdf_file/0016/106144/Salome_to_OpenFOAM.pdf}{Salome
-    to OpenFOAM mesh conversion tutorial}.
+    geometría, tal y como se explica en el tutorial: ``Salome
+    to OpenFOAM mesh conversion tutorial'' \cite{Salome_to_OpenFOAM}.
 
     Entonces, para definir estos contornos sobre la malla creada, se
     selecciona desde el menú, la opción
     \texttt{Create\ Groups\ from\ Geometry} y se especifica el grupo de
     caras correspondiente a cada contorno, el resultado final se puede
-    apreciar en la siguiente imagen:\\
-
-    \autoref{fig:D13bdry}
+    apreciar en la imagen, \autoref{fig:D13bdry}.
 
     Una vez hecho esto, en el árbol de objetos se puede observar que
     dentro de la malla definida, se encuentran los contornos generados.
@@ -215,21 +203,21 @@ extraer los resultados.
     Se añade al caso el modelo exportado a UNV y se convierte a formato
     de OpenFOAM mediante la siguiente orden por terminal:
 
-\begin{verbatim}
-ideasUnvToFoam filename.unv
-//transformPoints -scale '(0.001 0.001 0.001)'//change from mm to m
-\end{verbatim}
+\begin{lstlisting}[style=c++]
+  ideasUnvToFoam filename.unv
+  //transformPoints -scale '(0.001 0.001 0.001)'//from mm to m
+\end{lstlisting}
 
     Tras este paso, hay que modificar manualmente la característica de
     la pared desde
-    \textless{}./constant/polyMesh/boundary\textgreater{}, para la
-    región \emph{allwall}: \texttt{patch\ -\textgreater{}\ wall}.
+    \lstinline[style=bash]{./constant/polyMesh/boundary}, para la
+    región \emph{allwall}: de \texttt{patch\ a\ wall}.
   \end{enumerate}
 \item
   Condiciones iniciales:
 
   La condición inicial del agua, descrita en
-  \textless{}./system/setFieldsDict\textgreater{}, se establece mediante
+  \lstinline[style=bash]{./system/setFieldsDict}, se establece mediante
   la diagonal definida por dos puntos, los cuales constituirán el
   rectángulo, cuyas celdas contendrán agua:
 
@@ -242,12 +230,12 @@ ideasUnvToFoam filename.unv
 
   Las dimensiones no importa que sobrepasen las medidas del dominio, ya
   que sólo se describirán con agua las celdas que se encuentren sobre el
-  modelo y no resultará en errores.
+  modelo y no resultará en errores, la imagen \autoref{fig:D12wl} de la condición inicial del agua se puede apreciar ejecutando \texttt{paraFoam}.
 \end{itemize}
 
 \begin{figure}
 \centering
-\includegraphics{D12wl.png}
+\includegraphics[width=\linewidth]{D12wl.png}
 \caption{Representación del problema en el instante inicial}
 \label{fig:D12wl}
 \end{figure}
@@ -258,41 +246,27 @@ La ejecución de este caso se puede realizar mediante el \emph{script} ,
 o bien con si se ejecuta desde \emph{Docker} con Windows 10. Las
 instrucciones descritas en los mismos, corresponden a lo siguiente:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Comprobar si la malla antes creada es correcta:
+\begin{lstlisting}[style=bash]
+  # Comprobar si la malla antes creada es correcta
+  checkMesh | tee log.checkMesh
+  # Definir la cond. inicial del volumen ocupado por agua
+  setFields > log.setFields
+  # Procesar el caso
+  interFoam > log.interFoam &
+  # Monitorizar los residuos en tiempo real
+  pyFoamPlotWatcher.py log.interFoam
+\end{lstlisting}
 
-\begin{verbatim}
-checkMesh | tee log.checkMesh
-\end{verbatim}
-\item
-  Definir la condición inicial del volumen ocupado por agua con la
-  orden:
+La entrada \texttt{\&} ejecuta el proceso en segundo plano, de esta
+forma se pueden monitorizar los residuos en tiempo real, con las
+librerías y \emph{scripts} necesarios escritos en \emph{Python}, en el paquete PyFoam \cite{pyfoam}.
 
-\begin{verbatim}
- setFields > log.setFields
-\end{verbatim}
-\item
-  Procesar el caso con la orden:
+Como en casos anteriores, la visualización se lleva a cabo al finalizar el proceso a través de la orden \lstinline[style=bash]{paraFoam}.
+Las capturas en los tiempos más relevantes para apreciar el movimiento del volumen de agua, pueden apreciarse en la imagen \autoref{fig:D13canal3D}. 
 
-\begin{verbatim}
-interFoam > log.interFoam &
-\end{verbatim}
-
-  La entrada \texttt{\&} ejecuta el proceso en segundo plano, de esta
-  forma se pueden monitorizar los residuos en tiempo real, con las
-  librerías y \emph{scripts} necesarios escritos en \emph{Python}, ver
-  \href{https://openfoamwiki.net/index.php/Contrib/PyFoam\#Runner-Utilities}{Contrib/PyFoam}:
-
-\begin{verbatim}
-pyFoamPlotWatcher.py log.interFoam
-\end{verbatim}
-\end{enumerate}
-
-\begin{figure}
+\begin{figure}[hb]
 \centering
-\includegraphics{D13canal3D.png}
+\includegraphics[width=\linewidth]{D13canal3D.png}
 \caption[Visualización del caso 3D]{Visualización del caso 3D, con la representación de la fracción de agua}
 \label{fig:D13canal3D}
 \end{figure}
@@ -301,7 +275,7 @@ pyFoamPlotWatcher.py log.interFoam
 
 De forma análoga al caso en 2-D, el flujo de salida a través del
 diafragma se obtiene mediante la función \emph{outletFlux}, definida en
-\textless{}./system/controlDict\textgreater{}, durante la simulación. La
+\lstinline[style=bash]{./system/controlDict}, durante la simulación. La
 altura y la presión se hallan desde \emph{ParaView} ejecutando un
 \emph{script} de \emph{Python}; y a partir de estos valores se consiguen
 diferentes formas de representar la solución por medio de \emph{Octave}.
@@ -309,51 +283,71 @@ diferentes formas de representar la solución por medio de \emph{Octave}.
 Por tanto, se añaden al caso los siguientes ficheros para la obtención
 de los resultados tras el procesado de la solución:
 
-\begin{verbatim}
--- prgh.py
--- water_level.py
--- WL.m
--- Prgh.m
--- QT.m
--- potT.m
--- HQ.m
-\end{verbatim}
+\dirtree{%
+.1 $<$case$>$.
+.2 prgh.py.
+.2 water\_level.py.
+.2 WL.m.
+.2 Prgh.m.
+.2 QT.m.
+.2 potT.m.
+.2 HQ.m.
+}
 
 \begin{figure}
 \centering
-\includegraphics{wlCanal3D.png}
+\includegraphics[width=0.8\linewidth]{wlCanal3D.png}
 \caption{Altura del nivel del agua dentro de la cámara}
 \label{fig:wlCanal3D}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{QTCanal3D.png}
+\caption{Caudal a través del diafragma}
+\label{fig:QTCanal3D}
+\end{figure}
+  
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{PmCanal3D.png}
+\caption{Presión manométrica en el punto indicado}
+\label{fig:PmCanal3D}
+\end{figure}
+  
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{potTCanal3D.png}
+\caption[Potencia máxima]{Potecia equivalente a la diferencia de presiones por el caudal a través del diafragma}
+\label{fig:potTCanal3D}
 \end{figure}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Altura del nivel del agua dentro de la cámara:
+  \textbf{Altura del nivel del agua dentro de la cámara:}
 
   Descrito en el caso en 2-D, este resultado se obtiene ejecutando el
-  \emph{script} \textless{}./water\_level.py\textgreater{} desde el menú
+  \emph{script} \lstinline[style=bash]{./water_level.py} desde el menú
   de \emph{ParaView} (Tools\textgreater{}Python Shell), el cual guarda
   los resultados en la carpeta del caso
-  \textless{}./waterlevel.csv\textgreater{} y se grafica mediante un
+  \lstinline[style=bash]{./waterlevel.csv\textgreater} y se grafica mediante un
   \emph{script} realizado desde \emph{Octave}.
 
   Debido a que las operaciones necesarias (p.e. la integración de los
   valores de la altura del agua para hallar la media) se realizan en el
   \emph{script} de \emph{Python}, las instrucciones desde Octave, se
   resumen en: definir una matriz que contenga la tabla de valores,
-  siendo el vector 'x' el tiempo y el 'y' la altura, y graficar
-  directamente estos datos.
-
-  \autoref{fig:wlCanal3D}
+  siendo el vector $x$ el tiempo y el $y$ la altura, y graficar
+  directamente estos datos. Dando como resultado el gráfico \autoref{fig:wlCanal3D}.
 
 \item
-  Caudal de salida:
+  \textbf{Caudal de salida:}
 
   La función definida en el diccionario
-  \textless{}./system/controlDict\textgreater{} es la siguiente:
+  \lstinline[style=bash]{./system/controlDict} es la siguiente:
 
-\begin{verbatim}
+\begin{lstlisting}[style=c++]
 functions
 {
  outletFlux
@@ -373,69 +367,39 @@ functions
             rhoPhi
         );
     }
-\end{verbatim}
+\end{lstlisting}
 
   A lo largo de la simulación, esta función calcula el valor de
-  \(\text rhoPhi=\frac {kg}{m^3} \frac {m}{s}= \frac {kg}{s} · \frac {1}{m^2}\),
+  \(\text rhoPhi=\frac {kg}{m^3} \frac {m}{s}= \frac {kg}{s} \cdot \frac {1}{m^2}\),
   es decir, el caudal másico por unidad de área, y se guarda en
-  \textless{}./postProcessing/outletFlux/0/surfaceRegion.dat\textgreater{}.
+  \lstinline[style=bash]{./postProcessing/outletFlux/0/surfaceRegion.dat}.
 
   Para obtener la gráfica, se prepara un \emph{script} desde
-  \emph{Octave} \textless{}./QT.m\textgreater{}, donde se leen los datos
+  \emph{Octave} \lstinline[style=bash]{./QT.m}, donde se leen los datos
   (del caudal y del tiempo) y se guardan en una matriz. El valor del
   caudal se da como caudal másico, luego se divide entre
   \(\rho=1,21kg/m^3\) para conseguir la unidad del Sistema Internacional
-  (S.I.) {[}\(m^3/s\){]}. Por último, se representan los valores del
-  paso del tiempo respecto del caudal.
-
-\end{enumerate}
-
-\begin{figure}
-\centering
-\includegraphics{QTCanal3D.png}
-\caption{Caudal a través del diafragma}
-\label{fig:QTCanal3D}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics{PmCanal3D.png}
-\caption{Presión manométrica en el punto indicado}
-\label{fig:PmCanal3D}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics{potTCanal3D.png}
-\caption[Potencia máxima]{Potecia equivalente a la diferencia de presiones por el caudal a través del diafragma}
-\label{fig:potTCanal3D}
-\end{figure}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+  (S.I.) {[}\(m^3/s\){]}. Por último, se representan los valores del caudal respecto del paso del tiempo, mostrados en la imagen \autoref{fig:QTCanal3D}.
 \item
-  Presión estática:
+  \textbf{Presión estática:}
 
   La presión manométrica aguas arriba del diafragma, al igual que en el
   caso en 2-D, se logra de forma automatizada mediante el \emph{script}
-  \textless{}./prgh.py\textgreater{} ejecutado desde \emph{ParaView}. De
+  \lstinline[style=bash]{./prgh.py} ejecutado desde \emph{ParaView}. De
   este fichero se modifican los campos correspondientes a la carpeta del
   caso a la que se debe apuntar y se indica el punto de medición
   correspondiente, detallado en el ensayo, {[}2.186, 0.582, 0.118{]}m.
   Los resultados se guardan en
-  \textless{}./rghPressure.csv\textgreater{} donde la variable calculada
+  \lstinline[style=bash]{./rghPressure.csv} donde la variable calculada
   \emph{P\_rgh}, definida en el código de OpenFOAM en , tiene unas
   unidades de {[}\(kg/ms^2\){]} lo que es lo mismo que {[}\emph{Pa}{]}.
-  Como en los casos anteriores a partir de \emph{Octave} se grafican.
+  Como en los casos anteriores a partir de \emph{Octave} se grafican, dando el resultado apreciable en la imagen \autoref{fig:PmCanal3D}.
 
-  \autoref{fig:PmCanal3D}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
 \item
-  Potencia teórica obtenida:
+  \textbf{Potencia teórica obtenida:}
 
-  La potencia se calcula a partir de la ecuación: \(Pot=\Delta P·Q\),
+  La potencia se calcula a partir de la ecuación: \(Pot=\Delta P\cdot Q\),
   como estos valores son conocidos, se utiliza \emph{Octave} para
   automatizar la solución del gráfico en base a los siguientes
   critérios:
@@ -455,10 +419,8 @@ functions
     valores para cada paso del tiempo definido.
   \item
     Finalmente, se multiplican los vectores de ambas columnas (presión y
-    caudal) y se grafica respecto del tiempo.
+    caudal) y se grafica respecto del tiempo, ver imagen \autoref{fig:potTCanal3D}.
   \end{itemize}
-
-  \autoref{fig:potTCanal3D}
 
 \end{enumerate}
 
@@ -469,58 +431,53 @@ desde \emph{OpenFOAM} y \emph{ParaView}, se obtienen los valores de la
 potencia para cada diafragma utilizado. A modo resumen, a continuación
 se presenta la solución de cada caso:
 
-\begin{longtable}[]{@{}ccccc@{}}
+\begin{longtable}[]{cccccc}
 \caption{Resultados obtenidos para cada modelo}
-\toprule
-D {[}mm{]} & \(H_{máx}\) {[}m{]} & \(Q_{máx}\) {[}m³/s{]} &
-\(\Delta P_{máx}\) {[}Pa{]} & \(Pot_{máx}\) {[}Watt{]}\tabularnewline
-\midrule
+%\toprule
+\hline
+D $[mm]$ & \(H_{máx}\) $[m]$ (t) & \(Q_{máx}\) $[m^3/s]$ &
+\(\Delta P_{máx}\) $[Pa]$ & \(Pot_{máx}\) $[Watt]$ & t $[s]$ \tabularnewline
+\hline
+%\midrule
 \endhead
-8 & 0,22454 (t=2,3s) & 0,001003 (t=1,4s) & 446,646 (t=1,4s) & 0,44813
-(t=1,4s)\tabularnewline
-9,5 & 0,22978 (t=2,20s) & 0,001235 (t=1,45s) & 318,92 (t=1,4s) & 0,39346
-(t=1,4s)\tabularnewline
-11 & 0,23653 (t=2,1s) & 0,0014654 (t=1,45s) & 204,14 (t=1,45s) & 0,29915
-(t=1,45s)\tabularnewline
-12,5 & 0,23275 (t=2,1s) & 0,0015635 (1,45s) & 122,4777 (1.45s) & 0,19149
-(t=1,45s)\tabularnewline
-13 & 0,23710 (t=2,1s) & 0,0015795 (t=1,45s) & 103,9481 (t=1,45s) &
-0,16419 (t=1,45s)\tabularnewline
-14 & 0,23991 (t=2,05s) & 0,0016529 (t=1,45s) & 73,2271 (t=1,45s) &
-0,12104 (1,45s)\tabularnewline
-15,5 & 0,23932 (t=2,05s) & 0,0016492 (t=1,45s) & 38,7349 (t=1,45s) &
-0,063882 (t=1.45s)\tabularnewline
-16 & 0,23988 (t=2,05s) & 0,0017109 (t=1,45s) & 30,3110 (t=1,45s) &
-0,05186 (t=1,45s)\tabularnewline
-\bottomrule
+8 & 0,22454 (2,3s) & 0,001003 & 446,646 & 0,44813 & 1,4\tabularnewline
+9,5 & 0,22978 (2,20s) & 0,001235 & 318,92 & 0,39346 & 1,4\tabularnewline
+11 & 0,23653 (2,1s) & 0,0014654 & 204,14 & 0,29915 & 1,45\tabularnewline
+12,5 & 0,23275 (2,1s) & 0,0015635 & 122,4777 & 0,19149 & 1,45\tabularnewline
+13 & 0,23710 (2,1s) & 0,0015795 & 103,9481 & 0,16419 & 1,45s\tabularnewline
+14 & 0,23991 (2,05s) & 0,0016529 & 73,2271 & 0,12104 & 1,45s\tabularnewline
+15,5 & 0,23932 (2,05s) & 0,0016492 & 38,7349 & 0,063882 & 1.45s\tabularnewline
+16 & 0,23988 (2,05s) & 0,0017109 & 30,3110 & 0,05186 & 1,45s\tabularnewline
+\hline
+%\bottomrule
 \end{longtable}
 
 Así mismo, con estos valores se puede representar la potencia por cada
-diafragma, donde se aprecia que cuanto más pequeña es la apertura del
+diafragma, gráfica de la imagen \autoref{fig:potmaxDCanal3D}. Donde se aprecia que cuanto más pequeña es la apertura del
 diámetro de la placa, mayor es la resistencia que se opone a la entrada
 del agua, con lo que el flujo de aire comprimido dentro de la cámara es
 explusado con mayor presión, provocando una extracción de potencia
-mayor:
+mayor.
 
 \begin{figure}
 \centering
-\includegraphics{potmaxDCanal3D.png}
+\includegraphics[width=0.7\linewidth]{potmaxDCanal3D.png}
 \caption{Potencia extraida por cada diafragma [9,5-11-12,5-13-14-15,5-16]}
 \label{fig:potmaxDCanal3D}
 \end{figure}
 
-Además, mediante la siguiente gráfica se puede determinar que el volumen
+Además, mediante la gráfica \autoref{fig:HQdiaf} se puede determinar que el volumen
 de agua, al permanecer invariable para todos los casos, alcanza una
 altura dentro de la cámara, prácticamente constante. No obstante, se ve
 algo alterado el máximo valor logrado, ya que la oposición de la salida
 de aire, provocada por el diámetro de placa más pequeño hará que parte
 del agua no entre. De forma análoga, el caudal de aire que pasa a través
 del diafragma, será mayor, cuanto mayor sea el diámetro de la salida de
-éste:
+éste.
 
 \begin{figure}
 \centering
-\includegraphics{HQdiaf.png}
+\includegraphics[width=0.85\linewidth]{HQdiaf.png}
 \caption[Caudal de aire por la chimenea]{Caudal de aire por la chimenea respecto a la altura de agua dentro de la cámara}
 \label{fig:HQdiaf}
 \end{figure}

@@ -130,7 +130,7 @@
 \newcounter{excnt} \numberwithin{excnt}{chapter}
 \newenvironment{exenv}[1]{\refstepcounter{excnt}\begin{mdex}[frametitle={Example \theexcnt: #1}]}{\end{mdex}}
 
-\RequirePackage{indentfirst,multirow,rotating} %eurofont,
+\RequirePackage{indentfirst,multirow,rotating,eurosym}
 \RequirePackage{eso-pic}
  % \AddToShipoutPicture*{\BackgroundPic} -> to use the picture only on one page.
  % \AddToShipoutPicture{\BackgroundPic} -> to use the picture on multiple pages
@@ -413,6 +413,20 @@
 }
 \lstdefinestyle{c++}{
  language=C++,
+ morekeywords={bode},
+ basicstyle=\color{Blue}\footnotesize\ttfamily,
+ keywordstyle=\color{RoyalBlue},
+ commentstyle=\color{CadetBlue},
+ stringstyle=\color{ForestGreen},
+ identifierstyle=\color{Black},
+ backgroundcolor=\color{gray!5},
+ columns=fixed,
+ extendedchars=true,
+ breaklines=true,
+ numbers=none
+}
+\lstdefinestyle{bash}{
+ language=bash,
  morekeywords={bode},
  basicstyle=\color{Blue}\footnotesize\ttfamily,
  keywordstyle=\color{RoyalBlue},

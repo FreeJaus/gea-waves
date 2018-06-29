@@ -5,33 +5,33 @@ simulación de varios casos, donde se fueron implementando utilidades y
 funciones de ejemplos de OpenFOAM. A continuación se presenta la
 estructura del caso:
 
-\begin{verbatim}
-+ <case>
--+ 0
---- alpha.water
---- alpha.water.orig
---- epsilon
---- k
---- nut
---- nuTilda
---- p_rgh
---- U
--+ constant
---- g
---- transporProperties
---- turbulenceProperties
--+ system
---- blockMeshDict
---- topoSetDict1
---- topoSetDict2
---- topoSetDict3
---- setFields
---- fvSchemes
---- fvSolution
---- controlDict
---- singleGraph
---- probes
-\end{verbatim}
+\dirtree{%
+ .1 $<$case$>$.
+ .2 0.
+ .3 alpha.water.
+ .3 alpha.water.orig.
+ .3 epsilon.
+ .3 k.
+ .3 nut.
+ .3 nuTilda.
+ .3 p\_rgh.
+ .3 U.
+ .2 constant.
+ .3 g.
+ .3 transporProperties.
+ .3 turbulenceProperties.
+ .2 system.
+ .3 blockMeshDict.
+ .3 topoSetDict1.
+ .3 topoSetDict2.
+ .3 topoSetDict3.
+ .3 setFields.
+ .3 fvSchemes.
+ .3 fvSolution.
+ .3 controlDict.
+ .3 singleGraph.
+ .3 probes.
+}
 
 \subsection{Definición del caso}\label{header-n9}
 
@@ -44,14 +44,14 @@ estructura del caso:
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{diafCanal2D.png}
+\includegraphics[width=0.3\linewidth]{diafCanal2D.png}
 \caption[Representación del diafragma]{Representación del diafragma, colocado en la parte superior del tubo de salida}
 \label{fig:diafCanal2D}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{probeCanal2D.png}
+\includegraphics[width=0.2\linewidth]{probeCanal2D.png}
 \caption{Boceto que representa el punto de medición de la presión}
 \label{fig:probeCanal2D}
 \end{figure}
@@ -75,7 +75,7 @@ estructura del caso:
     diafragma.
   \end{itemize}
 \item
-  Preparación del modelo/Definición de \emph{blockMeshDict}
+  Definición del modelo con \emph{blockMeshDict}
 
   \begin{itemize}
   \item
@@ -88,9 +88,7 @@ estructura del caso:
   \item
     Las dimensiones expresadas por las posiciones de los vértices se
     multiplican por 0,001 para convertirlas a metros, el orden también
-    es importante, ver
-    \href{https://cfd.direct/openfoam/user-guide/blockmesh/}{User Guide:
-    5.3 Mesh generation with clockMesh}, en la imagen \autoref{fig:DimCanal2D} se definen las
+    es importante \cite{guideblockMesh}. En la imagen \autoref{fig:DimCanal2D} se definen las
     medidas consideradas para este caso.
 
   \end{itemize}
@@ -100,7 +98,7 @@ estructura del caso:
   \begin{itemize}
   \item
     Las propiedades del agua se mantienen como en el caso
-    \emph{"damBreak"} donde la \emph{viscosidad cinemática \texttt{nu}}
+    \emph{``damBreak''} donde la \emph{viscosidad cinemática \texttt{nu}}
     se definía como \(1\times10^{-6} m^2/s\) y la \emph{densidad
     (\texttt{rho})} de \(1000 kg/m^3\).
   \item
@@ -117,43 +115,41 @@ estructura del caso:
     implicada en el caso.
   \item
     Para no tener que complicar el modelo en exceso, se incluye la
-    utilidad \href{https://openfoamwiki.net/index.php/TopoSet}{TopoSet},
+    utilidad TopoSet \cite{toposet},
     que permitirá añadir la pared que delimitará la cámara (con una
-    abertura de \(25mm\) en \emph{"y"} para dejar pasar el agua) y el
-    diafragma (representado por una rendija rectangular de \(19,6mm\) ver \autoref{fig:diafCanal2D}, en
-    \emph{"x"}) en la parte superior de la chimenea.
+    abertura de \(25mm\) en \emph{y} para dejar pasar el agua) y el
+    diafragma (representado por una rendija rectangular de \(19,6mm\), en
+    \emph{x}) en la parte superior de la chimenea, en \autoref{fig:diafCanal2D} se puede ver la representación de los puntos para el diafragma que acontinuación se definen.
 
     Por tanto, se generan tres diccionarios, ubicados en
-    \textless{}./system/\textgreater{}, de forma que las celdas
+    \lstinline[style=bash]{./system/}, de forma que las celdas
     comprendidas en los prismas definidos (como en el diccionario
     \emph{setFieldsDict}) se conviertan en paredes (medidas expresadas
     en metros):
 
     \begin{itemize}
     \item
-      Pared vertical: \texttt{(1.693\ 0.1\ 0)\ (1.699\ 0.325\ 1)}.\\
+      Pared vertical: \lstinline[style=bash]{(1.693 0.1 0) (1.699 0.325 1)}.
     \item
-      Pared diafragma izquierda: a=\texttt{(1.7292\ 0.639\ 0)}
-      b=\texttt{(1.73275\ 0.641\ 1)}.
+      Pared diafragma izquierda: \lstinline[style=c++]{a=(1.7292 0.639 0);b=(1.73275 0.641 1)}.
     \item
-      Pared diafragma derecha: c=\texttt{(1.74525\ 0.639\ 0)} d=
-      \texttt{(1.7488\ 0.641\ 1)}.
+      Pared diafragma derecha: \lstinline[style=c++]{c=(1.74525 0.639 0);d=(1.7488 0.641 1)}.
 
 
 
     \end{itemize}
   \item
     La condición inicial del volumen de agua se define mediante dos
-    prismas, uno hasta la compuerta (a \(600mm\) en \emph{"x"} y
-    \(220mm\) en \emph{"y"}); y el otro sobrepasando la entrada de agua
+    prismas, uno hasta la compuerta (a \(600mm\) en $x$ y
+    \(220mm\) en $y$); y el otro sobrepasando la entrada de agua
     a la cámara (hasta una altura en el canal de \(45mm\)), expresado en
     el diccionario \emph{setFieldsDict} (en metros):
 
     \begin{itemize}
     \item
-      Volumen1= \texttt{(0\ 0\ -1)\ (.60\ .22\ 1)}.
+      Volumen1= \lstinline[style=bash]{(0 0 -1) (.60 .22 1)}.
     \item
-      Volumen2= \texttt{(.60\ 0\ -1)\ (1.779\ .12\ 1)}.
+      Volumen2= \lstinline[style=bash]{(.60 0 -1) (1.779 .12 1)}.
     \end{itemize}
   \end{itemize}
 \item
@@ -162,7 +158,7 @@ estructura del caso:
   \begin{itemize}
   \item
     Las funciones introducidas en
-    \textless{}./system/controlDict\textgreater{} servirán para hallar
+    \lstinline[style=bash]{./system/controlDict} servirán para hallar
     un fichero con los valores de la presión en un punto a lo largo del
     tiempo; así como, el flujo a través del diafragma.
 
@@ -174,9 +170,9 @@ estructura del caso:
       \texttt{singleGraph}, donde se estima un punto de inicio y otro
       final para hallar los valores en los centroides intermedios (se
       guardan en directorios separados por el paso del tiempo). En este
-      caso el punto definido en el diccionario
-      \textless{}./system/probes\textgreater{}, expresado en metros, es:
-      \texttt{(1.739\ 0.618\ 0.0098)}, representado en \autoref{fig:probeCanal2D}.
+      caso, representado en \autoref{fig:probeCanal2D}, el punto definido en el diccionario
+      \lstinline[style=bash]{./system/probes}, expresado en metros, es:
+      \lstinline[style=bash]{(1.739 0.618 0.0098)}.
 
 
 
@@ -184,7 +180,7 @@ estructura del caso:
       La función para hallar el flujo de salida (\emph{outletFlux}) se
       determina en el propio \emph{controlDict}, donde se define el
       campo a calcular
-      \texttt{rhoPhi}(\(\frac {kg}{m^3} \frac {m}{s}= \frac {kg}{s} · \frac {1}{m^2}\))
+      \texttt{rhoPhi}(\(\frac {kg}{m^3} \frac {m}{s}= \frac {kg}{s} \cdot \frac {1}{m^2}\))
       y sobre qué región \texttt{outflow}. Estos resultados se guardarán
       a lo largo del tiempo en un solo fichero.
     \end{itemize}
@@ -192,11 +188,10 @@ estructura del caso:
     La altura del agua dentro de la cámara se determina una vez simulado
     el caso, a partir de un \emph{script} generado en lenguaje de
     \emph{Python} y ejecutado desde ParaView. Este \emph{script},
-    completamente explicado en
-    \href{https://github.com/ali-ramezani/OpenFOAM-Tips}{ali-ramezani/OpenFOAM-Tips},
-    se genera desde la opción \emph{Tools/Start Trace} del menú de
+    completamente explicado en \emph{ali-ramezani/OpenFOAM-Tips}\footnote{\url{https://github.com/ali-ramezani/OpenFOAM-Tips}},
+    se genera desde la opción \lstinline[style=bash]{Tools/Start Trace} del menú de
     ParaView; realizando los pasos de acontinuación; y volviendo al
-    menú, a \emph{Tools/Stop Trace}.
+    menú, a \lstinline[style=bash]{Tools/Stop Trace}.
 
     \begin{itemize}
     \item
@@ -210,10 +205,10 @@ estructura del caso:
       Trasladar la información a los puntos usando el filtro
       \emph{CellDataPointData}.
     \item
-      Se realiza un corte en el plano \emph{"y"} en la posición
-      {[}1.699, 0.3, 0.05{]} donde comienza la cámara.
+      Se realiza un corte en el plano $y$ en la posición
+      \lstinline[style=bash]{[1.699, 0.3, 0.05]} donde comienza la cámara.
     \item
-      Crear un contorno para \emph{alpha.water=0.5}, donde se encuentra
+      Crear un contorno para \lstinline[style=bash]{alpha.water=0.5}, donde se encuentra
       la interfase.
     \item
       Añadir un nuevo escalar que almacene los datos del nivel del agua.
@@ -235,14 +230,14 @@ estructura del caso:
 El procesado se puede realizar ejecutando el \emph{script}
 \texttt{Allrun} donde se describen las siguientes instrucciones:
 
-\begin{figure}
+\begin{figure}[hb]
 \centering
-\includegraphics[width=\linewidth]{blockcanal2D19.png}
+\includegraphics[width=0.8\linewidth]{blockcanal2D19.png}
 \caption{Representación de los vértices y bloques del modelo}
 \label{fig:blockcanal2D19}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[hb]
 \centering
 \includegraphics[width=\linewidth]{residualsCanal2D19.png}
 \caption{Residuos del caso ejecutado}
@@ -256,14 +251,12 @@ El procesado se puede realizar ejecutando el \emph{script}
   tres ejes por hexaedros y se escriben los datos de los puntos, caras,
   celdas de la malla. La representación de los vértices se puede apreciar en \autoref{fig:blockcanal2D19}.
 
-
-
 \item
   La adición de las diferentes paredes se implementa como en el ejemplo
   de
-  \textless{}\$FOAM\_run/multiphase/interFoam/les/nozzleFlow2D\textgreater{}:
+  \lstinline[style=bash]{\$FOAM\_run/multiphase/interFoam/les/nozzleFlow2D}:
 
-\begin{verbatim}
+\begin{lstlisting}[style=c++]
 for i in 1 2 3
 do
     runApplication -s $i \
@@ -272,17 +265,16 @@ do
     runApplication -s $i \
         subsetMesh -overwrite c0 -patch internalWalls
 done
-\end{verbatim}
+\end{lstlisting}
+
 \item
   La condición inicial del agua se agrega mediante la orden:
   \texttt{setFields}
 \item
-  Finalmente, se ejecuta \texttt{interFoam\ \&} en segundo plano para
+  Finalmente, se ejecuta \texttt{interFoam\ \&}, y se visualiza el caso desde \emph{ParaView} para ver el movimiento del agua en el canal a lo largo del tiempo, ver imagen \autoref{fig:canal2D19}. Esta orden se ejecuta en segundo plano para
   lanzar, al mismo tiempo, la orden
   \texttt{pyFoamPlotWatcher.py\ log.interFoam}, la cual obtiene del
-  registro los residuos de las variables principales.
-
-  \autoref{fig:residualsCanal2D19}
+  registro los residuos de las variables principales, representados en la gráfica \autoref{fig:residualsCanal2D19}.
 
 \end{enumerate}
 
@@ -299,14 +291,14 @@ Una vez ejecutado el caso se pueden obtener los siguientes resultados:
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{WLCanal2D19.jpg}
-\caption[Representación gráfica del nivel del agua]{Representación gráfica del nivel del agua dentro de la cámara a lo largo del tiempo}
+\includegraphics[width=0.8\linewidth]{WLCanal2D19.jpg}
+\caption[Gráfica del nivel del agua]{Gráfica del nivel del agua dentro de la cámara a lo largo del tiempo}
 \label{fig:WLCanal2D19}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{PmCanal2D19.jpg}
+\includegraphics[width=0.8\linewidth]{PmCanal2D19.jpg}
 \caption{Medida de la Presión manométrica a lo largo del tiempo}
 \label{fig:PmCanal2D19}
 \end{figure}
@@ -314,18 +306,18 @@ Una vez ejecutado el caso se pueden obtener los siguientes resultados:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Del fichero \textless{}./log.blockMesh\textgreater{} se puede hallar:
+  Del fichero \textless{}./log.blockMesh\textgreater{} se puede hallar la siguiente información del modelo:
 
   \begin{itemize}
   \item
-    Número de celdas: 121.190
+    \textbf{Número de celdas}: 121.190
   \item
-    Dominio (\emph{boundingBox}) en {[}m{]}: (0 0 0) (1.779 0.641
-    0.0196)
+    \textbf{Dominio (\emph{boundingBox})}: (0 0 0) (1.779 0.641
+    0.0196) m.
   \end{itemize}
 \item
-  Para ejecutar el script de \emph{Python} y hallar la altura del nivel
-  de agua en la cámara:
+  Para ejecutar el script de \emph{Python} y hallar la \textbf{altura del nivel
+  de agua en la cámara}:
 
   \begin{itemize}
   \item
@@ -333,30 +325,27 @@ Una vez ejecutado el caso se pueden obtener los siguientes resultados:
     \emph{script}.
   \item
     Ejecutar el \emph{script} desde ParaView en
-    \emph{Herramientas/Python Shell/Ejecutar script}.
+    \lstinline[style=bash]{Herramientas/Python Shell/Ejecutar script}.
   \end{itemize}
 
   El archivo de salida se guarda en la carpeta del caso, listo para
-  trazar el gráfico desde una herramienta indicada para ello, en este
-  caso se utiliza un \emph{script} \textless{}./RunWL\textgreater{} para
-  generarlo automáticamente desde Gnuplot:
-
-  \autoref{fig:WLCanal2D19}
+  trazar el gráfico desde una herramienta indicada para ello. En este
+  caso se utiliza un \emph{script} \lstinline[style=bash]{./RunWL} para
+  generarlo automáticamente desde Gnuplot, obteniendo el resultado de la altura del agua en la cámara respecto del tiempo mostrado en \autoref{fig:WLCanal2D19}.
 
 \item
-  La presión manométrica en el punto mencionado, se escribe en el
-  fichero \textless{}./portProcessing/probes/0/P\textgreater{}. No
+  La \textbf{presión manométrica} en el punto mencionado, se escribe en el
+  fichero \lstinline[style=bash]{./portProcessing/probes/0/p}. No
   obstante, el valor de ésta es negativo, con lo que se utiliza un
   \emph{script} generado en \emph{ParaView} para hallar esta medida.
 
   De forma análoga al proceso de obtención del nivel de agua dentro de
-  la cámara, desde ParaView se guardan los siguientes pasos en un
-  \emph{script} \textless{}./prgh.py\textgreater{} que luego, habrá que
-  ejecutar, para escribir la solución a lo largo del tiempo:
+  la cámara, se lleva a cabo desde ParaView, a través de las instrucciones guardadas en el
+  \emph{script} \lstinline[style=bash]{./prgh.py} que se ejecutará desde la consola de \emph{Python}, para escribir la solución de la presión en el tiempo, se realizan los siguientes pasos:  
 
   \begin{itemize}
   \item
-    Desde el menú de \emph{ParaView} \emph{Tools/Start Trace}.
+    Desde el menú de \emph{ParaView} \lstinline[style=bash]{Tools/Start Trace}.
 
     \begin{itemize}
     \item
@@ -365,33 +354,31 @@ Una vez ejecutado el caso se pueden obtener los siguientes resultados:
       Trasladar la información a los puntos con el filtro
       \emph{cellDataToPointData}.
     \item
-      Crear un punto de muestreo \emph{probeLocation} en \{1.739, 0.618,
-      0.0098\}.
+      Crear un punto de muestreo \emph{probeLocation} en \lstinline[style=bash]{1.739, 0.618, 0.0098}.
     \item
       Aplicar el filtro \emph{Calculator} a la variable \emph{p\_rgh}.
     \end{itemize}
   \item
-    Volver al menú y seleccionar \emph{Tools/Stop Trace}, para guardar
+    Volver al menú y seleccionar \lstinline[style=bash]{Tools/Stop Trace}, para guardar
     estos pasos en el \emph{script}.
   \end{itemize}
 
   Para guardar los resultados a lo largo del tiempo se modifica la parte
   final del \emph{script} teniendo como referencia el anterior y
-  resolviendo los errores con las respuestas del foro de la comunidad.
-
-  \autoref{fig:PmCanal2D19}
+  resolviendo los errores con las respuestas halladas en foros de internet. Este archivo de datos se procesa desde Octave para dar la solución ofrecida en la imagen \autoref{fig:PmCanal2D19}.
 
 \item
-  Los resultados del caudal a través del diafragma se escriben durante
+  Los resultados del \textbf{caudal a través del diafragma} se escriben durante
   la simulación en
-  \textless{}./postProcessing/outletFlux/0/surfaceRegion.dat\textgreater{},
+  \lstinline[style=bash]{./postProcessing/outletFlux/0/surfaceRegion.dat},
   para gráficarlos se puede ejecutar el \emph{script}
-  \textless{}./RunPlotFlow\textgreater{}:
+  \lstinline[style=bash]{./RunPlotFlow}. 
+  Dando como resultado la gráfica \autoref{fig:FlowRCanal2D19} del caudal respecto del tiempo.
 \end{enumerate}
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{FlowRCanal2D19.jpg}
+\includegraphics[width=0.8\linewidth]{FlowRCanal2D19.jpg}
 \caption{Medida del caudal a través del diafragma}
 \label{fig:FlowRCanal2D19}
 \end{figure}
@@ -402,7 +389,7 @@ Los valores del caudal y presión manométrica obtenidos, resultan muy
 bajos, con lo que se realiza una segunda prueba, variando la anchura del
 modelo de \(19,6 mm\) a \(80 mm\). Logrando un aumento del caudal y una
 disminución en la presión manométrica, como se puede apreciar en la
-siguiente imagen:
+gráfica de la imagen \autoref{fig:RmFrCanal2D80}.
 
 \begin{figure}
 \centering

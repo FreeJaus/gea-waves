@@ -3,9 +3,13 @@
 \newacronym{cad}{CAD}{Computer-Aided Design}
 \newacronym{cae}{CAE}{Computer-Aided Engineering}
 \newacronym{eve}{EVE}{Ente Vasco de la Energía}
+\newacronym{cedex}{CEDEX}{Centro de Estudios y Experimentos}
+\newacronym{ceh}{CEH}{Centro de Estudios Hidrográficos}
+\newacronym{cepyc}{CEPYC}{Centro de Estudios de Puertos y Costas}
 \newacronym{openfoam}{OpenFOAM}{Open Field Operation and Manipulation}
 \newacronym{ceh}{CEH}{Centro de Estudios Hidrográficos}
 \newacronym{cepyc}{CEPYC}{Centro de Estudios de Puertos y Costas}
+\newacronym{ugr}{UGR}{Universidad de Granada}
 \newacronym{wec}{WEC}{Wave Energy Converter}
 \newacronym{limpet}{LIMPET}{Land Installed Marine Powered Energy Transformer}
 \newacronym{ote}{OTE}{Ocean Thermal Energy}
@@ -14,6 +18,30 @@
 \newacronym{aws}{AWS}{Archimedes Wave Swing}
 \newacronym{opt}{OPT}{Ocean Power Technologies}
 \newacronym{idae}{IDAE}{Instituto para la Diversificación del Ahorro Energético}
+\newacronym{pto}{PTO}{Power Take Off}
+\newacronym{pwp}{PWP}{Pelamis Wave Power}
+\newacronym{gsr}{GSR}{Global Status Report}
+\newacronym{ue}{UE}{Unión Europea}
+\newacronym{irec}{IREC}{International Renewable Energy Conference}
+\newacronym{gsr}{GSR}{Global Status Report}
+\newacronym{gfr}{GFR}{Global Features Report}
+\newacronym{iter}{ITER}{Instituto Tecnológico de Energías Renovables}
+\newacronym{feder}{FEDER}{Fondo Europeo de Desarrollo Regional}
+\newacronym{sgsica}{SG-SICA}{Secretaría General del Sistema de Integración Centroamericana}
+\newacronym{ren}{REN}{Redes Energéticas Nacionais}
+\newacronym{aiet}{AIET}{Agencia Insular de Energía de Tenerife}
+\newacronym{wwf}{WWF}{World Wild Found}
+\newacronym{apren}{APREN}{Associaçao Portuguesa de Energias Renovables}
+\newacronym{ree}{REE}{Red Eléctrica Española}
+\newacronym{oes}{OES}{Ocean Energy Systems}
+\newacronym{si}{SI}{Sistema Internacional}
+\newacronym{les}{LES}{Large Eddy Simulation}
+\newacronym{rans}{RANS}{Reynolds Average Navier-Stokes ecuations}
+\newacronym{dns}{DNS}{Direct Numerical Simulations}
+\newacronym{sgs}{SGS}{Sub Grid Scale modelling}
+\newacronym{vc}{VC}{Volumen de Control}
+\newacronym{vof}{VOF}{Volume Of Fluid}
+\newacronym{stl}{STL}{Standard Triangle Language}
 
 %\newglossaryentry{sweep}{name={sweep},description={Any sequence to go through all possible computations in the Jacobi method at least once}}
 %\newglossaryentry{u}{type=symbols,name={\ensuremath{\mathbf U}},sort=u,description={Orthogonal matrix of size $m \times n$, composed of the left singular vectors of a problem}}

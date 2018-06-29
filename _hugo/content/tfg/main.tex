@@ -10,7 +10,7 @@
 \usepackage[pdftex]{graphicx}
 % declare the path(s) where your graphic files are:
 \graphicspath{{./logos/}{./memoria/img/}{./memoria/tab/}{./metodologia/img/}{./metodologia/tab/}{./cfd/img/}{./nsy/img/}{./concl/img/}}
-\DeclareGraphicsExtensions{.pdf,.png, jpg}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
 
 \usepackage[
  thesis=Graduate, %or <PhD>
@@ -52,6 +52,8 @@
 \hyphenation{op-tical net-works semi-conduc-tor} % correct bad hyphenation here
 
 \usepackage{longtable}
+\usepackage{pdflscape}
+%\usepackage{booktabs}
 \usepackage[multiple]{footmisc}
 
 \begin{document}
@@ -72,15 +74,14 @@
 
 %\importchapter{A modified Hestenes-Jacobi algorithm}{./modalg/}{modalg}{\DOmc\DOmr}%\DOmf\DOmt
 
-\importchapter*{Memoria}{./memoria/}{memoria}{\DOmc\DOmr}
-\importchapter*{Metodología}{./metodologia/}{metodologia}{\DOmc\DOmr}
+\importchapter{Memoria}{./memoria/}{memoria}{\DOmc\DOmr}
+\importchapter{Metodología}{./metodologia/}{metodologia}{\DOmc\DOmr}
 \importchapter*{Simulaciones CFD}{./cfd/}{cfd}{\DOmc\DOmr}
 \importchapter*{Experimentación}{./nsy/}{experim}{\DOmc\DOmr}
 \importchapter*{Conclusiones}{./concl/}{concl}{\DOmc\DOmr}
 
 %\newcommand\append{%! Chapters to be loaded as appendix
 %\importchapter{Toolbox}{./toolbox/}{toolbox}{\DOmf\DOmr}
-%\importchapter{System building}{./system/}{system}{\DOmc\DOmf\DOmr}
 %\newcounter{ct} \forloop{ct}{1}{\value{ct} < 30}{ \chapter{First} }
 %}
 
@@ -90,5 +91,3 @@
 %\appendix
 
 \end{document}
-
-%Se recomiendan unas 50 referencias (no bibliografia) como mínimo y éstas deben ser de calidad: publicaciones internacionales y actualizadas (menos de 5 años de haber sido publicadas).

@@ -76,43 +76,54 @@ Las referencias para la elección de las herramientas más convenientes
 para usuarios de OpenFOAM, depende de muchos factores, entre ellos el
 critério personal y si el uso para el que están diseñadas es el más
 acorde a lo que se requiere. A continuación, se presenta una breve guía
-sobre las herramientas más comunes \footnote{\href{https://github.com/NanoSim/CoursesAndTrainingPortfolio/blob/master/3_EulerianModels/meshingTools.md}{Meshing
-  Toools that Interface with OpenFOAM}}\footnote{\href{https://www.cfd-online.com/Wiki/Codes}{Codes}}\footnote{\href{https://www.cfd-online.com/Links/soft.html}{Links - Software}}\footnote{\href{https://www.reddit.com/r/CFD/comments/18ydig/best_opensource_mesh_program_for_use_with_openfoam/}{Best
-  open-source mesh program for use with openFOAM}}.
+sobre las herramientas más comunes, teniendo en cuenta las siguientes referencias:
+
+\begin{itemize}
+  \item
+    \emph{Meshing Toools that Interface with OpenFOAM} \cite{sradl}.
+  \item 
+    \emph{Free Codes} \cite{codes}.
+  \item 
+  \emph{Software related to CFD} \cite{soft}.
+  \item 
+    \emph{Best open-source mesh program for use with openFOAM} \cite{maxi}.
+\end{itemize}
+
 
 \subsubsection{Preprocesado}\label{header-n68}
 
-\paragraph{Generación del modelo}\label{header-n69}
+Como se ha mencionado, en esta fase se define la \textbf{generación del modelo}, para ello se tienen las siguientes herramientas: 
 
-\subparagraph{blockMesh\cite{OpenFOAM}}\label{header-n71}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{blockMesh} \cite{guideblockMesh}
 
-Utilidad provista con OpenFOAM, apropiado para geometrías sencillas. El
+  Utilidad provista con OpenFOAM, apropiado para geometrías sencillas. El
 usuario tendrá que definir los vértices, bloques y contornos del modelo;
 así como, el número de celdas y la relación de grosores que tendrán.
 Esto se define en un fichero con el nombre de \textbf{blockMeshDict},
-ubicado en la carpeta \textless{}./system\textgreater{} del caso. Se
-complica cuando se quieren superficies curvas
-\footnote{\href{https://cfd.direct/openfoam/user-guide/plateHole/#x6-400002.2.1}{OpenFOAM
-User Guide: 2.2 Stress analysis of plate with hole}}.
+ubicado en la carpeta \lstinline[style=bash]{./system} del caso. Se
+complica cuando se quieren superficies curvas, en la guía se puede encontrar un caso ejemplo de la definición de un modelo que implementa circunferencias 
+\cite{hole}.
 
 Adicionalmente, es posible automatizar la generación del fichero y
 también se pueden utilizar otras herramientas que dispongan de interfaz
-gráfica para visualizar y editar el contenido
-\footnote{
-\href{https://openfoamwiki.net/index.php/BlockMesh}{OpenFOAM
-Wiki/BlockMesh}}.
+gráfica para visualizar y editar el contenido \cite{OFwiki-blockMesh}.
 
-\subparagraph{dynamicMeshDict\cite{Nozaki}}\label{header-n76}
+\item
+  \textbf{dynamicMeshDict} \cite{Nozaki}
 
 En OpenFOAM, se pueden implementar movimientos en la malla y cambios en
 la topología, con la funcionalidad \emph{Dynamic Mesh}, localizado en
-\textless{}./constant\textgreater{}. En este diccionario, se define una
+\lstinline[style=bash]{./constant}. En este diccionario, se define una
 velocidad constante sobre el contorno que se quiere desplazar; y
 habiendo definido los demás parámetros de entrada para el control del
 movimiento de la malla, el movimiento se generará de manera automatizada
 a lo largo del tiempo.
 
-\subparagraph{snappyHexMes\cite{snappyHexMesh}}\label{header-n79}
+\item
+  \textbf{snappyHexMes} \cite{snappyHexMesh}
 
 Herramienta incluida en OpenFOAM, diseñada para generar mallas
 hexaédricas sobre geometrías más complejas en fotmato STL. El proceso de
@@ -127,22 +138,21 @@ si se quiere analizar el comportamiento del flujo entorno al modelo) y
 descomponer en más capas (\emph{layers}) los contornos determinados.
 
 Se dispone de una amplia documendación por la comunidad de usuarios
-\footnote{\href{https://sites.google.com/site/snappywiki/snappyhexmesh/snappyhexmeshdict\#TOC-geometry}{snappyWiki}}
+\footnote{\url{https://sites.google.com/site/snappywiki/snappyhexmesh/snappyhexmeshdict\#TOC-geometry}}
 , detallando las instrucciones contenidas en el diccionario y los
 parámetros a establecer, este fichero definirá el proceso al ejecutar la
-utilidad \texttt{snappyHexMesh}
- \footnote{\href{https://www.youtube.com/watch?v=ObsFQUiVi1U}{OpenFOAM
-  SnappyHexMesh Tutorial}}
-\footnote{\href{https://openfoamwiki.net/images/f/f0/Final-AndrewJacksonSlidesOFW7.pdf}{A
-  Comprehensive Tour of snappyHexMesh}}
-\footnote{\href{http://hmf.enseeiht.fr/travaux/projnum/book/export/html/1467}{Mesh
-  generation}}.
+utilidad \texttt{snappyHexMesh}. Para más información, se puede consultar el tutorial en YouTUBE
+ \footnote{\url{https://www.youtube.com/watch?v=ObsFQUiVi1U}}, la presentation {\emph{``A
+  Comprehensive Tour of snappyHexMesh''} \cite{snappyengys} o aplicado a casos mas complicados, como el modelo de un avión   
+\footnote{\url{http://hmf.enseeiht.fr/travaux/projnum/book/export/html/1467}}.
+\end{enumerate}
 
-\paragraph{Geometría}\label{header-n94} \\
+Algunas herramientas para realizar la malla, como el caso anterior, requieren el modelo de la \textbf{geometría} generado previamente en formato \textbf{STL}, para ello se disponen varias alternativas:
 
-Para generar el arcivo \textbf{STL} se disponen varias alternativas:
-
-\subparagraph{OpenSCAD\cite{OpenSCAD}}\label{header-n97}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{OpenSCAD\cite{OpenSCAD}}\label{header-n97}
 
 Se trata de un lenguaje declarativo, multiplataforma, ofrece una
 interfaz mínima y sencilla donde introducir un conjunto limitado de
@@ -153,9 +163,10 @@ Geometry}, CSG), lo cual evita errores de superficies mal conectadas.
 Su estructura puede simplificarse en 3 categorías: formas (cubos,
 cilindros, esferas); transformaciones (trasladas, girar, escalar,
 simetría); y operaciones CSG (unión, diferencia, intersección)
-\cite{iamwil}\cite{CheatSheet}\cite{howtoOpenSCAD} .
+\cite{iamwil,CheatSheet,howtoOpenSCAD}.
 
-\subparagraph{FreeCAD\cite{FreeCAD}}\label{header-n109}
+\item
+  \textbf{FreeCAD} \cite{FreeCAD}
 
 Programa para el modelado en 3D, paramétrico, dividido en áreas de
 trabajo, permitiendo trabajar con las utilidades necesarias para el
@@ -165,13 +176,13 @@ Multiplataforma (Windows, Mac and Linux), capaz de leer y escribir
 cantidad de formatos como STEP, IGES, STL, SVG, DXF, OBJ, IFC, DAE y
 otros muchos.
 
-\begin{itemize}
-\item
-  La elaboración del dibujo se puede definir en consola a partir de la
-  definición de los puntos, ejemplo:
-
   \begin{itemize}
   \item
+    La elaboración del dibujo se puede definir en consola a partir de la
+  definición de los puntos, ejemplo:
+
+    \begin{itemize}
+    \item
     \texttt{30,20}: coordenadas absolutas;
     \item
       \texttt{@0,-40}: coordenadas relativas;
@@ -181,16 +192,17 @@ otros muchos.
       \texttt{@80\textless{}30}: coordenadas polares relativas.
    \end{itemize}
 
- \item
+   \item
   Los parámetros de acotación de pueden editar desde
   \texttt{Current\ Drawing\ Preferences}, o desde el panel de la
   derecha, donde se definen la lista de capas, editando por capa las
   características de grosor de los trazos.
- \end{itemize}
+   \end{itemize}
 
-\subparagraph{Blender\cite{Blender}}\label{header-n137}
+\item
+  \textbf{Blender} \cite{Blender}
 
-Herramienta de código abierto usada para crear modelos y animaciones en
+  Herramienta de código abierto usada para crear modelos y animaciones en
 3D, bajo licencia GNU GPL. Se necesita tiempo de entrenamiento para
 entender cómo manejarlo, así como, para hallar las opciones y atajos de
 teclado más útiles para realizar el diseño.
@@ -199,84 +211,81 @@ Está desarrollada para artistas, por ello la mayoría de tutoriales se
 centran en el renderizado. No obstante, siempre será necesario partir
 por un modelo, luego resulta una herramienta útil para ambos fines.
 
-Guía detallada sobre la herramienta: Blender 3D en la Educación\cite{Blender3DEd}.
+Guía detallada sobre la herramienta: Blender 3D en la Educación \cite{Blender3DEd}.
 
 Para crear imágenes o animaciones renderizadas, que se aproximen a la
 visualización real del agua, a partir de los datos obtenidos de los casos:
 
-\begin{itemize}
-\item
-  Blender Dynamic Paint: Make Real Time water\cite{youtubeBlenderWater}
-\item
-  Blender Tutorial - Everything You NEED to Know About Fluid Simulation!\cite{youtubeBlenderTutorial}
-\item
-  Advanced Post-Processing Introduction :: Blender\cite{youtubeBlenderTraining}
-\item
-  Blender Coupling Scripts\cite{BlenderCouplingScripts}
-\end{itemize}
+  \begin{itemize}
+  \item
+    Blender Dynamic Paint: Make Real Time water \cite{youtubeBlenderWater}
+  \item
+    Blender Tutorial - Everything You NEED to Know About Fluid Simulation! \cite{youtubeBlenderTutorial}
+  \item
+    Advanced Post-Processing Introduction :: Blender \cite{youtubeBlenderTraining}
+  \item
+    Blender Coupling Scripts \cite{BlenderCouplingScripts}
+  \end{itemize}
 
 
-Complementos para Blender (escritos en lenguaje Python) que permiten
+  Complementos para Blender (escritos en lenguaje Python) que permiten
 generar automáticamente el modelo (geometría y mallado) compatible para
-OpenFOAM v2.6x\footnote{\href{https://openfoamwiki.net/index.php/Blender}{Blender with OpenFOAM}}:
+OpenFOAM v2.6x\footnote{\url{https://openfoamwiki.net/index.php/Blender}}:
 
-\begin{itemize}
-\item
-  {[}Contrib/SwiftBlock{]} Complemento añadido en Blender para crear el
+  \begin{itemize}
+  \item
+    {[}Contrib/SwiftBlock{]} Complemento añadido en Blender para crear el
   diccionario \texttt{blockMeshDict}, permite al usuario crear la
   estructura de bloques hexaédrica como un objeto dentro de la interfaz
   ofrecida en Blender.
-\item
-  {[}Contrib/SwiftSnap{]} Otro complemento para Blender que actúa como
+  \item
+    {[}Contrib/SwiftSnap{]} Otro complemento para Blender que actúa como
   guía para crear el diccionario snappyHexMesh, permitiendo al usuario
   total control sobre como y qué líneas proporcionar en los contornos,
   así como especificar el nombre de cada área, la configuración de
   resolución y las capas de malla.
-\item
-  SwiftSnap\cite{cfd-online} y
-  swiftSnap\cite{swiftSnap} estas dos referencias aportan más información del
+  \item
+    SwiftSnap \cite{cfd-online} y
+  swiftSnap \cite{swiftSnap} estas dos referencias aportan más información del
   uso de los complementos y detalles sobre la compatibilidad de la
   versión de OpenFOAM.
-\end{itemize}
+  \end{itemize}
+\end{enumerate}
 
-\paragraph{Generación del mallado}\label{header-n181}
+A su vez, para la \textbf{generación del mallado}, OpenFOAM acepta una gran variedad de aplicaciones (mesh generators and CAD systems), que con una orden directa
+ejecutada desde la terminal, se realizará automáticamente la conversión. La tabla de software para los que se
+dispone la conversion de la malla están enunciados en Mesh converters \cite{conversion}. Entre ellos, los más destacables son:
 
-OpenFOAM acepta la generacion de la malla mediante una gran variedad de
-aplicaciones (mesh generators and CAD systems), con una orden directa
-ejecutada desde la terminal. La tabla de software para los que se
-dispone la conversion de la malla están enunciados en el siguiente
-enlace \href{http://www.openfoam.org/features/mesh-conversion.php}{Mesh converters}.
-
-
-
-Entre ellos, los más destacables son:
-
-\subparagraph{Netgen\cite{Netgen}}\label{header-n190}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Netgen} \cite{Netgen}
 
 Software de código abierto para la generación de mallas teraédricas. No
 está dirigido directamente para el CFD.
 
 \begin{itemize}
 \item
-  NetGen User Manual\cite{netgen_usermanual}
+  NetGen User Manual \cite{netgenusermanual}.
 \item
-  CME-Netgen\cite{Netgen}
+  CME-Netgen \cite{ascNetgen}.
 \item
-  Meshing with Netgen\cite{Meshing_with_Netgen}
+  Meshing with Netgen \cite{Meshing_with_Netgen}.
 \item
   NGSolve, librería de elementos finitos para crear diferentes
-  geometrías y mallas que podrán visualizarse con Netgen\cite{NETGEN_NGSolve}
+  geometrías y mallas que podrán visualizarse con Netgen \cite{NGSolve}.
 \end{itemize}
 
-\subparagraph{enGrit\cite{enGrit}}\label{header-n206}
+\item
+  \textbf{enGrit} \cite{enGrit}
 
 Software de código abierto para la generación de mallas para el CFD.
 Este utiliza las librerías de Netgen para mallas tetraédricas; y un
 método desarrollado internamente para celdas prismáticas en la capa
 límite.
 
-
-\subparagraph{Salome\cite{Salome}}\label{header-n209}
+\item
+  \textbf{Salome} \cite{Salome}
 
 
 Licencia GNU LGPL. Software que proporciona una plataforma genérica para
@@ -286,27 +295,28 @@ arquitectura abierta y flexible hecha con componentes reutilizables.
 
 \begin{itemize}
 \item
-  Salome to OpenFOAM mesh conversion tutorial\cite{Salome_to_OpenFOAM}
+  Salome to OpenFOAM mesh conversion tutorial \cite{Salome_to_OpenFOAM}.
 \item
-  CFD Online: mesh conversion Salome to OpenFOAM\cite{cfd-online_2}
+  CFD Online: mesh conversion Salome to OpenFOAM \cite{cfd-online_2}.
 \item
-  CFD Online: boundary conditions and mesh exporting\cite{cfd-online_3}
+  CFD Online: boundary conditions and mesh exporting \cite{cfd-online_3}.
 \item
-  Video Tutorial: Meshing With Body Fitting\cite{youtub_Meshing_With_Body_Fitting}
+  Video Tutorial: Meshing With Body Fitting \cite{youtub_Meshing_With_Body_Fitting}.
 \item
-  Salome body fitting for OpenFOAM case\cite{cfd-online_4}
+  Salome body fitting for OpenFOAM case \cite{cfd-online_4}.
 \item
-  Exporting a salome mesh to OpenFOAM\cite{Salome_mesh_to_OpenFOAM}
+  Exporting a salome mesh to OpenFOAM \cite{Salome_mesh_to_OpenFOAM}.
   \item
-    Python script that exports a mesh to OpenFOAM\cite{salomeToOpenFOAM}
+    Python script that exports a mesh to OpenFOAM \cite{salomeToOpenFOAM}.
   \item
-    {Salome OpenFOAM Tutorial-CAD model to Solution Complete\cite{youtube_Salome_OpenFOAM_Tutorial}
+    {Salome OpenFOAM Tutorial-CAD model to Solution Complete \cite{youtube_Salome_OpenFOAM_Tutorial}.
   \item
     CFMesh:feature definition or extraction in the .stl file: Salome gets too
-    much time for boolean operations on native .stl files\cite{cfd-online_5}
+    much time for boolean operations on native .stl files \cite{cfd-online_5}.
   \end{itemize}
 
-\subparagraph{cfMesh\cite{cfMesh}}\label{header-n242}
+\item  
+  \textbf{cfMesh} \cite{cfMesh}
 
 
 Proyecto extendido desde la Universidad de Zagreb. El proceso para
@@ -320,8 +330,7 @@ entrada son: fms, ftr, and stl.
 \begin{itemize}
 \item
   cfMesh está diseñado como una librería de algoritmos que realizan las
-  tareas de mallado\footnote{\href{http://cfmesh.com/support-faq/}{Frequently
-  Asked Questions}}  y permiten la personalización e implementación de
+  tareas de mallado\footnote{\url{http://cfmesh.com/support-faq/}} y permiten la personalización e implementación de
   varias características de mallado:
   \begin{itemize}
   \item
@@ -337,25 +346,30 @@ entrada son: fms, ftr, and stl.
 
 \end{itemize}
 
-\subparagraph{Gmesh\cite{geuzaine2009gmsh}}\label{header-n262}
+\item
+  \textbf{Gmesh} \cite{geuzaine2009gmsh}
 
 Generador de mallas tridimensionales de elementos finitos, integrando
 utilidades para el preproceso y postproceso.
 
-
-\subparagraph{meshLab\cite{MeshLab}}\label{header-n265}
+\item
+  \textbf{meshLab} \cite{MeshLab}
 
 Código abierto para procesar y editar mallas tridimensionales.
 Proporciona un conjunto de herramientas para editar, limpiar, corregir,
 inspeccionar, renderizar, texturizar y convertir mallas. Ofrece
 características para procesar datos producidos por otras herramientas y
-sirve para preparar modelos para impresiones en 3D. (2016 Released)
+sirve para preparar modelos para impresiones en 3D. 
+\end{enumerate}
 
-\subsubsection{Procesado}\label{header-n269}
+\subsubsection{Procesado} \label{header-n269}
 
-\paragraph{OpenFOAM\cite{OpenFOAM}}\label{header-n271}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{OpenFOAM} \cite{OpenFOAMfundation}
 
-OpenFOAM es un código CFD, de fuentes abiertas, de uso general. Está
+OpenFOAM es una aplicaciónpara el CFD, de fuentes abiertas, de uso general. Está
 escrito en C++, orientado a objetos, que lo hace más fácil de extender.
 El paquete incluye módulos para una amplia gama de aplicaciones. FOAM
 fue escrito por Henry Weller y otros en el Imperial Collage. Durante
@@ -367,11 +381,11 @@ marca OpenFOAM a ESI Group en 2012. Henry y su equipo de OpenCFD ahora
 trabajan para ESI Group y el código de OpenFOAM se sigue distribuyendo
 gratuitamente bajo licencia GPL.
 
-\paragraph{IHFOAM\cite{IHFOAM}}\label{header-n274}
+\item
+  \textbf{IHFOAM} \cite{IHFOAM}
 
 Es un resolvedor desarrollado por el Instituto de Hidráulica Ambiental
-de la Universidad de Cantabria
-\footnote{\href{http://www.ihcantabria.com/es/}{IHCantabria}}, para flujos
+de la Universidad de Cantabria \cite{ihF}, para flujos
 bifásicos en 3D. Especialmente diseñado para simular procesos de
 ingeniería hidráulica, costeros y offshore.
 
@@ -388,8 +402,8 @@ El paquete de IHFOAM incluye:
   al campo de velocidades. Fundado en teorías 2D o 3D, aplicables a
   casos en 3D.
 \end{itemize}
-
-\paragraph{SU2\cite{cfd-online_6}}\label{header-n286}
+\item
+  \textbf{SU2} \cite{cfd-online_6}
 
 Código abierto creado en la Universidad de Stanford, es una colección de
 herramientas de software escritas en C++ para realizar análisis de
@@ -400,8 +414,8 @@ comutacional y la optimización de formas aerodinámicas, pero es
 extensible para tratar conjuntos arbitrarios de ecuaciones de gobierno
 como para la electrodinámica, flujos de reacciones químicas y muchos
 otros.
-
-\paragraph{REEF3D: Open-Source Hydrodynamics\cite{REEF3D}}\label{header-n289}
+\item
+  \textbf{REEF3D: Open-Source Hydrodynamics} \cite{REEF3D}
 
 Enfocado a la ingeniería hidráulica, costera, mar abierto y ingeniería
 ambiental. El uso del método de ajuste de niveles le permite calcular la
@@ -412,19 +426,24 @@ encuentra actualmente en desarrollo y se agregan características
 adicionales a un ritmo acelerado. El objetivo es hacer la transición
 completa de una herramienta de investigación a un poderoso software de
 ingeniería.
+\end{enumerate}
 
 \subsubsection{Post-procesado}\label{header-n292}
 
-\paragraph{ParaView\cite{ParaView}}\label{header-n294}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{ParaView} \cite{ParaView}
 
 Un postprocesador de vanguardia diseñado para poder manejar conjuntos de
 grandes cantidades de datos. Distribuido como software de código
-abierto, es altamente recomendable\cite{kitware_blog}
-\cite{kitware_blog_1} \cite{UsingParaView} \cite{cfd-online_7}
+abierto, es altamente recomendable \cite{kitware_blog} 
+\cite{kitware_blog_1} \cite{UsingParaView} \cite{cfd-online_7} 
 \cite{wangbo}.
 
-\paragraph{\texorpdfstring{
-\href{http://www.gnuplot.info/}{gnuplot}}{gnuplot}}\label{header-n313}
+\item
+  \textbf{GnuPlot} \cite{gnuplot}
+
 
 Este software es una utilidad para graficar a través de línea de
 comandos, portable para Linux, OS/2, MS Windows, OSX, VMS entre muchas
@@ -438,17 +457,17 @@ apoyado y ha estado en desarrollo activo desde 1986.
 
 \begin{itemize}
 \item
-  \href{http://gnuplot.sourceforge.net/demo/}{Demos for gnuplot}
+  Demos for gnuplot\footnote{\url{http://gnuplot.sourceforge.net/demo/}}.
 \item
-  \href{http://gnuplot.sourceforge.net/demo_4.2/}{Demo scripts for
-  gnuplot}
+  Demo scripts for
+gnuplot\footnote{\url{http://gnuplot.sourceforge.net/demo_4.2/}}.
 \item
-  \href{http://people.duke.edu/~hpgavin/gnuplot.html}{GNUPLOT 4.2 - A
-  Brief Manual and Tutorial}
+GNUPLOT 4.2 - A
+Brief Manual and Tutorial\footnote{\url{http://people.duke.edu/~hpgavin/gnuplot.html}}.
 \end{itemize}
 
-\paragraph{\texorpdfstring{
-\href{https://openfoamwiki.net/index.php/Contrib/PyFoam}{python}}{python}}\label{header-n326}
+\item
+  \textbf{Python}
 
 Python es un lenguaje interpretado, que permite crear aplicaciones para
 controlar o modificar procesos. Existen unas librerías desarrolladas
@@ -470,7 +489,7 @@ utilidades:
   graficar los residuos del resolvedor.
 \end{itemize}
 
-Estas librerías se reunen en el paquete de \emph{PyFoam}, desarrolladas
+Estas librerías se reunen en el paquete de \textbf{PyFoam} \cite{pyfoam}, desarrolladas
 para controlar las simulaciones de OpenFoam con script decentes para
 realizar variaciones de parámetros o analizar resultados.
 
@@ -478,22 +497,17 @@ Referencias de interés para conocer más sobre el lenguaje:
 
 \begin{itemize}
 \item
-  \href{https://openfoamwiki.net/index.php/Contrib/PyFoam\#Utilities_for_Logfiles}{Utilities
-  for logfiles}
+  Training\footnote{\url{http://www.learnpython.org/es/}}.
 \item
-  \href{http://www.learnpython.org/es/}{Training}
+  ``Happy
+Foaming with Python''\footnote{\url{https://openfoamwiki.net/images/d/de/HappyFoamingWithPyFoam.pdf}}.
 \item
-  \href{https://openfoamwiki.net/index.php/File:ElevationVsTime.tar.gz}{File:ElevationVsTime.tar.gz}
-\item
-  \href{https://openfoamwiki.net/images/d/de/HappyFoamingWithPyFoam.pdf}{"Happy
-  Foaming with Python"}
-\item
-  \href{http://web.student.chalmers.se/groups/ofw5/Advanced_Training/pyFoamAdvanced.pdf}{"Automatization
-  with pyFoam"}
+``Automatization
+with pyFoam''\footnote{\url{http://web.student.chalmers.se/groups/ofw5/Advanced_Training/pyFoamAdvanced.pdf}}.
 \end{itemize}
 
-\paragraph{\texorpdfstring{
-\href{http://pgfplots.sourceforge.net/}{PGFPlots}}{PGFPlots}}\label{header-n362}
+\item
+  \textbf{PGFPlots} \cite{pgfplots}
 
 Se trata de un paquete de LaTeX para crear gráficos de alta calidad con
 escala normal o logarítmica en dos y tres dimensiones. Mediante unas
@@ -501,11 +515,14 @@ instrucciones sencillas, se define un gráfico con los datos del caso
 contenidos en un archivo con formato \emph{dat}. Soporta gráficos de
 líneas, de barras, áreas, diagramas de dispersión, histogramas, ejes
 polares, diagramas ternarios, entre otros.
+\end{enumerate}
 
 \subsubsection{Herramientas para el trabajo}\label{header-n366}
 
-\paragraph{\texorpdfstring{
-\href{http://engys.com/es/services/training}{helyx-os}}{helyx-os}}\label{header-n368}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{HELYX-OS} \cite{helyxos}
 
 HELYX-OS es una interfaz gráfica de usuario de código abierto, diseñada
 para trabajar de forma nativa con OpenFOAM v4.1 and OpenFOAM v1606+.
@@ -516,8 +533,8 @@ un portafolio variado de servicios de software CAE para la industria.
 
 \begin{itemize}
 \item
-  \href{http://engys.com/es/products/helyx-os}{Ppales ventajas de
-  HELYX-OS}
+  Ppales ventajas de
+  HELYX-OS:
 
   \begin{itemize}
   \item
@@ -535,48 +552,42 @@ un portafolio variado de servicios de software CAE para la industria.
     la interfaz gráfica, etc.
   \end{itemize}
 \item
-  \href{http://engys.github.io/HELYX-OS//installation/}{HELYX-OS
-  installation}
+  HELYX-OS
+  installation\footnote{\url{http://engys.github.io/HELYX-OS//installation/}}.
 
-  \begin{itemize}
-  \item
-    El código fuente, los archivos binarios para Linux y las
-    instrucciones de instalación para HELYX-OS.
-  \end{itemize}
 \end{itemize}
 
-\paragraph{\texorpdfstring{
-\href{https://www.docker.com/}{docker}}{docker}}\label{header-n397}
+\item
+  \textbf{Docker} \cite{docker}
 
 Se trata de una herramienta desarrollada para crear aplicaciones en
 contenedores que luego se borrarán del sistema, ofreciendo la
 posibilidad de arrancar la imagen del programa requerido, en el sistema
-operativo seleccionado:\\
+operativo seleccionado:
 
 \begin{itemize}
 \item
   Imágenes creadas por la comunidad y por los propios desarrolladores de
   algunos programas, las cuales se pueden descargar desde
-  \href{https://hub.docker.com}{Docker Hub}.
+  Docker Hub \cite{dockerhub}.
 \item
   Artículo que describe la imagen de OpenFOAM, para poder ser ejecutada
-  desde Docker:
-  \href{https://www.cfdengine.com/blog/how-to-install-openfoam-anywhere-with-docker/}{How
-  to install OpenFOAM anywhere with Docker}.
+  desde Docker: ``How
+  to install OpenFOAM anywhere with Docker''\footnote{\url{https://www.cfdengine.com/blog/how-to-install-openfoam-anywhere-with-docker/}}.
 \item
-  \href{https://hub.docker.com/r/quantumhpc/openfoam/~/dockerfile/}{Dockerfile}
+  ``Dockerfile''\footnote{\url{https://hub.docker.com/r/quantumhpc/openfoam/~/dockerfile/}}
   es donde se guardan las instrucciones de lo que contiene el contenedor
   para crear la imagen a ejecutar. Es un archivo equivalente a un
   \emph{script}.
 \item
-  \href{http://stackoverflow.com/questions/32001523/docker-cant-write-to-directory-mounted-using-v-unless-it-has-777-permissions}{Docker
-  can write to directory mounted}: Para compartir una carpeta del
+  Para compartir una carpeta del
   anfitrión con el contenedor, se necesita arrancar la imagen con el
   argumento \texttt{:Z}, de forma que se puedan saltar los permisos de
   seguridad de linux.
 \end{itemize}
 
-\paragraph{Travis}\label{header-n414}
+\item
+\textbf{Travis}
 
 Travis CI es un servidor que se sincroniza con los proyectos subidos a
 GitHub para realizar automáticamente las pruebas del código que se hayan
@@ -586,19 +597,13 @@ Comunmente se usa para comprobaciones de códigos o cambios concretos en
 el mismo, así como para revisar la compatibilidad con diferentes
 entornos. Es decir, para la integración continua de modificaciones que
 requieran verificar la ausencia de errores (\emph{test early}).
+\end{enumerate}
 
 \subsection{Fases del experimento}\label{header-n420}
 
 En un comienzo, se analizan las opciones existentes para ensayar el caso
 con las maquetas disponibles del laboratorio, realizando varias
-hipótesis sobre la definición del caso:
-
-\begin{figure}
-\centering
-\includegraphics{11-tanqueCanal.jpg}
-\caption{Tanque para la generación del oleaje y canal de corriente de agua}
-\label{fig:tanqueCanal}
-\end{figure}
+hipótesis sobre la definición del caso, como pueden verse en los diseños de la imagen \autoref{fig:tanqueCanal}.
 
 Como el tanque no disponía, en su momento, del control del oleaje
 debidamente caracterizado, y tampoco se conocían las posibilidades de
@@ -662,3 +667,10 @@ experimentan y al no disponer de una generación continua de oleaje, la
 energía de la primera ola originada, se reparte hasta estabilizarse. Es
 por ello que sólo se analizará el primer ciclo de compresión del aire
 dentro de la cámara y, no, el se succión.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{11-tanqueCanal.jpg}
+  \caption[Representación del tanque y del canal]{Representación del tanque para la generación del oleaje y del canal de corriente de agua}
+  \label{fig:tanqueCanal}
+  \end{figure}

@@ -23,10 +23,10 @@ complejidad a la hora de modelarlo), se decide optar por adaptar el
 canal, dejando el tanque para futuros proyectos.
 
 En resumen, se requiere definir una columna de agua en el instante
-inicial (como el caso de referencia "damBreak" para flujos multifásicos)
+inicial (como el caso de referencia ``damBreak'' para flujos multifásicos)
 para obtener una ola que recorra un canal. En el otro extremo, una
 cámara abierta por el fondo, con una chimenea en la parte superior, para
-representar el principio de captación del sistema OWC.\\
+representar el principio de captación del sistema OWC.
 
 El objetivo general será obtener las siguientes variables en el
 transcurso del tiempo:
@@ -67,7 +67,7 @@ realizar el experimento para caracterizar los diafragmas que se usarán.
 Con todo esto, se adapta el canal, teniendo en cuenta las siguientes
 consideraciones y que para el caso particular del canal del laboratório,
 sólo se utilizará el montaje para esta ocasión, con lo que no se
-realizarán modificaciones permanentes: \\
+realizarán modificaciones permanentes:
 
 \begin{itemize}
 \item
@@ -106,8 +106,8 @@ presión que es funcíon de la velocidad.
 Lo característico de una constricción o estrechamiento es que la caída
 de presión en la misma \(\Delta h\) es mayor que la pérdida de carga
 remanente \(\Delta hr\). Los caudalímetros de constricción más
-importantes y ya clásicos en la medida de caudales son: el Tubo de
-Venturi, las toberas y los diafragmas.
+importantes y ya clásicos en la medida de caudales son: el \textbf{Tubo de
+Venturi, las toberas y los diafragmas}.
 
 \subsection{Medida del caudal: Diafragma con sensor de
 presión}\label{header-n54}
@@ -168,7 +168,7 @@ Y despejando:
 
 \[Q=\frac{\pi d^2}{4}\cdot \frac{1}{\sqrt{\zeta +\alpha ^4-\beta ^4}}\sqrt{2g(h_{0}-h_{2})}\]
 
-\[Q= A_2 · Cq \sqrt{2g(h_0 -h_2)}\]
+\[Q= A_2 \cdot  Cq \sqrt{2g(h_0 -h_2)}\]
 
 Siendo \(A_2\) el área del diafragma y \(C_q\) el coeficiente de caudal
 en función de \(m=A_2 /A_1\) y del número de Reynolds.
@@ -181,38 +181,35 @@ paredes del conducto es nula y empieza a aumentar a medida que se aleja
 de la pared hasta alcanzar un valor máximo, como se muestra en la
 figura \autoref{fig:uconductos}:
 
-\begin{figure}
+\begin{figure}[b]
 \centering
-\includegraphics[width=\linewidth]{Uconductos.png}
+\includegraphics[width=0.8\linewidth]{Uconductos.png}
 \caption[Distribución de velocidades]{Distribución de velocidades en un conducto \cite{Luszczewski99}}
 \label{fig:uconductos}
 \end{figure}
 
 Así mismo, el parámetro primario que afecta a la transición de un flujo
-turbulento es el número de Reynolds:
+turbulento es el número de Reynolds, en la siguiente tabla se especifica el comportamiento de los flujos según el número de
+Reynolds \cite{Mataix82}:
 
 \begin{longtable}[]{@{}cl@{}}
-\toprule
-INTERVALO & COMPORTAMIENTO DEL FLUJO\tabularnewline
-\midrule
+\caption[Comportamiento del flujo según Re]{Comportamientos de los flujos según el número de Re}
+%\toprule
+\hline
+Intervalo & Comportamiento del flujo\tabularnewline
+\hline
+%\midrule
 \endhead
-0 \textless{} Re \textless{} 1 & movimiento laminar "lento" altamente
-viscoso\tabularnewline
-1 \textless{} Re \textless{} 100 & laminar, fuerte dependencia del
-número de Reynolds\tabularnewline
-100 \textless{} Re \textless{} 10³ & laminar, es útil la teoría de capa
-límite\tabularnewline
-10³ \textless{} Re \textless{} 10⁴ & transición a la
-turbulencia\tabularnewline
-10⁴ \textless{} Re \textless{} 10⁶ & turbulento, moderada dependencia
-del número de Reynolds\tabularnewline
-10⁶ \textless{} Re \textless{} \(\infty\) & turbulento, débil
-dependencia del número de Reynolds\tabularnewline
-\bottomrule
+$0 < Re < 1$ & movimiento laminar ``lento'' altamente viscoso\tabularnewline
+$1 < Re < 10^2$ & laminar, fuerte dependencia del número de Reynolds\tabularnewline
+$10^2 < Re < 10^3$ & laminar, es útil la teoría de capa límite\tabularnewline
+$10^3 < Re < 10^4$ & transición a la turbulencia\tabularnewline
+$10^4 < Re < 10^6$ & turbulento, moderada dependencia del número de Reynolds\tabularnewline
+$10^6 < Re < \infty$ & turbulento, débil dependencia del número de Reynolds\tabularnewline
+\hline
+%\bottomrule
 \end{longtable}
 
-\textbf{Tabla 2.1}: Comportamientos de los flujos según el número de
-Reynolds \cite{Mataix82}
 
 Estos son unos rangos indicativos que pueden variar con la geometría del
 flujo, la rugosidad de la superficie y los niveles de fluctuación de la
@@ -225,15 +222,20 @@ operen en la región de transición.
 En este apartado se describen brevemente las partes implicadas en el
 desarrollo del experimento, así como las adaptaciones que se realizan.
 
+Las pruebas realizadas hasta llegar al caso final se realizan con
+materiales reutilizados de otras maquetas del laboratorio, y con la
+ayuda de varios técnicos de laboratorio, los cuales colaboraron
+prestando material y realizando partes del desarrollo diseñado para la adaptación.
+
 \subsection{Canal}\label{header-n136}
 
 Consta de una bomba para el llenado, \emph{PUMP CPm 132A}, con un caudal
 de \emph{20:120 l/min}; y una llave de paso que permitirá ajustar la
-condición inicial del nivel del agua.
+condición inicial del nivel del agua. En la imagen \autoref{fig:canal2d} se puede apreciar la imagen del canal al comienzo de los experimentos.
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.15]{canal-2018-06-19.png}
+\includegraphics[width=0.8\linewidth]{canal-2018-06-19.png}
 \caption{Imagen del canal del laboratorio}
 \label{fig:canal2d}
 \end{figure}
@@ -255,8 +257,13 @@ conocer la fuerza que sería capaz de realizar:
   capaz de realizar:
 \end{itemize}
 
-\[P_G=10 bar\simeq1000kPa=1000kN/m^2 \\
-F=P_G·A=1000kN/m^2·[(80^2-40^2)\pi]=20,1kN\]
+\[
+  P_G=10 bar\simeq1000kPa=1000kN/m^2
+\]
+
+\[
+  F=P_G\cdot A=1000kN/m^2\cdot [(80^2-40^2)\pi]=20,1kN
+\]
 
 Así mismo, del cálculo de compuertas planas se obtiene la fuerza que
 haría el volumen del agua, considerando el nivel máximo de llenado del
@@ -264,39 +271,47 @@ canal, ver \autoref{fig:compuertaplana}:
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{CompuertaPlana.png}
+\includegraphics[width=0.8\linewidth]{CompuertaPlana.png}
 \caption[Diagrama de presiones]{Diagrama de presiones con la representación de la fuerza máxima ejercida por la columna de agua}
 \label{fig:compuertaplana}
 \end{figure}
 
-\[F_P=P_G·A=\frac{h}{2}·\gamma·b·h=9810\frac{N}{m^3}·\frac{0,25^2}{2}m^2·0,08m=24,525N\\
-y_{CP}=y_{CG}+\frac{I_{XG}}{y_{CG}·A}=\frac{h}{2}+\frac{\frac{1}{12}b·h^3}{\frac{h}{2}·b·h}=\frac{2h}{3}\\
-\sum M_C=0 \xrightarrow{}F_P·y_{CP}=F·0,16\xrightarrow{}F=25,547N\]
+\[
+ F_P &= P_G\cdot A=\frac{h}{2}\cdot \gamma \cdot b\cdot h = 9810\frac{N}{m^3}\cdot\frac{0,25^2}{2}m^2\cdot 0,08m = 24,525N
+\]
+
+\[
+ y_{CP} &= y_{CG}+\frac{I_{XG}}{y_{CG}\cdot A} = \frac{h}{2}+\frac{\frac{1}{12}b\cdot h^3}{\frac{h}{2}\cdot b\cdot h} = \frac{2h}{3}
+\]
+
+\[
+ \sum M_C &= 0 \xrightarrow{}F_P\cdot y_{CP} = F\cdot 0,16\xrightarrow{}F = 25,547N
+\]
 
 Estos resultados no son direcramente comparables, ya que la fuerza del
 agua implicaría un momento en el eje del pistón, luego habría que
 comprobar el esfuerzo de flexión de dicho eje. No obstante, vista su
 capacidad se considera que está sobredimensionado para la función que va
-a cumplir, garantizándose también la rápida subida de la compuerta.
+a cumplir, garantizándose también la rápida subida de la compuerta. La estructura diseñada para el pistón se puede apreciar en la fotografía \autoref{fig:piston}.
 
-\begin{figure}
+\begin{figure}[hb]
 \centering
 \includegraphics[scale=0.5]{piston.jpg}
 \caption[Estructura pistón]{Imagen de la estructura de sujeción para el pistón hidráulico}
 \label{fig:piston}
 \end{figure}
 
-El accionamiento del pistón se lleva a cabo a través de un programa
+Asimismo, el accionamiento del pistón se lleva a cabo a través de un programa
 desarrollado por un profesor del departamento con la herramienta
 \emph{Ni LabVIEW 2015 SPI}. Para ello se conecta el accionamiento
 neumático del pistón a una tarjeta de adquisición LabJack U3-Lv (cables
 naranjas a la entrada VS y los azules a FIO2 y FIO3); se alimenta
-conectado a una placa con una salida de \emph{24V y 1,1A}; y por último
-se conecta el inyector de aire a presión.
+conectado a una placa con una salida de $24V$ y $1,1A$; y por último
+se conecta el inyector de aire a presión. En la imagen \autoref{fig:accpiston} se muestra la interacción con el programa para el control de la compuerta desde el ordenador.
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
-\includegraphics[scale=0.15]{accPiston.jpg}
+\includegraphics[scale=0.13]{accPiston.jpg}
 \caption[Accionado de la compuerta]{Imagen del programa realizado en LabVIEW para el control del pistón hidráulico}
 \label{fig:accpiston}
 \end{figure}
@@ -305,7 +320,7 @@ se conecta el inyector de aire a presión.
 
 Está fabricada con los mismos materiales que la estructura del pistón,
 se añaden algunos tacos para facilitar las uniones entre las piezas y
-aportar una mayor rigidez a la estructura. La longitud del canal queda
+aportar una mayor rigidez a la estructura, la imagen del prototipo se puede apreciar en la \autoref{fig:camara}. La longitud del canal queda
 condicionada por los dos puntos de conexión que se disponen en el fondo
 del canal, seleccionando el más alejado del origen, para así tener un
 mayor recorrido para que el agua colapse y se forme la ola.
@@ -317,7 +332,7 @@ dejando 32 mm de paso.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{camara.jpg}
+\includegraphics[width=0.6\linewidth]{camara.jpg}
 \caption{Imagen del prototipo OWC}
 \label{fig:camara}
 \end{figure}
@@ -328,17 +343,17 @@ Se diseña una pieza mediante la impresora 3D para acoplar la tubería,
 adaptada en el ensayo de caracterización de los diafragmas que a
 continuación se detalla, a la salida de la cámara. Así mismo, se
 aprovecha la toma de presión, detallada en el mismo ensayo, para medir
-la presión estática del aire dentro de la cámara.
+la presión estática del aire dentro de la cámara, dando como resultado la imagen \autoref{fig:prototipo}.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{prototipoOWC.jpg}
+\includegraphics[width=0.45\linewidth]{prototipoOWC.jpg}
 \caption[Chimenea]{Fotografía de la chimenea, con el diafragma y la toma de presión}
 \label{fig:prototipo}
 \end{figure}
 
-El aparato de medida utilizado para hallar la presión es un "Transductor
-de presión diferencial" marca \emph{Setra}, \textbf{modelo 267}:
+El aparato de medida utilizado para hallar la presión es un ``Transductor
+de presión diferencial'' marca \emph{Setra}, \textbf{modelo 267}:
 
 \begin{itemize}
 \item
@@ -355,40 +370,40 @@ Se conecta la salida del aparato de medida y algunas resistencias, en
 los puertos indicados por un profesor del Dpto., a la misma tarjeta de
 adquisición LabJack utilizada para el accionamiento del pistón. A través
 de la herramienta \emph{Ni LabVIEW 2015 SPI}, se adapta el programa para
-que capture los datos de la presión en el tiempo desde el ordenador.
+que capture los datos de la presión en el tiempo desde el ordenador. En la imagen \autoref{fig:PTrj} se muestra una captura de la interfaz del programa para el control de las pruebas y las conexiones realizadas en la tarjeta de adquisición. 
 
-\begin{figure}
+\begin{figure}[hb]
 \centering
-\includegraphics{imgNSY/PTrj.png}
+\includegraphics[width=\linewidth]{PTrj.png}
 \caption[Adquisición de la presión]{Captura de la señal de la presión y montaje electrónico para la transferencia de las lecturas}
 \label{fig:PTrj}
 \end{figure}
 
 \subsection{Diafragmas}\label{header-n208}
 
-La normativa en el apartado \textbf{5.1.8 Diámetro del orificio
+La normativa \cite{une03} en el apartado sobre el diámetro del orificio
 \emph{d}} indica que, éste debe ser en todos los casos mayor que o igual
 a \textbf{12,5mm}. Entonces, se toma el valor mínimo contemplado para el
 primer modelo de diafragma.
 
 No obstante, como se ha mencionado en la introducción, el diámetro de
-salida de la cámara es como máximo de 30mm, luego no se cumplen las
-condiciones (de diámetros \emph{D} comprendidos entre 50mm - 1000mm)
+salida de la cámara es como máximo de $30mm$, luego no se cumplen las
+condiciones (de diámetros \emph{D} comprendidos entre $50mm - 1000mm$)
 para tomar un coeficiente de descarga ya definido. Por ello, se
 procederá a la caracterización de diferentes diafragmas para hallar los
 \emph{Coeficientes de Descarga} correspondientes.
 
 Aparte de esto, dado que el instrumento para medir la presión sólo puede
-dar lecturas de hasta 100Pa, se realiza la simulación del caso para
+dar lecturas de hasta $100Pa$, se realiza la simulación del caso para
 comprobar a partir de que diámetro se supera dicha presión. Comprobando
-que para el diámetro de 12,5mm se superan los 120Pa, entonces, se decide
+que para el diámetro de 12,5mm se superan los $120Pa$, entonces, se decide
 aumentar dicho diámetro y realizar el experimento para los diafragmas:
-{[}13-14-15,5-16{]} mm. Estas piezas se frabrican a partir de una
-impresora 3-D y se diseñan mediante OpenSCAD.
+$[13-14-15,5-16] mm$. Estas piezas se frabrican a partir de una
+impresora 3-D y se diseñan mediante OpenSCAD, en la imagen \autoref{fig:d13} se muestra el modelo desde el programa mencionado además del boceto con las dimensiones introducidas.
 
 \begin{figure}
 \centering
-\includegraphics{imgNSY/d13.png}
+\includegraphics[width=0.9\linewidth]{d13.png}
 \caption[Modelo diafragma]{Captura del modelo desde OpenSCAD y boceto del diseño}
 \label{fig:d13}
 \end{figure}
@@ -401,8 +416,8 @@ Modelo \textbf{Prusa i3}, características:
 \item
   Tipo de plástico utilizado: \textbf{PLA}, hecho a partir de materiales
   orgánicos y renovables, en el proceso de impresión se usa un diámetro
-  de boquilla (\emph{nozzle}) de 0.4 mm, el diámetro del filamento de
-  1.75 mm, anchura de capa de 0.2 mm (calidad normal) y densidad de
+  de boquilla (\emph{nozzle}) de $0,4 mm$, el diámetro del filamento de
+  $1,75 mm$, anchura de capa de $0,2 mm$ (calidad normal) y densidad de
   relleno (\emph{infill}) de 15\%. Aunque se trate de mejorar la
   configuración de impresión, este material crea un paso visible entre
   las capas, luego el acabado superficial suele ser rugoso, pero es
@@ -413,7 +428,7 @@ Modelo \textbf{Prusa i3}, características:
   establecidas y que las piezas encajen correctamente, se aumenta la
   dimensión de los diámetros interiores 0,4mm.
 \item
-  Margen de impresión: x = 215 mm, y = 210 mm, z = 180 mm.\\
+  Margen de impresión: $x = 215 mm$, $y = 210 mm$, $z = 180 mm$.
 \item
   Formato de entrada: para definir las características de impresión se
   utiliza el software CURA del que se obtiene un archivo \emph{.gcode}.
@@ -428,12 +443,6 @@ Tal y como se ha mencionado en el apartado de \ref{header-n208} Diafragmas, el
 diámetro de salida de flujo de aire por la chimenea es como máximo de
 30mm, por lo que no entra dentro de las condiciones contempladas por la
 normativa para aplicar un \emph{coeficiente de caudal} normalizado.
-
-Las pruebas realizadas hasta llegar al caso final se realizan con
-materiales reutilizados de otras maquetas del laboratorio, y con la
-ayuda de varios técnicos de laboratorio, los cuales colaboraron
-prestando material y realizando las perforaciones necesarias en las
-tuberías.
 
 \subsection{Objeto}\label{header-n246}
 
@@ -453,7 +462,7 @@ de Bernoulli y la ecuación de continuidad servirán para determinar la
 descarga, \cite{Mataix82}.
 
 En el caso del diafragma, las líneas de corriente convergen para formar
-un área de flujo mínimo, "vena contracta", debido a que se desconoce
+un área de flujo mínimo, ``vena contracta'', debido a que se desconoce
 este área, conviene usar el área de la obstrucción de diámetro \emph{d}.
 Para considerar el efecto de la contracción y un coeficiente de
 velocidad, se introduce un \textbf{coeficiente de descarga C}. Además,
@@ -467,9 +476,9 @@ La presión estática en la tubería se medirá instalando un
 diferencia entre la presión total y la estática, y de ahí obtener la
 presión dinámica. Entonces, será posible hallar la velocidad del flujo y
 con ello, el caudal, el coeficiente de descarga y el número de Reynolds
-serán valores conocidos/calculables.
+serán valores conocidos.
 
-\subsection{Metodos desarrollados}\label{header-n257}
+\subsection{Métodos desarrollados}\label{header-n257}
 
 \subsubsection{Definición}\label{header-n258}
 
@@ -495,7 +504,7 @@ seguian siendo demasiado inestables.
 Para evitar estos rebotes del flujo, se procede a reducir la relación de
 diametros y, así, suavizar el paso del flujo por el diafragma. Se
 utiliza una tubería de diámetro interior \textbf{19,6mm} y un ventilador
-VEN003 de 12vcc, con un caudal de 8,53CFM (0,004m³/s). En primer lugar
+VEN003 de 12vcc, con un caudal de 8,53CFM ($0,004m^3/s$). En primer lugar
 se trató de medir el caudal con un anemómetro, pero la resistencia que
 oponen los álabes frente al poco caudal de aire, hace que este
 instrumento no sea el más apropiado para apreciar variaciones pequeñas
@@ -504,18 +513,19 @@ Prandtl, como para los casos anteriores. Se siguen los pasos de la
 normativa para diseñar las partes de unión entre la tubería y los
 diferentes aparatos.
 
-\begin{figure}
+En la imagen \autoref{fig:M1M2M3M4} se resumen los tres casos experimentados en un primer momento de forma insatisfactoria.
+\begin{figure}[hb]
 \centering
-\includegraphics{M1M2M3M4.png}
+\includegraphics[width=\linewidth]{M1M2M3M4.png}
 \caption[Métodos fallidos realizados]{Métodos fallidos realizados, de izquierda a derecha y de arriba abajo M1, M2, M3 y M4}
 \label{fig:M1M2M3M4}
 \end{figure}
 
 \subsubsection{Consideraciones para el diseño: Norma UNE-EN ISO 5167-2.03H}\label{header-n277}
 
-\paragraph{Placas de orificio}\label{header-n278}
+\textbf{Placas de orificio}
 
-En el apartado 5.1 de la norma, se describe el diafragma como, la parte
+En la norma \cite{une03}, se describe el diafragma como, la parte
 de la placa dentro del conducto, la cual, debe ser circular y
 concéntrica con el eje del conducto. Las caras de la placa deben ser
 planas y paralelas.
@@ -526,45 +536,45 @@ ser siempre mayor que o igual a \textbf{0,10}, y menor que o igual a
 \textbf{0,75}. Siendo \emph{D} \textbf{19,6mm} la relación de diámetros
 queda dentro del rango con un valor de \textbf{0,64}.
 
-En el apartado 5.1.9 se definen los requisitos a cumplir cuando se
+También se definen los requisitos a cumplir cuando se
 trabaja con \textbf{placas bidireccionales}, donde la placa de orificio
 se utilizará con flujos opuestos, como es el caso a estudio:
 
  a) la placa no debe ser biselada,
 
  b) las dos caras deben cumplir con las especificaciones para la cara
-aguas arriba (apartado 5.1.3 de la norma). Es decir, la placa puede
+aguas arriba. Es decir, la placa puede
 considerarse plana cuando el máximo huelgo entre la placa y el canto
 recto de longitud \emph{D}, tendido a través de cualquier diámetro de la
-placa, es menor de \textbf{0.005(D-d)/2}, es decir, la pendiente es
-menor de \textbf{0.5\%} cuando la placa es examinada antes de
+placa, es menor de \textbf{0,005(D-d)/2}, es decir, la pendiente es
+menor de \textbf{0,5\%} cuando la placa es examinada antes de
 intercalarla dentro de la línea de medida,
 
  c) el espesor \emph{E} de la placa debe ser igual al espesor \emph{e}
-del orificio, (apartado 5.1.5) comprendido entre \textbf{0.005D y 0.02D}
-\textbf{(0.098 a 0.392mm)}, además la diferencia entre los valores de e,
+del orificio, comprendido entre \textbf{0,005D y 0,02D}
+\textbf{(0,098 a 0,392mm)}, además la diferencia entre los valores de e,
 medidos en cualquier punto del orificio, no debe ser mayor de
-\textbf{0.001D} \textbf{(0.0196mm)},
+\textbf{0,001D} \textbf{(0,0196mm)},
 
  d) los dos cantos del orificio deben cumplir con las especificaciones
 para el canto aguas arriba (apartado 5.1.7). El canto aguas arriba no
 debe tener cantos rotos o protuberancias, debe estar bien marcado, se
-considera así si el radio del canto no es mayor de \textbf{0.0004d}
-\textbf{(0.005)}.
+considera así si el radio del canto no es mayor de \textbf{0,0004d}
+\textbf{(0,005)}.
 
-\paragraph{Tomas de presión}\label{header-n293}
+\textbf{Tomas de presión}
 
 Para cada placa de orificio, debe instalarse al menos una toma de
 presión aguas arriba y una toma de presión aguas abajo a \textbf{D y
-D/2} (apartado 5.2). Como el diafragma se coloca en un extremo de la
+D/2}. Como el diafragma se coloca en un extremo de la
 tubería solo se considera la medida aguas arriba, ya que aguas abajo se
 tiene la presión atmosférica.
 
 \begin{itemize}
 \item
-  \emph{Aguas arriba}: l1 = D ± 0.1D \textbf{= \textbf{21.56mm}}
+  \emph{Aguas arriba}: $l_1 = D \pm 0,1D$ \textbf{= \textbf{21,56mm}}
 \item
-  \emph{Aguas abajo}: l2 = 0.5D ± 0.01D \textbf{= 9,996mm}
+  \emph{Aguas abajo}: $l_2 = 0,5D \pm 0,01D$ \textbf{= 9,996mm}
 \end{itemize}
 
 El eje de la toma debe formar con el eje del conducto un ángulo tan
@@ -572,29 +582,29 @@ próximo a 90º como sea posible. El orificio debe ser circular en el
 punto de perforación, los cantos deben estar al ras de la superficie
 interna de la pared del conducto y con acabado superficial lo más
 marcado posible. El diámetro de las tomas de presión debe ser menos de
-0.13D (\textbf{2.548 mm}), y menor de 13 mm. Los ejes de las tomas de
+$0.13D$ (\textbf{2.548 mm}), y menor de $13 mm$. Los ejes de las tomas de
 presión pueden situarse en cualquier plano axial de la tubería.
 
-\paragraph{Requisitos de instalación}\label{header-n306}
+\textbf{Requisitos de instalación}
 
-En el apartado 6.2 se especifican las \textbf{longitudes rectas mínimas}
+Asimismo, en la normativa se especifican las \textbf{longitudes rectas mínimas}
 aguas arriba y aguas abajo para instalaciones \textbf{entre diversos
 accesorios y la placa de orificio}:
 
 \begin{itemize}
 \item
   Estas longitudes para los accesorios especificados en la instalación,
-  sin acondicionadores del flujo, se muestran en la tabla 3.
+  sin acondicionadores del flujo, se muestran en la tabla 3, de la normativa.
 \item
   Cuando no se utiliza un acondicionador del flujo, las longitudes
-  especificadas en la tabla 3 deben considerarse como los valores
+  especificadas en la normativa deben considerarse como los valores
   mínimos. En particular, para trabajos de investigación y calibración,
-  se recomienda que los valores aguas arriba especificados en la tabla 3
+  se recomienda que los valores aguas arriba especificados en la tabla 3 \cite{une03}
   se incrementen por al menos un factor de 2, para minimizar la
   incertidumbre de medida.
 \item
   Cuando las longitudes rectas utilizadas son iguales a o mayores que
-  los valores especificados en las columnas A de la tabla 3 para
+  los valores especificados para
   ``incertidumbre adicional cero'', no es necesario aumentar la
   incertidumbre del coeficiente de descarga para tener en cuenta el
   efecto de la instalación particular.
@@ -603,21 +613,21 @@ accesorios y la placa de orificio}:
 Para el caso particular del ensayo, se debe adecuar el diámetro del
 ventilador al diámetro del tubo \emph{D}, para ello se colocará un
 reductor a una distancia de la placa de orificio, tomando el valor de la
-relación entre diámetros 0,67 (\textbf{0,64}), con "incertidumbre
-adicional cero" :
+relación entre diámetros 0,67 (\textbf{0,64}), con ``incertidumbre
+adicional cero'':
 
 \begin{itemize}
 \item
-  \emph{Aguas arriba}: L1 = 12xD = \textbf{235.2 mm}
+  \emph{Aguas arriba}: $L_1 = 12\times D$ = \textbf{235,2 mm}
 \item
-  \emph{Aguas abajo}: L2 = 7xD = 137.2 mm
+  \emph{Aguas abajo}: $L_2 = 7\times D = 137,2 mm$
 \end{itemize}
 
 Para que el reductor cumpla una instalación aceptable deberá fabricarse
-con una relación de 2D a D (\textbf{38mm a 19,6mm}) sobre una longitud
-de 1,5D a 3D (29,4\textless{}\textbf{50mm}\textless{} 58,8).
+con una relación de $2D$ a $D$ (\textbf{38mm a 19,6mm}) sobre una longitud
+de $1,5D$ a $3D$ (29,4\textless{}\textbf{50mm}\textless{} 58,8).
 
-\paragraph{Acondicionadores del flujo}\label{header-n332}
+\textbf{Acondicionadores del flujo}
 
 Un acondicionador del flujo (apartado 6.3) puede utilizarse para reducir
 longitudes rectas aguas arriba, para el caso particular a ensayar, se
@@ -632,18 +642,17 @@ haz de 19 tubos (1998) y el acondicionador del flujo placa Zanker. Ya
 que no se dispone de un diámetro de tubo de gran dimensión, se fabrica
 el de 8 paletas, patentado y descrito en el Anexo B.
 
-El espesor de la pared debe ser menor que 0,025D(\textbf{0,49mm}), para
+El espesor de la pared debe ser menor que $0,025D$(\textbf{0,49mm}), para
 que exista una igualdad en cuanto a uniformidad, diámetro exterior y
-espesor de pared. Además la longitud indicada será de 2D (\textbf{39.2
-mm}) o 3D.
+espesor de pared. Además la longitud indicada será de 2D (\textbf{39,2mm}) o 3D.
 
 \begin{itemize}
 \item
   Instalación aguas abajo de cualquier accesorio: En este caso, tras el
   reductor del ventilador, se tomará la medida para el enderezador del
   flujo de haz de 19 tubos, de modo que la distancia entre el extremo
-  aguas abajo del acondicionador y la placa de orificio, sea igual a 13D
-  ± 0,25D (254.8 ± 4.9 = \textbf{259.7 mm}).
+  aguas abajo del acondicionador y la placa de orificio, sea igual a $13D
+  \pm 0,25D (254,8 \pm 4,9 = \textbf{259,7 mm})$.
 \end{itemize}
 
 \subsubsection{Datos y lecturas}\label{header-n345}
@@ -674,19 +683,19 @@ siguientes datos:
 \item
   \(\rho _ {\text{aire}} = 1,2 kg/m^3\)
 \item
-  \(\nu _ {\text{aire}}=1,8 · 10^{-5} \frac{N·s}{m^2}\)
+  \(\nu _ {\text{aire}}=1,8 \cdot 10^{-5} \frac{N\cdot s}{m^2}\)
 \item
   \(g=9,81 m/s^2\)
 \item
-  \(D=0,0196 m\)
+  $D=0,0196 m$
 \item
-  \(d=0,013\)
+  \(d=0,013m\)
 \item
   \(\beta =d/D= 0,66\)
 \item
-  \(A_D = 3,01719 · 10^4 m^2\)
+  \(A_D = 3,01719 \cdot 10^4 m^2\)
 \item
-  \(A_d = 1,32732 · 10^4 m^2\)
+  \(A_d = 1,32732 \cdot 10^4 m^2\)
 \end{itemize}
 
 Aparte de esto de define una tabla para anotar las mediciones y
@@ -697,19 +706,19 @@ calcular:
   La \textbf{velocidad}, se obtiene de la presión dinámica, medida con
   el tubo de Prandtl, siendo:
 
-  \[P_d=\frac{v^2}{2}·\rho \to v=\sqrt{\frac{2·P_d}{\rho}}\]
+  \[P_d=\frac{v^2}{2}\cdot \rho \to v=\sqrt{\frac{2\cdot P_d}{\rho}}\]
 \item
   El \textbf{caudal}, con el valor de la velocidad conocido, se
   multiplica por el área del tubo \emph{D} y, así, hallar el caudal de
   flujo de aire que circula por el interior:
 
-  \[Q=v·A_D\]
+  \[Q=v\cdot A_D\]
 \item
-  \textbf{Coeficiente de descarga}, de la ecuación (X.11) se aunan los
+  \textbf{Coeficiente de descarga}, de la ecuación del apartado \autoref{header-n54} se aunan los
   términos constantes en un nuevo parámetro \emph{K}, quedando la
   siguiente ecuación:
 
-  \[Q=K\sqrt{\Delta P} = K·\sqrt{P_1-P_2}\]
+  \[Q=K\sqrt{\Delta P} = K\cdot \sqrt{P_1-P_2}\]
 
   siendo \(P_2\), la presión atmosferica, su valor corresponde a cero
   por estar trabajando con presiones manométricas, entonces:
@@ -721,28 +730,28 @@ calcular:
   multiplica por el diámetro del tubo y se divide por la viscosidad del
   flujo de aire:
 
-  \[Re= \frac{v·D}{\nu _{aire}}\]
+  \[Re= \frac{v\cdot D}{\nu _{aire}}\]
 \end{itemize}
 
 El flujo máximo que se consigue mediante este método, queda limitado por
 la máxima tensión que el ventilador es capaz de aguantar. Con lo cual,
 se irá reduciendo la tensión hasta que la medida de la presión se
-aproxime a cero.\\
+aproxime a cero, en la tabla \autoref{tab:tablaM4} se resumen las lecturas y los valores de las variables calculadas a partir de estas.
 
-\begin{table}
+\begin{table}[hb]
 \centering
-\includegraphics{tablaM4.png}
 \caption{Resultados del Método 4}
+\includegraphics[width=0.8\linewidth]{tablaM4.png}
 \label{tab:tablaM4}
 \end{table}
 
 Finalmente se realiza una gráfica (x-y) de los valores del coeficiente
 de descarga equivalente respecto el número de Reynolds, para un valor de
-\(m=A_2/A_1=0,41\).
+\(m=A_2/A_1=0,41\), ver \autoref{fig:grafM4}.
 
-\begin{figure}
+\begin{figure}[ht]
 \centering
-\includegraphics{grafM4.png}
+\includegraphics[width=0.7\linewidth]{grafM4.png}
 \caption[Caracterización del diafragma $12,5mm$]{Caracterización del diafragma $12,5mm$, representación del coeficiente de descarga}
 \label{fig:grafM4}
 \end{figure}
@@ -757,13 +766,13 @@ podrá obtener el caudal y la potencia de la siguiente manera:
 
 \begin{itemize}
 \item
-  De la ecuación (X.17) despejada anteriormente: \(Q=K\sqrt{P_1}\)
+  De la ecuación despejada en el subapartado \ref{header-n345}: \(Q=K\sqrt{P_1}\)
 \item
   El resultado de la potencia se obtiene de sustituir la ecuación
   anterior de la siguiente forma:
 \end{itemize}
 
-\[Pot= \rho g Q H = \Delta P · Q=P_1·Q=P_1K\sqrt{P_1}=K·P_1^{3/2}\]
+\[Pot= \rho g Q H = \Delta P \cdot Q=P_1\cdot Q=P_1K\sqrt{P_1}=K\cdot P_1^{3/2}\]
 
 No obstante, tras simular el caso se obtienen los siguientes valores,
 para el máximo valor de la velocidad de flujo:
@@ -793,11 +802,11 @@ afectará a un incremento en el número de \emph{Re}.
 Reutilizando las partes ya creadas para los anteriores experimentos, se
 realiza una pieza para que encaje con la salida del inyector de aire a
 presión mediante OpenSCAD. Además, en el tubo de inyección se coloca un
-regulador de caudal para obtener diferentes caudales de aire.
+regulador de caudal para obtener diferentes caudales de aire, ver imagen de la maqueta \autoref{fig:M5inyector}.
 
-\begin{figure}
+\begin{figure}[hb]
 \centering
-\includegraphics{M5inyector.jpg}
+\includegraphics[width=0.8\linewidth]{M5inyector.jpg}
 \caption[Caracterización del diafragma con inyector de aire a presión]{Ensayo de la Caracterización del diafragma con inyector de aire a presión, Método 5}
 \label{fig:M5inyector}
 \end{figure}
@@ -820,64 +829,64 @@ Siendo para la presión manométrica medida aguas arriba del diafragma de
 de Prandtl. A partir de estos máximos, se reduce progresivamente hasta
 tener alrededor de 10 lecturas.
 
-Se repiten estas pruebas para los diafragmas de {[}13-14-15,5-16{]}mm y
-se aunan los resultados en una misma gráfica obteniendo:
+Se repiten estas pruebas para los diafragmas de 13mm (\autoref{tab:tablaM5d13}), 14mm (\autoref{tab:tablaM5d14}), 15,5mm (\autoref{tab:tablaM5d15}) y 16mm (\autoref{tab:tablaM5d16}); y se aunan los resultados en una misma gráfica.
 
-\begin{table}
+\begin{table}[hb]
 \centering
-\includegraphics{tablaM5d13.png}
 \caption[Valores para el diafragma de $13mm$]{Valores para el diafragma de 13mm, con una relación de áreas de $m=0,44$}
+\includegraphics[width=0.85\linewidth]{tablaM5d13.png}
 \label{tab:tablaM5d13}
 \end{table}
 
 \begin{table}
 \centering
-\includegraphics{tablaM5d14.png}
 \caption[Valores para el diafragma de $14mm$]{Valores para el diafragma de 14mm, con una relación de áreas de $m=0,51$}
+\includegraphics[width=0.85\linewidth]{tablaM5d14.png}
 \label{tab:tablaM5d14}
 \end{table}
 
 \begin{table}
 \centering
-\includegraphics{tablaM5d15c5.png}
 \caption[Valores para el diafragma de $15,5mm$]{Valores para el diafragma de 15,5mm, con una relación de áreas de $m=0,63$}
+\includegraphics[width=0.85\linewidth]{tablaM5d15c5.png}
+\label{tab:tablaM5d15}
 \end{table}
 
 \begin{table}
 \centering
-\includegraphics{tablaM5d16.png}
 \caption[Valores para el diafragma de $16mm$]{Valores para el diafragma de 16 mm, con una relación de áreas de $m=0,67$}
+\includegraphics[width=0.85\linewidth]{tablaM5d16.png}
+\label{tab:tablaM5d16}
 \end{table}
 
 \begin{figure}
 \centering
-\includegraphics{grafM5.png}
+\includegraphics[width=0.75\linewidth]{grafM5.png}
 \caption[Valores de coeficiente de descarga equivalente]{Valores de coeficiente de descarga equivalente respecto el número de Re, para los diafragmas 12'5, 13, 14, 15'5 y 16}
 \label{fig:grafM5}
 \end{figure}
 
 \subsubsection{Conclusiones}\label{header-n498}
 
-De la gráfica (X) hallada mediante este método, se podrá obtener el
+De la gráfica \autoref{fig:grafM5}, hallada mediante este método, se podrá obtener el
 valor correspondiente del \emph{coeficiente de descarga equivalente}
 para cada diafragma en función del número de Reynolds en el que se esté
 trabajando.
 
 A partir de la lectura de la presión aguas arriba del diafragma y con
 este coeficiente, se podrá hallar el caudal y la potencia del ensayo
-final en el canal, resolviendo las ecuaciones desccritas anteriormente
-(X.17) y (X.19):
+final en el canal, resolviendo las ecuaciones desccritas para el método anterior en el subapartado \ref{header-n423}:
 
 \begin{itemize}
 \item
   \(Q=K\sqrt{P_1}\)
 \item
-  \(Pot= K·P_1^{3/2}\)
+  \(Pot= K\cdot P_1^{3/2}\)
 \end{itemize}
 
 El valor del coeficiente permanece prácticamente constante, pero tras
 consultar las gráficas normalizadas para ciertas placas planas en los
-libros de /R/{[}C.Mataix{]} o /R/{[}W. Miller{]} se aprecia que esta
+libros de \cite{Mataix82} o \cite{Miller96} se aprecia que esta
 curva adquiere una mayor pendiente cuando se trabaja con números de Re
 menores de 10³. No obstante, se puede mantener constante en un rango de
 valores de Re, como es el caso. Además, como se va a utilizar el mismo
@@ -916,14 +925,14 @@ pasos:
   Conectar la salida de la toma al transductor de presión diferencial y
   este, a su vez, al ordenador, para que a traves de una tarjeta de
   adquisición se capture la presión estática aguas arriba del diafragma,
-  tal y como se explica en el apartado /R/{[}3.4 Chimenea{]}.
+  tal y como se explica en el apartado \ref{header-n180} Chimenea.
 \item
   La pared del fondo de la cámara se atornilla al fondo y la frontal se
   fija con una apertura de \(32mm\) para el paso del agua.
 \item
   La condición incial del nivel de agua dentro del canal, se realiza con
   una bomba, regulando el caudal con una llave de paso, mencionado en el
-  apartado /R/{[}3.1 Canal{]} y se establece de la siguiente manera:
+  apartado \ref{header-n136} Canal y se establece de la siguiente manera:
 
   \begin{itemize}
   \item
@@ -938,34 +947,34 @@ pasos:
 \subsection{Datos y lecturas}\label{header-n544}
 
 Por un lado, se graba la altura del nivel de agua alcanzada en la
-cámara, con una regla colocada en el canal. Esta medida no varia en
+cámara, con una regla colocada en el canal, ver \autoref{fig:Hd13}. Esta medida no varia en
 exceso de una prueba a otra, ya que la condición inicial del volumen de
 agua es la misma para todos los casos. Aunque, los diferentes diafragmas
 provocarán que el llenado y el vaciado no se rijan en tiempos exactos,
 en la siguiente imagen, se puede apreciar una altura media aproximada
 alcanzada, estando entre 15-16 cm.
 
-\begin{figure}
+\begin{figure}[hb]
 \centering
-\includegraphics{Hd13.png}
+\includegraphics[width=0.6\linewidth]{Hd13.png}
 \caption{Altura máxima alcanzada para el diafragma de diámetro de $13mm$}
 \label{fig:Hd13}
 \end{figure}
 
 Por otro lado, la captura de la presión se realiza mediante el
 transductor de presión, originalmente conectado a un \emph{display}. Sin
-embargo, tal y como se explica en el apartado /R/{[}3.4 Chimenea{]}, el
+embargo, tal y como se explica en el apartado \ref{header-n180} Chimenea, el
 objetivo de procesar los datos por ordenador es, principalmente, porque
 por las simulaciones, se sabe que para captar el máximo valor de la
 presión, el paso del tiempo como mínimo debe ser de \emph{0,05seg}, por
-tanto se debe definir la captura del valor cada {[}ms{]}.\\
+tanto se debe definir la captura del valor cada {[}ms{]}.
 
 El programa realizado desde \emph{Ni LabVIEW 2015 SPI}, funciona de
 forma interactiva con el usuario. Es decir, como se puede ver en
-/R/{[}Fig.X.PTrj{]}, primero se selecciona "Adquirir datos", luego se
+\autoref{fig:PTrj}, primero se selecciona ``Adquirir datos'', luego se
 activa la subida de la compuerta y, finalmente, se detiene y se guardan
-los resultados en un fichero ".xls". Estos archivos se exportan a
-formato ".csv" para manipularlos y graficarlos mediante \emph{Octave}.
+los resultados en un fichero ``.xls''. Estos archivos se exportan a
+formato ``.csv'' para manipularlos y graficarlos mediante \emph{Octave}.
 
 La adquisición de datos mediante sistemas digitales se realiza de forma
 discreta, lo cual quiere decir que el resultado de la captura no es una
@@ -992,17 +1001,17 @@ Además, de las simulaciones, se obtiene que aproximadamente esto ocurre
 desde \((1,2-2)seg\), así que, esta variación de presiones, donde se
 encuentra el máximo, se representa en un tiempo de \(0,8seg\). Para
 convertir los rangos de las muestras a los tiempos de simulación, se
-multiplica el número de muestras por el periodo de captura.
+multiplica el número de muestras por el periodo de captura. Con todo esto, se obtienen los gráficos mostrados en \autoref{fig:PT_EXPvsCFD}. 
 
 \begin{figure}
 \centering
-\includegraphics{PT_EXPvsCFD.jpeg}
+\includegraphics[width=\linewidth]{PT_EXPvsCFD.jpeg}
 \caption[Resultados del ensayo y simulación]{Resultados del ensayo para las tres pruebas ensayadas más el resultado de la simulación}
 \label{fig:PT_EXPvsCFD}
 \end{figure}
 
 También se realizan vídeos de la experimentación con cada diafragma, en
-la siguiente imagen se tratan de capturar los instantes representados en
+la \autoref{fig:nsyfinal} se tratan de capturar los instantes representados en
 las simulaciones. De esta manera se puede comparar, de forma visible, la
 dinámica del flujo de agua hallada mediante ambas vías. Esta
 visualización podría mejorarse echando un tinte en el agua, o poniendo
@@ -1012,16 +1021,17 @@ volumen de agua.
 
 \begin{figure}
 \centering
-\includegraphics{nsyFinal.png}
+\includegraphics[width=\linewidth]{nsyFinal.png}
 \caption{Representación del movimiento del flujo en el canal del laboratorio.}
+\label{fig:nsyfinal}
 \end{figure}
 
 \subsection{Conclusiones}\label{header-n579}
 
 Por un lado, tal y como se concluía en las simulaciones, no se aprecian
 diferencias significativas en la altura del agua dentro de la cámara de
-una prueba a otra. Asimismo, como se explica en el apartado /R/{[}3.3
-Cámara{]}, está hallada con la vista y, aparte, la condición inicial del
+una prueba a otra. Asimismo, como se explica en el apartado 
+\ref{header-n602} Cámara, está hallada con la vista y, aparte, la condición inicial del
 llenado de agua es muy improbable que haya sido exacta para todas las
 pruebas, por ello se toma una medida aproximada de \(15,5-16,5 cm\),
 para todos los casos.
@@ -1040,12 +1050,13 @@ apertura de la compuerta y, por otro, el tiempo de captura de datos).
 Aun así, se considera objeto de un proyecto de la rama de la
 electronica, además, como se obtiene el valor de la presión máxima, a
 partir de la caracterización del diafragma se podrán calcular las
-variables de interés, que son el caudal y la potencia máximas:
+variables de interés, resumidas en la \autoref{tab:nsycanal3d} que son el caudal y la potencia máximas.
 
-\begin{figure}
+\begin{table}[ht]
 \centering
-\includegraphics{tablaEnsayoCanal3D.png}
-\caption{Resultados del caudal y la potencia para cada diafragma}
-\end{figure}
+\caption[Caudal y potencia ensayo final]{Resultados del ensayo final, caudal y potencia para cada diafragma}
+\includegraphics[width=0.7\linewidth]{tablaEnsayoCanal3D.png}
+\label{tab:nsycanal3d}
+\end{table}
 
 \input{pspto}

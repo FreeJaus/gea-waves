@@ -4,7 +4,7 @@ Generalmente, dada la complejidad que implican los códigos que resuelven
 la dinámica de los flujos en OpenFOAM, se suele tomar como referencia un
 caso y aplicar los diferentes cambios al mismo.
 
-En un comienzo se parte por el caso "damBreak" (tutorial de OpenFOAM),
+En un comienzo se parte por el caso ``damBreak'' (tutorial de OpenFOAM),
 ya que, por su naturaleza, se asemeja a las condiciones que se podrían
 ensayar. Además, se simularon diferentes ejemplos de casos, que
 sirvieron como orientación para añadir nuevas funciones y, así, extraer
@@ -16,32 +16,29 @@ contorno para la generación del oleaje a través de las librerías del
 código ihFOAM. No obstante, dada la complejidad que conlleva su
 definición tanto en el laboratório como en el modelo, se consideró más
 apropiado dejarlo para futuros proyectos. Actualmente, estas
-condiciones, también se han implementado en las versiones de OpenFOAM.\\
+condiciones, también se han implementado en las versiones de OpenFOAM.
 
 Por otra parte, una vez obtenida la solución aproximada del modelo por
 ordenador, se fue adaptando el ensayo hasta llegar a la solución final,
 lo que implicó, nuevos cambios en el caso. En este apartado se describen
 y analizan los casos que sirvieron de guía antes de llegar a la solución
-final, dada en los apartados posteriores /R/XX CANAL 2-D y XX CANAL 3-D.
+final, dada en los apartados posteriores \ref{sec:canal2d} Canal 2-D y \ref{sec:canal3d} Canal 3-D.
 
 \subsection{Lista de casos}\label{header-n13}
 
 \begin{itemize}
 \item
   \textbf{damBreak}: Tutorial de OpenFOAM ubicado en
-  \texttt{\textless{}\$FOAM\_RUN/tutorials/multiphase/interFoam/\textgreater{}}.
+  \lstinline[style=bash]{$Foam_run/tutorials/multiphase/interFoam}.
   El caso trata modelos multifásicos, 2-D, incompresible, transitorio,
   con y sin turbulencia. Además, utiliza el código interFoam que
   resuelve las ecuaciones de continuidad y, usando el método VOF, se
-  calcula la interfase. Completamente explicado en
-  \href{http://cfd.direct/openfoam/user-guide/dambreak/}{User Guide: 2.3
-  Breaking of a dam}.
+  calcula la interfase. Completamente explicado en la guía \cite{dambreak}.
 \item
   \textbf{damBreakFine}: Incremento de la resolución del mallado del
   caso anterior. Así mismo, se ejecuta en paralelo siguiendo las
-  explicasiones contenidas en
-  \href{http://cfd.direct/openfoam/user-guide/running-applications-parallel}{User
-  Guide: 3.4 Running applications in parallel}.
+  explicasiones contenidas en \emph{User
+  Guide: 3.4 Running applications in parallel}\footnote{\url{http://cfd.direct/openfoam/user-guide/running-applications-parallel}}.
 \item
   \textbf{damBreakMod}: Primera aproximación al modelo OWC, variando la
   geometría del caso anterior desde el fichero \emph{blockMeshDict}
@@ -55,38 +52,38 @@ final, dada en los apartados posteriores /R/XX CANAL 2-D y XX CANAL 3-D.
   compuesta por triángulos (para los cilindros se especifica el número
   de frames) ya que, luego se utilizará snappyHexMesh para el refinado.
   Se definen los contornos desde Blender
-  (\href{https://github.com/nogenmyr/swiftBlock}{GitHub/nogenmyr}),
+  \cite{swiftBlock},
   exportando cada uno por separado en ascii.stl y se juntan después en
   un solo fichero. Se modifica el diccionario snappyHexMeshDict dejando
   los campos mínimos necesarios para realizar un mallado básico.
 \item
   \textbf{damBreak3d}: Caso damBreak en 3-D, modificando la geometría en
-  el eje \emph{z} y definiendo el contorno de "frontAndBack" de forma
+  el eje $z$ y definiendo el contorno de ``frontAndBack'' de forma
   apropiada para cada variable del caso. Adicionalmente, se puede
-  modificar el fichero \texttt{setFields} para variar el volumen de la
+  modificar el fichero \lstinline[style=bash]{setFields} para variar el volumen de la
   columna de agua inicial. Se toma de referencia las explicaciones de
-  \href{http://www.calumdouglas.ch/openfoam-example-3d-dambreak/}{Calum
-  Duglas "damBreak example modified to 3d"}.
+  Calum
+  Duglas: ``damBreak example modified to 3d''\footnote{\url{http://www.calumdouglas.ch/openfoam-example-3d-dambreak/}}.
 \item
   \textbf{canal2D}: Modelo en 2D del canal del laboratorio con la pared
   que delimita la cámara y una ranura en la chimenea de salida
-  (\(19 mm\) en \emph{z}). Del mismo se obtiene la presión del flujo de
+  (\(19 mm\) en $z$. Del mismo se obtiene la presión del flujo de
   aire aguas arriba del diafragma y el caudal de salida, teniendo como
   referencia los tutoriales:
 
   \begin{itemize}
   \item
-    \texttt{simpleFoam/pitzDaily}: a partir del cual se determina cómo
+    \lstinline[style=bash]{simpleFoam/pitzDaily}: a partir del cual se determina cómo
     obtener los residuos, el valor de las variables de interés en puntos
     conctretos (\emph{probes}) o en los centros de cada celda contenidas
     entre dos puntos (\emph{sample}).
   \item
-    \texttt{multiphase/interFoam/ras/waterChannel}: donde se halla el
+    \lstinline[style=bash]{multiphase/interFoam/ras/waterChannel}: donde se halla el
     flujo de salida (\emph{outletFlux}) en la superficie especificada
     por el usuario mediante una función definida en el diccionario
-    "\emph{controlDict}".
+    \emph{controlDict}.
   \item
-    \texttt{multiphase/potentialFreeSurfaceFoam/oscillatingBox}:
+    \lstinline[style=bash]{multiphase/potentialFreeSurfaceFoam/oscillatingBox}:
     mediante el cual se añaden paredes al modelo con la función
     \emph{topoSet}, permitiendo realizar modificaciones parciales en la
     geometría (generada a partir de blockMesh).
@@ -98,7 +95,7 @@ final, dada en los apartados posteriores /R/XX CANAL 2-D y XX CANAL 3-D.
   variación en el valor del caudal. Por ello, la aproximación en 2-D se
   considera apropiada para visualizar el comportamiento de los flujos,
   pero insuficiente para tomar como válidos los valores obtenidos y
-  poder compararlos con los experimentales. \\
+  poder compararlos con los experimentales.
 \item
   \textbf{canal3D}: Simulación del caso del laboratorio, realizando las
   modificaciones necesarias para aproximar el caso a lo que se
@@ -119,7 +116,7 @@ automatizada mediante \emph{scripts}, un \emph{script} es un archivo
 donde se listan los pasos de la ejecución, es decir, son una serie de
 órdenes que se irán ejecutando una a una. A este archivo se le añaden
 permisos de ejecución para que el sistema los reconozca como
-\emph{scripts} o archivos ejecutables (\texttt{chmod\ +x\ filename}).
+\emph{scripts} o archivos ejecutables \lstinline[style=bash]{chmod +x filename}.
 
 Teniendo de referencia los \emph{scripts} diseñados para los casos de
 ejemplo implicados, se aunan en uno sólo, de forma que se describan las
@@ -130,9 +127,9 @@ dejarlo como al comienzo, la lista de casos se añade al final del
 
 \begin{itemize}
 \item
-  \texttt{./RunCases.sh\ CASE}
+  \lstinline[style=bash]{./RunCases.sh CASE}
 \item
-  \texttt{./CleanCase.sh\ CASE}
+  \lstinline[style=bash]{./CleanCase.sh CASE}
 \end{itemize}
 
 Estas órdenes se pueden utilizar, si se dispone de las librerías
