@@ -6,8 +6,7 @@ publishdate: 2016-01-01
 date: 2016-01-01
 ---
 
-3. CANAL 2-D
-===
+#3 CANAL 2-D
 
 Este caso, como ya se ha mencionado, es el resultado de las pruebas realizadas con anterioridad, tanto en el laboratorio como con la simulación de varios casos, donde se fueron implementando utilidades y funciones de ejemplos de OpenFOAM. A continuación se presenta la estructura del caso: 
 
@@ -58,7 +57,7 @@ Este caso, como ya se ha mencionado, es el resultado de las pruebas realizadas c
 
   - Las dimensiones expresadas por las posiciones de los vértices se multiplican por 0,001 para convertirlas a metros, el orden también es importante, ver [User Guide: 5.3 Mesh generation with clockMesh](https://cfd.direct/openfoam/user-guide/blockmesh/), a continuación se definen las medidas consideradas:
 
-    ![DimCanal2D](imgCFD/DimCanal2D.png)
+    ![DimCanal2D](../img/DimCanal2D.png)
 
     **FiguraX**: Imagen con la representación de las medidas mínimas necesarias.
 
@@ -83,7 +82,7 @@ Este caso, como ya se ha mencionado, es el resultado de las pruebas realizadas c
 
     - Pared diafragma derecha: c=`(1.74525 0.639 0)` d= `(1.7488 0.641 1)`.
 
-      ![diafCanal2D](imgCFD/diafCanal2D.png)
+      ![diafCanal2D](../img/diafCanal2D.png)
 
       **FiguraX**: Representación del diafragma, colocado en la parte superior del tubo de salida.
 
@@ -100,7 +99,7 @@ Este caso, como ya se ha mencionado, es el resultado de las pruebas realizadas c
 
     - El punto para medir la presión se obtiene del ensayo, más adelante se detallará. Por otro lado, el centroide más aproximado que corresponda a la ubicación se puede hallar con la función `singleGraph`, donde se estima un punto de inicio y otro final para hallar los valores en los centroides intermedios (se guardan en directorios separados por el paso del tiempo). En este caso el punto definido en el diccionario <./system/probes>, expresado en metros, es: `(1.739 0.618 0.0098)`.
 
-      ![probeCanal2D](imgCFD/probeCanal2D.png)
+      ![probeCanal2D](../img/probeCanal2D.png)
 
       FiguraX: Boceto que representa el punto de medición de la presión.
 
@@ -128,7 +127,7 @@ El procesado se puede realizar ejecutando el *script* `Allrun` donde se describe
 
 1. Mediante la orden `blockMesh`, se descompone el dominio en sus tres ejes por hexaedros y se escriben los datos de los puntos, caras, celdas de la malla. 
 
-   ![blockcanal2D19](imgCFD/blockcanal2D19.png)
+   ![blockcanal2D19](../img/blockcanal2D19.png)
 
    **FiguraX**: Representación de los vértices y bloques del modelo.
 
@@ -151,13 +150,13 @@ El procesado se puede realizar ejecutando el *script* `Allrun` donde se describe
 
 4. Finalmente, se ejecuta `interFoam &` en segundo plano para lanzar, al mismo tiempo, la orden `pyFoamPlotWatcher.py log.interFoam`, la cual obtiene del registro los residuos de las variables principales.
 
-   ![residualsCanal2D19](imgCFD/residualsCanal2D19.png)
+   ![residualsCanal2D19](../img/residualsCanal2D19.png)
 
    **FiguraX**: residuos del caso ejecutado. [/gea-waves/of-run/canal2Dowc19-12-19]
 
 
 
-![canal2D19](imgCFD/canal2D19.png)
+![canal2D19](../img/canal2D19.png)
 
 **FiguraX**: Imágenes de la visualización del caso desde *ParaView*. [/gea-waves/of-run/canal2Dowc19-12-19]
 
@@ -179,7 +178,7 @@ Una vez ejecutado el caso se pueden obtener los siguientes resultados:
 
    El archivo de salida se guarda en la carpeta del caso, listo para trazar el gráfico desde una herramienta indicada para ello, en este caso se utiliza un *script* <./RunWL> para generarlo automáticamente desde Gnuplot: 
 
-   ![WLCanal2D19](imgCFD/WLCanal2D19.jpg)
+   ![WLCanal2D19](../img/WLCanal2D19.jpg)
 
    **Gráfica/FiguraX**: Representación gráfica del nivel del agua dentro de la cámara a lo largo del tiempo.
 
@@ -198,13 +197,13 @@ Una vez ejecutado el caso se pueden obtener los siguientes resultados:
 
    Para guardar los resultados a lo largo del tiempo se modifica la parte final del *script* teniendo como referencia el anterior y resolviendo los errores con las respuestas del foro de la comunidad.
 
-   ![PmCanal2D19](imgCFD/PmCanal2D19.jpg)
+   ![PmCanal2D19](../img/PmCanal2D19.jpg)
 
    Gráfica/Figura X: Medida de la Presión manométrica a lo largo del tiempo. [/gea-waves/of-run/canal2Dowc19-12-19]
 
 4. Los resultados del caudal a través del diafragma se escriben durante la simulación en <./postProcessing/outletFlux/0/surfaceRegion.dat>, para gráficarlos se puede ejecutar el *script* <./RunPlotFlow>:
 
-![FlowRCanal2D19](imgCFD/FlowRCanal2D19.jpg)
+![FlowRCanal2D19](../img/FlowRCanal2D19.jpg)
 
 ​	Gráfica X: Medida del caudal a través del diafragma.
 
@@ -214,7 +213,7 @@ Una vez ejecutado el caso se pueden obtener los siguientes resultados:
 
 Los valores del caudal y presión manométrica obtenidos, resultan muy bajos, con lo que se realiza una segunda prueba, variando la anchura del modelo de $19,6 mm$ a $80 mm$. Logrando un aumento del caudal y una disminución en la presión manométrica, como se puede apreciar en la siguiente imagen:
 
-![RmFrCanal2D80](imgCFD/RmFrCanal2D80.jpg)
+![RmFrCanal2D80](../img/RmFrCanal2D80.jpg)
 
 **Gráficas XX y XX**: Presión manométrica aguas arriba del diafragma y flujo de aire a través del mismo.
 

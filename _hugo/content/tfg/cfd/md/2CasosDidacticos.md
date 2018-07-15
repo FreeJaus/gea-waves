@@ -75,7 +75,7 @@ Los pasos para ejecutar este caso son:
 
 1. Desde la ubicación del caso, introducir la orden: `blockMesh`. La cual genera los ficheros *boundary, faces, neighbour, owner* y *points*, que definen el modelo (geometría y mallado) en <./constant/polyMesh>. Para visualizar estos resultados, ejecutar `paraFoam` y para mostrar los bloques del modelo se puede utilizar la orden: `paraFoam -block` dando como resultado la siguiente imagen:
 
-   ![bMvertex](../../../../../../Documentos/OWCESOF/cfd/wkp/FOAM_run/multiphase/interFoam/laminar/damBreak/damBreak/bMvertex.png)
+   ![bMvertex](../img/bMvertex.png)
 
    **Figura 2.1**: Bloque del modelo con los vértices enumerados [Fuente: FOAM_run/multiphase/interFoam/laminar/damBreak]
 
@@ -89,7 +89,7 @@ Los pasos para ejecutar este caso son:
 
    ​
 
-![damBreak](imgCFD/damBreak.png)
+![damBreak](../img/damBreak.png)
 
 **Figura 2.2**: Imágenes de la ejecución del caso, obtenidas desde ParaView. [Fuente: FOAM_run/multiphase/interFoam/laminar/damBreak]
 
@@ -128,7 +128,7 @@ Se trata de una continuación del caso anterior, mostrando cómo aumentar la res
 
 1. Modificar el *radio de expansión* `simpleGrading (1 2 1)`, lo que hace que se refine el fondo, disminuyendo el tamaño de celdas a la mitad en proporción a las celdas superiores en el eje *y*. Ejecutar `blockMesh`.
 
-   ![mesh-damBreakFine](imgCFD/mesh-damBreakFine.png)
+   ![mesh-damBreakFine](../img/mesh-damBreakFine.png)
 
    **Figura 2.3**: Mallado del caso. [Fuente: FOAM_run/multiphase/interFoam/laminar/damBreak/damBreakFine]
 
@@ -142,7 +142,7 @@ Se trata de una continuación del caso anterior, mostrando cómo aumentar la res
 
 6. Por ultimo se revierte el proceso de descomposición mediante la orden: `reconstructPar`
 
-   ![damBreakFine](imgCFD/damBreakFine.png)
+   ![damBreakFine](../img/damBreakFine.png)
 
    **Figura 2.4**: Imágenes de la ejecución del caso, obtenidas desde ParaView. [Fuente: FOAM_run/multiphase/interFoam/laminar/damBreakFine]
 
@@ -210,19 +210,19 @@ En este caso, se modifican los vértices del modelo desde el fichero blockMeshDi
 
 3. Se ejecuta `paraFoam -block` para analizar el modelo generado y se vuelve a ejecutar `blockMesh`.
 
-   ![blockdanmBreakMod](imgCFD/blockdanmBreakMod.png)
+   ![blockdanmBreakMod](../img/blockdanmBreakMod.png)
 
    **Figura 2.5**: Bloques y vértices del modelo del caso. [Fuente: gea-waves/of-run/damBreakMod] 
 
 4. La utilidad `setFields` lee los campos del diccionario, recalculando y reescribiendo el archivo. Como ya se ha mencionado, se recomienda hacer una copia de seguridad de este archivo antes de ejecutar esta orden, debido a que el proceso anulará lo establecido: `cp 0/alpha.water.orig 0/alpha.water`. Ejecutar `paraFoam` para ver el resultado:
 
-   ![sFdamBreakMod](imgCFD/sFdamBreakMod.png)
+   ![sFdamBreakMod](../img/sFdamBreakMod.png)
 
    **Figura 2.6**: Condición inicial del agua. [Fuente: gea-waves/of-run/damBreakMod]
 
 5. Procesado del caso mediante la orden: `interFoam | tee log.interFoam` y visualizarlo con `paraFoam`.
 
-   ![damBreakMod](imgCFD/damBreakMod.png)
+   ![damBreakMod](../img/damBreakMod.png)
 
    **Figura 2.7**: Imágenes del caso procesados gráficamente desde ParaView. [Fuente: gea-waves/of-run/damBreakMod]
 
@@ -298,13 +298,13 @@ Se pueden ejecutar todas las tareas de forma automatizada mediante la orden `./R
 12. Se ejecuta paraFoam para visualizar los resultados.
 13. Se borra `0/alpha.water` al cerrar paraFoam.
 
-![damBreakSnappy](imgCFD/damBreakSnappy.png)
+![damBreakSnappy](../img/damBreakSnappy.png)
 
 **Figura 2.8**: Procesado de la solución desde ParaView. [Fuente: of-run/damBreakSnappy]
 
 De la forma descrita, se pueden visualizar los pasos intermedios que se crean con la orden `snappyHexMesh`, ayudando a su comprensión. No obstante, se puede añadir el argumento `-overwrite` al ejecutar `snappyHexMesh`, para que se sobreescriba el contenido del directorio <./constant> creado por `blockMesh`, en vez de guardarse únicamente en la carpeta <./0.002>.
 
-![snappy-damBreakSnappy](imgCFD/snappy-damBreakSnappy.png)
+![snappy-damBreakSnappy](../img/snappy-damBreakSnappy.png)
 
 **Figura 2.9**: Proceso de generación del modelo. [Fuente: of-run/damBreakSnappy]
 
@@ -342,7 +342,7 @@ Para ejecutar el caso se siguen los pasos básicos:
 
 3. Comprobar que existen los archivos *alpha.water* y *alpha.water.orig*, ejecutar: `setFields > log.setFields`. 
 
-   ![sFdamBreak3d](imgCFD/sFdamBreak3d.png)
+   ![sFdamBreak3d](../img/sFdamBreak3d.png)
 
    **Figura 2.10**: Visualización desde ParaView de la condición inicial del volumen del agua. [Fuente: of-run/damBreak3d]
 
@@ -350,6 +350,6 @@ Para ejecutar el caso se siguen los pasos básicos:
 
 5. Visualizar el resultado: `paraFoam`
 
-   ![damBreak3d](imgCFD/damBreak3d.png)
+   ![damBreak3d](../img/damBreak3d.png)
 
    **Figura 2.11**: Imágenes de la solución visualizada desde ParaView. [Fuente: of-run/damBreak3d]

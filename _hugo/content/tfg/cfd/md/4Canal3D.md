@@ -71,7 +71,7 @@ A esta se le añade el modelo generado a partir de Salome y convertido a formato
 
      Dando como resultado la siguiente imagen:
 
-     ![geomCanal3D](imgCFD/geomCanal3D.png)
+     ![geomCanal3D](../img/geomCanal3D.png)
 
      ​
 
@@ -102,7 +102,7 @@ A esta se le añade el modelo generado a partir de Salome y convertido a formato
 
      Entonces, para definir estos contornos sobre la malla creada, se selecciona desde el menú, la opción `Create Groups from Geometry` y se especifica el grupo de caras correspondiente a cada contorno, el resultado final se puede apreciar en la siguiente imagen:  
 
-     ![D13bdry](imgCFD/D13bdry.png)
+     ![D13bdry](../img/D13bdry.png)
 
      **Figura 4.2**: Mallado y contornos del modelo (*atmosphere, allwall, outflow*). [Fuente: gea-waves/of-dsgn/salome/mesh-d13.hdf]
 
@@ -128,7 +128,7 @@ A esta se le añade el modelo generado a partir de Salome y convertido a formato
 
   Las dimensiones no importa que sobrepasen las medidas del dominio, ya que sólo se describirán con agua las celdas que se encuentren sobre el modelo y no resultará en errores. 
 
-  ![D12wl](imgCFD/D12wl.png)
+  ![D12wl](../img/D12wl.png)
 
   **Figura 4.3**: Representación del problema en el instante inicial. [Fuente: gea-waves/of-run/canal/owcD13]
 
@@ -165,7 +165,7 @@ La ejecución de este caso se puede realizar mediante el *script* <gea-waves/of-
 
    ​
 
-![D13canal3D](imgCFD/D13canal3D.png)
+![D13canal3D](../img/D13canal3D.png)
 
 **Figura 4.4**: Capturas de la visualización del caso, con la representación de la fracción de agua.  
 
@@ -195,7 +195,7 @@ Por tanto, se añaden al caso los siguientes ficheros para la obtención de los 
 
   Debido a que las operaciones necesarias (p.e. la integración de los valores de la altura del agua para hallar la media) se realizan en el *script* de *Python*, las instrucciones desde Octave, se resumen en: definir una matriz que contenga la tabla de valores, siendo el vector 'x' el tiempo y el 'y' la altura, y graficar directamente estos datos.
 
-  ![WLCanal3D](imgCFD/wlCanal3D.png)
+  ![WLCanal3D](../img/wlCanal3D.png)
 
   **Gráfica 4.1**: Altura del nivel del agua dentro de la cámara. [Fuente; gea-waves/of-run/owcD13]
 
@@ -231,7 +231,7 @@ Por tanto, se añaden al caso los siguientes ficheros para la obtención de los 
 
   Para obtener la gráfica, se prepara un *script* desde *Octave* <./QT.m>, donde se leen los datos (del caudal y del tiempo) y se guardan en una matriz. El valor del caudal se da como caudal másico, luego se divide entre $\rho=1,21kg/m^3$ para conseguir la unidad del Sistema Internacional (S.I.) [$m^3/s$]. Por último, se representan los valores del paso del tiempo respecto del caudal.
 
-  ![QTCanal3D](imgCFD/QTCanal3D.png)
+  ![QTCanal3D](../img/QTCanal3D.png)
 
   **Gráfica 4.2**: Caudal a través del diafragma. [Fuente: gea-waves/of-run/owcD13]
 
@@ -241,7 +241,7 @@ Por tanto, se añaden al caso los siguientes ficheros para la obtención de los 
 
   La presión manométrica aguas arriba del diafragma, al igual que en el caso en 2-D, se logra de forma automatizada mediante el *script* <./prgh.py> ejecutado desde *ParaView*. De este fichero se modifican los campos correspondientes a la carpeta del caso a la que se debe apuntar y se indica el punto de medición correspondiente, detallado en el ensayo, [2.186, 0.582, 0.118]m. Los resultados se guardan en <./rghPressure.csv> donde la variable calculada *P_rgh*, definida en el código de OpenFOAM en <OpenFOAM/applications/solvers/multiphase/interFoam/pEqn.H>, tiene unas unidades de [$kg/ms^2$] lo que es lo mismo que [*Pa*]. Como en los casos anteriores a partir de *Octave* se grafican.
 
-  ![PmCanal3D](imgCFD/PmCanal3D.png)
+  ![PmCanal3D](../img/PmCanal3D.png)
 
   **Gráfica 4.3**: Presión manométrica en el punto indicado. [Fuente: gea-waves/of-run/owcD13]
 
@@ -255,7 +255,7 @@ Por tanto, se añaden al caso los siguientes ficheros para la obtención de los 
   - La dimensión de la matriz para el caudal, por manera en la que se ha obtenido (durante la simulación), tiene más valores intermedios, con lo que se reduce a la dimensión de la presión, la cual contiene los valores para cada paso del tiempo definido.
   - Finalmente, se multiplican los vectores de ambas columnas (presión y caudal) y se grafica respecto del tiempo.
 
-  ![potTCanal3D](imgCFD/potTCanal3D.png)
+  ![potTCanal3D](../img/potTCanal3D.png)
 
   **Gráfica 4.4**: Potecia equivalente a la diferencia de presiones por el caudal a través del diafragma.
 
@@ -284,7 +284,7 @@ Como se ha mencionado con anterioridad, a partir de los valores hallados desde *
 
 Así mismo, con estos valores se puede representar la potencia por cada diafragma, donde se aprecia que cuanto más pequeña es la apertura del diámetro de la placa, mayor es la resistencia que se opone a la entrada del agua, con lo que el flujo de aire comprimido dentro de la cámara es explusado con mayor presión, provocando una extracción de potencia mayor:
 
-![potmaxDCanal3D](imgCFD/potmaxDCanal3D.png)
+![potmaxDCanal3D](../img/potmaxDCanal3D.png)
 
 **Gráfica 4.5**: Potencia extraida por cada diafragma [9,5-11-12,5-13-14-15,5-16].
 
@@ -292,6 +292,6 @@ Así mismo, con estos valores se puede representar la potencia por cada diafragm
 
 Además, mediante la siguiente gráfica se puede determinar que el volumen de agua, al permanecer invariable para todos los casos, alcanza una altura dentro de la cámara, prácticamente constante. No obstante, se ve algo alterado el máximo valor logrado, ya que la oposición de la salida de aire, provocada por el diámetro de placa más pequeño hará que parte del agua no entre. De forma análoga, el caudal de aire que pasa a través del diafragma, será mayor, cuanto mayor sea el diámetro de la salida de éste:
 
-![HQdiaf](imgCFD/HQdiaf.png)
+![HQdiaf](../img/HQdiaf.png)
 
 **Gráfica 4.6**: Caudal de aire por la chimenea respecto a la altura de agua dentro de la cámara. 

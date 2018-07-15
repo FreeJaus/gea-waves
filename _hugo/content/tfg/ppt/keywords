@@ -1,0 +1,108 @@
+1) contexto $\to$ energía recurso de necesidad básica,
+   me han llamado la atención las energías renovables,
+   propuse analizar la extracción
+
+2) referencias $\to$ zona buena, aprov mareas y olas
+
+3) repaso tecno existentes: VyDV, 
+			    costes inversión, 
+			    pot. extraída,
+			    impact. que provocan,
+			    adapt. medio marino
+
+4) comprendió $\to$ prototip. fase comercial estudios: lab y ma
+   validar su diseño conceptual y demostración operacional
+
+5) OWC $\to$ simpl. estruct. fija
+	     menos nocivo para el ecosistema
+	     prox. contamos con 1planta Mutriku
+- Se llama así, porque las OLAS generan la variación del VOL dentro de una cámara cerrada.y 
+- Esto hace que se mueva una corriente de AIRE en la salida de la parte superior.
+- Haciendo girar una TURBINA diseñada para aprovechar el flujo bidireccional convirtiendolo en un solo movimiento rotacional.
+
+- Aunque aquí se muestra el ejemplo de una planta real, no conocemos los datos de entrada del modelo. 
+- Sabemos que todos los flujos cumplen estas leyes (Euler18,NS80) y que gracias a los ordenadores podemos resolverlas discretizando el modelo y aplicandolas en los nodos. 
+A mayor escala mayores son los recursos computacionales necesarios. 
+Luego se escala para ser capaces de ejecutar el caso con los que disponemos.
+
+- Estas varían según las condiciones del flujo. Lo peculiar de tratar con flujos multifásicos (agua y aire), implica que todas las variables (P, U) se comparten, representando valores promediados en función de la fracción de fase de volumen de cada celda. 
+
+Particularmente en la ec del momento se implementa el efecto de la **tensión superficial** en el cálculo de la **interfase** y 
+Se añade la ec de transporte a partir de la cual se puede calcular el volumen de agua por celda (condicionando este parámetro dentro del rango donde 0todo aire y 1 agua).
+
+
+6)Luego partiendo del concepto del prototipo OWC se realiza la validación del modelo de una ola a través de un canal.
+
+Esta ola, basándonos en el tutorial de "damBreak", se simulará definiendo un volumen de agua inicial mediante un rectángulo (donde las celdas que lo comprendan se definirán con alpha(ff)=1.
+
+- Sólo se analizará la primera ola, ya que como se argumenta en el proyecto, se obtienen muchos rebotes del agua y al no contar con una generación constante de oleaje la energía se dispersa hasta estabilizarse.
+
+- El objeto será hallar el valor de la potencia. Correspondiente al caudal que atraviesa por la turbina, multiplicado por la perdida de presión a su paso (delta P, siendo P2la atmosférica). Debido a las complicaciones de fabricación e instalación de la turbina a escal, se sustituye por un elemento deprimógeno, es decir con un diafragma, que provoca una caida de presión para así hallar el caudal y la potencia equivalente a la obtenida para el punto de funcionamiento de una turbina en concreto.
+
+- Este resultado se **compara** con los obtenidos del laboratorio para validar el modelo definido.
+
+7) La resolución de un problema de la mec de fluidos por ordenador implica tres partes fundamentales, prepr:aqui se def las c.i, c.c, modelo,método de resolución..proces: una vez def el problema el tiempo para resolverse depende de la potencia del equipo y del programa que utilicemos..post: para la visualización, análisis de datos e incluso renderizado. 
+
+-Existe una amplia variedad de herramientas para llevarlas a cabo. 
+
+-En este caso utilizamos el software OpenFOAM para resolver la dinámica de los flujos, el cual está ampliamente usado en la industria, es muy potente, aunque su manejo es complicado, tanto es así que se ofrecen cursos de 1semana por 4000€.
+Sus librerías están escritas en C++ y se distribuye bajo licencia GPL.
+
+-El modo básico de proceder, consiste en encontrar un modelo ya definido y modificarlo para adecuarlo a nuestras necesidades.
+
+8) En un principio se quiso realizar la comparativa con los resultados obtenidos del modelo en 2D. 
+Aquí se muestra la estructura de este caso, donde se definen: las variables principales en t=0; las ppiedades físicas de los flujos; fuerzas exteriores (g); modelo de turbulencia (RANS K-epsilon); el esquema de discretización de las ecs para el método de VOF (volumen de control), procedimiento para la solución; el control del tiempo de ejecución.
+
+//-El mayor control sobre la estabilidad numérica y exactitud temporal durante el proceso de convergencia hacia la solución lo marca el número de Courant.
+
+9) El diseño del modelo, se realiza con la utilidad blockMesh de OpenFOAM, donde se definen los vértices, bloques, caras, contornos y celdas del dominio. Se trata de un mallado formado por celdas hexaérdicas de 2mm (por el grosor del diafragma).
+- Resulta muy útil para geometrias sencillas, pero se complica cuando se quieren incluir superficies curvas, por ello se define la salida rectangular.
+
+10) Como OpenFOAM no opera en 2D, sólo se omite la solución para el plano z.
+Se realizaron dos casos para comparar los resultados variando la anchura de z de 80mm (canal) y de 19,6mm (adecuandolo al d de la chimenea), 
+
+11) Viendo que los resultados (aunque visualmente fueran buenos) para H,Q,Pm eran valores más bajos de los esperados y diferentes en función de z.
+Así que se concluyó que era necesario realizar el modelo en 3D para realizar la validación con el experimento real.
+
+12) En este caso se utiliza otro programa para definir el modelo, Salome. Este es más parecido a un programa de cad y dispone de varios algoritmos para generar el mallado adaptandse mejor a las exigencias del modelo. En este caso se selecciona la descomposición en tetraedros dada por Netgen. 
+
+13) a la estructura que teníamos se le añaden varios ficheros para automatizar la solución y obtener: la altura del agua dentro de la cámara, el caudal por el diafragma y la presión aguas arriba del diafragma. Estos resultados servirán para validar el modelo con el ensayo real. 
+
+(video)
+
+14) Para la experimentación del prototipo se parte de la maqueta del canal. a de unos 2m de largo hasta una unión que se dispone en el fondo para ajustar el prototipo OWC, dispone de una bomba una llave de paso con la que controlar el caudal para la condición inicial del agua (una inicial de 45mm para sumergir la entrada del agua y otra hasta los 145mm para el volumen inicial; retenido por una compuerta que se accionará con un pistón neumático de doble vástago y carrera de 160mm, longi de sobra para retener el volumen. Como la maqueta no está diseñada para esto también se fabrica una estructura para anidarlo al canal.
+
+- De este experimento se obtienen los resultados de la altura del agua dentro de la cámara y el valor de la presión aguas arriba del diafragma para los d[13-14-15.5-16].
+
+15) Para el cálculo del caudal de salida se caracterizan los diafragmas utilizados ya que no están normalizados. Para ello se recurre a la normativa, donde se especifica un rango para la relación de D. la longitud minima del tubo que servirá para hacer de chimenea en el ensayo final y la longitud para la toma de presión.
+
+-La presión estática en la tuberı́a se medirá instalando un piezómetro; con el tubo de Prandtl se obtendrá la diferencia entre la presión total y la estática, y de ahı́ obtener la presión dinámica. Entonces, será posible hallar la velocidad del flujo y con ello, el caudal, el coeficiente de caudal y el número de Reynolds serán valores conocidos. Las curvas obtenidas para cada diafragma se mantienen prácticamente cte, sin embargo como se explica en el proyecto para valores de Re con poca variación puede resultar así.
+
+16) Una vez obtenidas las curvas se procede al desarrollo de tres pruebas para cada diafragma (12 pruebas), repitiendo la condición inicial mencionada para cada prueba.
+
+- Por otro lado, se conecta el pistón y un trans de presión de rango 0-100Pa, a una tarjeta de adqisición para realizar el control del accionamiento de la compuerta y captura de datos por ordenador.
+
+- De esta forma se muestra como la presión aumenta cuando el agua entra dentro de la cámara. Con este valor de presiones, y con el coeficiente del caudal obtenido del anterior experimento se podrá hallar la potencia.
+
+17) La altura se captura con la vista determinando este valor en unos 16cm, se aproxima bastante al obtenido para las simulaciones, de 16.5cm.
+
+
+17) En estas gráficas se muestran los valores se la presión aguas arriba para cada prueba realizada con cada diafragma (azul), y la obtenida de las simulaciones en rojo. En el rango del tiempo en el cual la ola entra dentro de la cámara. Viendo que estos resultados concuerdan bastante bien.
+
+Además se muestran los valores hallados para la potencia y en esta tabla se muestra el menor error obtenido para P,Q,Pot. (viendo que para el d=16mm es cuando peor coinciden, puede ser por estar fuera del rango definido en la normativa, y xq el flujo de aire apenas se encuentra con una obstrucción).
+
+- Concluyendo que, a partir de aquí podrían llevarse a cabo desarrollos más complejos con garantías de obtener una solución muy parecida a lo que ocurriría en la realidad, ahorrando en el proceso de diseño final de equipos muy costosos.
+
+Gracias
+
+Agradecimientos
+===============
+Sé que este trabajo podía haberme llevado menos tiempo pero reconozco que la falta de un compañero la he notado enormemente, por ello:
+Quería agradecer a mi tutor el haberse involucrado en mi proyecto más de lo estrictamente necesario.
+A mi familia por aguantar mis altibajos, en especial a mi pareja que además me ha ayudado con las dificultades técnicas que supone trabajar con linux y tener las herramientas actualizadas.
+Y a los técnicos de la escuela y a otros profesores (Dani, Iker y Cesar) por haberme ayudado a realizar partes del diseño implicadas en el ensayo, gracias a su experiencia, me enseñaron las claves y me allanaron el camino.
+
+
+
+
+
